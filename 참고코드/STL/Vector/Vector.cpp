@@ -17,8 +17,7 @@ using namespace std;
 //		cout << v[i] << endl;
 //}
 
-//Exam_2
-//void main()
+//void main()F
 //{
 //	vector<int> v;
 //
