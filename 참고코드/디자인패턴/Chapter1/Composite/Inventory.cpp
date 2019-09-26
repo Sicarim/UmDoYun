@@ -41,15 +41,7 @@ int Inventory::GetSize()
 	return name.size() + GetLevel() * 2;
 }
 
-Item::Item(string name) : Inventory(name)
-{
-}
 
-void Item::View()
-{
-	cout << setiosflags(ios::right) << setw(GetSize());
-	cout << setfill(' ') << GetName().c_str() << " - Item" << endl;
-}
 
 Bag::Bag(string name) : Inventory(name)
 {
@@ -79,7 +71,8 @@ void Bag::View()
 void Bag::AddInventory(Inventory* inventory)
 {
 
-	inventory->SetParent(this);	inventoryList.push_back(inventory);
+	inventory->SetParent(this);
+	inventoryList.push_back(inventory);
 }
 
 void Bag::RemoveInventory(Inventory* inventory)
@@ -90,4 +83,20 @@ void Bag::RemoveInventory(Inventory* inventory)
 	{
 		inventoryList.erase(remove);
 	}
+}
+
+
+
+
+
+
+Item::Item(string name) : Inventory(name)
+{
+}
+
+
+void Item::View()
+{
+	cout << setiosflags(ios::right) << setw(GetSize());
+	cout << setfill(' ') << GetName().c_str() << " - Item" << endl;
 }
