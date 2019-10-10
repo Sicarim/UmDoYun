@@ -1,0 +1,3 @@
+﻿  winMain.cpp
+D:\Atence\visual\BitMap\BitMap\winMain.cpp(41,6): warning C4101: 'len' :참조되지 않은 지역 변수입니다.
+LINK : fatal error LNK1104: 'GLUT32.LIB' 파일을 열 수 없습니다.
