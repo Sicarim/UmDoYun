@@ -1,0 +1,5 @@
+﻿  Animal.cpp
+  winMain.cpp
+  코드를 생성하고 있습니다...
+C:\Users\djawl\Desktop\BitMap\BitMap\winMain.cpp(80,11): warning C4101: 'MemDC' :참조되지 않은 지역 변수입니다.
+  BitMap.vcxproj -> C:\Users\djawl\Desktop\BitMap\x64\Debug\BitMap.exe
