@@ -48,12 +48,17 @@ void Animal::All_Draw(HDC hdc)
 		if(Count == 5)
 		{
 			(*iter).Draw(hdc, x, y);
+			x += 170;
 			y = 300;
 			x = 30;
 			Count = 0;
 		}
-		(*iter).Draw(hdc, x, y);
-		x += 170;
+
+		else if (Count < 5)
+		{
+			(*iter).Draw(hdc, x, y);
+			x += 170;
+		}
 		Count++;
 	}
 }

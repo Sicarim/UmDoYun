@@ -16,7 +16,7 @@ void BitMapManager::Init(HWND hWnd, HINSTANCE _hInst)
 
 	BitMap* tmp_bit;
 
-	for (int i = 0; i < 9; i++)
+	for (int i = 0; i < 10; i++)
 	{
 		tmp_bit = new BitMap;
 		tmp_bit->Init(hdc, _hInst, bit_id);
