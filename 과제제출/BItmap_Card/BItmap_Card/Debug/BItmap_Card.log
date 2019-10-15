@@ -1,0 +1,7 @@
+﻿  Card.cpp
+  CardManager.cpp
+  GameManager.cpp
+  winMain.cpp
+  코드를 생성하고 있습니다...
+D:\Atence\visual\BItmap_Card\BItmap_Card\winMain.cpp(50,11): warning C4101: 'MemDC' :참조되지 않은 지역 변수입니다.
+LINK : fatal error LNK1104: 'GLUT32.LIB' 파일을 열 수 없습니다.
