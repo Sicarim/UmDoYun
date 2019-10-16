@@ -18,23 +18,27 @@ void CardManager::All_Init(HWND hWnd, HINSTANCE _hInst)
 	for (int i = 0; i < CARDMAX; i++)
 	{
 		tmp_card = new Card;
-		tmp_card->Init(hdc, _hInst, bit_id);
-		m_Card.push_back(*tmp_card);
-		bit_id++;
+		Black_Card = new Card;
 
+		tmp_card->Init(hdc, _hInst, bit_id);
+		Black_Card->Init(hdc, _hInst, 111);
+
+		m_Card.push_back(*tmp_card);
+		m_black.push_back(*Black_Card);
+
+		bit_id++;
 		if (i == 9)
 		{
 			bit_id = 101;
 		}
 	}
-
 	//카드섞기
 	random_shuffle(m_Card.begin(), m_Card.end());
 
 	for (int i = 0; i < CARDMAX; i++)
 	{
 		m_Card[i].Range_Init(setX, setY);
-
+		m_black[i].Range_Init(setX, setY);
 		setX += 120;
 
 		if (i == 9)
@@ -45,10 +49,6 @@ void CardManager::All_Init(HWND hWnd, HINSTANCE _hInst)
 	}
 	setX = 30;
 	setY = 30;
-
-	Black_Card = new Card;
-	Black_Card->Init(hdc, _hInst, 111);
-	Black_Card->Range_Init(setX, setY);
 }
 
 //Card 리턴
@@ -58,9 +58,9 @@ vector<Card> CardManager::get_Card()
 }
 
 //Black_Card 리턴
-Card CardManager::get_BlackCard()
+vector<Card> CardManager::get_BlackCard()
 {
-	return *Black_Card;
+	return m_black;
 }
 
 //소멸자

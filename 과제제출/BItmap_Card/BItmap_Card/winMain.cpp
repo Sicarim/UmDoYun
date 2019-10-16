@@ -4,7 +4,6 @@
 #include "CardGame.h"
 
 #define _USE_MATH_DEFINES
-void CALLBACK TimeProc(HWND hWnd, UINT uMsg, UINT idEvent, DWORD dwTime);
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 HINSTANCE g_hInst;
 LPCTSTR lpszClass = TEXT("BitMap");
@@ -14,7 +13,7 @@ int x = 0;
 int y = 0;
 
 //Game선언
-//CardGame m_Game;
+CardGame m_Game;
 
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPervlnstance, LPSTR lpszCmdParam, int nCmdShow)
 {
@@ -51,33 +50,38 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 {
 	HDC hdc, MemDC;
 	PAINTSTRUCT ps; //그리기 전용 구조체 BeginPaint
+	SYSTEMTIME st;
+	static TCHAR sTime[128];
 
 	switch (iMessage)
 	{
 	case WM_CREATE:
 		CardManager::get_Instence()->All_Init(hWnd, g_hInst);
 		GameManager::get_Instence()->Card_Shffle();
-		SetTimer(hWnd, 1, 3000, TimeProc);
-		SendMessage(hWnd, WM_TIMER, 1, 0);
 		return 0;
 
 		//시작 메뉴바에 있는 돋보기 모양에 제어판 검색->제어판 들어가서 프로그램 제거 클릭->Insyde Airplane Mode를 우클릭하여 제거
 
 	case WM_LBUTTONDOWN:
-		//m_Game.Click_Card(hWnd, LOWORD(lParam), HIWORD(lParam));
-		//GameManager::get_Instence()->Send_Message(hWnd, LOWORD(lParam), HIWORD(lParam));
+		m_Game.Click_Card(hWnd, LOWORD(lParam), HIWORD(lParam));
+		SendMessage(hWnd, WM_TIMER, 1, 0);
 		return 0;
 
 	case WM_PAINT:
 		hdc = BeginPaint(hWnd, &ps);
-
 		GameManager::get_Instence()->All_Draw(hdc);
-
 		EndPaint(hWnd, &ps);
 		return 0;
 
-	case WM_TIMER:
-		return 0;
+	//case WM_TIMER:
+		//GetLocalTime(&st);
+		//if (st.wSecond > 3000)
+		//{
+		//	GameManager::get_Instence()->All_Draw(hdc);
+		//	//black_Card.Black_Draw(hdc, 100, 100);
+		//	//InvalidateRect(hWnd, NULL, TRUE);
+		//}
+		//return 0;
 
 	case WM_DESTROY:
 		PostQuitMessage(0);
@@ -88,6 +92,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 
 void CALLBACK TimeProc(HWND hWnd, UINT uMsg, UINT idEvent, DWORD dwTime)
 {
-	//x++;
-	InvalidateRect(hWnd, NULL, TRUE);
+	HDC hdc = GetDC(hWnd);
+	GameManager::get_Instence()->Answer_Check(hWnd);
+	//InvalidateRect(hWnd, NULL, TRUE);
 }

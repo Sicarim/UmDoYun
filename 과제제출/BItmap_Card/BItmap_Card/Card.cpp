@@ -53,7 +53,7 @@ void Card::Black_Draw(HDC hdc, int x, int y)
 //지우기 함수
 void Card::Erase(HDC hdc)
 {
-	StretchBlt(hdc, cardX, cardY, 0.7 * size.cx, 0.7 * size.cy, MemDC, 0, 0, size.cx, size.cy, WHITENESS);
+	StretchBlt(hdc, cardX, cardY, cardW, cardH, MemDC, 0, 0, CARDW, CARDH, WHITENESS);
 }
 
 //지우기

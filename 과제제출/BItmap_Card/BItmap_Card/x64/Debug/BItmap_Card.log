@@ -1,4 +1,3 @@
 ﻿  winMain.cpp
-D:\Atence\visual\BItmap_Card\BItmap_Card\winMain.cpp(62,35): error C2664: 'UINT_PTR SetTimer(HWND,UINT_PTR,UINT,TIMERPROC)': 인수 4을(를) 'void (__cdecl *)(HWND,UINT,UINT,DWORD)'에서 'TIMERPROC'(으)로 변환할 수 없습니다.
-D:\Atence\visual\BItmap_Card\BItmap_Card\winMain.cpp(62,27): message : 대상 형식과 일치하는 범위에 이름이 같은 함수가 없습니다.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\winuser.h(7029,1): message : 'SetTimer' 선언을 참조하십시오.
+D:\Atence\visual\BItmap_Card\BItmap_Card\winMain.cpp(51,11): warning C4101: 'MemDC' :참조되지 않은 지역 변수입니다.
+  BItmap_Card.vcxproj -> D:\Atence\visual\BItmap_Card\x64\Debug\BItmap_Card.exe
