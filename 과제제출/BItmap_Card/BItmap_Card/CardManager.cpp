@@ -67,10 +67,17 @@ vector<Card> CardManager::get_BlackCard()
 CardManager::~CardManager()
 {
 	m_Card.clear();
+	m_black.clear();
 
 	if (tmp_card != NULL)
 	{
 		delete tmp_card;
 	}
 	tmp_card = NULL;
+
+	if (Black_Card != NULL)
+	{
+		delete Black_Card;
+	}
+	Black_Card = NULL;
 }

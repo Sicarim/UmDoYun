@@ -16,7 +16,7 @@ public:
 		return m_hInstence;
 	}
 
-	void del_Instence()
+	static void del_Instence()
 	{
 		if (m_hInstence != NULL)
 		{

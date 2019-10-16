@@ -47,7 +47,6 @@ void Card::Draw(HDC hdc)
 void Card::Black_Draw(HDC hdc, int x, int y)
 {
 	StretchBlt(hdc, x, y, 0.7* CARDW, 0.7* CARDH, MemDC, 0, 0, CARDW, CARDH, SRCCOPY);
-	//DCRelease();
 }
 
 //지우기 함수

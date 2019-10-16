@@ -199,4 +199,5 @@ void GameManager::Answer_Check(HWND hWnd)
 GameManager::~GameManager()
 {
 	tmp_card.clear();
+	tmp_black.clear();
 }

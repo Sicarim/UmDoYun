@@ -51,7 +51,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 	HDC hdc, MemDC;
 	PAINTSTRUCT ps; //그리기 전용 구조체 BeginPaint
 	SYSTEMTIME st;
-	static TCHAR sTime[128];
 
 	switch (iMessage)
 	{
@@ -73,17 +72,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 		EndPaint(hWnd, &ps);
 		return 0;
 
-	//case WM_TIMER:
-		//GetLocalTime(&st);
-		//if (st.wSecond > 3000)
-		//{
-		//	GameManager::get_Instence()->All_Draw(hdc);
-		//	//black_Card.Black_Draw(hdc, 100, 100);
-		//	//InvalidateRect(hWnd, NULL, TRUE);
-		//}
-		//return 0;
-
 	case WM_DESTROY:
+		GameManager::del_Instence();
+		CardManager::del_Instence();
 		PostQuitMessage(0);
 		return 0;
 	}
@@ -94,5 +85,4 @@ void CALLBACK TimeProc(HWND hWnd, UINT uMsg, UINT idEvent, DWORD dwTime)
 {
 	HDC hdc = GetDC(hWnd);
 	GameManager::get_Instence()->Answer_Check(hWnd);
-	//InvalidateRect(hWnd, NULL, TRUE);
 }
