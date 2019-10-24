@@ -1,6 +1,2 @@
-﻿  BitMap.cpp
-  BitMapManager.cpp
-  Character.cpp
-  winMain.cpp
-  코드를 생성하고 있습니다...
+﻿  winMain.cpp
   LoadImage.vcxproj -> D:\Atence\visual\Jump\LoadImage\Debug\LoadImage.exe

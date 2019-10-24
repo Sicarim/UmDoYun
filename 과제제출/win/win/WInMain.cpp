@@ -52,10 +52,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 		
 
 		//점 찍기
-		for (int i = 0; i < 100; i++)
+		for (int i = 0; i < 30; i++)
 		{
 			//SetPixel(hdc, 10 + (i * 3), 10, RGB(255, 0, 0));
-			SetPixel(hdc, 300 + 50 * cos(i * gak), 300 + 50 * sin(i * gak), RGB(255, 0, 0)); //x = 중심점 + 반지름 * 좌표(cos), y = 중심점 + 반지름 * 좌표(sin)
+			SetPixel(hdc, 300 + 50 * -cos(i * gak), 300 + 50 * -sin(i * gak), RGB(255, 0, 0)); //x = 중심점 + 반지름 * 좌표(cos), y = 중심점 + 반지름 * 좌표(sin)
 		}
 
 		//점 찍기

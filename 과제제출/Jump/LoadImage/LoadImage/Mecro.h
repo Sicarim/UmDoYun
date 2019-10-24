@@ -8,17 +8,15 @@
 #include <random>
 #include <iterator>
 #include <cstdlib>
+#include <math.h>
 
 using namespace std;
-
-#define CARDMAX 20
-#define BITMAX 11
-#define SHUFFLECOUNT 50
 
 #define CORRECTION 0.7
 #define CARDW 145
 #define CARDH 235
 
 #define SPEED 5
-#define JUMPMAX 10
-#define JUMPSPEED 15
+#define JUMPMAX 50
+#define JUMPPOWER 70
+#define JUMPSPEED 10

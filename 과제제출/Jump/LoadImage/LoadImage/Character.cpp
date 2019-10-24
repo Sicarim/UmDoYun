@@ -4,13 +4,17 @@
 //생성자
 Character::Character()
 {
-	KeyX = 0;
 	posX = 0;
 	posY = 0;
 	Jump_Cor = 0;
 	jump_count = 0;
 	ch_dir = true;
 	jump = true;
+	//Gak = 2 * M_PI / 100;
+	Gak = 2 * 3.141592 / 100;
+
+	vx = 0.0f;
+	vy = 0.0f;	
 }
 
 //캐릭터 초기화
@@ -22,7 +26,6 @@ void Character::Char_Init(HWND hWnd)
 //캐릭터 걷기
 void Character::Char_Working(HDC hdc, int _keyx)
 {
-	KeyX = _keyx;
 	if (ch_dir)
 	{
 		posY = 3;
@@ -75,18 +78,14 @@ void Character::Char_Jump(HWND hWnd, int _chx)
 		posY = 2;
 	}
 
-	if (jump_count <= JUMPMAX)
-	{
-		Jump_Cor += 5;
-		BitMapManager::get_Instence()->Draw(hdc, posX, posY, _chx, -Jump_Cor); //캐릭터 그리기
-	}
-	else
-	{
-		Jump_Cor -= 5;
-		BitMapManager::get_Instence()->Draw(hdc, posX, posY, _chx, -Jump_Cor); //캐릭터 그리
-	}
+	Jump_Cor += 1;
+	vx = -cos(jump_count * Gak);
+	vy = -sin(jump_count * Gak);
 
-	if (Jump_Cor == 0)
+	BitMapManager::get_Instence()->Draw(hdc, posX, posY, _chx + vx, JUMPPOWER * vy);
+
+
+	if (jump_count == JUMPMAX)
 	{
 		jump_count = 0;
 		KillTimer(hWnd, 1);

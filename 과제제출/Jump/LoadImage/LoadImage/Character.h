@@ -4,13 +4,16 @@
 class Character
 {
 private:
-	int KeyX;
 	int Jump_Cor;
 	int posX, posY;
+	
 	bool ch_dir;
 	int jump_count;
 	bool jump;
+	double Gak;
 
+	float vx;
+	float vy;
 public:
 	Character(); //»ý¼ºÀÚ
 

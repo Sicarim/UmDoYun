@@ -11,7 +11,6 @@ LPCTSTR lpszClass = TEXT("LoadImage");
 int charX = 0;
 int charY = 0;
 bool isJump = false;
-int ch = 0;
 
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPervlnstance, LPSTR lpszCmdParam, int nCmdShow)
 {
@@ -60,21 +59,24 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 		return 0;
 		
 	case WM_KEYDOWN:
-		switch (wParam)
+		if (wParam == VK_LEFT)
 		{
-		case VK_LEFT:
 			charX -= 1;
 			m_Char.set_direction(false);
-			break;
-		case VK_RIGHT:
+		}
+
+		if (wParam == VK_RIGHT)
+		{
 			charX += 1;
-			m_Char.set_direction(true);
-			break;
-		case VK_SPACE:
+			m_Char.set_direction(true);	
+		}
+
+		if (wParam == VK_SPACE)
+		{
 			isJump = true;
 			SetTimer(hWnd, 1, JUMPSPEED, TimeProc);
-			break;
 		}
+
 		InvalidateRect(hWnd, NULL, TRUE);
 		return 0;
 
@@ -103,5 +105,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 
 void CALLBACK TimeProc(HWND hWnd, UINT uMsg, UINT idEvent, DWORD dwTime)
 {
+	if (GetAsyncKeyState(VK_LEFT) & 0x8000)
+	{
+		charX--;
+	}
+	if (GetAsyncKeyState(VK_RIGHT) & 0x8000)
+	{
+		charX++;
+	}
+
 	InvalidateRect(hWnd, NULL, TRUE);
 }
