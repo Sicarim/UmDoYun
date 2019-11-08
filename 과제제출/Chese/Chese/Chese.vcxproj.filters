@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="소스 파일\Manger">
+      <UniqueIdentifier>{f9bef263-4fa0-45b5-a574-4e0365c9ea95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Manager">
+      <UniqueIdentifier>{4575c012-8f3f-4e75-ade6-a735dc2153d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Factory">
+      <UniqueIdentifier>{7e2616eb-442b-4b10-9ab9-dee0888df7b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Factory">
+      <UniqueIdentifier>{72e53253-e822-411f-b4e6-9c1f30d6d4a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Data">
+      <UniqueIdentifier>{49b1d23d-58b1-4015-b864-caa89fa5cf4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Data">
+      <UniqueIdentifier>{e2d7f848-1420-4d42-a04b-8db21945a958}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Mecro.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ChessGame.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>헤더 파일\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="BitMapManager.h">
+      <Filter>헤더 파일\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>헤더 파일\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="UnitFactory.h">
+      <Filter>헤더 파일\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="BitMap.h">
+      <Filter>헤더 파일\Data</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="winMain.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ChessGame.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>소스 파일\Manger</Filter>
+    </ClCompile>
+    <ClCompile Include="BitMapManager.cpp">
+      <Filter>소스 파일\Manger</Filter>
+    </ClCompile>
+    <ClCompile Include="UnitFactory.cpp">
+      <Filter>소스 파일\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="Pawn.cpp">
+      <Filter>소스 파일\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="BitMap.cpp">
+      <Filter>소스 파일\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Knight.cpp">
+      <Filter>소스 파일\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="Rook.cpp">
+      <Filter>소스 파일\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="Bishop.cpp">
+      <Filter>소스 파일\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="King.cpp">
+      <Filter>소스 파일\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="Queen.cpp">
+      <Filter>소스 파일\Factory</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
