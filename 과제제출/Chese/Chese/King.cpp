@@ -106,6 +106,11 @@ void King::Draw_Blend(HWND hWnd, int _pos1, int _pos2, int _unix, int _uniy, int
 	}
 }
 
+//유닛이 갈수 있는 위치를 그린다.(Override)
+void King::Draw_Blend(HWND hWnd)
+{
+}
+
 //공격 당했다!!!
 int King::attecked_Unit()
 {

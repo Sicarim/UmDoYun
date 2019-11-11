@@ -28,6 +28,7 @@ public:
 	virtual void Move_Unit(HWND hWnd, int _posx, int _posy) = 0; //유닛 움직이기
 	virtual void Unit_DrawUpdate(int _posx, int _posy) = 0; //유닛이 그려질 실질적 위치 최신화
 	virtual void Draw_Blend(HWND hWnd, int _pos1 = 0, int _pos2 = 0, int _unix = 0, int _uniy = 0, int _cnt = 0, int _num = 0) = 0; //유닛이 갈수 있는 위치를 그린다.
+	virtual void Draw_Blend(HWND hWnd) = 0; //유닛이 갈수 있는 위치를 그린다.
 	virtual RECT get_Rect() = 0; //Rect's returns
 	virtual vector<RECT> get_vblend() = 0; //유닛 갈수 있는 위치 반환
 	virtual int get_PosX() = 0; //현재 위치를 반환(x)
@@ -54,6 +55,7 @@ public:
 	virtual void Move_Unit(HWND hWnd, int _posx, int _posy); //유닛 움직이기(Override)
 	virtual void Unit_DrawUpdate(int _posx, int _posy); //유닛이 그려질 실질적 위치 최신화(Override)
 	virtual void Draw_Blend(HWND hWnd, int _pos1 = 0, int _pos2 = 0, int _unix = 0, int _uniy = 0, int _cnt = 0, int _num = 0); //유닛이 갈수 있는 위치를 그린다.
+	virtual void Draw_Blend(HWND hWnd); //유닛이 갈수 있는 위치를 그린다.(Override)
 	virtual RECT get_Rect(); //Rect's returns
 	virtual vector<RECT> get_vblend(); //유닛 x좌표 반환(Overrride)
 	virtual int get_PosX(); //현재 위치를 반환(x)
@@ -80,6 +82,7 @@ public:
 	virtual void Move_Unit(HWND hWnd, int _posx, int _posy); //유닛 움직이기(Override)
 	virtual void Unit_DrawUpdate(int _posx, int _posy); //유닛이 그려질 실질적 위치 최신화(Override)
 	virtual void Draw_Blend(HWND hWnd, int _pos1 = 0, int _pos2 = 0, int _unix = 0, int _uniy = 0, int _cnt = 0, int _num = 0); //유닛이 갈수 있는 위치를 그린다.
+	virtual void Draw_Blend(HWND hWnd); //유닛이 갈수 있는 위치를 그린다.(Override)
 	virtual RECT get_Rect(); //Rect's returns
 	virtual vector<RECT> get_vblend(); //유닛 x좌표 반환(Overrride)
 	virtual int get_PosX(); //현재 위치를 반환(x)
@@ -106,6 +109,7 @@ public:
 	virtual void Move_Unit(HWND hWnd, int _posx, int _posy); //유닛 움직이기(Override)
 	virtual void Unit_DrawUpdate(int _posx, int _posy); //유닛이 그려질 실질적 위치 최신화(Override)
 	virtual void Draw_Blend(HWND hWnd, int _pos1 = 0, int _pos2 = 0, int _unix = 0, int _uniy = 0, int _cnt = 0, int _num = 0); //유닛이 갈수 있는 위치를 그린다.
+	virtual void Draw_Blend(HWND hWnd); //유닛이 갈수 있는 위치를 그린다.(Override)
 	virtual RECT get_Rect(); //Rect's returns
 	virtual vector<RECT> get_vblend(); //유닛 x좌표 반환(Overrride)
 	virtual int get_PosX(); //현재 위치를 반환(x)
@@ -132,6 +136,7 @@ public:
 	virtual void Move_Unit(HWND hWnd, int _posx, int _posy); //유닛 움직이기(Override)
 	virtual void Unit_DrawUpdate(int _posx, int _posy); //유닛이 그려질 실질적 위치 최신화(Override)
 	virtual void Draw_Blend(HWND hWnd, int _pos1 = 0, int _pos2 = 0, int _unix = 0, int _uniy = 0, int _cnt = 0, int _num = 0); //유닛이 갈수 있는 위치를 그린다.
+	virtual void Draw_Blend(HWND hWnd); //유닛이 갈수 있는 위치를 그린다.(Override)
 	virtual RECT get_Rect(); //Rect's returns
 	virtual vector<RECT> get_vblend(); //유닛 x좌표 반환(Overrride)
 	virtual int get_PosX(); //현재 위치를 반환(x)
@@ -158,6 +163,7 @@ public:
 	virtual void Move_Unit(HWND hWnd, int _posx, int _posy); //유닛 움직이기(Override)
 	virtual void Unit_DrawUpdate(int _posx, int _posy); //유닛이 그려질 실질적 위치 최신화(Override)
 	virtual void Draw_Blend(HWND hWnd, int _pos1 = 0, int _pos2 = 0, int _unix = 0, int _uniy = 0, int _cnt = 0, int _num = 0); //유닛이 갈수 있는 위치를 그린다.
+	virtual void Draw_Blend(HWND hWnd); //유닛이 갈수 있는 위치를 그린다.(Override)
 	virtual RECT get_Rect(); //Rect's returns
 	virtual vector<RECT> get_vblend(); //유닛 x좌표 반환(Overrride)
 	virtual int get_PosX(); //현재 위치를 반환(x)
@@ -184,6 +190,7 @@ public:
 	virtual void Move_Unit(HWND hWnd, int _posx, int _posy); //유닛 움직이기(Override)
 	virtual void Unit_DrawUpdate(int _posx, int _posy); //유닛이 그려질 실질적 위치 최신화(Override)
 	virtual void Draw_Blend(HWND hWnd, int _pos1 = 0, int _pos2 = 0, int _unix = 0, int _uniy = 0, int _cnt = 0, int _num = 0); //유닛이 갈수 있는 위치를 그린다.
+	virtual void Draw_Blend(HWND hWnd); //유닛이 갈수 있는 위치를 그린다.(Override)
 	virtual RECT get_Rect(); //Rect's returns
 	virtual vector<RECT> get_vblend(); //유닛 x좌표 반환(Overrride)
 	virtual int get_PosX(); //현재 위치를 반환(x)

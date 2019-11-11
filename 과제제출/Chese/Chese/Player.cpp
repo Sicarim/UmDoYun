@@ -19,6 +19,12 @@ void Player::set_Player_Num(int _num)
 	Player_Num = _num;
 }
 
+//플레이어 구분을 위한 정보
+int Player::get_Player_Num()
+{
+	return Player_Num;
+}
+
 //Unit's Make
 void Player::Make_Unit(HWND hWnd, int _posy1, int _posy2)
 {
@@ -82,6 +88,27 @@ void Player::Make_Unit(HWND hWnd, int _posy1, int _posy2)
 ///unit all Draw(제일 처음)
 void Player::Unit_DrawInit(HWND hWnd)
 {
+	if (GameManager::get_Instence()->get_isChange())
+	{
+		tmp_Unit = GameManager::get_Instence()->isChange_Unit();
+		if (tmp_Unit->get_Class() == CLASS_BISHOP)
+		{
+			m_vBishop.push_back(tmp_Unit);
+		}
+		else if (tmp_Unit->get_Class() == CLASS_KNIGHT)
+		{
+			m_vKnight.push_back(tmp_Unit);
+		}
+		else if (tmp_Unit->get_Class() == CLASS_QUEEN)
+		{
+			m_vQueen.push_back(tmp_Unit);
+		}
+		else if (tmp_Unit->get_Class() == CLASS_ROOK)
+		{
+			m_vRook.push_back(tmp_Unit);
+		}
+	}
+	
 	//Pawn
 	Draw_Update(hWnd, m_vPawn, Player_Num);
 	//Knight
@@ -105,10 +132,6 @@ void Player::Click(HWND hWnd, int _ptx, int _pty)
 	int Box_pty = GameManager::get_Instence()->get_DrawXY(tmp_pty);
 	int tmp_UnitPosX = 0;
 	int tmp_UnitPosY = 0;
-
-	Selecting = true;
-
-	int test = 0;
 	
 	BitMapManager::get_Instence()->Select_Draw(hWnd, Box_ptx, Box_pty);
 	m_SelectRect = { Box_ptx, Box_pty, Box_ptx + 101, Box_pty + 101};
@@ -130,33 +153,46 @@ void Player::Click(HWND hWnd, int _ptx, int _pty)
 }
 
 //유닛을 움직이기 위해 클릭
-void Player::Move_Click(HWND hWnd, int _ptx, int _pty)
+bool Player::Move_Click(HWND hWnd, int _ptx, int _pty)
 {
+	bool tmp_Cancel;
+	bool tmp_bo = true;
 	int tmp_ptx = floor(GameManager::get_Instence()->get_UnitXY(_ptx));
 	int tmp_pty = floor(GameManager::get_Instence()->get_UnitXY(_pty));
 	int Box_ptx = GameManager::get_Instence()->get_DrawXY(tmp_ptx);
 	int Box_pty = GameManager::get_Instence()->get_DrawXY(tmp_pty);
 
 	m_SelectRect = { Box_ptx, Box_pty, Box_ptx + 101, Box_pty + 101 };
+
 	tmp_vRect = tmp_vUnit[tmp_Num]->get_vblend();
 
+	//자신이 있던 위치를 빈공간으로 만든다.
 	int tmp_posx = tmp_vUnit[tmp_Num]->get_PosX();
 	int tmp_posy = tmp_vUnit[tmp_Num]->get_PosY();
 	GameManager::get_Instence()->set_UnitPos(tmp_posx, tmp_posy, CLASS_END);
+	//
 
 	for (int i = 0; i < tmp_vRect.size(); i++)
 	{
+		//블랜드(유닛이 갈수 있는곳)을 클릭했을때
 		if (IntersectRect(&rcRect, &m_SelectRect, &tmp_vRect[i]))
 		{
 			if (GameManager::get_Instence()->get_UnitPos(tmp_ptx, tmp_pty) != CLASS_END)
 			{
-				GameManager::get_Instence()->inspection_Unit(tmp_ptx, tmp_pty, Player_Num);
+				tmp_bo = GameManager::get_Instence()->inspection_Unit(tmp_ptx, tmp_pty, Player_Num);
 			}
-			tmp_vUnit[tmp_Num]->Move_Unit(hWnd, tmp_ptx, tmp_pty);
-			Player_reInit();
+
+			if (tmp_bo)
+			{
+				tmp_vUnit[tmp_Num]->Move_Unit(hWnd, tmp_ptx, tmp_pty);
+				Player_reInit();
+				Selecting = false;
+				return true;
+			}
 		}
 	}
 	Selecting = false;
+	return false;
 }
 
 //충돌 처리
@@ -172,6 +208,7 @@ void Player::Hit_Update(HWND hWnd, vector<UnitFactory*> _vunit, int _posx, int _
 			tmp_vUnit = _vunit;
 			tmp_Num = i;
 			Current_Unit = _vunit[i]->get_Class();
+			Selecting = true;
 		}
 	}
 }
@@ -183,6 +220,30 @@ void Player::Draw_Update(HWND hWnd, vector<UnitFactory*> _vunit, int _num)
 	{
 		_vunit[i]->Unit_Draw(hWnd, _num);
 	}
+}
+
+//취소하기
+bool Player::CancelUpdate(int _ptx, int _pty)
+{
+	RECT tmp_Rect;
+	RECT tmp_SelectRect;
+	int tmp_ptx = floor(GameManager::get_Instence()->get_UnitXY(_ptx));
+	int tmp_pty = floor(GameManager::get_Instence()->get_UnitXY(_pty));
+	int Box_ptx = GameManager::get_Instence()->get_DrawXY(tmp_ptx);
+	int Box_pty = GameManager::get_Instence()->get_DrawXY(tmp_pty);
+
+	tmp_SelectRect = { Box_ptx, Box_pty, Box_ptx + 101, Box_pty + 101 };
+	Selecting = false;
+	for (int i = 0; i < m_vPawn.size(); i++)
+	{
+		tmp_Rect = m_vPawn[i]->get_Rect();
+
+		if (IntersectRect(&rcRect, &tmp_SelectRect, &tmp_Rect))
+		{
+			return false;
+		}
+	}
+	return true;
 }
 
 void Player::Player_reInit()

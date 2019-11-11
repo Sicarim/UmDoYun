@@ -1,8 +1,10 @@
 #include "GameManager.h"
+#include "BitMapManager.h"
 
 GameManager::GameManager()
 {
 	Die_Unit = 0;
+	isChange = false;
 }
 
 //Position(Map, Unit) initalize
@@ -60,7 +62,7 @@ int GameManager::get_DrawXY(int _tmp)
 	return 75 + (_tmp * 101); // 75(맵과 시작점의 띄운간격) + (체스 맵의 행렬 위치 * 카드 크기) = 실질적인 윈도우 좌표
 }
 
-void GameManager::inspection_Unit(int _posx, int _posy, int _pnum)
+bool GameManager::inspection_Unit(int _posx, int _posy, int _pnum)
 {
 	int tmp_posx;
 	int tmp_posy;
@@ -91,8 +93,10 @@ void GameManager::inspection_Unit(int _posx, int _posy, int _pnum)
 			if (_posx == tmp_posx && _posy == tmp_posy)
 			{
 				Die_Unit = tmp_class[i]->attecked_Unit();
+				return true;
 			}
 		}
+		return false;
 	}
 	else
 	{
@@ -116,9 +120,75 @@ void GameManager::inspection_Unit(int _posx, int _posy, int _pnum)
 
 			if (_posx == tmp_posx && _posy == tmp_posy)
 			{
-				tmp_class[i]->attecked_Unit();
+				Die_Unit = tmp_class[i]->attecked_Unit();
+				return true;
 			}
 		}
+		return false;
+	}
+}
+
+bool GameManager::inspection_Pawn(int _posx, int _posy, int _pnum)
+{
+	int tmp_posx;
+	int tmp_posy;
+	int tmp_classNum;
+	vector<UnitFactory*> tmp_class;
+	tmp_classNum = get_UnitPos(_posx, _posy);
+
+	if (_pnum == PLAYER_ONE)
+	{
+		if (tmp_classNum == CLASS_PAWN)
+			tmp_class = tmpb_Pawn;
+		else if (tmp_classNum == CLASS_KNIGHT)
+			tmp_class = tmpb_Knight;
+		else if (tmp_classNum == CLASS_ROOK)
+			tmp_class = tmpb_Rook;
+		else if (tmp_classNum == CLASS_KING)
+			tmp_class = tmpb_King;
+		else if (tmp_classNum == CLASS_QUEEN)
+			tmp_class = tmpb_Queen;
+		else if (tmp_classNum == CLASS_BISHOP)
+			tmp_class = tmpb_Bishop;
+
+		for (int i = 0; i < tmp_class.size(); i++)
+		{
+			tmp_posx = tmp_class[i]->get_PosX();
+			tmp_posy = tmp_class[i]->get_PosY();
+
+			if (_posx == tmp_posx && _posy == tmp_posy)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	else
+	{
+		if (tmp_classNum == CLASS_PAWN)
+			tmp_class = tmpw_Pawn;
+		else if (tmp_classNum == CLASS_KNIGHT)
+			tmp_class = tmpw_Knight;
+		else if (tmp_classNum == CLASS_ROOK)
+			tmp_class = tmpw_Rook;
+		else if (tmp_classNum == CLASS_KING)
+			tmp_class = tmpw_King;
+		else if (tmp_classNum == CLASS_QUEEN)
+			tmp_class = tmpw_Queen;
+		else if (tmp_classNum == CLASS_BISHOP)
+			tmp_class = tmpw_Bishop;
+
+		for (int i = 0; i < tmp_class.size(); i++)
+		{
+			tmp_posx = tmp_class[i]->get_PosX();
+			tmp_posy = tmp_class[i]->get_PosY();
+
+			if (_posx == tmp_posx && _posy == tmp_posy)
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 }
 
@@ -142,6 +212,39 @@ void GameManager::insert_WhiteUnit(vector<UnitFactory*> _vBishop, vector<UnitFac
 	tmpw_Rook = _vRook;
 }
 
+//유닛 변경하기
+void GameManager::Change_Unit(HWND hWnd, int _posx, int _posy, int _player, int _class)
+{
+	isChange = true;
+
+	if (_class == CLASS_BISHOP)
+	{
+		tmp_Unit = new Bishop();
+	}
+	else if (_class == CLASS_KNIGHT)
+	{
+		tmp_Unit = new Knight();
+	}
+	else if (_class == CLASS_QUEEN)
+	{
+		tmp_Unit = new Queen();
+	}
+	else if (_class == CLASS_ROOK)
+	{
+		tmp_Unit = new Rook();
+	}
+	tmp_Unit->Unit_Behavior(hWnd, _posx, _posy, _player);
+}
+
+UnitFactory* GameManager::isChange_Unit()
+{
+	if (isChange)
+	{
+		isChange = false;
+		return tmp_Unit;
+	}
+}
+
 //죽은 유닛 반환
 int GameManager::get_DieUnit()
 {
@@ -156,7 +259,7 @@ void GameManager::pos_Release()
 		m_Position[i].clear();
 	}
 	m_Position.clear();
-
+	delete tmp_Unit;
 	tmpw_Bishop.clear();
 	tmpw_King.clear();
 	tmpw_Knight.clear();
@@ -171,6 +274,12 @@ void GameManager::pos_Release()
 	tmpb_Queen.clear();
 	tmpb_Rook.clear();
 	Die_Unit = CLASS_END;
+	isChange = false;
+}
+
+bool GameManager::get_isChange()
+{
+	return isChange;
 }
 
 GameManager::~GameManager()

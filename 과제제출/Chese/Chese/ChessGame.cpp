@@ -5,6 +5,7 @@
 ChessGame::ChessGame()
 {
 	turn_Count = 0;
+	CurrentTurn = 1;
 }
 
 //Game All initalize
@@ -33,29 +34,55 @@ void ChessGame::Click_Unit(HWND hWnd, int _ptx, int _pty)
 {
 	if (turn_Count % 2 == 0)
 	{
-		if (!m_Player1.get_Selecting())
+		if (CurrentTurn == m_Player1.get_Player_Num())
 		{
-			m_Player1.Click(hWnd, _ptx, _pty);
+			if (!m_Player1.get_Selecting())
+			{
+				m_Player1.Click(hWnd, _ptx, _pty);
+			}
+			else
+			{
+				if (m_Player1.Move_Click(hWnd, _ptx, _pty))
+				{
+					turn_Count++;
+					Change_Turn();
+					End_Game(hWnd, turn_Count);
+				}
+			}
 		}
-		else
+	}
+
+	else
+	{
+		if (CurrentTurn == m_Player2.get_Player_Num())
 		{
-			m_Player1.Move_Click(hWnd, _ptx, _pty);
-			turn_Count++;
-			End_Game(hWnd, turn_Count);
+			if (!m_Player2.get_Selecting())
+			{
+				m_Player2.Click(hWnd, _ptx, _pty);
+			}
+			else
+			{
+				if (m_Player2.Move_Click(hWnd, _ptx, _pty))
+				{
+					turn_Count++;
+					Change_Turn();
+					End_Game(hWnd, turn_Count);
+				}
+			}
 		}
+	}
+}
+
+//턴 바꾸기
+void ChessGame::Change_Turn()
+{
+	if (CurrentTurn == 1)
+	{
+		CurrentTurn = 2;
 	}
 	else
 	{
-		if (!m_Player2.get_Selecting())
-		{
-			m_Player2.Click(hWnd, _ptx, _pty);
-		}
-		else
-		{
-			m_Player2.Move_Click(hWnd, _ptx, _pty);
-			turn_Count++;
-			End_Game(hWnd, turn_Count);
-		}
+		CurrentTurn = 1;
 	}
 }
 
@@ -66,11 +93,11 @@ void ChessGame::End_Game(HWND hWnd, int _num)
 	{
 		if (_num % 2 == 0)
 		{
-			MessageBox(hWnd, "White 승리!", "게임 종료!", MB_OK);
+			MessageBox(hWnd, "Black 승리!", "게임 종료!", MB_OK);
 		}
 		else
 		{
-			MessageBox(hWnd, "Black 승리!", "게임 종료!", MB_OK);
+			MessageBox(hWnd, "White 승리!", "게임 종료!", MB_OK);
 		}
 		if (MessageBox(hWnd, "게임을 다시 시작하겠습니까?", "게임 종료!", MB_YESNO) == IDNO)
 		{
@@ -79,10 +106,8 @@ void ChessGame::End_Game(HWND hWnd, int _num)
 		else
 		{
 			Released_Data();
-			turn_Count = 0;
 			Game_Init(hWnd);
 			Game_Play(hWnd);
-			//InvalidateRect(hWnd, NULL, true);
 		}
 	}
 }
@@ -93,6 +118,8 @@ void ChessGame::Released_Data()
 	GameManager::get_Instence()->pos_Release();
 	m_Player1.Player_Release();
 	m_Player2.Player_Release();
+	turn_Count = 0;
+	CurrentTurn = 1;
 }
 
 

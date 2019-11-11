@@ -43,16 +43,71 @@ void Pawn::Clicked_Unit(HWND hWnd, int _posx, int _posy)
 	{
 		if (Unit_PlayerNum == PLAYER_ONE)
 		{
+			if (_posx - 1 >= 0)
+			{
+				if (GameManager::get_Instence()->get_UnitPos(_posx - 1, _posy - 1) != CLASS_END)
+				{
+					if (GameManager::get_Instence()->inspection_Pawn(_posx - 1, _posy - 1, Unit_PlayerNum))
+					{
+						tmp_Drawx = GameManager::get_Instence()->get_DrawXY(_posx - 1);
+						tmp_Drawy = GameManager::get_Instence()->get_DrawXY(_posy - 1);
+						Draw_Blend(hWnd, tmp_Drawx, tmp_Drawy);
+					}
+				}
+			}
+			
+			if (_posx + 1 <= 7)
+			{
+				if (GameManager::get_Instence()->get_UnitPos(_posx + 1, _posy - 1) != CLASS_END)
+				{
+					if (GameManager::get_Instence()->inspection_Pawn(_posx + 1, _posy - 1, Unit_PlayerNum))
+					{
+						tmp_Drawx = GameManager::get_Instence()->get_DrawXY(_posx + 1);
+						tmp_Drawy = GameManager::get_Instence()->get_DrawXY(_posy - 1);
+						Draw_Blend(hWnd, tmp_Drawx, tmp_Drawy);
+					}
+				}
+			}
+			
+
 			for (int i = 1; i <= 2; i++)
 			{
+				tmp_Drawx = GameManager::get_Instence()->get_DrawXY(_posx);
 				tmp_Drawy = GameManager::get_Instence()->get_DrawXY(_posy - i);
 				Draw_Blend(hWnd, tmp_Drawx, tmp_Drawy);
 			}
 		}
 		else
 		{
+			if (_posx - 1 >= 0)
+			{
+				if (GameManager::get_Instence()->get_UnitPos(_posx - 1, _posy + 1) != CLASS_END)
+				{
+					if (GameManager::get_Instence()->inspection_Pawn(_posx - 1, _posy + 1, Unit_PlayerNum))
+					{
+						tmp_Drawx = GameManager::get_Instence()->get_DrawXY(_posx - 1);
+						tmp_Drawy = GameManager::get_Instence()->get_DrawXY(_posy + 1);
+						Draw_Blend(hWnd, tmp_Drawx, tmp_Drawy);
+					}
+				}
+			}
+
+			if (_posx + 1 <= 7)
+			{
+				if (GameManager::get_Instence()->get_UnitPos(_posx + 1, _posy + 1) != CLASS_END)
+				{
+					if (GameManager::get_Instence()->inspection_Pawn(_posx + 1, _posy + 1, Unit_PlayerNum))
+					{
+						tmp_Drawx = GameManager::get_Instence()->get_DrawXY(_posx + 1);
+						tmp_Drawy = GameManager::get_Instence()->get_DrawXY(_posy + 1);
+						Draw_Blend(hWnd, tmp_Drawx, tmp_Drawy);
+					}
+				}
+			}
+
 			for (int i = 1; i <= 2; i++)
 			{
+				tmp_Drawx = GameManager::get_Instence()->get_DrawXY(_posx);
 				tmp_Drawy = GameManager::get_Instence()->get_DrawXY(_posy + i);
 				Draw_Blend(hWnd, tmp_Drawx, tmp_Drawy);
 			}
@@ -62,19 +117,65 @@ void Pawn::Clicked_Unit(HWND hWnd, int _posx, int _posy)
 	{
 		if (Unit_PlayerNum == PLAYER_ONE)
 		{
-			tmp_Drawy = GameManager::get_Instence()->get_DrawXY(_posy - 1);
 			tmp_vBlend.clear();
+			tmp_Drawy = GameManager::get_Instence()->get_DrawXY(_posy - 1);
 			Draw_Blend(hWnd, tmp_Drawx, tmp_Drawy);
+
+			if (_posx - 1 >= 0)
+			{
+				if (GameManager::get_Instence()->get_UnitPos(_posx - 1, _posy - 1) != CLASS_END)
+				{
+					if (GameManager::get_Instence()->inspection_Pawn(_posx - 1, _posy - 1, Unit_PlayerNum))
+					{
+						tmp_Drawx = GameManager::get_Instence()->get_DrawXY(_posx - 1);
+						Draw_Blend(hWnd, tmp_Drawx, tmp_Drawy);
+					}
+				}
+			}
+
+			if (_posx + 1 <= 7)
+			{
+				if (GameManager::get_Instence()->get_UnitPos(_posx + 1, _posy - 1) != CLASS_END)
+				{
+					if (GameManager::get_Instence()->inspection_Pawn(_posx + 1, _posy - 1, Unit_PlayerNum))
+					{
+						tmp_Drawx = GameManager::get_Instence()->get_DrawXY(_posx + 1);
+						Draw_Blend(hWnd, tmp_Drawx, tmp_Drawy);
+					}
+				}
+			}
 		}
 		else
 		{
-			tmp_Drawy = GameManager::get_Instence()->get_DrawXY(_posy + 1);
 			tmp_vBlend.clear();
+			tmp_Drawy = GameManager::get_Instence()->get_DrawXY(_posy + 1);
 			Draw_Blend(hWnd, tmp_Drawx, tmp_Drawy);
+
+			if (_posx - 1 >= 0)
+			{
+				if (GameManager::get_Instence()->get_UnitPos(_posx - 1, _posy + 1) != CLASS_END)
+				{
+					if (GameManager::get_Instence()->inspection_Pawn(_posx - 1, _posy + 1, Unit_PlayerNum))
+					{
+						tmp_Drawx = GameManager::get_Instence()->get_DrawXY(_posx - 1);
+						Draw_Blend(hWnd, tmp_Drawx, tmp_Drawy);
+					}
+				}
+			}
+
+			if (_posx + 1 <= 7)
+			{
+				if (GameManager::get_Instence()->get_UnitPos(_posx + 1, _posy + 1) != CLASS_END)
+				{
+					if (GameManager::get_Instence()->inspection_Pawn(_posx + 1, _posy + 1, Unit_PlayerNum))
+					{
+						tmp_Drawx = GameManager::get_Instence()->get_DrawXY(_posx + 1);
+						Draw_Blend(hWnd, tmp_Drawx, tmp_Drawy);
+					}
+				}
+			}
 		}
 	}
-	
-	First_Start = true;
 }
 
 //다시 그려질때마다 그려지는 유닛들
@@ -92,9 +193,47 @@ void Pawn::Move_Unit(HWND hWnd, int _posx, int _posy)
 {
 	Unit_posX = _posx;
 	Unit_posY = _posy;
-	Unit_DrawUpdate(Unit_posX, Unit_posY);
-	Unit_Rect(Unit_DrawX, Unit_DrawY);
-	GameManager::get_Instence()->set_UnitPos(Unit_posX, Unit_posY, CLASS_PAWN);
+	int tmp_Class = 0;
+
+	if (Unit_posY == 0)
+	{
+		MessageBox(hWnd, "Pawn 유닛 변환하기\n(King으로 바꾸기는 불가능합니다.)\n1: Bishop\n2: Knight\n3: Queen\n4: Rook"
+			, "유닛 변환하기", MB_OK);
+		if (MessageBox(hWnd, "Bishop으로 바꾸시겠습니까?", "유닛변경", MB_YESNO) == IDYES)
+		{
+			tmp_Class = CLASS_BISHOP;
+		}
+		else
+		{
+			if (MessageBox(hWnd, "Knight으로 바꾸시겠습니까?", "유닛변경", MB_YESNO) == IDYES)
+			{
+				tmp_Class = CLASS_KNIGHT;
+			}
+			else
+			{
+				if (MessageBox(hWnd, "Queen으로 바꾸시겠습니까?", "유닛변경", MB_YESNO) == IDYES)
+				{
+					tmp_Class = CLASS_QUEEN;
+				}
+				else
+				{
+					if (MessageBox(hWnd, "Rook으로 바꾸시겠습니까?", "유닛변경", MB_YESNO) == IDYES)
+					{
+						tmp_Class = CLASS_ROOK;
+					}
+				}
+			}
+		}
+		GameManager::get_Instence()->Change_Unit(hWnd, _posx, _posy, Unit_PlayerNum, tmp_Class);
+		attecked_Unit();
+	}
+	else
+	{
+		Unit_DrawUpdate(Unit_posX, Unit_posY);
+		Unit_Rect(Unit_DrawX, Unit_DrawY);
+		GameManager::get_Instence()->set_UnitPos(Unit_posX, Unit_posY, CLASS_PAWN);
+		First_Start = true;
+	}
 }
 
 //유닛이 그려질 실질적 위치 최신화(Override)
@@ -110,6 +249,11 @@ void Pawn::Draw_Blend(HWND hWnd, int _pos1, int _pos2, int _unix, int _uniy, int
 	BitMapManager::get_Instence()->Unit_BlendDraw(hWnd, _pos1, _pos2);
 	tmp_BlendRect = { _pos1, _pos2, _pos1 + 101, _pos2 + 101 };
 	tmp_vBlend.push_back(tmp_BlendRect);
+}
+
+//유닛이 갈수 있는 위치를 그린다.(Override)
+void Pawn::Draw_Blend(HWND hWnd)
+{
 }
 
 //Unit Rect(Override)

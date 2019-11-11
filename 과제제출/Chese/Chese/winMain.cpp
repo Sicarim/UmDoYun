@@ -55,18 +55,24 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 	{
 	case WM_CREATE:
 		m_Game.Game_Init(hWnd);
+		MessageBox(hWnd, "체스 게임을 시작합니다. \n(유닛 클릭 후, 지정된 경로를 클릭하지 않으면 유닛 지정이 취소됩니다."
+			, "★☆체스 시작☆★", MB_OK);
 		break;
 
 	case WM_LBUTTONDOWN:
-		start = true;
-
 		in_Pt.x = LOWORD(lParam);
 		in_Pt.y = HIWORD(lParam);
 
-		ptx = in_Pt.x;
-		pty = in_Pt.y;
-		InvalidateRect(hWnd, NULL, false);
-
+		if (in_Pt.x >= 75 && in_Pt.x <= 880)
+		{
+			if (in_Pt.y >= 75 && in_Pt.y <= 880)
+			{
+				start = true;
+				ptx = in_Pt.x;
+				pty = in_Pt.y;
+				InvalidateRect(hWnd, NULL, false);
+			}
+		}
 		return 0;
 
 	case WM_PAINT:
