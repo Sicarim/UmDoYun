@@ -166,11 +166,6 @@ void Queen::Draw_Blend(HWND hWnd, int _pos1, int _pos2, int _unix, int _uniy, in
 	tmp_vBlend.push_back(tmp_BlendRect);
 }
 
-//유닛이 갈수 있는 위치를 그린다.(Override)
-void Queen::Draw_Blend(HWND hWnd)
-{
-}
-
 //Unit Rect(Override)
 void Queen::Unit_Rect(int _unix, int _uniy)
 {
