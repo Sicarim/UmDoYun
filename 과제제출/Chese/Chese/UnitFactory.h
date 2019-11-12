@@ -5,6 +5,7 @@ class UnitFactory
 {
 private:
 protected:
+	int tmp_GoCount;
 	string Class_Name;
 	RECT tmp_BlendRect;
 	vector<RECT> tmp_vBlend;

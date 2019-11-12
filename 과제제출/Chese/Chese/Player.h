@@ -39,6 +39,7 @@ public:
 	bool get_Selecting(); //이동하기 위해 유닛을 선택했는지 알려준다.
 	void set_Player_Num(int _num); //플레이어 구분을 위한 정보
 	int get_Player_Num(); //플레이어 구분을 위한 정보
+	void Delete_unitVector(); //벡터 삭제하기
 	void Player_reInit();
 	void Player_Release(); //데이터 삭제
 

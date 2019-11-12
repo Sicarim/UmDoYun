@@ -50,7 +50,8 @@ void BitMap::Bit_BlendDraw(HWND hWnd, int _dx, int _dy)
 
 	//도화지
 	AlphaDC = CreateCompatibleDC(hdc); //hMemDC와 동일한 AlphaDC를 만든다.
-	hAlphaImage = CreateCompatibleBitmap(hdc, 1000, 1000);
+	//hAlphaImage = CreateCompatibleBitmap(hdc, 1000, 1000);
+	hAlphaImage = (HBITMAP)LoadImage(NULL, "RES//block_b_01.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE | LR_CREATEDIBSECTION);
 	hAlphaOldBitMap = (HBITMAP)SelectObject(AlphaDC, hAlphaImage);
 	
 	//블랜딩 옵션

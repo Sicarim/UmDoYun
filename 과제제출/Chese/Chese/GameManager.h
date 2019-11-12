@@ -22,8 +22,15 @@ private:
 	vector<UnitFactory*> tmpb_Queen;
 	vector<UnitFactory*> tmpb_Rook;
 	UnitFactory* tmp_Unit;
+	UnitFactory* tmp_DelUnit;
 	int Die_Unit;
 	bool isChange;
+	int isChangePlayer;
+
+	int Del_posX;
+	int Del_posY;
+	int Del_Class;
+	bool isDelete;
 public:
 	GameManager();
 
@@ -42,8 +49,12 @@ public:
 
 	void Change_Unit(HWND hWnd, int _posx, int _posy, int _player, int _class); //유닛 변경하기
 	UnitFactory* isChange_Unit();
+	UnitFactory* Delete_Unit();
 	bool get_isChange();
+	bool get_isDelete();
+	void set_isDelete(bool _delete);
 	int get_DieUnit(); //죽은 유닛 반환
+	int get_changePlayer();
 	void pos_Release(); //데이터 삭제
 	
 	~GameManager();

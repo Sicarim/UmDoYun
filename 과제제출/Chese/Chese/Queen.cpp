@@ -37,6 +37,7 @@ void Queen::Clicked_Unit(HWND hWnd, int _posx, int _posy)
 	int tmp_Drawx = GameManager::get_Instence()->get_DrawXY(_posx);
 	int tmp_Drawy = GameManager::get_Instence()->get_DrawXY(_posy);
 
+	tmp_GoCount = 0;
 	//위로 일직선
 	for (int i = 1; i <= 8; i++)
 	{
@@ -48,6 +49,7 @@ void Queen::Clicked_Unit(HWND hWnd, int _posx, int _posy)
 		}
 	}
 
+	tmp_GoCount = 0;
 	//오른쪽으로 일직선
 	for (int i = 1; i <= 8; i++)
 	{
@@ -60,6 +62,7 @@ void Queen::Clicked_Unit(HWND hWnd, int _posx, int _posy)
 		}
 	}
 
+	tmp_GoCount = 0;
 	//왼쪽으로 일찍선
 	for (int i = 1; i <= 8; i++)
 	{
@@ -74,6 +77,7 @@ void Queen::Clicked_Unit(HWND hWnd, int _posx, int _posy)
 	tmp_Drawx = GameManager::get_Instence()->get_DrawXY(_posx);
 	tmp_Drawy = GameManager::get_Instence()->get_DrawXY(_posy);
 
+	tmp_GoCount = 0;
 	//위로 일직선
 	for (int i = 1; i <= 8; i++)
 	{
@@ -85,6 +89,7 @@ void Queen::Clicked_Unit(HWND hWnd, int _posx, int _posy)
 		}
 	}
 
+	tmp_GoCount = 0;
 	//오른쪽으로 일직선
 	for (int i = 1; i <= 8; i++)
 	{
@@ -97,6 +102,7 @@ void Queen::Clicked_Unit(HWND hWnd, int _posx, int _posy)
 		}
 	}
 
+	tmp_GoCount = 0;
 	//왼쪽으로 일찍선
 	for (int i = 1; i <= 8; i++)
 	{
@@ -111,6 +117,7 @@ void Queen::Clicked_Unit(HWND hWnd, int _posx, int _posy)
 
 	tmp_Drawx = GameManager::get_Instence()->get_DrawXY(_posx);
 	tmp_Drawy = GameManager::get_Instence()->get_DrawXY(_posy);
+	tmp_GoCount = 0;
 	//왼쪽으로 일찍선
 	for (int i = 1; i <= 8; i++)
 	{
@@ -120,7 +127,7 @@ void Queen::Clicked_Unit(HWND hWnd, int _posx, int _posy)
 			Draw_Blend(hWnd, tmp_Drawx, tmp_Drawy);
 		}
 	}
-
+	tmp_GoCount = 0;
 	for (int i = 1; i <= 8; i++)
 	{
 		tmp_Drawx = GameManager::get_Instence()->get_DrawXY(_posx + i);
@@ -161,9 +168,20 @@ void Queen::Unit_DrawUpdate(int _posx, int _posy)
 //유닛이 갈수 있는 위치를 그린다.
 void Queen::Draw_Blend(HWND hWnd, int _pos1, int _pos2, int _unix, int _uniy, int _cnt, int _num)
 {
-	BitMapManager::get_Instence()->Unit_BlendDraw(hWnd, _pos1, _pos2);
-	tmp_BlendRect = { _pos1, _pos2, _pos1 + 101, _pos2 + 101 };
-	tmp_vBlend.push_back(tmp_BlendRect);
+	int tmp_posx = GameManager::get_Instence()->get_UnitXY(_pos1);
+	int tmp_posy = GameManager::get_Instence()->get_UnitXY(_pos2);
+
+	if (GameManager::get_Instence()->inspection_Pawn(tmp_posx, tmp_posy, Unit_PlayerNum))
+	{
+		tmp_GoCount++;
+	}
+
+	if (tmp_GoCount < 2)
+	{
+		BitMapManager::get_Instence()->Unit_BlendDraw(hWnd, _pos1, _pos2);
+		tmp_BlendRect = { _pos1, _pos2, _pos1 + 101, _pos2 + 101 };
+		tmp_vBlend.push_back(tmp_BlendRect);
+	}
 }
 
 //Unit Rect(Override)

@@ -10,6 +10,7 @@ UnitFactory::UnitFactory()
 	Unit_DrawX = 0;
 	Unit_DrawY = 0;
 	Current_State = 0;
+	tmp_GoCount = 0;
 }
 
 UnitFactory::~UnitFactory()

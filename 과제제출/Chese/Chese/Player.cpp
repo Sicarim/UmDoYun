@@ -88,27 +88,6 @@ void Player::Make_Unit(HWND hWnd, int _posy1, int _posy2)
 ///unit all Draw(제일 처음)
 void Player::Unit_DrawInit(HWND hWnd)
 {
-	if (GameManager::get_Instence()->get_isChange())
-	{
-		tmp_Unit = GameManager::get_Instence()->isChange_Unit();
-		if (tmp_Unit->get_Class() == CLASS_BISHOP)
-		{
-			m_vBishop.push_back(tmp_Unit);
-		}
-		else if (tmp_Unit->get_Class() == CLASS_KNIGHT)
-		{
-			m_vKnight.push_back(tmp_Unit);
-		}
-		else if (tmp_Unit->get_Class() == CLASS_QUEEN)
-		{
-			m_vQueen.push_back(tmp_Unit);
-		}
-		else if (tmp_Unit->get_Class() == CLASS_ROOK)
-		{
-			m_vRook.push_back(tmp_Unit);
-		}
-	}
-	
 	//Pawn
 	Draw_Update(hWnd, m_vPawn, Player_Num);
 	//Knight
@@ -121,6 +100,15 @@ void Player::Unit_DrawInit(HWND hWnd)
 	Draw_Update(hWnd, m_vKing, Player_Num);
 	//Queen
 	Draw_Update(hWnd, m_vQueen, Player_Num);
+
+	if (Player_Num == PLAYER_ONE)
+	{
+		GameManager::get_Instence()->insert_WhiteUnit(m_vBishop, m_vKing, m_vKnight, m_vPawn, m_vQueen, m_vRook);
+	}
+	else
+	{
+		GameManager::get_Instence()->insert_BlackUnit(m_vBishop, m_vKing, m_vKnight, m_vPawn, m_vQueen, m_vRook);
+	}
 }
 
 //Click
@@ -135,7 +123,7 @@ void Player::Click(HWND hWnd, int _ptx, int _pty)
 	
 	BitMapManager::get_Instence()->Select_Draw(hWnd, Box_ptx, Box_pty);
 	m_SelectRect = { Box_ptx, Box_pty, Box_ptx + 101, Box_pty + 101};
-
+	Delete_unitVector();
 	//충돌 처리
 	//Pawn
 	Hit_Update(hWnd, m_vPawn, tmp_ptx, tmp_pty);
@@ -155,7 +143,6 @@ void Player::Click(HWND hWnd, int _ptx, int _pty)
 //유닛을 움직이기 위해 클릭
 bool Player::Move_Click(HWND hWnd, int _ptx, int _pty)
 {
-	bool tmp_Cancel;
 	bool tmp_bo = true;
 	int tmp_ptx = floor(GameManager::get_Instence()->get_UnitXY(_ptx));
 	int tmp_pty = floor(GameManager::get_Instence()->get_UnitXY(_pty));
@@ -166,22 +153,21 @@ bool Player::Move_Click(HWND hWnd, int _ptx, int _pty)
 
 	tmp_vRect = tmp_vUnit[tmp_Num]->get_vblend();
 
-	//자신이 있던 위치를 빈공간으로 만든다.
-	int tmp_posx = tmp_vUnit[tmp_Num]->get_PosX();
-	int tmp_posy = tmp_vUnit[tmp_Num]->get_PosY();
-	GameManager::get_Instence()->set_UnitPos(tmp_posx, tmp_posy, CLASS_END);
-	//
-
 	for (int i = 0; i < tmp_vRect.size(); i++)
 	{
 		//블랜드(유닛이 갈수 있는곳)을 클릭했을때
 		if (IntersectRect(&rcRect, &m_SelectRect, &tmp_vRect[i]))
 		{
+			//자신이 있던 위치를 빈공간으로 만든다.
+			int tmp_posx = tmp_vUnit[tmp_Num]->get_PosX();
+			int tmp_posy = tmp_vUnit[tmp_Num]->get_PosY();
+			GameManager::get_Instence()->set_UnitPos(tmp_posx, tmp_posy, CLASS_END);
+			//
+
 			if (GameManager::get_Instence()->get_UnitPos(tmp_ptx, tmp_pty) != CLASS_END)
 			{
 				tmp_bo = GameManager::get_Instence()->inspection_Unit(tmp_ptx, tmp_pty, Player_Num);
 			}
-
 			if (tmp_bo)
 			{
 				tmp_vUnit[tmp_Num]->Move_Unit(hWnd, tmp_ptx, tmp_pty);
@@ -209,6 +195,79 @@ void Player::Hit_Update(HWND hWnd, vector<UnitFactory*> _vunit, int _posx, int _
 			tmp_Num = i;
 			Current_Unit = _vunit[i]->get_Class();
 			Selecting = true;
+		}
+	}
+}
+
+//벡터 삭제하기
+void Player::Delete_unitVector()
+{
+	UnitFactory* tmp_unit;
+
+	if (GameManager::get_Instence()->get_isDelete())
+	{
+		tmp_unit = GameManager::get_Instence()->Delete_Unit();
+		tmp_unit->get_Class();
+
+		if (tmp_unit->get_Class() == CLASS_PAWN)
+		{
+			for (int i = 0; m_vPawn.size(); i++)
+			{
+				if (m_vPawn[i] == tmp_unit)
+				{
+					m_vPawn.erase(m_vPawn.begin() + i);
+					GameManager::get_Instence()->set_isDelete(false);
+					break;
+				}
+			}
+		}
+		if (tmp_unit->get_Class() == CLASS_QUEEN)
+		{
+			for (int i = 0; m_vQueen.size(); i++)
+			{
+				if (m_vQueen[i] == tmp_unit)
+				{
+					m_vQueen.erase(m_vQueen.begin() + i);
+					GameManager::get_Instence()->set_isDelete(false);
+					break;
+				}
+			}
+		}
+		if (tmp_unit->get_Class() == CLASS_ROOK)
+		{
+			for (int i = 0; m_vRook.size(); i++)
+			{
+				if (m_vRook[i] == tmp_unit)
+				{
+					m_vRook.erase(m_vRook.begin() + i);
+					GameManager::get_Instence()->set_isDelete(false);
+					return;
+				}
+			}
+		}
+		if (tmp_unit->get_Class() == CLASS_KNIGHT)
+		{
+			for (int i = 0; m_vKnight.size(); i++)
+			{
+				if (m_vKnight[i] == tmp_unit)
+				{
+					m_vKnight.erase(m_vKnight.begin() + i);
+					GameManager::get_Instence()->set_isDelete(false);
+					return;
+				}
+			}
+		}
+		if (tmp_unit->get_Class() == CLASS_BISHOP)
+		{
+			for (int i = 0; m_vBishop.size(); i++)
+			{
+				if (m_vBishop[i] == tmp_unit)
+				{
+					m_vBishop.erase(m_vBishop.begin() + i);
+					GameManager::get_Instence()->set_isDelete(false);
+					return;
+				}
+			}
 		}
 	}
 }
@@ -248,6 +307,27 @@ bool Player::CancelUpdate(int _ptx, int _pty)
 
 void Player::Player_reInit()
 {
+	if (GameManager::get_Instence()->get_isChange() && GameManager::get_Instence()->get_changePlayer() == Player_Num)
+	{
+		tmp_Unit = GameManager::get_Instence()->isChange_Unit();
+		if (tmp_Unit->get_Class() == CLASS_BISHOP)
+		{
+			m_vBishop.push_back(tmp_Unit);
+		}
+		else if (tmp_Unit->get_Class() == CLASS_KNIGHT)
+		{
+			m_vKnight.push_back(tmp_Unit);
+		}
+		else if (tmp_Unit->get_Class() == CLASS_QUEEN)
+		{
+			m_vQueen.push_back(tmp_Unit);
+		}
+		else if (tmp_Unit->get_Class() == CLASS_ROOK)
+		{
+			m_vRook.push_back(tmp_Unit);
+		}
+	}
+
 	if (Player_Num == PLAYER_ONE)
 	{
 		GameManager::get_Instence()->insert_WhiteUnit(m_vBishop, m_vKing, m_vKnight, m_vPawn, m_vQueen, m_vRook);

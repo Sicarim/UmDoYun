@@ -69,7 +69,7 @@ void Pawn::Clicked_Unit(HWND hWnd, int _posx, int _posy)
 				}
 			}
 			
-
+			tmp_GoCount = 0;
 			for (int i = 1; i <= 2; i++)
 			{
 				tmp_Drawx = GameManager::get_Instence()->get_DrawXY(_posx);
@@ -105,6 +105,7 @@ void Pawn::Clicked_Unit(HWND hWnd, int _posx, int _posy)
 				}
 			}
 
+			tmp_GoCount = 0;
 			for (int i = 1; i <= 2; i++)
 			{
 				tmp_Drawx = GameManager::get_Instence()->get_DrawXY(_posx);
@@ -195,7 +196,7 @@ void Pawn::Move_Unit(HWND hWnd, int _posx, int _posy)
 	Unit_posY = _posy;
 	int tmp_Class = 0;
 
-	if (Unit_posY == 0)
+	if (Unit_posY == 0 || Unit_posY == 7)
 	{
 		MessageBox(hWnd, "Pawn 유닛 변환하기\n(King으로 바꾸기는 불가능합니다.)\n1: Bishop\n2: Knight\n3: Queen\n4: Rook"
 			, "유닛 변환하기", MB_OK);
@@ -226,6 +227,7 @@ void Pawn::Move_Unit(HWND hWnd, int _posx, int _posy)
 		}
 		GameManager::get_Instence()->Change_Unit(hWnd, _posx, _posy, Unit_PlayerNum, tmp_Class);
 		attecked_Unit();
+		GameManager::get_Instence()->set_UnitPos(Unit_posX, Unit_posY, tmp_Class);
 	}
 	else
 	{
@@ -246,9 +248,18 @@ void Pawn::Unit_DrawUpdate(int _posx, int _posy)
 //유닛이 갈수 있는 위치를 그린다.
 void Pawn::Draw_Blend(HWND hWnd, int _pos1, int _pos2, int _unix, int _uniy, int _cnt, int _num)
 {
+	int tmp_posx = GameManager::get_Instence()->get_UnitXY(_pos1);
+	int tmp_posy = GameManager::get_Instence()->get_UnitXY(_pos2);
+
+	if (GameManager::get_Instence()->inspection_Pawn(tmp_posx, tmp_posy, Unit_PlayerNum))
+	{
+		tmp_GoCount++;
+	}
+
 	BitMapManager::get_Instence()->Unit_BlendDraw(hWnd, _pos1, _pos2);
 	tmp_BlendRect = { _pos1, _pos2, _pos1 + 101, _pos2 + 101 };
 	tmp_vBlend.push_back(tmp_BlendRect);
+	
 }
 
 //Unit Rect(Override)
@@ -260,6 +271,7 @@ void Pawn::Unit_Rect(int _unix, int _uniy)
 //공격 당했다!!!
 int Pawn::attecked_Unit()
 {
+	tmp_GoCount = 0;
 	Current_State = CLASS_DIE;
 	GameManager::get_Instence()->set_UnitPos(Unit_posX, Unit_posY, CLASS_END);
 	return CLASS_PAWN;

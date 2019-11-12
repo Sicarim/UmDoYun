@@ -5,6 +5,10 @@ GameManager::GameManager()
 {
 	Die_Unit = 0;
 	isChange = false;
+	isDelete = false;
+	Del_posX = 0;
+	Del_posY = 0;
+	Del_Class = 0;
 }
 
 //Position(Map, Unit) initalize
@@ -93,6 +97,8 @@ bool GameManager::inspection_Unit(int _posx, int _posy, int _pnum)
 			if (_posx == tmp_posx && _posy == tmp_posy)
 			{
 				Die_Unit = tmp_class[i]->attecked_Unit();
+				isDelete = true;
+				tmp_DelUnit = tmp_class[i];
 				return true;
 			}
 		}
@@ -121,6 +127,8 @@ bool GameManager::inspection_Unit(int _posx, int _posy, int _pnum)
 			if (_posx == tmp_posx && _posy == tmp_posy)
 			{
 				Die_Unit = tmp_class[i]->attecked_Unit();
+				isDelete = true;
+				tmp_DelUnit = tmp_class[i];
 				return true;
 			}
 		}
@@ -216,6 +224,7 @@ void GameManager::insert_WhiteUnit(vector<UnitFactory*> _vBishop, vector<UnitFac
 void GameManager::Change_Unit(HWND hWnd, int _posx, int _posy, int _player, int _class)
 {
 	isChange = true;
+	isChangePlayer = _player;
 
 	if (_class == CLASS_BISHOP)
 	{
@@ -243,6 +252,11 @@ UnitFactory* GameManager::isChange_Unit()
 		isChange = false;
 		return tmp_Unit;
 	}
+}
+
+UnitFactory* GameManager::Delete_Unit()
+{
+	return tmp_DelUnit;
 }
 
 //Á×Àº À¯´Ö ¹ÝÈ¯
@@ -280,6 +294,21 @@ void GameManager::pos_Release()
 bool GameManager::get_isChange()
 {
 	return isChange;
+}
+
+int GameManager::get_changePlayer()
+{
+	return isChangePlayer;
+}
+
+bool GameManager::get_isDelete()
+{
+	return isDelete;
+}
+
+void GameManager::set_isDelete(bool _delete)
+{
+	isDelete = _delete;
 }
 
 GameManager::~GameManager()

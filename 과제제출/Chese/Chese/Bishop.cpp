@@ -37,6 +37,7 @@ void Bishop::Clicked_Unit(HWND hWnd, int _posx, int _posy)
 	int tmp_Drawx = GameManager::get_Instence()->get_DrawXY(_posx);
 	int tmp_Drawy = GameManager::get_Instence()->get_DrawXY(_posy);
 
+	tmp_GoCount = 0;
 	for (int i = 1; i <= 7; i++)
 	{
 		tmp_Drawx = GameManager::get_Instence()->get_DrawXY(_posx - i);
@@ -47,6 +48,7 @@ void Bishop::Clicked_Unit(HWND hWnd, int _posx, int _posy)
 		}
 	}
 
+	tmp_GoCount = 0;
 	for (int i = 1; i <= 7; i++)
 	{
 		tmp_Drawx = GameManager::get_Instence()->get_DrawXY(_posx + i);
@@ -57,6 +59,7 @@ void Bishop::Clicked_Unit(HWND hWnd, int _posx, int _posy)
 		}
 	}
 
+	tmp_GoCount = 0;
 	for (int i = 1; i <= 7; i++)
 	{
 		tmp_Drawx = GameManager::get_Instence()->get_DrawXY(_posx + i);
@@ -67,6 +70,7 @@ void Bishop::Clicked_Unit(HWND hWnd, int _posx, int _posy)
 		}
 	}
 
+	tmp_GoCount = 0;
 	for (int i = 1; i <= 7; i++)
 	{
 		tmp_Drawx = GameManager::get_Instence()->get_DrawXY(_posx - i);
@@ -108,14 +112,26 @@ void Bishop::Unit_DrawUpdate(int _posx, int _posy)
 //유닛이 갈수 있는 위치를 그린다.
 void Bishop::Draw_Blend(HWND hWnd, int _pos1, int _pos2, int _unix, int _uniy, int _cnt, int _num)
 {
-	BitMapManager::get_Instence()->Unit_BlendDraw(hWnd, _pos1, _pos2);
-	tmp_BlendRect = { _pos1, _pos2, _pos1 + 101, _pos2 + 101 };
-	tmp_vBlend.push_back(tmp_BlendRect);
+	int tmp_posx = GameManager::get_Instence()->get_UnitXY(_pos1);
+	int tmp_posy = GameManager::get_Instence()->get_UnitXY(_pos2);
+
+	if (GameManager::get_Instence()->inspection_Pawn(tmp_posx, tmp_posy, Unit_PlayerNum))
+	{
+		tmp_GoCount++;
+	}
+
+	if (tmp_GoCount < 2)
+	{
+		BitMapManager::get_Instence()->Unit_BlendDraw(hWnd, _pos1, _pos2);
+		tmp_BlendRect = { _pos1, _pos2, _pos1 + 101, _pos2 + 101 };
+		tmp_vBlend.push_back(tmp_BlendRect);
+	}
 }
 
 //공격 당했다!!!
 int Bishop::attecked_Unit()
 {
+	tmp_GoCount = 0;
 	Current_State = CLASS_DIE;
 	GameManager::get_Instence()->set_UnitPos(Unit_posX, Unit_posY, CLASS_END);
 	return CLASS_BISHOP;
