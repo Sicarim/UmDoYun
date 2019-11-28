@@ -150,7 +150,7 @@ bool Player::Move_Click(HWND hWnd, int _ptx, int _pty)
 	int Box_pty = GameManager::get_Instence()->get_DrawXY(tmp_pty);
 
 	m_SelectRect = { Box_ptx, Box_pty, Box_ptx + 101, Box_pty + 101 };
-
+	
 	tmp_vRect = tmp_vUnit[tmp_Num]->get_vblend();
 
 	for (int i = 0; i < tmp_vRect.size(); i++)

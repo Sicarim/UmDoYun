@@ -110,6 +110,7 @@ float DegreeToRadian(float degree)
 	return (PI / 180) * degree;
 }
 
+//시피유속도가 느리더라도 일정 간격만큼 움직이게하겟다
 void GameFrameWork::OperateInput()
 {
 	//좌, 우, 위, 아래
@@ -131,7 +132,7 @@ void GameFrameWork::OperateInput()
 			
 			//다음 점프를 계산하기 위해 현재의 현재위치를 저장해준다.
 			m_fJumpY = Player_y;
-			m_fJumpX = Player_x;
+			m_fJumpX = Player_x;	
 		}
 	}
 }
