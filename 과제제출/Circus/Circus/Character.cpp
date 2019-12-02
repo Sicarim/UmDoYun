@@ -55,7 +55,7 @@ void Character::Move(HWND hWnd,  float _dftime)
 			m_pState = JUMP;
 
 			//다음 점프를 계산하기 위해 현재의 현재위치를 저장해준다.
-			m_fJumpX = pCur_x ;
+			m_fJumpX = pCur_x;
 			m_fJumpY = pCur_y;
 		}
 	}
@@ -69,14 +69,19 @@ void Character::Move(HWND hWnd,  float _dftime)
 
 		if (isMoving == RIGHT)
 		{
-			pCur_x  += SPEED * _dftime;
+			pCur_x += SPEED * _dftime;
 			pCur_y = m_fJumpY - sinf(p_CurJumpTime * PI) * JUMP_POWER;
 		}
 
 		if (isMoving == LEFT)
 		{
-			pCur_x  -= SPEED * _dftime;
+			pCur_x -= SPEED * _dftime;
 			pCur_y = m_fJumpY - sinf(p_CurJumpTime * PI) * JUMP_POWER;
+
+			if (pCur_x < MIN_WITHE)
+			{
+				pCur_x = 0.0f;
+			}
 		}
 
 		if (isMoving == IDLE)

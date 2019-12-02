@@ -45,7 +45,7 @@ using namespace std;
 ////BonusBIt//////
 #define BONUS_X 10
 #define BONUS_Y 365
-#define GENPROB 40
+#define GENPROB 40 //보너스 드랍 확률
 #define BONUSSPACE 1020
 
 #define SAVE_POINT 1024

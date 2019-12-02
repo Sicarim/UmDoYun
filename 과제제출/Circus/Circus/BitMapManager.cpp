@@ -24,8 +24,9 @@ void BitMapManager::All_Init(HWND hWnd)
 	m_pRect = { 0 };
 	m_eRect = { 0 };
 	m_GoalRect = { 0 };
-
+	BonusCheck = false;
 	bitGenCheck = false;
+	bool BonusCheck;
 
 	HDC hdc = GetDC(hWnd);
 
@@ -290,6 +291,10 @@ vector<RECT> BitMapManager::get_BonusCol()
 	return Bonus_collider;
 }
 
+void BitMapManager::set_Bonus(bool _check)
+{
+	BonusCheck = _check;
+}
 
 //골지점 렉트 반환
 RECT BitMapManager::get_GoalRect()
@@ -306,6 +311,18 @@ void BitMapManager::Delete_Ring()
 	m_Bonus.clear();
 	Fire_collider.clear();
 	Bonus_collider.clear();
+}
+
+void BitMapManager::Delete_Bonus()
+{
+	if (BonusCheck)
+	{
+		if (!m_Bonus.empty())
+		{
+			m_Bonus.erase(m_Bonus.begin());
+			BonusCheck = false;
+		}
+	}
 }
 
 //데이터 삭제

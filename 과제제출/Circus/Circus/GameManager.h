@@ -43,6 +43,5 @@ public:
 	bool get_isStart(); //스타트 버튼 리턴
 	int get_MaxScore(); //점수 리턴
 
-
 	~GameManager(); //소멸자
 };

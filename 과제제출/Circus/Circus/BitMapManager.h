@@ -33,6 +33,7 @@ private:
 	RECT m_GoalRect;
 
 	int BonusCount;
+	bool BonusCheck;
 	bool bitGenCheck;
 public:
 	BitMapManager(); //생성자
@@ -58,13 +59,15 @@ public:
 	void FireEnemy_Draw(HDC _hBackDC, float _curx, float _cury); //적(파이어) 그리기
 	void Object_Draw(HDC _hBackDC, float _curx, float _cury, float _dftime); //오브젝트 그리기
 	void SelectView_Draw(HDC _hBackDC, float _curx, float _cury, float _dftime); //시작화면 그리기
-
+	
+	void Delete_Bonus();
 	void Delete_Ring(); //링 삭제
 	RECT get_pRect(); //플레이어 렉스 리턴
 	vector<RECT> get_FireCol(); //Fire콜라이더 리턴
 	vector<RECT> get_RingCol(); //Ring콜라이더 리턴
 	RECT get_GoalRect(); //골지점 렉트 반환
 	vector<RECT> get_BonusCol(); //보너스 콜라이더 반환
+	void set_Bonus(bool _check);
 
 
 	void Release(); //데이터 삭제

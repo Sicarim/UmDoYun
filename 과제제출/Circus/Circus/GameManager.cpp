@@ -76,6 +76,7 @@ void GameManager::Intersec_Check(HWND hWnd, float _dftime)
 			MessageBox(hWnd, "YOU DIE", "YOU DIE", MB_OK);
 			Max_Health--;
 			BitMapManager::get_Instence()->Delete_Ring();
+			m_Ring.clear();
 		}
 	}
 
@@ -95,6 +96,8 @@ void GameManager::Intersec_Check(HWND hWnd, float _dftime)
 		if (IntersectRect(&tmp_Rect, &m_pRect, &m_vBonus[i]))
 		{
 			Score += 150;
+			BitMapManager::get_Instence()->set_Bonus(true);
+			BitMapManager::get_Instence()->Delete_Bonus();
 		}
 	}
 
