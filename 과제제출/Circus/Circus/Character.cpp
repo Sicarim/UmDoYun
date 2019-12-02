@@ -1,25 +1,31 @@
 #include "Character.h"
 #include "BitMapManager.h"
+#include "GameManager.h"
 
 //생성자
 Character::Character()
+{
+}
+
+//캐릭터 초기화
+void Character::Char_Init()
 {
 	m_pState = IDLE;
 	pCur_x = 0.0f;
 	pCur_y = 0.0f;
 	isMoving = IDLE;
+	Save_Point = 0.0f;
 }
 
 //캐릭터 움직이기
 void Character::Move(HWND hWnd,  float _dftime)
 {
-
 	if (m_pState != JUMP)
 	{
 		if (GetKeyState(VK_RIGHT) & 0x8000)
 		{
 			isMoving = RIGHT;
-			if (pCur_x  < 9999)
+			if (pCur_x  < MAX_WITHE)
 			{
 				pCur_x  += SPEED * _dftime;
 			}
@@ -28,17 +34,17 @@ void Character::Move(HWND hWnd,  float _dftime)
 		if (GetKeyState(VK_LEFT) & 0x8000)
 		{
 			isMoving = LEFT;
-			if (pCur_x  > 0)
+			if (pCur_x  > MIN_WITHE)
 			{
 				pCur_x  -= SPEED * _dftime;
 			}
-
 		}
 
 		if (!(GetKeyState(VK_LEFT) & 0x8000) && !(GetKeyState(VK_RIGHT) & 0x8000))
 		{
 			isMoving = IDLE;
 		}
+		Make_SavePoint();
 	}
 
 	if (GetKeyState(VK_SPACE) & 0x8000)
@@ -63,13 +69,13 @@ void Character::Move(HWND hWnd,  float _dftime)
 
 		if (isMoving == RIGHT)
 		{
-			pCur_x  += 250 * _dftime;
+			pCur_x  += SPEED * _dftime;
 			pCur_y = m_fJumpY - sinf(p_CurJumpTime * PI) * JUMP_POWER;
 		}
 
 		if (isMoving == LEFT)
 		{
-			pCur_x  -= 250 * _dftime;
+			pCur_x  -= SPEED * _dftime;
 			pCur_y = m_fJumpY - sinf(p_CurJumpTime * PI) * JUMP_POWER;
 		}
 
@@ -82,21 +88,76 @@ void Character::Move(HWND hWnd,  float _dftime)
 		if (p_CurJumpTime > JUMP_TIME)
 		{
 			p_CurJumpTime = 0.0f;
-			pCur_y = 0.0f;
+			pCur_y = RESET_Y;
 			m_pState = IDLE;
 		}
+	}
+}
+
+//세이브 포인트 만들기
+void Character::Make_SavePoint()
+{
+	if (pCur_x < SAVE_POINT)
+	{
+		Save_Point = 250.0f;
+	}
+	else if (pCur_x > SAVE_POINT&& pCur_x < SAVE_POINT * 2)
+	{
+		Save_Point = 970.0f;
+	}
+	else if (pCur_x > SAVE_POINT * 2 && pCur_x < SAVE_POINT * 3)
+	{
+		Save_Point = 1800.0f;
+	}
+	else if (pCur_x > SAVE_POINT * 3 && pCur_x < SAVE_POINT * 4)
+	{
+		Save_Point = 2500.0f;
+	}
+	else if (pCur_x > SAVE_POINT * 4 && pCur_x < SAVE_POINT * 5)
+	{
+		Save_Point = 3400.0f;
+	}
+	else if (pCur_x > SAVE_POINT * 5 && pCur_x < SAVE_POINT * 6)
+	{
+		Save_Point = 4200.0f;
+	}
+	else if (pCur_x > SAVE_POINT * 6 && pCur_x < SAVE_POINT * 7)
+	{
+		Save_Point = 5000.0f;
+	}
+	else if (pCur_x > SAVE_POINT * 7 && pCur_x < SAVE_POINT * 8)
+	{
+		Save_Point = 5800.0f;
+	}
+	else if (pCur_x > SAVE_POINT * 8 && pCur_x < SAVE_POINT * 9)
+	{
+		Save_Point = 6600.0f;
+	}
+	else if (pCur_x < SAVE_POINT * 9)
+	{
+		Save_Point = 7400.0f;
 	}
 }
 
 //x좌표 반환
 float Character::get_charX()
 {
+	if (GameManager::get_Instence()->get_HitCheck())
+	{
+		pCur_x = Save_Point;
+		GameManager::get_Instence()->set_HitCheck(false);
+	}
 	return pCur_x;
 }
 
 //y좌표 반환
 float Character::get_charY()
 {
+	if (GameManager::get_Instence()->get_HitCheck())
+	{
+		pCur_y = RESET_Y;
+		GameManager::get_Instence()->set_HitCheck(false);
+	}
 	return pCur_y;
 }
 

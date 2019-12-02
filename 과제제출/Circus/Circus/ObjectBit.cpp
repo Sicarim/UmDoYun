@@ -12,6 +12,7 @@ ObjectBit::ObjectBit()
 //BitMap초기화(Override)
 void ObjectBit::Bit_Init(HDC hBack, HWND hWnd, float _curx)
 {
+	m_Score = 0;
 	HealthDC = CreateCompatibleDC(hBack);
 	bitHealthDC = (HBITMAP)LoadImage(NULL, "RES\\icon.bmp", IMAGE_BITMAP, 0, 0, LR_CREATEDIBSECTION | LR_DEFAULTSIZE | LR_LOADFROMFILE);
 	oldHealthDC = (HBITMAP)SelectObject(HealthDC, bitHealthDC);
@@ -56,19 +57,22 @@ void ObjectBit::Bit_Draw(HDC hback, float _curx, float _cury, float _dftime)
 	////////////////////////////////////////////////////
 
 	Health_Point = GameManager::get_Instence()->get_Health();
+	m_Score = GameManager::get_Instence()->get_MaxScore();
 
 	//목숨 표시
 	for (int i = 0; i < Health_Point; i++)
 	{
 		TransparentBlt(hback, 900 + (i * 30) + _curx, 50, HealthSize.cx * 2, HealthSize.cy * 2, HealthDC, 0, 0, HealthSize.cx, HealthSize.cy, RGB(255, 0, 255));
 	}
-	
 
 	//골인 지점 표시
 	TransparentBlt(hback, 9100, 520, GoalSize.cx * 1.5, GoalSize.cy * 1.8, GoalDC, 0, 0, GoalSize.cx, GoalSize.cy, RGB(255, 0, 255));
 	
-	wsprintf(Score_Str, "SCORE: %d", 10000 - (int)_dftime);
+	wsprintf(Score_Str, "SCORE: %d", m_Score);
 	TextOut(hback, 550 + _curx, 50, Score_Str, strlen(Score_Str));
+
+	wsprintf(Score_Str, "Point: %d", (int)_curx);
+	TextOut(hback, 250 + _curx, 50, Score_Str, strlen(Score_Str));
 
 	GoalRect = { tmp_iL, tmp_iT , tmp_iR , tmp_iB };
 	DeleteObject(goalBrush);

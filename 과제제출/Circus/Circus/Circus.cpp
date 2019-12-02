@@ -31,6 +31,8 @@ void Circus::Init()
 	p_test = 0.0f;
 	Char_curX = 0.0f;
 	Char_curY = 0.0f;
+	start = false;
+	Save_Time = 0.0f;
 }
 
 //Update함수
@@ -38,35 +40,39 @@ void Circus::Update(HWND hWnd)
 {
 	m_hWnd = hWnd;
 
-	//매 프레임마다 찍히는 TickCount를 받는다. -  현재의 틱카운드를 받아온다.
 	m_dwCurTime = GetTickCount();
-
-	//현재 시간을 저장한다. 루틴이 돌아간 후 이전 루틴에서의 틱 카운트간의 차이를 체크하기 위해서 이다.
-	//1000 이상의 차이가 나면 1초이므로  / 1000해서 초로 환산.
 	m_fDeltaTime = (m_dwCurTime - m_dwLastTime) / 1000.0f;
-
-	//현재 타임을 받는다.
-	//결론적으로 이전 타임의 시간을 받는것.
 	m_dwLastTime = m_dwCurTime;
 
-	//캐릭터 컨트롤
-	m_Char.Move(hWnd, m_fDeltaTime);
+	GameManager::get_Instence()->Start_Button();
+	start = GameManager::get_Instence()->get_isStart();
+	Game_Start();
+}
 
+//게임 시작화면
+void Circus::Game_Start()
+{
+	Save_Time += m_fDeltaTime;
 
-	Char_curX = m_Char.get_charX();
-	Char_curY = m_Char.get_charY();
-	//적 생성하기
-	Generator_Enemy(m_fDeltaTime);
-	GameManager::get_Instence()->Intersec_Check(hWnd, m_fDeltaTime); //충돌 체크
-
-	if (GameManager::get_Instence()->get_HitCheck())
+	if (!start)
 	{
-		Char_curX -= 500.0f;
-		Char_curY = 0.0f;
+		BitMapManager::get_Instence()->First_Draw(m_hWnd, 0, 0, Save_Time);
 	}
+	else
+	{
+		//캐릭터 컨트롤
+		m_Char.Move(m_hWnd, m_fDeltaTime);
 
-	Render(Char_curX, Char_curY, m_fDeltaTime);
-	Shut_Down(hWnd);
+		//적 생성하기
+		Generator_Enemy(m_fDeltaTime);
+		GameManager::get_Instence()->Intersec_Check(m_hWnd, Save_Time); //충돌 체크
+
+		Char_curX = m_Char.get_charX();
+		Char_curY = m_Char.get_charY();
+
+		Render(Char_curX, Char_curY, m_fDeltaTime);
+		Shut_Down(m_hWnd);
+	}
 }
 
 //적 생성하기
@@ -91,6 +97,7 @@ void Circus::Render(float _curx, float _cury, float _dftime)
 void Circus::Shut_Down(HWND hWnd)
 {
 	bool ReGame = false;
+	start = false;
 
 	if (GameManager::get_Instence()->get_EndMes())
 	{
@@ -118,6 +125,7 @@ void Circus::Shut_Down(HWND hWnd)
 		{
 			GameManager::get_Instence()->Release();
 			BitMapManager::get_Instence()->Release();
+			m_Char.Char_Init();
 			Game_Init(hWnd);
 		}
 	}

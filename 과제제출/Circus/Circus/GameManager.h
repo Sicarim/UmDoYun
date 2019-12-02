@@ -12,6 +12,7 @@ private:
 	RECT tmp_Rect;
 	vector<RECT> m_Fire;
 	vector<RECT> m_Ring;
+	vector<RECT> m_vBonus;
 
 	float DelayTime, StopTime;
 	float GenTime; //생성 시간
@@ -20,11 +21,13 @@ private:
 	bool Hit_Check; //캐릭터가 데미지를 받았는지 체크
 	bool End_Check; //골인 지저 도달
 	bool End_Mes;
-
+	bool isStart;
+	int Score;
 public:
 	GameManager(); //생성자
 
 	void Init(); //게임 초기화
+	void Start_Button(); //스타트 버튼 누르기
 	void FireRing_Generator(float _dftime); //화염 고리 생성기
 	void Intersec_Check(HWND hWnd, float _dftime); //충돌체크
 	void Release(); //데이터 삭제
@@ -37,6 +40,8 @@ public:
 	int get_Health(); //목숨 수 리턴
 	void set_EndMes(bool _check); //골인 메세지
 	bool get_EndMes(); //골인 메세지
+	bool get_isStart(); //스타트 버튼 리턴
+	int get_MaxScore(); //점수 리턴
 
 
 	~GameManager(); //소멸자

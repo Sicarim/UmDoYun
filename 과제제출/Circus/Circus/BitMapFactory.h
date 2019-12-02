@@ -166,6 +166,8 @@ class ObjectBit : public BitMapFactory
 {
 private:
 	int Health_Point;
+	int m_Score;
+
 	HDC HealthDC, GoalDC;
 	HBITMAP bitHealthDC, bitGoalDC;
 	HBITMAP oldHealthDC, oldGoalDC;
@@ -189,4 +191,63 @@ public:
 	virtual RECT get_Rect(); //렉트 반환(override)
 
 	~ObjectBit(); //소멸자
+};
+
+class SelectBit : public BitMapFactory
+{
+private:
+	int posx;
+	int posy;
+
+	HDC BlackDC;
+	HBITMAP bitBlack;
+	HBITMAP oldbitBlack;
+
+	HDC StarDC[3];
+	HBITMAP bitStarDC[3];
+	HBITMAP oldStarDC[3];
+
+	BITMAP StarInfo[3];
+	SIZE StarSize[3];
+
+	HFONT selectfont, oldselectfont;
+
+	RECT star_Rect;
+public:
+	SelectBit(); //생성자
+
+	virtual void Bit_Init(HDC hback, HWND hWnd, float _curx = 0); //BitMap초기화(Override)
+	virtual void Bit_Draw(HDC hback, float _curx = 0, float _cury = 0, float _dftime = 0); //BitMap그리기(Override)
+	virtual RECT get_Rect(); //렉트 반환(override)
+
+	~SelectBit(); //소멸자
+};
+
+class BonusBit : public BitMapFactory
+{
+private:
+	int posx;
+
+	HDC BonusDC;
+	HBITMAP bitBonusDC;
+	HBITMAP oldBonusDC;
+
+	BITMAP BonusInfo;
+	SIZE BonusSize;
+
+	HFONT selectfont, oldselectfont;
+	//확인용 브러쉬
+	HBRUSH BonusBrush;
+	HBRUSH oBonusBrush;
+
+	RECT Bonus_Rect;
+public:
+	BonusBit(); //생성자
+
+	virtual void Bit_Init(HDC hback, HWND hWnd, float _curx = 0); //BitMap초기화(Override)
+	virtual void Bit_Draw(HDC hback, float _curx = 0, float _cury = 0, float _dftime = 0); //BitMap그리기(Override)
+	virtual void set_CurPos(int _curpos); //현재 캐릭터 위치 받기(override)
+	virtual RECT get_Rect(); //렉트 반환(override)
+
+	~BonusBit(); //소멸자
 };

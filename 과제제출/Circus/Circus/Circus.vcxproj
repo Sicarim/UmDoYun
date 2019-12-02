@@ -145,6 +145,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BitMapManager.cpp" />
+    <ClCompile Include="BonusBit.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="Circus.cpp" />
     <ClCompile Include="EnemyFire.cpp" />
@@ -154,6 +155,7 @@
     <ClCompile Include="MapBit.cpp" />
     <ClCompile Include="ObjectBit.cpp" />
     <ClCompile Include="PlayerBit.cpp" />
+    <ClCompile Include="SelectBit.cpp" />
     <ClCompile Include="winMain.cpp" />
   </ItemGroup>
   <ItemGroup>
