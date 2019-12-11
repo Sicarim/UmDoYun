@@ -169,7 +169,6 @@ void GameScene::Update(float _fETime)
 			DoEngine::SceneManager::get_Instance()->LoadScene(SCENE_INDEX_END);
 		}
 	}
-	Hint_Block(_fETime);
 }
 
 //Draw함수(Override)
@@ -195,7 +194,7 @@ void GameScene::Draw(HDC hdc)
 			m_vMines[i]->Draw();
 		}		
 	}
-
+	Hint_Block();
 	//시간 표시
 	wsprintf(tmp_Time, "%d : %d", (int)Cur_Min, (int)Cur_Sec);
 	DoEngine::UIManager::get_Instance()->AddText(tmp_Time, 168, 474, 23, 255, 255, 255, TRANSPARENT, "맑은 고딕");
@@ -367,7 +366,7 @@ void GameScene::Draw_Block(int _x, int _y, DoEngine::BitMap* _bmp)
 }
 
 //힌트 블럭 그리기 
-void GameScene::Hint_Block(float _fETime)
+void GameScene::Hint_Block()
 {
 	Hint_Num = GameManager::get_Instance()->get_NumTrigger();
 
@@ -394,6 +393,9 @@ void GameScene::Release()
 	m_DelClick.clear();
 	m_vMines.clear();
 	m_vFlags.clear();
+	Hint_Num = 0;
+	GameManager::get_Instance()->set_NumTrigger(0);
+	GameManager::get_Instance()->set_Trigger(false);
 }
 
 //소멸자

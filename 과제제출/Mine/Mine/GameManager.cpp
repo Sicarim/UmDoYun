@@ -169,11 +169,23 @@ bool GameManager::get_Trigger()
 	return Trigger;
 }
 
+void GameManager::set_Trigger(bool _trg)
+{
+	Trigger = _trg;
+	DoEngine::EngineMain::set_MineTrigger(Trigger);
+}
+
 int GameManager::get_NumTrigger()
 {
 	NumTrigger = DoEngine::EngineMain::get_NumTrigger();
 
 	return NumTrigger;
+}
+
+void GameManager::set_NumTrigger(int trigger)
+{
+	NumTrigger = trigger;
+	DoEngine::EngineMain::set_NumTrigger(NumTrigger);
 }
 
 //¼Ò¸êÀÚ

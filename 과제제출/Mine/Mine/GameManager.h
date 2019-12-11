@@ -32,7 +32,9 @@ public:
 	void set_GameResult(int _result); //게임 결과 가져오기
 	int get_GameResult(); //게임 결과 리턴
 	bool get_Trigger();
+	void set_Trigger(bool _trg);
 	int get_NumTrigger();
+	void set_NumTrigger(int _trigger);
 
 	~GameManager(); //소멸자
 };

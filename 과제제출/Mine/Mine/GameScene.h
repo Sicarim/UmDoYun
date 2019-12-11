@@ -62,7 +62,7 @@ public:
 	void Draw_FullBlock(); //풀블럭 그리기
 	void Draw_Remove(int This_X, int This_Y); //근처 마인이 나올때까지 지우기
 	void Draw_Block(int _x, int _y, DoEngine::BitMap* _bmp); //블럭 그리기
-	void Hint_Block(float _fETime); //힌트 블럭 그리기 
+	void Hint_Block(); //힌트 블럭 그리기 
 
 	~GameScene(); //소멸자
 };

@@ -192,11 +192,20 @@ namespace DoEngine
 		return Mine_Trigger;
 	}
 
+	void EngineMain::set_MineTrigger(bool _trg)
+	{
+		Mine_Trigger = _trg;
+	}
+
 	int EngineMain::get_NumTrigger()
 	{
 		return Number_Trigger;
 	}
 
+	void EngineMain::set_NumTrigger(int _num)
+	{
+		Number_Trigger = _num;
+	}
 
 	//¼Ò¸êÀÚ
 	EngineMain::~EngineMain()

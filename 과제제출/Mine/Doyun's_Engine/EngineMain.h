@@ -35,7 +35,9 @@ namespace DoEngine
 
 		int StartEngine(HINSTANCE hInstance); //엔진 시작
 		static bool get_MineTrigger();
+		static void set_MineTrigger(bool _trg);
 		static int get_NumTrigger();
+		static void set_NumTrigger(int _num);
 		//소멸자
 		~EngineMain();
 	};

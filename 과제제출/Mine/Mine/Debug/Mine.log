@@ -7,13 +7,13 @@ D:\Atence\visual\Mine\Mine\GameScene.cpp(63,31): warning C4244: '=': 'double'에
 D:\Atence\visual\Mine\Mine\GameScene.cpp(64,31): warning C4244: '=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 D:\Atence\visual\Mine\Mine\GameScene.cpp(89,21): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
 D:\Atence\visual\Mine\Mine\GameScene.cpp(99,22): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-D:\Atence\visual\Mine\Mine\GameScene.cpp(186,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-D:\Atence\visual\Mine\Mine\GameScene.cpp(193,21): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-D:\Atence\visual\Mine\Mine\GameScene.cpp(301,22): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+D:\Atence\visual\Mine\Mine\GameScene.cpp(185,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+D:\Atence\visual\Mine\Mine\GameScene.cpp(192,21): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+D:\Atence\visual\Mine\Mine\GameScene.cpp(300,22): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
   MineBlock.cpp
   TitleScene.cpp
   main.cpp
   코드를 생성하고 있습니다...
-D:\Atence\visual\Mine\Mine\GameScene.cpp(333,22): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+D:\Atence\visual\Mine\Mine\GameScene.cpp(332,22): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
 D:\Atence\visual\Mine\Mine\GameManager.cpp(139): warning C4715: 'GameManager::get_UnitPos': 모든 제어 경로에서 값을 반환하지는 않습니다.
   Mine.vcxproj -> D:\Atence\visual\Mine\Debug\Mine.exe
