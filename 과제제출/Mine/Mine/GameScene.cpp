@@ -187,14 +187,17 @@ void GameScene::Draw(HDC hdc)
 		m_vFlags[i]->Draw();
 	}
 
-	if (Die || GameManager::get_Instance()->get_Trigger() == true)
+	//ÈùÆ® ¸¶ÀÎ ±×¸®±â
+	if (Die || GameManager::get_Instance()->get_Trigger() ==  true)
 	{
 		for (int i = 0; i < m_vMines.size(); i++)
 		{
 			m_vMines[i]->Draw();
-		}		
+		}
 	}
+	//ÈùÆ® ºí·° º¸±â
 	Hint_Block();
+
 	//½Ã°£ Ç¥½Ã
 	wsprintf(tmp_Time, "%d : %d", (int)Cur_Min, (int)Cur_Sec);
 	DoEngine::UIManager::get_Instance()->AddText(tmp_Time, 168, 474, 23, 255, 255, 255, TRANSPARENT, "¸¼Àº °íµñ");
