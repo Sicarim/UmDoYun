@@ -138,7 +138,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 			break;
 		case 101://load
 			{
-				HANDLE hFile = CreateFile("save.txt", GENERIC_READ, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, 0);
+				HANDLE hFile = CreateFile("ds.txt", GENERIC_READ, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, 0);
 				for (int i = 0; i < 13; i++)
 				{
 					for (int j = 0; j < 13; j++)
