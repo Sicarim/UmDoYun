@@ -14,10 +14,14 @@ Tank::Tank()
 }
 
 //초기화(override)
-void Tank::Init()
+void Tank::Init(int _x, int _y)
 {
 	//임시 비트맵 선언
 	DoEngine::BitMap* tmp_bit = NULL;
+
+	//시작 위치 초기화
+	pos_x = _x;
+	pos_y = _y;
 
 	m_vLeft.clear();
 	m_vRight.clear();
@@ -48,7 +52,7 @@ void Tank::Init()
 }
 
 //키입력(override)
-bool Tank::Input(float _fETime)
+bool Tank::Input(int _state)
 {
 	return false;
 }
@@ -62,7 +66,8 @@ void Tank::Update(float _fETime)
 //Draw 함수(override)
 void Tank::Draw()
 {
-	m_vDown[1]->Draw(pos_x, pos_y);
+	m_vDown[1]->Draw(pos_x, pos_y, COL_SIZE, COL_SIZE);
+	m_Coll.Draw_Collider(pos_x, pos_y, m_vDown[1]->get_Width() * COL_SIZE, m_vDown[1]->get_Height() * COL_SIZE);
 }
 
 //Draw 함수(override)

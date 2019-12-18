@@ -3,6 +3,7 @@
 #include "DoEngine.h"
 #include "defines.h"
 #include "Tank.h"
+#include "Player.h"
 
 class TitleScene : public DoEngine::Scene
 {
@@ -11,7 +12,11 @@ private:
 	DoEngine::BitMap* m_pBack;
 	//몬스터 저장
 	vector<DoEngine::Object*> m_vEnemy;
-	DoEngine::Object* m_pPlayer;
+	//플레이어 객체 선언
+	Player m_pPlayer;
+
+	DoEngine::Command* m_Command;
+	InputHandler m_Input;
 
 public:
 	TitleScene(); //생성자

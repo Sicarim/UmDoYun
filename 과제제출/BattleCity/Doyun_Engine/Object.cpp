@@ -17,14 +17,14 @@ namespace DoEngine
 		m_sName = _name;
 	}
 
-	//태그와 이름 입력
-	string Object::get_Name()
+	//Tag 리턴
+	string Object::get_Tag()
 	{
 		return m_sTag;
 	}
 
-	//태그와 이름 입력
-	string Object::get_Tag()
+	//이름 입력
+	string Object::get_Name()
 	{
 		return m_sName;
 	}

@@ -146,26 +146,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Bullet.h" />
     <ClInclude Include="defines.h" />
     <ClInclude Include="EndScene.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameScene.h" />
+    <ClInclude Include="InputHandler.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="PlayerTank.h" />
     <ClInclude Include="Tank.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="UnitFactory.h" />
     <ClInclude Include="UpTank.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="EndScene.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="PlayerTank.cpp" />
     <ClCompile Include="Tank.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="UnitFactory.cpp" />

@@ -111,6 +111,15 @@
     <ClCompile Include="Command.cpp">
       <Filter>소스 파일\InputSystem\command</Filter>
     </ClCompile>
+    <ClCompile Include="Action.cpp">
+      <Filter>소스 파일\InputSystem\command</Filter>
+    </ClCompile>
+    <ClCompile Include="Collider.cpp">
+      <Filter>소스 파일\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectPool.cpp">
+      <Filter>소스 파일\Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h">
@@ -169,6 +178,15 @@
     </ClInclude>
     <ClInclude Include="Command.h">
       <Filter>헤더 파일\InputSystem\command</Filter>
+    </ClInclude>
+    <ClInclude Include="Action.h">
+      <Filter>헤더 파일\InputSystem\command</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider.h">
+      <Filter>헤더 파일\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectPool.h">
+      <Filter>헤더 파일\Object</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

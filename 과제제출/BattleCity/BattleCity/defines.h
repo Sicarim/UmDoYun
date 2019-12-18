@@ -7,6 +7,8 @@
 #define MAX_ENEMY 20 //몬스터 갯수
 #define ENEMY_KIND 2
 #define GENERATE_ENEMY 80
+#define UNIT_SPEED 50.0f
+#define COL_SIZE 1.8f
 
 enum SCENE_INDEX
 {

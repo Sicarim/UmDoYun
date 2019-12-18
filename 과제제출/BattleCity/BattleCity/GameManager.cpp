@@ -70,15 +70,6 @@ vector<DoEngine::Object*> GameManager::Make_Enemy()
 	return tmp_vEnemy;
 }
 
-//플레이어 만들기
-DoEngine::Object* GameManager::Make_Player()
-{
-	DoEngine::Object* tmp_Object = NULL;	
-	tmp_Object = Player::get_Instance()->Order_Unit("Player");
-
-	return tmp_Object;
-}
-
 //소멸자
 GameManager::~GameManager()
 {

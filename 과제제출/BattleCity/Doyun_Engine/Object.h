@@ -17,8 +17,8 @@ namespace DoEngine
 	public:
 		Object(); //생성자
 
-		virtual void Init() = 0; //초기화
-		virtual bool Input(float _fETime) = 0; //키입력
+		virtual void Init(int _x = 0, int _y = 0) = 0; //초기화(시작 위치 초기화 가능)
+		virtual bool Input(int _state) = 0; //키입력
 		virtual void Update(float _fETime) = 0; //Update함수
 		virtual void Draw() = 0; //Draw 함수(overloding)
 		virtual void Draw(int _x, int _y) = 0; //Draw 함수

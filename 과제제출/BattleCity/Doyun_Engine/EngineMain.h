@@ -7,9 +7,9 @@
 */
 
 /**
-* @namespace JEngine
-* @brief JEngine 네임 스페이스
-* @details 이름 충돌을 피하기 위하여 만든 DoyunEngine의 namespace입니다.
+* @namespace DoEngine
+* @brief DoEngine 네임 스페이스
+* @details 이름 충돌을 피하기 위하여 만든 DoyunEngine의 namespace
 */
 namespace DoEngine
 {

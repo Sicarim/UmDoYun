@@ -12,9 +12,9 @@ TitleScene::TitleScene()
 //초기화(override)
 void TitleScene::Init(HWND hWnd)
 {
+	m_Command = NULL;
 	m_vEnemy.clear();
 	m_vEnemy.reserve(MAX_ENEMY);
-
 	//키 등록
 	GameManager::get_Instance()->Key_Init();
 	//맵 만들기
@@ -24,8 +24,7 @@ void TitleScene::Init(HWND hWnd)
 	//적 만들기
 	m_vEnemy = GameManager::get_Instance()->Make_Enemy();
 	//플레이어 만들기
-	m_pPlayer = GameManager::get_Instance()->Make_Player();
-	
+	m_pPlayer.Init(300, 500);
 
 	//memset(g_map, 0, sizeof(int) * 13 * 13);
 
@@ -44,22 +43,30 @@ void TitleScene::Init(HWND hWnd)
 //키입력(override)
 bool TitleScene::Input(float _fETime)
 {
+	m_Command = m_Input.CommandInput();
+
+	if (m_Command)
+	{
+		m_Command->excute(m_pPlayer);
+	}
+
 	return false;
 }
 
 //Update함수(override)
 void TitleScene::Update(float _fETime)
 {
-
+	m_pPlayer.Update(_fETime);
 }
 
 //Draw 함수(override)
 void TitleScene::Draw(HDC hdc)
 {
-	m_vEnemy[1]->Draw(0,0);
-	m_pPlayer->Draw(50, 50);
+	m_pBack->Draw(0, 0, 40.0f, 40.0f);
+	m_vEnemy[1]->Draw();
+	m_pPlayer.Draw();
 	//배경화면 그리기
-	//m_pBack->Draw(0, 0);
+	
 
 	//for (int i = 0; i < 10; i++)
 	//{ 

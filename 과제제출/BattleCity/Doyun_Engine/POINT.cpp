@@ -62,17 +62,25 @@ namespace DoEngine
 	bool RECT::isCollision(RECT _rcOther)
 	{
 		if (left < _rcOther.right && top <= _rcOther.bottom && right > _rcOther.left&& bottom > _rcOther.top)
+		{
 			return true;
+		}
 		else
+		{
 			return false;
+		}
 	}
 
 	//마우스 포인트가 안에 있는가 검사
 	bool RECT::isPtin(POINT _ptOther)
 	{
 		if (left < _ptOther.x && right > _ptOther.x&& top < _ptOther.y && bottom > _ptOther.y)
+		{
 			return true;
+		}
 		else
+		{
 			return false;
+		}
 	}
 }

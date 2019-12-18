@@ -1,30 +1,38 @@
 #pragma once
-#include "UnitFactory.h"
-#include "PlayerTank.h"
+#include "GlobalDefine.h"
+#include "DoEngine.h"
+#include "InputHandler.h"
+#include "defines.h"
+#include "Bullet.h"
+#include "ObjectPool.h"
 
-class Player : public UnitFactory
+class Player : public DoEngine::Object
 {
 private:
-	virtual void Create_Unit(string _name); //Unit생성(override)
-	static Player* m_hInstance; //객체 생성
+	TCHAR buf[255];
+	DoEngine::Collider m_Coll; //콜라이더
+	DoEngine::ObjectPool<Bullet*> m_BulletPool;
+
+	//장갑 비트맵 선언
+	vector<DoEngine::BitMap*> m_vLeft; //왼쪽
+	vector<DoEngine::BitMap*> m_vRight; //오른쪽
+	vector<DoEngine::BitMap*> m_vUp; //위로
+	vector<DoEngine::BitMap*> m_vDown; //아래로
+	vector<DoEngine::BitMap*> m_vdirection; //방향을 담을 벡터
+
+	float pos_x; //위치 선언(x)(시작 위치, 앞으로 움직이게 될 위치)
+	float pos_y; //위치 선언(y)(시작 위치, 앞으로 움직이게 될 위치)
+	float curTime;
+	//Bullet m_Bullet;
 public:
 	Player(); //생성자
 
-	//객체 생성
-	static Player* get_Instance()
-	{
-		if (m_hInstance == NULL)
-		{
-			m_hInstance = new Player;
-		}
-		return m_hInstance;
-	}
-
-	//객체 삭제
-	static inline void Release()
-	{
-		delete m_hInstance;
-	}
+	virtual void Init(int _x = 0, int _y = 0); //초기화(override)
+	virtual bool Input(int _state); //키입력(override)
+	virtual void Update(float _fETime); //Update함수(override)
+	virtual void Draw(); //Draw 함수(override)
+	virtual void Draw(int _x, int _y); //Draw 함수(override)
+	virtual void Release(); //Release() 함수(override)
 
 	~Player(); //소멸자
 };
