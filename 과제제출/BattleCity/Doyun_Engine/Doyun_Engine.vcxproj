@@ -147,6 +147,7 @@
     <ClCompile Include="BitMap.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Collider.cpp" />
+    <ClCompile Include="ColliderManager.cpp" />
     <ClCompile Include="Command.cpp" />
     <ClCompile Include="EngineMain.cpp" />
     <ClCompile Include="InputManager.cpp" />
@@ -168,6 +169,7 @@
     <ClInclude Include="BitMap.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Collider.h" />
+    <ClInclude Include="ColliderManager.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="DoEngine.h" />
     <ClInclude Include="EngineMain.h" />

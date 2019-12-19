@@ -19,6 +19,9 @@ void Tank::Init(int _x, int _y)
 	//임시 비트맵 선언
 	DoEngine::BitMap* tmp_bit = NULL;
 
+	//태크 지정
+	m_sTag = "Tank";
+
 	//시작 위치 초기화
 	pos_x = _x;
 	pos_y = _y;
@@ -29,7 +32,7 @@ void Tank::Init(int _x, int _y)
 	m_vDown.clear();
 
 	m_vLeft.reserve(ENEMY_KIND);
-	m_vRight.reserve(ENEMY_KIND);
+	m_vRight.reserve(ENEMY_KIND);	
 	m_vUp.reserve(ENEMY_KIND);
 	m_vDown.reserve(ENEMY_KIND);
 
@@ -66,6 +69,7 @@ void Tank::Update(float _fETime)
 //Draw 함수(override)
 void Tank::Draw()
 {
+	m_Coll.set_Collider(pos_x, pos_y, m_vDown[1]->get_Width() * COL_SIZE, m_vDown[1]->get_Height() * COL_SIZE);
 	m_vDown[1]->Draw(pos_x, pos_y, COL_SIZE, COL_SIZE);
 	m_Coll.Draw_Collider(pos_x, pos_y, m_vDown[1]->get_Width() * COL_SIZE, m_vDown[1]->get_Height() * COL_SIZE);
 }
@@ -79,6 +83,7 @@ void Tank::Draw(int _x, int _y)
 //Release() 함수(override)
 void Tank::Release()
 {
+
 }
 
 //소멸자

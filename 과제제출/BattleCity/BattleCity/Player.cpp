@@ -20,8 +20,13 @@ Player::Player()
 //초기화(override)
 void Player::Init(int _x, int _y)
 {
+	//Tag지정
+	m_sTag = "Player";
+	
+	fire_time = 0.0f;
 	curTime = 0.0f;
 	DoEngine::BitMap* tmp_bit = NULL;
+	Fire = false;
 
 	//시작 위치(생성 위치 초기화)
 	pos_x = _x;
@@ -38,8 +43,8 @@ void Player::Init(int _x, int _y)
 	m_vUp.reserve(ENEMY_KIND);
 	m_vDown.reserve(ENEMY_KIND);
 
-	//Tag지정
-	m_sTag = "Player";
+	//탄알 만들기
+	m_BulletPool.Make_Pool(10);
 
 	//비트맵 집어 넣기
 	for (int i = 0; i < ENEMY_KIND; i++)
@@ -91,7 +96,12 @@ bool Player::Input(int _state)
 
 	else if (_state == ATTACK)
 	{
-		//m_Bullet.Init(pos_x, pos_y);
+		if (!Fire)
+		{
+			tmp_Bullet = m_BulletPool.get_Data();
+			tmp_Bullet->Init(pos_x, pos_y);
+			Fire = true;
+		}
 	}
 
 	return false;
@@ -106,6 +116,22 @@ void Player::Update(float _fETime)
 //Draw 함수(override)
 void Player::Draw()
 {
+	//발사 버튼 클릭
+	if (Fire)
+	{
+		tmp_Bullet->Update(curTime);
+		tmp_Bullet->Draw();
+
+		//탄알이 없어졌다면....
+		if (!tmp_Bullet->get_FireSave())
+		{
+			m_BulletPool.Return_Data(tmp_Bullet);
+			delete tmp_Bullet;
+			Fire = false;
+		}
+	}
+
+	//출발하는 방향에 따라 그리기
 	if (m_vdirection.empty())
 	{
 		m_vUp[0]->Draw(pos_x, pos_y, COL_SIZE, COL_SIZE);
@@ -114,8 +140,7 @@ void Player::Draw()
 	{
 		m_vdirection[0]->Draw(pos_x, pos_y, COL_SIZE, COL_SIZE);
 	}
-	
-	
+
 	//콜라이더 범위 그리기
 	m_Coll.Draw_Collider(pos_x, pos_y, (m_vDown[1]->get_Width()) * COL_SIZE, (m_vDown[1]->get_Height()) * COL_SIZE);
 }

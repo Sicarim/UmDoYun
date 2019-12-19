@@ -17,6 +17,7 @@ namespace DoEngine
 	public:
 		Collider(); //생성자
 
+		void set_Collider(int _left, int _top, int _right, int _bottom); //콜라이더 범위 지정
 		void Draw_Collider(int _left, int _top, int _right, int _bottom); //콜라이더 범위 그리기
 		bool isCollider(RECT _rcOther); //콜라이더에 충돌 여부 그리기
 

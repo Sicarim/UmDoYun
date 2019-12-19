@@ -1,6 +1,7 @@
 #include "TitleScene.h"
 #include "GameManager.h"
 #include "ResourcesManager.h"
+#include "InputManager.h"
 #include "MapManager.h"
 
 //생성자
@@ -43,6 +44,11 @@ void TitleScene::Init(HWND hWnd)
 //키입력(override)
 bool TitleScene::Input(float _fETime)
 {
+	if (DoEngine::InputManager::get_Instance()->isKeyUp(VK_ESCAPE))
+	{
+		return true;
+	}
+
 	m_Command = m_Input.CommandInput();
 
 	if (m_Command)

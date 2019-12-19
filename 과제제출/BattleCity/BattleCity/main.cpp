@@ -5,7 +5,9 @@
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdParam, int nCmdShow)
 {
 	DoEngine::EngineMain engine("BattleCity", 1024, 768);
-
+	
+	//게임 초기회
+	GameManager::get_Instance()->Init();
 	//게임 씬들을 등록해준다
 	GameManager::get_Instance()->Regist_Scene();
 

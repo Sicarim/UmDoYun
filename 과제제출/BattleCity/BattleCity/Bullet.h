@@ -13,6 +13,9 @@ private:
 
 	float pos_x;
 	float pos_y;
+	float curTime;
+	float Fire_Time;
+	bool is_Save;
 public:
 	Bullet(); //생성자
 
@@ -22,6 +25,8 @@ public:
 	virtual void Draw(); //Draw 함수(override)
 	virtual void Draw(int _x, int _y); //Draw 함수(override)
 	virtual void Release(); //Release() 함수(override)
+
+	bool get_FireSave(); //탄알 세이브 여부
 
 	~Bullet(); //소멸자
 };

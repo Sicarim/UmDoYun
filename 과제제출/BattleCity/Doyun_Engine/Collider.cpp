@@ -6,7 +6,13 @@ namespace DoEngine
 	//생성자
 	Collider::Collider()
 	{
+		
+	}
 
+	//콜라이더 범위 지정
+	void Collider::set_Collider(int _left, int _top, int _right, int _bottom)
+	{
+		m_Rect.Set(_left, _top, _left + _right, _top + _bottom);
 	}
 
 	//콜라이더 범위 그리기

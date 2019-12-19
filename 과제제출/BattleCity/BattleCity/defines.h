@@ -8,7 +8,9 @@
 #define ENEMY_KIND 2
 #define GENERATE_ENEMY 80
 #define UNIT_SPEED 50.0f
+#define FIRE_SPEED 400
 #define COL_SIZE 1.8f
+#define SAVE_TIME 0.5f
 
 enum SCENE_INDEX
 {

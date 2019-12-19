@@ -4,14 +4,14 @@
 #include "InputHandler.h"
 #include "defines.h"
 #include "Bullet.h"
-#include "ObjectPool.h"
 
 class Player : public DoEngine::Object
 {
 private:
 	TCHAR buf[255];
 	DoEngine::Collider m_Coll; //콜라이더
-	DoEngine::ObjectPool<Bullet*> m_BulletPool;
+	DoEngine::ObjectPool<Bullet> m_BulletPool; //총알 오브젝트 풀 생성
+	Bullet* tmp_Bullet;
 
 	//장갑 비트맵 선언
 	vector<DoEngine::BitMap*> m_vLeft; //왼쪽
@@ -23,7 +23,9 @@ private:
 	float pos_x; //위치 선언(x)(시작 위치, 앞으로 움직이게 될 위치)
 	float pos_y; //위치 선언(y)(시작 위치, 앞으로 움직이게 될 위치)
 	float curTime;
-	//Bullet m_Bullet;
+	bool Fire;
+	float fire_time;
+
 public:
 	Player(); //생성자
 
