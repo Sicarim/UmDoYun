@@ -25,6 +25,7 @@ private:
 	float curTime;
 	bool Fire;
 	float fire_time;
+	int Player_Look;
 
 public:
 	Player(); //»ý¼ºÀÚ

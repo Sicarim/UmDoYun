@@ -8,11 +8,14 @@
 #include <random>
 #include <iterator>
 #include <cstdlib>
-#include <math.h>
 #include <map>
 #include <assert.h>
 #include <functional>
 #include <list>
+
+#define _USE_MATH_DEFINES
+#include <cmath>
+#include <math.h>
 
 using namespace std;
 

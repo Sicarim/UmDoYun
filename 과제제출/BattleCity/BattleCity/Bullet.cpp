@@ -40,9 +40,25 @@ void Bullet::Draw()
 {
 	Fire_Time += curTime;
 
-	pos_y -= curTime * FIRE_SPEED;
-	m_BulletBit->Draw(pos_x, pos_y, 2.0f, 2.0f);
-	m_Coll.Draw_Collider(pos_x, pos_y, m_BulletBit->get_Height() * 5.0f, m_BulletBit->get_Height() * 2.0f);
+	switch (Bullet_dir)
+	{
+	case LOOK_UP:
+		pos_y -= curTime * FIRE_SPEED;
+		break;
+	case LOOK_DOWN:
+		pos_y += curTime * FIRE_SPEED;
+		break;
+	case LOOK_LEFT:
+		pos_x -= curTime * FIRE_SPEED;
+		break;
+	case LOOK_RIGHT:
+		pos_x += curTime * FIRE_SPEED;
+		break;
+	}
+
+	m_Coll.Init_Collider(m_sTag, pos_x + 25, pos_y + 25, m_BulletBit->get_Width() * COL_SIZE, m_BulletBit->get_Height() * COL_SIZE);
+	m_BulletBit->Draw((pos_x + 25), pos_y + 25, 2.0f, 2.0f);
+	m_Coll.Draw_Collider(pos_x + 25, pos_y + 25, m_BulletBit->get_Height() * 5.0f, m_BulletBit->get_Height() * 2.0f);
 
 	if (Fire_Time >= SAVE_TIME)
 	{
@@ -66,6 +82,12 @@ void Bullet::Release()
 bool Bullet::get_FireSave()
 {
 	return is_Save;
+}
+
+//총알 방향 지정
+void Bullet::set_BulletDir(int _dir)
+{
+	Bullet_dir = _dir;
 }
 
 //소멸자

@@ -16,6 +16,7 @@ private:
 	float curTime;
 	float Fire_Time;
 	bool is_Save;
+	int Bullet_dir; //총알을 발사하는 방향
 public:
 	Bullet(); //생성자
 
@@ -27,6 +28,7 @@ public:
 	virtual void Release(); //Release() 함수(override)
 
 	bool get_FireSave(); //탄알 세이브 여부
+	void set_BulletDir(int _dir); //총알 방향 지정
 
 	~Bullet(); //소멸자
 };

@@ -63,6 +63,7 @@ bool TitleScene::Input(float _fETime)
 void TitleScene::Update(float _fETime)
 {
 	m_pPlayer.Update(_fETime);
+	m_vEnemy[1]->Update(_fETime);
 }
 
 //Draw ÇÔ¼ö(override)

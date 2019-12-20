@@ -1,5 +1,6 @@
 #include "Collider.h"
 #include "ResourcesManager.h"
+#include "ColliderManager.h"
 
 namespace DoEngine
 {
@@ -10,9 +11,12 @@ namespace DoEngine
 	}
 
 	//콜라이더 범위 지정
-	void Collider::set_Collider(int _left, int _top, int _right, int _bottom)
+	void Collider::Init_Collider(string _tag, int _left, int _top, int _right, int _bottom)
 	{
+		m_Tag = _tag;
 		m_Rect.Set(_left, _top, _left + _right, _top + _bottom);
+		//ColliderManager에 콜라이더 등록
+		DoEngine::ColliderManager::get_Instance()->Insert_Collider(m_Tag, m_Rect.get_Rect());
 	}
 
 	//콜라이더 범위 그리기
@@ -30,9 +34,17 @@ namespace DoEngine
 	}
 
 	//콜라이더에 충돌 여부 그리기
-	bool Collider::isCollider(RECT _rcOther)
+	bool Collider::isCollider(string _tag)
 	{
-		return m_Rect.isCollision(_rcOther);
+		RECT tmp_rc = DoEngine::ColliderManager::get_Instance()->Search_Collider(_tag);
+
+		return m_Rect.isCollision(tmp_rc);
+	}
+
+	//콜라이더 범위 리턴
+	RECT Collider::get_Collider()
+	{
+		return m_Rect.get_Rect();
 	}
 
 	//소멸자

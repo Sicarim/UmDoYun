@@ -63,6 +63,12 @@ namespace DoEngine
 			return rc;
 		}
 
+		RECT get_Rect()
+		{
+			RECT rc = { left , top , right , bottom };
+			return rc;
+		}
+
 		bool isCollision(RECT _rcOther); //충돌 여부 검사
 		bool isPtin(POINT _ptOther); //마우스 포인트가 안에 있는가 검사
 		RECT();

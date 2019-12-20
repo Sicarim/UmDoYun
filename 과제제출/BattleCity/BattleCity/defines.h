@@ -7,7 +7,7 @@
 #define MAX_ENEMY 20 //¸ó½ºÅÍ °¹¼ö
 #define ENEMY_KIND 2
 #define GENERATE_ENEMY 80
-#define UNIT_SPEED 50.0f
+#define UNIT_SPEED 100.0f
 #define FIRE_SPEED 400
 #define COL_SIZE 1.8f
 #define SAVE_TIME 0.5f
@@ -24,4 +24,12 @@ enum ENEMY_SELET
 	UP_PANZER,
 	TANK,
 	UP_TANK
+};
+
+enum PLAYER_LOOK
+{
+	LOOK_UP,
+	LOOK_LEFT,
+	LOOK_RIGHT,
+	LOOK_DOWN
 };

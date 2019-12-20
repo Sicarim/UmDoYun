@@ -22,7 +22,7 @@ void Player::Init(int _x, int _y)
 {
 	//Tag지정
 	m_sTag = "Player";
-	
+	Player_Look = LOOK_UP;
 	fire_time = 0.0f;
 	curTime = 0.0f;
 	DoEngine::BitMap* tmp_bit = NULL;
@@ -72,24 +72,28 @@ bool Player::Input(int _state)
 {
 	if (_state == LEFT)
 	{
+		Player_Look = LOOK_LEFT;
 		m_vdirection = m_vLeft;
 		pos_x -= curTime * UNIT_SPEED;
 	}
 
 	else if (_state == RIGHT)
 	{
+		Player_Look = LOOK_RIGHT;
 		m_vdirection = m_vRight;
 		pos_x += curTime * UNIT_SPEED;
 	}
 
 	else if (_state == UP)
 	{
+		Player_Look = LOOK_UP;
 		m_vdirection = m_vUp;
 		pos_y -= curTime * UNIT_SPEED;
 	}
 
 	else if (_state == DOWN)
 	{
+		Player_Look = LOOK_DOWN;
 		m_vdirection = m_vDown;
 		pos_y += curTime * UNIT_SPEED;
 	}
@@ -100,6 +104,7 @@ bool Player::Input(int _state)
 		{
 			tmp_Bullet = m_BulletPool.get_Data();
 			tmp_Bullet->Init(pos_x, pos_y);
+			tmp_Bullet->set_BulletDir(Player_Look);
 			Fire = true;
 		}
 	}
@@ -142,6 +147,7 @@ void Player::Draw()
 	}
 
 	//콜라이더 범위 그리기
+	m_Coll.Init_Collider(m_sTag, pos_x, pos_y, (m_vDown[1]->get_Width()) * COL_SIZE, (m_vDown[1]->get_Height()) * COL_SIZE);
 	m_Coll.Draw_Collider(pos_x, pos_y, (m_vDown[1]->get_Width()) * COL_SIZE, (m_vDown[1]->get_Height()) * COL_SIZE);
 }
 
