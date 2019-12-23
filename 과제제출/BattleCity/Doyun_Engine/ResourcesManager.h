@@ -17,6 +17,7 @@ namespace DoEngine
 		DoEngine::BitMap* m_pBack; //비트맵 객체 선언
 		map<string, DoEngine::BitMap*>	m_mapBitmap; //맵(자료구조)형식의 BitMap선언
 		DoEngine::BitMap* InitBitmap(std::string strFileName); //Resoureces에 해당 그림을 그린다
+		DoEngine::BitMap* InitBackGround(std::string strFileName, int _width, int _height); //아무것도 없는 배경화면 만들기
 
 	public:
 		ResourcesManager(); //생성자
@@ -25,6 +26,8 @@ namespace DoEngine
 		HDC get_BackDC();
 		void DrawBack(HDC hdc);
 		DoEngine::BitMap* get_Bitmap(std::string strFileName); //vector에서 같은 이름을 가진 bmp파일을 찾는다 없다면 새로 만든다
+		DoEngine::BitMap* get_BackGround(std::string strFileName, int _width, int _height); //vector에서 같은 이름을 가진 bmp파일(BackGround)을 찾는다 없다면 새로 만든다
+		
 
 		~ResourcesManager(); //소멸자
 	};

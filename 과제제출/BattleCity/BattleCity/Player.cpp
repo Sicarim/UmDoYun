@@ -148,7 +148,7 @@ void Player::Draw()
 
 	//콜라이더 범위 그리기
 	m_Coll.Init_Collider(m_sTag, pos_x, pos_y, (m_vDown[1]->get_Width()) * COL_SIZE, (m_vDown[1]->get_Height()) * COL_SIZE);
-	m_Coll.Draw_Collider(pos_x, pos_y, (m_vDown[1]->get_Width()) * COL_SIZE, (m_vDown[1]->get_Height()) * COL_SIZE);
+	m_Coll.Draw_Collider();
 }
 
 //Draw 함수(override)

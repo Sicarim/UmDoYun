@@ -41,6 +41,7 @@ namespace DoEngine
 
 		void InitBack(HDC hdc, int x, int y); //더블 버퍼링을 위한 BackDC선언
 		void Init(HDC hdc, string file_name); //비트맵 초기화
+		void InitBGBit(HDC hdc, int _width, int _height); //배경화면 비트맵 초기화
 		void AdDoustAnchorPoint(int& x, int& y); //앵커 설정을 위한 시작위치 초기화
 		void DrawBitblt(int x, int y); //BitBlt로 그린다
 		void Draw(int x, int y, float _sizex = 1.0f, float _sizey = 1.0f); //TransparentBIt로 그린다

@@ -1,26 +1,4 @@
-﻿  Action.cpp
-  BitMap.cpp
-D:\Atence\visual\BattleCity\Doyun_Engine\BitMap.cpp(47,32): warning C4244: '-=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Atence\visual\BattleCity\Doyun_Engine\BitMap.cpp(48,32): warning C4244: '-=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Atence\visual\BattleCity\Doyun_Engine\BitMap.cpp(62,102): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  Button.cpp
-  Collider.cpp
-  ColliderManager.cpp
-  Command.cpp
-  EngineMain.cpp
-  InputManager.cpp
-  Label.cpp
-  MapManager.cpp
-  Object.cpp
-  ObjectPool.cpp
-  ResourcesManager.cpp
-  Scene.cpp
-  SceneManager.cpp
-  Text.cpp
-  TimeManager.cpp
-D:\Atence\visual\BattleCity\Doyun_Engine\BitMap.cpp(62,82): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  UIManager.cpp
-  코드를 생성하고 있습니다...
-D:\Atence\visual\BattleCity\Doyun_Engine\TimeManager.cpp(31,35): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-D:\Atence\visual\BattleCity\Doyun_Engine\ColliderManager.cpp(36): warning C4715: 'DoEngine::ColliderManager::Search_Collider': 모든 제어 경로에서 값을 반환하지는 않습니다.
+﻿  MapTool.cpp
+D:\Atence\visual\BattleCity\Doyun_Engine\MapTool.cpp(22,52): warning C4244: '=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\Atence\visual\BattleCity\Doyun_Engine\MapTool.cpp(23,53): warning C4244: '=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   Doyun_Engine.vcxproj -> D:\Atence\visual\BattleCity\Debug\Doyun_Engine.lib

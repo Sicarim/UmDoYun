@@ -2,7 +2,7 @@
 #include "GameManager.h"
 #include "ResourcesManager.h"
 #include "InputManager.h"
-#include "MapManager.h"
+#include "MapTool.h"
 
 //생성자
 TitleScene::TitleScene()
@@ -18,14 +18,15 @@ void TitleScene::Init(HWND hWnd)
 	m_vEnemy.reserve(MAX_ENEMY);
 	//키 등록
 	GameManager::get_Instance()->Key_Init();
-	//맵 만들기
-	DoEngine::MapManager::get_Instance()->Init(10, 20, 0, 0);
-	//BitMap등록
-	m_pBack = DoEngine::ResourcesManager::get_Instance()->get_Bitmap("RES\\block00.bmp");
 	//적 만들기
 	m_vEnemy = GameManager::get_Instance()->Make_Enemy();
 	//플레이어 만들기
 	m_pPlayer.Init(300, 500);
+	m_BlackBG = DoEngine::ResourcesManager::get_Instance()->get_BackGround("BlackBG", 1024, 768);
+
+	//맵 만들기
+	m_Map.MakeMap(W_COUNT, H_COUNT);
+	//BitMap등록
 
 	//memset(g_map, 0, sizeof(int) * 13 * 13);
 
@@ -66,13 +67,16 @@ void TitleScene::Update(float _fETime)
 	m_vEnemy[1]->Update(_fETime);
 }
 
+//블럭 갯수 24칸, 2칸 기준 12블럭
 //Draw 함수(override)
 void TitleScene::Draw(HDC hdc)
 {
-	m_pBack->Draw(0, 0, 40.0f, 40.0f);
+	m_BlackBG->Draw(0, 0);
+	//배경화면 그리기
+	m_Map.DrawMap();
+
 	m_vEnemy[1]->Draw();
 	m_pPlayer.Draw();
-	//배경화면 그리기
 	
 
 	//for (int i = 0; i < 10; i++)

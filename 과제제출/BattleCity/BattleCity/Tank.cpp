@@ -110,13 +110,13 @@ void Tank::Draw()
 			m_vDestroy[4]->Draw(pos_x, pos_y, COL_SIZE - 0.8f, COL_SIZE - 0.8f);
 		}
 	}
+
 	else
 	{
 		m_Coll.Init_Collider(m_sTag, pos_x, pos_y, m_vDown[1]->get_Width() * COL_SIZE, m_vDown[1]->get_Height() * COL_SIZE);
 		m_vDown[1]->Draw(pos_x, pos_y, COL_SIZE, COL_SIZE);
-		m_Coll.Draw_Collider(pos_x, pos_y, m_vDown[1]->get_Width() * COL_SIZE, m_vDown[1]->get_Height() * COL_SIZE);
+		m_Coll.Draw_Collider();
 	}
-	
 }
 
 //Draw ÇÔ¼ö(override)

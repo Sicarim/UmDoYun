@@ -8,9 +8,12 @@
 class Bullet : public DoEngine::Object
 {
 private:
-	DoEngine::BitMap* m_BulletBit;
+	vector<DoEngine::BitMap*> m_vBulletBit;
 	DoEngine::Collider m_Coll; 
+	DoEngine::BitMap* tmp_Bullet;
+	DoEngine::BitMap* m_BulletDir;
 
+	TCHAR buf[255];
 	float pos_x;
 	float pos_y;
 	float curTime;

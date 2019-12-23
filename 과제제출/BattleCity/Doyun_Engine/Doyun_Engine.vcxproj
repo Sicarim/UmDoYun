@@ -152,7 +152,7 @@
     <ClCompile Include="EngineMain.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Label.cpp" />
-    <ClCompile Include="MapManager.cpp" />
+    <ClCompile Include="MapTool.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ObjectPool.cpp" />
     <ClCompile Include="POINT.cpp" />
@@ -176,7 +176,7 @@
     <ClInclude Include="GlobalDefine.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Label.h" />
-    <ClInclude Include="MapManager.h" />
+    <ClInclude Include="MapTool.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="ObjectPool.h" />
     <ClInclude Include="POINT.h" />

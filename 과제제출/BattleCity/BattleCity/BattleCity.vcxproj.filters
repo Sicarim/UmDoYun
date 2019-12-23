@@ -81,6 +81,21 @@
     <ClInclude Include="Bullet.h">
       <Filter>헤더 파일\Data</Filter>
     </ClInclude>
+    <ClInclude Include="BrokenWall.h">
+      <Filter>헤더 파일\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="BushWall.h">
+      <Filter>헤더 파일\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="WaterWall.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="StillWall.h">
+      <Filter>헤더 파일\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>헤더 파일\Data</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -117,6 +132,12 @@
       <Filter>소스 파일\Manager</Filter>
     </ClCompile>
     <ClCompile Include="Bullet.cpp">
+      <Filter>소스 파일\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="StillWall.cpp">
+      <Filter>소스 파일\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
       <Filter>소스 파일\Data</Filter>
     </ClCompile>
   </ItemGroup>

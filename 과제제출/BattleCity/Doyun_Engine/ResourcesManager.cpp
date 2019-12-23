@@ -36,6 +36,26 @@ namespace DoEngine
 		}
 	}
 
+	//아무것도 없는 배경화면 만들기
+	DoEngine::BitMap* ResourcesManager::InitBackGround(std::string strFileName, int _width, int _height)
+	{
+		auto iter = m_mapBitmap.find(strFileName);
+
+		if (iter == m_mapBitmap.end())
+		{
+			//찾지 못하면 비트맵을 새로 생성 후, map형식으로 이루어진 자료구조에 추가한다.
+			DoEngine::BitMap* pBitmap = new DoEngine::BitMap();
+			pBitmap->InitBGBit(m_pBack->GetDC(), _width, _height);
+
+			m_mapBitmap.insert(make_pair(strFileName, pBitmap));
+			return pBitmap;
+		}
+		else
+		{
+			return iter->second;
+		}
+	}
+
 	HDC ResourcesManager::get_BackDC()
 	{
 		return m_pBack->GetDC();
@@ -58,6 +78,21 @@ namespace DoEngine
 		else
 		{
 			return InitBitmap(strFileName);
+		}
+	}
+
+	//vector에서 같은 이름을 가진 bmp파일(BackGround)을 찾는다 없다면 새로 만든다
+	DoEngine::BitMap* ResourcesManager::get_BackGround(std::string strFileName, int _width, int _height)
+	{
+		auto iter = m_mapBitmap.find(strFileName);
+
+		if (iter != m_mapBitmap.end())
+		{
+			return iter->second;
+		}
+		else
+		{
+			return InitBackGround(strFileName, _width, _height);
 		}
 	}
 

@@ -42,6 +42,7 @@ void GameManager::Key_Init()
 	DoEngine::InputManager::get_Instance()->RegistKeyCode(VK_UP);
 	//방향키 (아래)
 	DoEngine::InputManager::get_Instance()->RegistKeyCode(VK_DOWN);
+	//게임 종료
 	DoEngine::InputManager::get_Instance()->RegistKeyCode(VK_ESCAPE);
 }
 

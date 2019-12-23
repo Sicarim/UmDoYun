@@ -4,7 +4,8 @@
 //생성자
 Bullet::Bullet()
 {
-	m_BulletBit = NULL;
+	tmp_Bullet = NULL;
+	m_vBulletBit.clear();
 	pos_x = 0;
 	pos_y = 0;
 	m_sTag = "Bullet";
@@ -20,7 +21,14 @@ void Bullet::Init(int _x, int _y)
 	is_Save = true;
 
 	//탄알 리소스 받아오기
-	m_BulletBit = DoEngine::ResourcesManager::get_Instance()->get_Bitmap("RES\\missile_00.bmp");
+	for (int i = 0; i < 4; i++)
+	{
+		wsprintf(buf, "RES\\missile_0%d.bmp", i);
+		tmp_Bullet = DoEngine::ResourcesManager::get_Instance()->get_Bitmap(buf);
+		m_vBulletBit.push_back(tmp_Bullet);
+	}
+	m_BulletDir = m_vBulletBit[1];
+	
 }
 
 //키입력(override)
@@ -43,23 +51,36 @@ void Bullet::Draw()
 	switch (Bullet_dir)
 	{
 	case LOOK_UP:
+		m_BulletDir = m_vBulletBit[1];
 		pos_y -= curTime * FIRE_SPEED;
 		break;
 	case LOOK_DOWN:
+		m_BulletDir = m_vBulletBit[2];
 		pos_y += curTime * FIRE_SPEED;
 		break;
 	case LOOK_LEFT:
+		m_BulletDir = m_vBulletBit[3];
 		pos_x -= curTime * FIRE_SPEED;
 		break;
 	case LOOK_RIGHT:
+		m_BulletDir = m_vBulletBit[0];
 		pos_x += curTime * FIRE_SPEED;
 		break;
 	}
 
-	m_Coll.Init_Collider(m_sTag, pos_x + 25, pos_y + 25, m_BulletBit->get_Width() * COL_SIZE, m_BulletBit->get_Height() * COL_SIZE);
-	m_BulletBit->Draw((pos_x + 25), pos_y + 25, 2.0f, 2.0f);
-	m_Coll.Draw_Collider(pos_x + 25, pos_y + 25, m_BulletBit->get_Height() * 5.0f, m_BulletBit->get_Height() * 2.0f);
+	m_BulletDir->Draw((pos_x + 25), pos_y + 25, 2.0f, 2.0f);
 
+	if (m_BulletDir == m_vBulletBit[1] || m_BulletDir == m_vBulletBit[2])
+	{
+		m_Coll.Init_Collider(m_sTag, pos_x + 25, pos_y + 25, m_BulletDir->get_Width() * COL_SIZE, m_BulletDir->get_Height() * COL_SIZE);
+		m_Coll.Draw_Collider();
+	}
+	else
+	{
+		m_Coll.Init_Collider(m_sTag, pos_x + 25, pos_y + 25, m_BulletDir->get_Width() * COL_SIZE, m_BulletDir->get_Height() * COL_SIZE);
+		m_Coll.Draw_Collider();
+	}
+	
 	if (Fire_Time >= SAVE_TIME)
 	{
 		is_Save = false;

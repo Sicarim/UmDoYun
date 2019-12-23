@@ -1,9 +1,15 @@
 #pragma once
 
+//Button
 #define BUTTON_S 0x53 //시작버튼
 #define BUTTON_X 0x58 //다시하기버튼
-#define WIDTH 33
-#define HEIGHT 25
+//Map Info
+#define W_COUNT 12
+#define H_COUNT 15
+#define W_SPACE 100
+#define H_SPACE 20
+#define OBJECT_COL 1.99f
+
 #define MAX_ENEMY 20 //몬스터 갯수
 #define ENEMY_KIND 2
 #define GENERATE_ENEMY 80

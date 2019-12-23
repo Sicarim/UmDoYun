@@ -5,8 +5,8 @@ namespace DoEngine
 {
 	/*
 	* @brief 게임에 사용되는 UnitObject들의 부모 클래스
-	* @details 게임에 사용되는 Unit들의 부모 클래스(중요!!!).Scene구현해야 하는 항목을 순수 가상 함수로 가지고
-		있음
+	* @details 게임에 사용되는 Unit들의 부모 클래스(중요!!!).구현해야 하는 항목을 순수 가상 함수로 가지고
+		있음 - 정말 필요한 메서드들만 모아두었다. 나머진 Composition해서 사용하기 바란다. - 컴포넌트 패턴을 잘 활용하라.
 	*/
 	class Object
 	{

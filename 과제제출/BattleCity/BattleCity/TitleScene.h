@@ -4,20 +4,19 @@
 #include "defines.h"
 #include "Tank.h"
 #include "Player.h"
+#include "Map.h"
 
 class TitleScene : public DoEngine::Scene
 {
 private:
-	//TitleScene 배경회면 등록
-	DoEngine::BitMap* m_pBack;
-	//몬스터 저장
-	vector<DoEngine::Object*> m_vEnemy;
-	//플레이어 객체 선언
-	Player m_pPlayer;
+	DoEngine::BitMap* m_BlackBG; //아무것도 없는 검은 배경화면
+	vector<DoEngine::Object*> m_vEnemy; //몬스터 저장
+	Player m_pPlayer; //플레이어 객체 선언
 
 	DoEngine::Command* m_Command;
 	InputHandler m_Input;
 
+	Map m_Map;
 public:
 	TitleScene(); //생성자
 

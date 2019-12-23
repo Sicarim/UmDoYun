@@ -41,6 +41,20 @@ namespace DoEngine
 		m_size.cy = (int)bmp_info.bmHeight;
 	}
 
+	//배경화면 비트맵 초기화
+	void BitMap::InitBGBit(HDC hdc, int _width, int _height)
+	{
+		m_hMemDC = CreateCompatibleDC(hdc);
+		m_hBitMap = CreateCompatibleBitmap(hdc, _width, _height);
+
+		m_hOldBitmap = (HBITMAP)SelectObject(m_hMemDC, m_hBitMap);
+
+		BITMAP bmp_info;
+		GetObject(m_hBitMap, sizeof(bmp_info), &bmp_info);
+		m_size.cx = (int)bmp_info.bmWidth;
+		m_size.cy = (int)bmp_info.bmHeight;
+	}
+
 	//앵커 설정을 위한 시작위치 초기화
 	void BitMap::AdDoustAnchorPoint(int& x, int& y)
 	{

@@ -146,18 +146,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BrokenWall.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="BushWall.h" />
     <ClInclude Include="defines.h" />
     <ClInclude Include="EndScene.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="StillWall.h" />
     <ClInclude Include="Tank.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="UnitFactory.h" />
     <ClInclude Include="UpTank.h" />
+    <ClInclude Include="WaterWall.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bullet.cpp" />
@@ -167,7 +172,9 @@
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="StillWall.cpp" />
     <ClCompile Include="Tank.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="UnitFactory.cpp" />
