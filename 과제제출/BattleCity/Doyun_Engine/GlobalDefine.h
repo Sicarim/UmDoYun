@@ -12,11 +12,17 @@
 #include <assert.h>
 #include <functional>
 #include <list>
+#include <queue>
 
 #define _USE_MATH_DEFINES
 #include <cmath>
 #include <math.h>
+
+#define _SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS
+#include <hash_map>
+
 using namespace std;
+using namespace stdext;
 
 #define SAFE_DELETE( p ) { if( p ) { delete ( p ); ( p ) = NULL; } }
 #define SAFE_DELETE_ARRAY( p ) { if( p ) { delete[] ( p ); ( p ) = NULL; } }

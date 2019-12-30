@@ -67,6 +67,12 @@
     <Filter Include="소스 파일\Object\Collider">
       <UniqueIdentifier>{53294af3-f6b6-4b90-b3cf-444ff19292ef}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\InputSystem\AStar">
+      <UniqueIdentifier>{42d54d6f-c016-4ecf-83b8-0bd622579fae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\InputSystem\AStar">
+      <UniqueIdentifier>{e56fa2c7-038a-4098-8af6-26b738118478}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Button.cpp">
@@ -128,6 +134,15 @@
     </ClCompile>
     <ClCompile Include="MapTool.cpp">
       <Filter>소스 파일\GraphicsSystem\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Astar.cpp">
+      <Filter>소스 파일\InputSystem\AStar</Filter>
+    </ClCompile>
+    <ClCompile Include="Node.cpp">
+      <Filter>소스 파일\InputSystem\AStar</Filter>
+    </ClCompile>
+    <ClCompile Include="NodeManager.cpp">
+      <Filter>소스 파일\InputSystem\AStar</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -199,6 +214,15 @@
     </ClInclude>
     <ClInclude Include="MapTool.h">
       <Filter>헤더 파일\GraphicsSystem\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Astar.h">
+      <Filter>헤더 파일\InputSystem\AStar</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>헤더 파일\InputSystem\AStar</Filter>
+    </ClInclude>
+    <ClInclude Include="NodeManager.h">
+      <Filter>헤더 파일\InputSystem\AStar</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

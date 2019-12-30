@@ -16,31 +16,47 @@ DoEngine::Command* InputHandler::CommandInput()
 	//왼쪽
 	if (DoEngine::InputManager::get_Instance()->isKeyPress(VK_LEFT))
 	{
-		key_Left = new DoEngine::LeftCommand;
+		if (key_Left == NULL)
+		{
+			key_Left = new DoEngine::LeftCommand;
+		}
 		return key_Left;
 	}
 	//오른쪽
 	else if (DoEngine::InputManager::get_Instance()->isKeyPress(VK_RIGHT))
 	{
-		key_Right = new DoEngine::RightCommand;
+		if (key_Right == NULL)
+		{
+			key_Right = new DoEngine::RightCommand;
+		}
 		return key_Right;
 	}
 	//위쪽
 	else if (DoEngine::InputManager::get_Instance()->isKeyPress(VK_UP))
 	{
-		key_Up = new DoEngine::UpCommand;
+		if (key_Up == NULL)
+		{
+			key_Up = new DoEngine::UpCommand;
+		}
 		return key_Up;
 	}
 	//아래쪽
 	else if (DoEngine::InputManager::get_Instance()->isKeyPress(VK_DOWN))
 	{
-		key_Down = new DoEngine::DownCommand;
+		if (key_Down == NULL)
+		{
+			key_Down = new DoEngine::DownCommand;
+		}
 		return key_Down;
 	}
 	//공격 버튼
 	else if (DoEngine::InputManager::get_Instance()->isKeyPress(BUTTON_X))
 	{
-		Key_Attack = new DoEngine::AttackCommand;
+		if (Key_Attack == NULL)
+		{
+			Key_Attack = new DoEngine::AttackCommand;
+		}
+		
 		return Key_Attack;
 	}
 

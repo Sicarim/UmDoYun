@@ -14,12 +14,16 @@ namespace DoEngine
 	{
 	private:
 		map<string, RECT> m_mapCollider; //일련의 태그를 가진 RECT(콜라이더)의 집합
+		bool Draw_trigger;
 
 	public:
 		ColliderManager(); //생성자
 
 		void Insert_Collider(string _tag, RECT _rect); //콜라이더 넣기
 		RECT Search_Collider(std::string _tag); //콜라이더 검색하기
+		void Release_Collider(string _tag); //콜라이더를 삭제한다
+		void set_DrawCollider(bool _trigger = true); //모든 콜라이더 범위를 그린다.
+		bool get_DrawCollider(); //모든 콜라이더 범위를 그린다.
 
 		~ColliderManager(); //소멸자
 	};

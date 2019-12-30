@@ -43,6 +43,12 @@
     <Filter Include="소스 파일\Factory\Data">
       <UniqueIdentifier>{cb64c99f-1cd7-4cf5-bd36-f6d82db4b435}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\Data\Wall">
+      <UniqueIdentifier>{774c0397-a80e-4343-9097-53b6ba937011}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Data\Wall">
+      <UniqueIdentifier>{072a1015-633e-4557-a5fd-e58cc1bc9e14}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="defines.h">
@@ -81,20 +87,23 @@
     <ClInclude Include="Bullet.h">
       <Filter>헤더 파일\Data</Filter>
     </ClInclude>
-    <ClInclude Include="BrokenWall.h">
-      <Filter>헤더 파일\Data</Filter>
-    </ClInclude>
-    <ClInclude Include="BushWall.h">
-      <Filter>헤더 파일\Data</Filter>
-    </ClInclude>
-    <ClInclude Include="WaterWall.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="StillWall.h">
-      <Filter>헤더 파일\Data</Filter>
-    </ClInclude>
     <ClInclude Include="Map.h">
       <Filter>헤더 파일\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="BrokenWall.h">
+      <Filter>헤더 파일\Data\Wall</Filter>
+    </ClInclude>
+    <ClInclude Include="BushWall.h">
+      <Filter>헤더 파일\Data\Wall</Filter>
+    </ClInclude>
+    <ClInclude Include="StillWall.h">
+      <Filter>헤더 파일\Data\Wall</Filter>
+    </ClInclude>
+    <ClInclude Include="WaterWall.h">
+      <Filter>헤더 파일\Data\Wall</Filter>
+    </ClInclude>
+    <ClInclude Include="AIManager.h">
+      <Filter>헤더 파일\Manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -134,11 +143,23 @@
     <ClCompile Include="Bullet.cpp">
       <Filter>소스 파일\Data</Filter>
     </ClCompile>
-    <ClCompile Include="StillWall.cpp">
-      <Filter>소스 파일\Data</Filter>
-    </ClCompile>
     <ClCompile Include="Map.cpp">
       <Filter>소스 파일\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="StillWall.cpp">
+      <Filter>소스 파일\Data\Wall</Filter>
+    </ClCompile>
+    <ClCompile Include="BrokenWall.cpp">
+      <Filter>소스 파일\Data\Wall</Filter>
+    </ClCompile>
+    <ClCompile Include="BushWall.cpp">
+      <Filter>소스 파일\Data\Wall</Filter>
+    </ClCompile>
+    <ClCompile Include="WaterWall.cpp">
+      <Filter>소스 파일\Data\Wall</Filter>
+    </ClCompile>
+    <ClCompile Include="AIManager.cpp">
+      <Filter>소스 파일\Manager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -58,10 +58,23 @@ namespace DoEngine
 
 	}
 
-	//충돌 여부 검사
-	bool RECT::isCollision(RECT _rcOther)
+	//충돌 여부 검사(밖에서 부딪치는지 검사, 무언가가 부딪칠때)
+	bool RECT::isOutCollision(RECT _rcOther)
 	{
-		if (left < _rcOther.right && top <= _rcOther.bottom && right > _rcOther.left&& bottom > _rcOther.top)
+		if (left <= _rcOther.right && top <= _rcOther.bottom && right >= _rcOther.left && bottom >= _rcOther.top)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	//충돌 여부 검사(안에서 밖으로 부딪치는지 검사, 무언가를 범위 밖으로 나가지 못하게)
+	bool RECT::isInCollision(RECT _rcOther)
+	{
+		if (right < _rcOther.right && bottom <= _rcOther.bottom && left > _rcOther.left && top > _rcOther.top)
 		{
 			return true;
 		}
@@ -74,7 +87,7 @@ namespace DoEngine
 	//마우스 포인트가 안에 있는가 검사
 	bool RECT::isPtin(POINT _ptOther)
 	{
-		if (left < _ptOther.x && right > _ptOther.x&& top < _ptOther.y && bottom > _ptOther.y)
+		if (left < _ptOther.x && right > _ptOther.x && top < _ptOther.y && bottom > _ptOther.y)
 		{
 			return true;
 		}

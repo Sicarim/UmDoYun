@@ -61,8 +61,7 @@ namespace DoEngine
 
 	//다 사용했다면 자료를 리턴
 	//주의!!!!!)Return_Data를 사용하기 전에 반드시 초기화or리셋 후 사용!!!!!!
-
-	/**
+	/*
 		집가서 list가 아닌 다른 구조로 바꿀껏!!!!!!!!
 	*/
 	template <typename T>

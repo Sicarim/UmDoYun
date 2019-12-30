@@ -2,6 +2,7 @@
 #include "SceneManager.h"
 #include "TitleScene.h"
 #include "InputManager.h"
+#include "ColliderManager.h"
 
 //생성자
 GameManager::GameManager()
@@ -12,6 +13,7 @@ GameManager::GameManager()
 //초기화
 void GameManager::Init()
 {
+
 }
 
 //씬 등록
@@ -69,6 +71,74 @@ vector<DoEngine::Object*> GameManager::Make_Enemy()
 	}
 
 	return tmp_vEnemy;
+}
+
+//탄알 방향 저장
+void GameManager::set_BulletDir(int _dir)
+{
+	Bullet_dir = _dir;
+}
+
+//탄알 방향 리턴
+int GameManager::get_BulletDir()
+{
+	return Bullet_dir;
+}
+
+//모든 콜라이더 그리기
+void GameManager::All_Draw()
+{
+	//그림을 끄려면 false, 아니면 True
+	//DoEngine::ColliderManager::get_Instance()->set_DrawCollider(false);
+	DoEngine::ColliderManager::get_Instance()->set_DrawCollider(true);
+}
+
+//파괴되는 블록 갯수 삽입
+void GameManager::set_BrokenCount(int _count)
+{
+	Broken_Count = _count;
+}
+
+//물 블록 갯수 삽입
+void GameManager::set_WaterCount(int _count)
+{
+	Water_Count = _count;
+}
+
+//부쉬 블럭 갯수 삽입
+void GameManager::set_BushCount(int _count)
+{
+	Bush_Count = _count;
+}
+
+//강철 블럭 갯수 삽입
+void GameManager::set_StillCount(int _count)
+{
+	Still_Count = _count;
+}
+
+//파괴되는 블록 리턴
+int GameManager::get_BrokenCount()
+{
+	return Broken_Count;
+}
+
+//물 블록 리턴
+int GameManager::get_WaterCount()
+{
+	return Water_Count;
+}
+
+//부쉬 블럭 리턴
+int GameManager::get_BushCount()
+{
+	return Bush_Count;
+}
+
+//강철 블럭 리턴
+int GameManager::get_StillCount()
+{
+	return Still_Count;
 }
 
 //소멸자

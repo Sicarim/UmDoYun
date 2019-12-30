@@ -16,7 +16,7 @@ DoEngine::Object* UnitFactory::Order_Unit(string _name)
 	//Unit이 정상적으로 만들어 졌다면 오브젝트들이 할일을 적어둔다.
 	if (m_pUnit != NULL)
 	{
-		m_pUnit->Init(300, 100);
+		m_pUnit->Init(0, 0);
 	}
 
 	return m_pUnit;

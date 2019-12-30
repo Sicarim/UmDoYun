@@ -10,9 +10,10 @@ class TitleScene : public DoEngine::Scene
 {
 private:
 	DoEngine::BitMap* m_BlackBG; //아무것도 없는 검은 배경화면
-	vector<DoEngine::Object*> m_vEnemy; //몬스터 저장
+	//vector<DoEngine::Object*> m_vEnemy; //몬스터 저장
 	Player m_pPlayer; //플레이어 객체 선언
 
+	//플레이어를 움직일 커맨드 객체 선언
 	DoEngine::Command* m_Command;
 	InputHandler m_Input;
 

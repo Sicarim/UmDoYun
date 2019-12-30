@@ -24,7 +24,7 @@ namespace DoEngine
 		virtual void Draw(int _x, int _y) = 0; //Draw 함수
 		virtual void Release() = 0; //Release() 함수
 
-		void set_Info(string _tag, string _name);//태그와 이름 입력
+		void set_Info(string _tag);//태그와 이름 입력
 		string get_Name();//태그와 이름 입력
 		string get_Tag();//태그와 이름 입력
 

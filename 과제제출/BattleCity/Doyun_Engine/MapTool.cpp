@@ -1,5 +1,6 @@
 #include "MapTool.h"
 #include "ResourcesManager.h"
+#include "ColliderManager.h"
 
 namespace DoEngine
 {
@@ -28,24 +29,27 @@ namespace DoEngine
 		m_MapPos.assign(m_iWidth, vector<int>(m_iHeight, m_iVal));
 	}
 
-	//기본 격자 무늬 그리기
+	//기본 격자 무늬 그리기(맵간격을 넣어야 한다)
 	void MapTool::Default_MapDraw(int _wSpace, int _hSpace)
 	{
-		//맵툴을 눈에 보여줄 격자 그림
-		m_MapPen = CreatePen(PS_SOLID, 1, RGB(255, 0, 0));
-		m_oldMapPen = (HPEN)SelectObject(DoEngine::ResourcesManager::get_Instance()->get_BackDC(), m_MapPen);
-		brush_Map = (HBRUSH)GetStockObject(NULL_BRUSH);
-		brush_oldMap = (HBRUSH)SelectObject(DoEngine::ResourcesManager::get_Instance()->get_BackDC(), brush_Map);
-
-		for (int i = 0; i < m_iWidth; i++)
+		if (DoEngine::ColliderManager::get_Instance()->get_DrawCollider())
 		{
-			for (int j = 0; j < m_iHeight; j++)
+			//맵툴을 눈에 보여줄 격자 그림
+			m_MapPen = CreatePen(PS_SOLID, 1, RGB(255, 0, 0));
+			m_oldMapPen = (HPEN)SelectObject(DoEngine::ResourcesManager::get_Instance()->get_BackDC(), m_MapPen);
+			brush_Map = (HBRUSH)GetStockObject(NULL_BRUSH);
+			brush_oldMap = (HBRUSH)SelectObject(DoEngine::ResourcesManager::get_Instance()->get_BackDC(), brush_Map);
+
+			for (int i = 0; i < m_iWidth; i++)
 			{
-				Rectangle(DoEngine::ResourcesManager::get_Instance()->get_BackDC(), _wSpace + i * m_wSpace, _hSpace + j * m_hSpace, _wSpace + (i + 1) * m_wSpace, _hSpace + (j + 1) * m_hSpace);
+				for (int j = 0; j < m_iHeight; j++)
+				{
+					Rectangle(DoEngine::ResourcesManager::get_Instance()->get_BackDC(), _wSpace + i * m_wSpace, _hSpace + j * m_hSpace, _wSpace + (i + 1) * m_wSpace, _hSpace + (j + 1) * m_hSpace);
+				}
 			}
+			DeleteObject(m_oldMapPen);
+			DeleteObject(brush_oldMap);
 		}
-		DeleteObject(m_oldMapPen);
-		DeleteObject(brush_oldMap);
 	}
 	
 	//맵 특정 위치 검사
@@ -63,13 +67,13 @@ namespace DoEngine
 	//맵툴 전체 크기(가로)
 	int MapTool::get_wMapSize()
 	{
-		return m_wSpace;
+		return m_iWidth * m_wSpace;
 	}
 
 	//맵툴 전체 크기(세로)
 	int MapTool::get_hMapSize()
 	{
-		return m_hSpace;
+		return m_iHeight * m_hSpace;
 	}
 
 	//소멸자

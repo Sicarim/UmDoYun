@@ -11,10 +11,10 @@ namespace DoEngine
 	}
 
 	//태그와 이름 입력
-	void Object::set_Info(string _tag, string _name)
+	void Object::set_Info(string _tag)
 	{
 		m_sTag = _tag;
-		m_sName = _name;
+		//m_sName = _name;
 	}
 
 	//Tag 리턴
