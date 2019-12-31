@@ -32,9 +32,9 @@ namespace DoEngine
 	}
 
 	//노드의 부모, 즉 자신과 이어지는 전 노드
-	void Node::set_Parent(Node _parent)
+	void Node::set_Parent(Node* _parent)
 	{
-		*m_Parent = _parent;
+		m_Parent = _parent;
 	}
 
 	//노트 번호 리턴
@@ -62,15 +62,15 @@ namespace DoEngine
 	}
 
 	//부모 노드 리턴
-	Node Node::get_Parent()
+	Node* Node::get_Parent()
 	{
-		return *m_Parent;
+		return m_Parent;
 	}
 
 	//노드가 같은가
-	bool Node::get_equals(Node _node)
+	bool Node::get_equals(Node* _node)
 	{
-		return pos_x == _node.get_NodeX() && pos_y == _node.get_NodeY();
+		return pos_x == _node->get_NodeX() && pos_y == _node->get_NodeY();
 	}
 
 	//소멸자

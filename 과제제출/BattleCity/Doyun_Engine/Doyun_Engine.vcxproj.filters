@@ -67,11 +67,11 @@
     <Filter Include="소스 파일\Object\Collider">
       <UniqueIdentifier>{53294af3-f6b6-4b90-b3cf-444ff19292ef}</UniqueIdentifier>
     </Filter>
-    <Filter Include="헤더 파일\InputSystem\AStar">
-      <UniqueIdentifier>{42d54d6f-c016-4ecf-83b8-0bd622579fae}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\InputSystem\AStar">
       <UniqueIdentifier>{e56fa2c7-038a-4098-8af6-26b738118478}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\InputSystem\Astar">
+      <UniqueIdentifier>{42d54d6f-c016-4ecf-83b8-0bd622579fae}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -216,13 +216,13 @@
       <Filter>헤더 파일\GraphicsSystem\UI</Filter>
     </ClInclude>
     <ClInclude Include="Astar.h">
-      <Filter>헤더 파일\InputSystem\AStar</Filter>
+      <Filter>헤더 파일\InputSystem\Astar</Filter>
     </ClInclude>
     <ClInclude Include="Node.h">
-      <Filter>헤더 파일\InputSystem\AStar</Filter>
+      <Filter>헤더 파일\InputSystem\Astar</Filter>
     </ClInclude>
     <ClInclude Include="NodeManager.h">
-      <Filter>헤더 파일\InputSystem\AStar</Filter>
+      <Filter>헤더 파일\InputSystem\Astar</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

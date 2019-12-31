@@ -1,57 +1,6 @@
 ﻿  Astar.cpp
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstddef(123,1): error C2678: 이항 '<': 왼쪽 피연산자로 'const _Ty' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstddef(123,1): error C2678:         with
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstddef(123,1): error C2678:         [
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstddef(123,1): error C2678:             _Ty=DoEngine::Node
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstddef(123,1): error C2678:         ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\system_error(264,24): message : 'bool std::operator <(const std::error_condition &,const std::error_condition &) noexcept'일 수 있습니다.
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\system_error(259,24): message : 또는       'bool std::operator <(const std::error_code &,const std::error_code &) noexcept'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstddef(123,1): message : 인수 목록 '(const _Ty, const _Ty)'을(를) 일치시키는 동안
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstddef(123,1): message :         with
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstddef(123,1): message :         [
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstddef(123,1): message :             _Ty=DoEngine::Node
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstddef(123,1): message :         ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstddef(122): message : 클래스 템플릿 멤버 함수 'bool std::less<_Kty>::operator ()(const _Ty &,const _Ty &) const'을(를) 컴파일하는 중입니다.
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstddef(122): message :         with
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstddef(122): message :         [
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstddef(122): message :             _Kty=DoEngine::Node,
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstddef(122): message :             _Ty=DoEngine::Node
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstddef(122): message :         ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xhash(96): message : 컴파일되는 함수 템플릿 인스턴스화 'bool std::less<_Kty>::operator ()(const _Ty &,const _Ty &) const'에 대한 참조를 확인하세요.
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xhash(96): message :         with
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xhash(96): message :         [
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xhash(96): message :             _Kty=DoEngine::Node,
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xhash(96): message :             _Ty=DoEngine::Node
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xhash(96): message :         ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xhash(99): message : 컴파일되는 클래스 템플릿 인스턴스화 'std::less<_Kty>'에 대한 참조를 확인하세요.
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xhash(99): message :         with
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xhash(99): message :         [
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xhash(99): message :             _Kty=DoEngine::Node
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xhash(99): message :         ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\hash_map(38): message : 컴파일되는 클래스 템플릿 인스턴스화 'stdext::hash_compare<_Kty,std::less<_Kty>>'에 대한 참조를 확인하세요.
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\hash_map(38): message :         with
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\hash_map(38): message :         [
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\hash_map(38): message :             _Kty=DoEngine::Node
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\hash_map(38): message :         ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xhash(343): message : 컴파일되는 클래스 템플릿 인스턴스화 'stdext::_Hmap_traits<_Kty,_Ty,_Tr,_Alloc,false>'에 대한 참조를 확인하세요.
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xhash(343): message :         with
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xhash(343): message :         [
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xhash(343): message :             _Kty=DoEngine::Node,
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xhash(343): message :             _Ty=int,
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xhash(343): message :             _Tr=stdext::hash_compare<DoEngine::Node,std::less<DoEngine::Node>>,
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xhash(343): message :             _Alloc=std::allocator<std::pair<const DoEngine::Node,int>>
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xhash(343): message :         ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\hash_map(112): message : 컴파일되는 클래스 템플릿 인스턴스화 'std::_Hash<stdext::_Hmap_traits<_Kty,_Ty,_Tr,_Alloc,false>>'에 대한 참조를 확인하세요.
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\hash_map(112): message :         with
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\hash_map(112): message :         [
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\hash_map(112): message :             _Kty=DoEngine::Node,
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\hash_map(112): message :             _Ty=int,
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\hash_map(112): message :             _Tr=stdext::hash_compare<DoEngine::Node,std::less<DoEngine::Node>>,
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\hash_map(112): message :             _Alloc=std::allocator<std::pair<const DoEngine::Node,int>>
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\hash_map(112): message :         ]
-D:\Atence\visual\BattleCity\Doyun_Engine\Astar.h(13): message : 컴파일되는 클래스 템플릿 인스턴스화 'stdext::hash_map<DoEngine::Node,int,stdext::hash_compare<_Kty,std::less<_Kty>>,std::allocator<std::pair<const _Kty,_Ty>>>'에 대한 참조를 확인하세요.
-D:\Atence\visual\BattleCity\Doyun_Engine\Astar.h(13): message :         with
-D:\Atence\visual\BattleCity\Doyun_Engine\Astar.h(13): message :         [
-D:\Atence\visual\BattleCity\Doyun_Engine\Astar.h(13): message :             _Kty=DoEngine::Node,
-D:\Atence\visual\BattleCity\Doyun_Engine\Astar.h(13): message :             _Ty=int
-D:\Atence\visual\BattleCity\Doyun_Engine\Astar.h(13): message :         ]
+  NodeManager.cpp
+D:\Atence\visual\BattleCity\Doyun_Engine\NodeManager.cpp(25,21): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  코드를 생성하고 있습니다...
+D:\Atence\visual\BattleCity\Doyun_Engine\NodeManager.cpp(29,22): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  Doyun_Engine.vcxproj -> D:\Atence\visual\BattleCity\Debug\Doyun_Engine.lib
