@@ -16,7 +16,7 @@ protected:
 public:
 	UnitFactory(); //생성자
 	
-	DoEngine::Object* Order_Unit(string _name); //입맛대로 만들기
+	DoEngine::Object* Order_Unit(string _name, int _x, int _y); //입맛대로 만들기
 	
 	~UnitFactory(); //소멸자
 };

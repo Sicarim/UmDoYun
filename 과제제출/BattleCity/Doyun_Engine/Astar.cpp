@@ -1,4 +1,6 @@
 #include "AStar.h"
+#include "NodeManager.h"
+
 
 namespace DoEngine
 {
@@ -8,11 +10,30 @@ namespace DoEngine
 		DistanceBetweenNodes = 1;
 	}
 
+	//가장 빠른길 시작
+	vector<Node*> AStar::Serch_FastWay(int _startx, int _starty, int _goalx, int _goaly)
+	{
+		DoEngine::Node* start;
+		DoEngine::Node* goal;
+
+		start = DoEngine::NodeManager::get_Instance()->get_Node(_startx, _starty);
+		goal = DoEngine::NodeManager::get_Instance()->get_Node(_goalx, _goaly);
+
+		Serch(start, goal);
+
+		return Fast_Way;
+	}
+
 	//가장 짧은 길 찾기
 	void AStar::Serch(Node* _start, Node* _end)
 	{
+		//각종 초기화 함수들
 		Open_List.clear(); //Open_List를 비운다.
 		Closed_List.clear(); //Closed_List를 비운다.
+		gMaps.clear();
+		fMaps.clear();
+		Fast_Way.clear();
+		NodeManager::get_Instance()->Reset_Parents(); //노드들의 부모를 비운다
 
 		gMaps.insert(hash_map<Node*, int>::value_type(_start, 0)); //HashMap에 시작점을 0으로 삽입
 		Open_List.push_back(_start); //Open_List에 시작점을 삽입.
@@ -53,6 +74,7 @@ namespace DoEngine
 				//Open_List에 Neighbor이 있는지 검사
 				Open_iter = find(Open_List.begin(), Open_List.end(), Neighbor);
 
+				//Neighbor이 없다면
 				if (Closed_iter != Closed_List.end())
 				{
 					if (gMaps_find->second == NULL)
@@ -97,13 +119,14 @@ namespace DoEngine
 	//가장 짧은 길을 출력
 	void AStar::PrintPath(Node* _node)
 	{
-		cout << _node->get_NodeData() << endl;
+		Fast_Way.push_back(_node); //가장 빠른 길을 목록에 담는다
 
 		while (_node->get_Parent() != NULL)
 		{
 			_node = _node->get_Parent();
-			cout << _node->get_NodeData() << endl; //경로를 출력
+			Fast_Way.push_back(_node); //가장 빠른 길을 목록에 담는다
 		}
+		reverse(Fast_Way.begin(), Fast_Way.end());
 	}
 
 	//큐를 비운다.

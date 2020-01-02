@@ -13,9 +13,6 @@ Map::Map()
 //√ ±‚»≠(override)
 void Map::Init(int _x, int _y)
 {
-	int wCount = 1;
-	int hCount = 2;
-
 	m_sTag = "BackGround";
 	m_wSize = _x;
 	m_hSize = _y;

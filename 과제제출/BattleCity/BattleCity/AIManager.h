@@ -4,12 +4,16 @@
 #include "InputHandler.h"
 #include "Node.h"
 #include "defines.h"
+#include "Tank.h"
 
 //적을 관리하는 AIManager, 적의 행동을 관할한다.
 class AIManager : public Singleton<AIManager>
 {
 private:
 	vector<DoEngine::Object*> m_vEnemy; //몬스터 저장
+	vector<DoEngine::Node*> m_vFast_Way;
+	float ReTime;
+	int Count;
 
 	//적을 움직을 커맨드 객체 선언
 	DoEngine::Command* tmp_Command;

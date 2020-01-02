@@ -12,6 +12,16 @@ private:
 	vector<DoEngine::Object*> tmp_vEnemy; //적 vector
 	DoEngine::Object* tmp_Player; //Player Object
 
+
+
+
+
+	int test_x;
+	int test_y;
+
+	int Real_x;
+	int Real_y;
+
 public:
 	GameManager(); //생성자
 
@@ -32,6 +42,18 @@ public:
 	int get_WaterCount(); //물 블록 리턴
 	int get_BushCount(); //부쉬 블럭 리턴
 	int get_StillCount(); //강철 블럭 리턴
+
+
+
+	//test함수
+	void set_CurrentX(int _x, int _rx);
+	void set_CurrentY(int _y, int _ry);
+
+	int get_CurrentX();
+	int get_CurrentY();
+
+	int get_RealX();
+	int get_RealY();
 
 	~GameManager(); //소멸자
 };

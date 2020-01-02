@@ -10,12 +10,14 @@ AIManager::AIManager()
 //길찾기 초기화
 void AIManager::Init()
 {
+	Count = 0;
+	ReTime = 0.0f;
 	m_vEnemy.clear();
-	m_vEnemy.reserve(MAX_ENEMY);
+	m_vEnemy.reserve(2);
 	Enemy_behavior.reserve(5);
 	//적 만들기
 	m_vEnemy = GameManager::get_Instance()->Make_Enemy();
-	
+
 	//적 행동 모음집 만들기
 	tmp_Command = new DoEngine::UpCommand;
 	Enemy_behavior.push_back(tmp_Command);
@@ -31,31 +33,48 @@ void AIManager::Init()
 
 	tmp_Command = new DoEngine::AttackCommand;
 	Enemy_behavior.push_back(tmp_Command);
-
 }
 
 //Update함수
 void AIManager::Update(float _fETime)
 {
-	m_vEnemy[1]->Update(_fETime);
+	ReTime += _fETime;
+
+	if (ReTime > 3.0f)
+	{
+		ReTime = 0.0f;
+		if (Count < MAX_ENEMY)
+		{
+			Count++;
+		}
+	}
+
+	for(int i = 0; i < Count; i++)
+	{
+		m_vEnemy[i]->Update(_fETime);
+	}
 }
 
 //키입력
 bool AIManager::Input()
 {
-	m_Command = Enemy_behavior[LOOK_RIGHT];
+	//m_Command = Enemy_behavior[LOOK_DOWN];
 
-	if (m_Command)
+	/*if (m_Command)
 	{
 		m_Command->excute(*m_vEnemy[1]);
-	}
+	}*/
+
 	return false;
 }
 
 //Draw 함수
 void AIManager::Draw()
 {
-	m_vEnemy[1]->Draw();
+	for (int i = 0; i < Count; i++)
+	{
+		m_vEnemy[i]->Draw();
+	}
 }
 
 

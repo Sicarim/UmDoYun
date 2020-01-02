@@ -8,15 +8,14 @@ UnitFactory::UnitFactory()
 }
 
 //입맛대로 캐릭터 만들기
-DoEngine::Object* UnitFactory::Order_Unit(string _name)
+DoEngine::Object* UnitFactory::Order_Unit(string _name, int _x, int _y)
 {
 	//해당 이름으로 유닛 생성
 	Create_Unit(_name);
-
 	//Unit이 정상적으로 만들어 졌다면 오브젝트들이 할일을 적어둔다.
 	if (m_pUnit != NULL)
 	{
-		m_pUnit->Init(0, 0);
+		m_pUnit->Init(_x, _y);
 	}
 
 	return m_pUnit;

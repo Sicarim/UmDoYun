@@ -8,6 +8,7 @@ InputHandler::InputHandler()
 	key_Right = NULL;
 	key_Up = NULL;
 	key_Down = NULL;
+	Key_Attack = NULL;
 }
 
 //명령을 실행할 메서드들

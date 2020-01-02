@@ -4,6 +4,7 @@
 
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdParam, int nCmdShow)
 {
+	srand(time(NULL));
 	DoEngine::EngineMain engine("BattleCity", 1024, 768);
 	
 	//게임 초기회

@@ -9,6 +9,14 @@
 class TitleScene : public DoEngine::Scene
 {
 private:
+	TCHAR buf[255];
+	TCHAR buf2[255];
+
+	TCHAR buf3[255];
+	TCHAR buf4[255];
+
+
+
 	DoEngine::BitMap* m_BlackBG; //아무것도 없는 검은 배경화면
 	//vector<DoEngine::Object*> m_vEnemy; //몬스터 저장
 	Player m_pPlayer; //플레이어 객체 선언
@@ -18,6 +26,7 @@ private:
 	InputHandler m_Input;
 
 	Map m_Map;
+
 public:
 	TitleScene(); //생성자
 

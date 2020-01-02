@@ -5,7 +5,7 @@
 #define BUTTON_X 0x58 //다시하기버튼
 
 //Map Info
-#define W_COUNT 12
+#define W_COUNT 13
 #define H_COUNT 15
 #define W_SPACE 100
 #define H_SPACE 20
@@ -28,6 +28,7 @@ enum SELECT_WALL
 #define MAX_ENEMY 20 //몬스터 갯수
 #define ENEMY_KIND 2
 #define GENERATE_ENEMY 80
+//#define UNIT_SPEED 50.0f
 #define UNIT_SPEED 130.0f
 #define FIRE_SPEED 380
 #define COL_SIZE 1.7f

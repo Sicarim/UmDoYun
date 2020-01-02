@@ -73,6 +73,18 @@ namespace DoEngine
 		return pos_x == _node->get_NodeX() && pos_y == _node->get_NodeY();
 	}
 
+	//노드 찾기
+	bool Node::get_NodeSerch(int _x, int _y)
+	{
+		return pos_x == _x && pos_y == _y;
+	}
+
+	//노드의 부모 비우기
+	void Node::Release_NodeParent()
+	{
+		m_Parent = NULL;
+	}
+
 	//소멸자
 	Node::~Node()
 	{

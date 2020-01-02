@@ -73,6 +73,18 @@
     <Filter Include="헤더 파일\InputSystem\Astar">
       <UniqueIdentifier>{42d54d6f-c016-4ecf-83b8-0bd622579fae}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\InputSystem\FSM">
+      <UniqueIdentifier>{7b2a38f4-fe88-4097-8904-a81c1645db21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\InputSystem\FSM">
+      <UniqueIdentifier>{a3e5df14-85ae-45c4-a48b-224c39943357}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\InputSystem\FSM\State">
+      <UniqueIdentifier>{4b4ea338-f9ea-424b-9648-f3068324c36e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\InputSystem\FSM\State">
+      <UniqueIdentifier>{deefc090-7c05-4a68-a0e7-6c198923e331}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Button.cpp">
@@ -223,6 +235,15 @@
     </ClInclude>
     <ClInclude Include="NodeManager.h">
       <Filter>헤더 파일\InputSystem\Astar</Filter>
+    </ClInclude>
+    <ClInclude Include="Stading.h">
+      <Filter>헤더 파일\InputSystem\FSM\State</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>헤더 파일\InputSystem\FSM\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Move.h">
+      <Filter>헤더 파일\InputSystem\FSM\State</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

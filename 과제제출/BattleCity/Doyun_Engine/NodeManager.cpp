@@ -1,4 +1,5 @@
 #include "NodeManager.h"
+#include "MapTool.h"
 
 namespace DoEngine
 {
@@ -41,13 +42,37 @@ namespace DoEngine
 						{
 							if (MinusValX != MinusValY)
 							{
-								m_vNode[i]->set_Neighbor(m_vNode[j]);
-								Neighbor_Count++;
+								if (MapTool::get_Instance()->get_MapInfo(m_vNode[j]->get_NodeX(), m_vNode[j]->get_NodeY()) == 0)
+								{
+									m_vNode[i]->set_Neighbor(m_vNode[j]);
+									Neighbor_Count++;
+								}
 							}
 						}
 					}
 				}
 			}
+		}
+	}
+
+	//노드를 리턴 (인자값으로 좌표값을 넣어줘야함)
+	Node* NodeManager::get_Node(int _x, int _y)
+	{
+		for (int i = 0; i < m_vNode.size(); i++)
+		{
+			if (m_vNode[i]->get_NodeSerch(_x, _y))
+			{
+				return m_vNode[i];
+			}
+		}
+	}
+
+	//노드들의 부모를 모두 삭제
+	void NodeManager::Reset_Parents()
+	{
+		for (int i = 0; i < m_vNode.size(); i++)
+		{
+			m_vNode[i]->Release_NodeParent();
 		}
 	}
 

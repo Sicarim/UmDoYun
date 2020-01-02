@@ -27,6 +27,9 @@ namespace DoEngine
 		Node* get_Parent(); //부모 노드 리턴
 
 		bool get_equals(Node* _node); //노드가 같은가
+		bool get_NodeSerch(int _x, int _y); //노드 찾기
+
+		void Release_NodeParent(); //노드의 부모 비우기
 		
 		~Node(); //소멸자
 	};

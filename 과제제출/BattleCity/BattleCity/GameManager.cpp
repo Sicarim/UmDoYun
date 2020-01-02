@@ -7,7 +7,7 @@
 //생성자
 GameManager::GameManager()
 {
-	srand(time(NULL));
+	
 }
 
 //초기화
@@ -53,15 +53,17 @@ vector<DoEngine::Object*> GameManager::Make_Enemy()
 {
 	//임시 변수
 	int tmp_Num = 0;
+	int Random = 0;
 	DoEngine::Object* tmp_Object = NULL;
 
 	for (int i = 0; i < MAX_ENEMY; i++)
 	{
 		tmp_Num = rand() % 100;
+		Random = rand() % 3;
 
 		if (tmp_Num <= 100)
 		{
-			tmp_Object = Enemy::get_Instance()->Order_Unit("Tank");
+			tmp_Object = Enemy::get_Instance()->Order_Unit("Tank", Random * 6, 0);
 		}
 		/*else if (tmp_Num > GENERATE_ENEMY && tmp_Num < GENERATE_ENEMY + 20)
 		{
@@ -139,6 +141,40 @@ int GameManager::get_BushCount()
 int GameManager::get_StillCount()
 {
 	return Still_Count;
+}
+
+
+void GameManager::set_CurrentX(int _x, int _rx)
+{
+	test_x = _x;
+	Real_x = _rx;
+}
+
+void GameManager::set_CurrentY(int _y, int _ry)
+{
+	test_y = _y;
+	Real_y = _ry;
+}
+
+int GameManager::get_CurrentX()
+{
+	return test_x;
+}
+
+int GameManager::get_CurrentY()
+{
+	return test_y;
+}
+
+
+int GameManager::get_RealX()
+{
+	return Real_x;
+}
+
+int GameManager::get_RealY()
+{
+	return Real_y;
 }
 
 //소멸자
