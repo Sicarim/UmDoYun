@@ -1,2 +1,13 @@
-﻿  AIManager.cpp
+﻿  Map.cpp
+D:\Atence\visual\BattleCity\BattleCity\Map.cpp(112,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+D:\Atence\visual\BattleCity\BattleCity\Map.cpp(126,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+D:\Atence\visual\BattleCity\BattleCity\Map.cpp(131,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+D:\Atence\visual\BattleCity\BattleCity\Map.cpp(136,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  PlagWall.cpp
+D:\Atence\visual\BattleCity\BattleCity\Map.cpp(141,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+D:\Atence\visual\BattleCity\BattleCity\PlagWall.cpp(28,37): warning C4244: '=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\Atence\visual\BattleCity\BattleCity\PlagWall.cpp(29,38): warning C4244: '=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\Atence\visual\BattleCity\BattleCity\PlagWall.cpp(35,153): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  코드를 생성하고 있습니다...
+D:\Atence\visual\BattleCity\BattleCity\PlagWall.cpp(35,112): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   BattleCity.vcxproj -> D:\Atence\visual\BattleCity\Debug\BattleCity.exe

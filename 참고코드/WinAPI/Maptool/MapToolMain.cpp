@@ -26,12 +26,10 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmd
 	RegisterClass(&WndClass);
 
 	int			nWidth, nHeight;//윈도우 크기 
-	nWidth = 1024 + GetSystemMetrics(SM_CXFRAME) * 2;
-	nHeight = 768 + GetSystemMetrics(SM_CYFRAME) * 2 +
-		GetSystemMetrics(SM_CYCAPTION) + GetSystemMetrics(SM_CYMENU);
+	nWidth = 1024 + GetSystemMetrics(SM_CXFRAME) * 2; 
+	nHeight = 768 + GetSystemMetrics(SM_CYFRAME) * 2 + GetSystemMetrics(SM_CYCAPTION) + GetSystemMetrics(SM_CYMENU);
 
-	hWnd = CreateWindow(szClassName, szClassName, WS_OVERLAPPEDWINDOW, 0, 0,
-		nWidth, nHeight, NULL, (HMENU)NULL, hInstance, NULL);
+	hWnd = CreateWindow(szClassName, szClassName, WS_OVERLAPPEDWINDOW, 0, 0, nWidth, nHeight, NULL, (HMENU)NULL, hInstance, NULL);
 	ShowWindow(hWnd, nCmdShow);
 
 	while (GetMessage(&Message, NULL, 0, 0))
@@ -46,7 +44,10 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmd
 #define WIDTH 33
 #define HEIGHT 25
 
-int g_map[13][13];
+int Width = 13;
+int Height = 15;
+
+int g_map[13][15];
 int cur_select = 0;
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
@@ -57,15 +58,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 	switch (iMessage)
 	{
 	case WM_CREATE:
-		CreateWindow("button", "1", WS_CHILD | WS_VISIBLE | BS_AUTORADIOBUTTON | WS_GROUP, 800, 0 , 100, 30 , hWnd, (HMENU)0, g_hInst, NULL);
-		CreateWindow("button", "2", WS_CHILD | WS_VISIBLE | BS_AUTORADIOBUTTON, 800, 40, 100, 30, hWnd, (HMENU)1, g_hInst, NULL);
-		CreateWindow("button", "3", WS_CHILD | WS_VISIBLE | BS_AUTORADIOBUTTON, 800, 80, 100, 30, hWnd, (HMENU)2, g_hInst, NULL);
+		CreateWindow("button", "0", WS_CHILD | WS_VISIBLE | BS_AUTORADIOBUTTON | WS_GROUP, 800, 0 , 100, 30 , hWnd, (HMENU)0, g_hInst, NULL);
+		CreateWindow("button", "1", WS_CHILD | WS_VISIBLE | BS_AUTORADIOBUTTON, 800, 40, 100, 30, hWnd, (HMENU)1, g_hInst, NULL);
+		CreateWindow("button", "2", WS_CHILD | WS_VISIBLE | BS_AUTORADIOBUTTON, 800, 80, 100, 30, hWnd, (HMENU)2, g_hInst, NULL);
+		CreateWindow("button", "3", WS_CHILD | WS_VISIBLE | BS_AUTORADIOBUTTON, 800, 120, 100, 30, hWnd, (HMENU)3, g_hInst, NULL);
 
 		CreateWindow("button", "Save", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 800, 400, 100, 30, hWnd, (HMENU)100, g_hInst, NULL);
 		CreateWindow("button", "Load", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 800, 450, 100, 30, hWnd, (HMENU)101, g_hInst, NULL);
 		CreateWindow("button", "LoadJson", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 800, 300, 100, 30, hWnd, (HMENU)102, g_hInst, NULL);
 
-		memset(g_map, 0, sizeof(int) * 13 * 13);
+		memset(g_map, 0, sizeof(int) * Width * Height);
 		return 0;
 	case WM_DESTROY:
 		KillTimer(hWnd, 1);
@@ -73,23 +75,149 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 		return 0;
 	case WM_PAINT:
 		hdc = BeginPaint(hWnd, &ps);
-		for (int i = 0; i < 13; i++)
+		
+
+
+
+
+
+
+
+
+
+		//test용
+		//for (int i = 2; i <= 5; i++)
+		//{
+		//	g_map[1][i] = 1;
+		//}
+		//for (int i = 2; i <= 5; i++)
+		//{
+		//	g_map[3][i] = 1;
+		//}
+		//for (int i = 2; i <= 5; i++)
+		//{
+		//	g_map[9][i] = 1;
+		//}
+		//for (int i = 2; i <= 5; i++)
+		//{
+		//	g_map[11][i] = 1;
+		//}
+
+		//for (int i = 9; i <= 12; i++)
+		//{
+		//	g_map[1][i] = 1;
+		//}
+		//for (int i = 9; i <= 12; i++)
+		//{
+		//	g_map[3][i] = 1;
+		//}
+		//for (int i = 9; i <= 12; i++)
+		//{
+		//	g_map[9][i] = 1;
+		//}
+		//for (int i = 9; i <= 12; i++)
+		//{
+		//	g_map[11][i] = 1;
+		//}
+
+		g_map[0][7] = 3;
+		g_map[1][7] = 3;
+		g_map[2][7] = 3;
+		g_map[3][7] = 3;
+
+		g_map[4][6] = 4;
+		g_map[3][6] = 4;
+		g_map[4][7] = 4;
+		g_map[3][8] = 4;
+		g_map[4][8] = 4;
+
+		g_map[9][7] = 3;
+		g_map[10][7] = 3;
+		g_map[11][7] = 3;
+		g_map[12][7] = 3;
+
+		g_map[8][6] = 4;
+		g_map[9][6] = 4;
+		g_map[8][7] = 4;
+		g_map[9][8] = 4;
+		g_map[8][8] = 4;
+
+		//g_map[1][7] = 1;
+		//g_map[11][7] = 1;
+
+		//g_map[5][6] = 1;
+		//g_map[7][6] = 1;
+
+		//g_map[6][1] = 1;
+		//g_map[6][2] = 1;
+		//g_map[6][3] = 1;
+		//g_map[5][2] = 1;
+		//g_map[7][2] = 1;
+
+		//g_map[6][8] = 1;
+		//g_map[6][9] = 1;
+		//g_map[6][10] = 1;
+		//g_map[5][9] = 1;
+		//g_map[7][9] = 1;
+
+
+		//g_map[5][13] = 1;
+		//g_map[6][13] = 1;
+		//g_map[7][13] = 1;
+		//g_map[5][14] = 1;
+		//g_map[7][14] = 1;
+
+
+
+
+
+		for (int i = 0; i < Width; i++)
 		{
-			for (int j = 0; j < 13; j++)
+			for (int j = 0; j < Height; j++)
 			{
 				if (g_map[i][j] == 0)
-					//Rectangle(hdc, j * WIDTH, i * HEIGHT, (j + 1) * WIDTH, (i + 1) * HEIGHT);
-					Ellipse(hdc, j * WIDTH, i * HEIGHT, (j + 1) * WIDTH, (i + 1) * HEIGHT);
-				else if(g_map[i][j] == 1)
-					Ellipse(hdc, j * WIDTH, i * HEIGHT, (j + 1) * WIDTH, (i + 1) * HEIGHT);
-				else if (g_map[i][j] == 2)
 				{
-					HBRUSH hBlack = (HBRUSH)GetStockObject(BLACK_BRUSH);
-					HBRUSH old = (HBRUSH)SelectObject(hdc, hBlack);
-					Ellipse(hdc, j * WIDTH, i * HEIGHT, (j + 1) * WIDTH, (i + 1) * HEIGHT);
-					SelectObject(hdc, old);
+					HPEN m_Collider = CreatePen(PS_SOLID, 2, RGB(0, 0, 0));
+					HPEN m_oldCollider = (HPEN)SelectObject(hdc, m_Collider);
+					Rectangle(hdc, i * WIDTH, j * HEIGHT, (i + 1) * WIDTH, (j + 1) * HEIGHT);
+				}
+				else if (g_map[i][j] == 1)
+				{
+					HPEN m_Collider = CreatePen(PS_SOLID, 2, RGB(0, 0, 0));
+					HPEN m_oldCollider = (HPEN)SelectObject(hdc, m_Collider);
+					Ellipse(hdc, i * WIDTH, j * HEIGHT, (i + 1) * WIDTH, (j + 1) * HEIGHT);
 				}
 					
+				else if (g_map[i][j] == 2)
+				{
+					HPEN m_Collider = CreatePen(PS_SOLID, 2, RGB(0, 0, 0));
+					HPEN m_oldCollider = (HPEN)SelectObject(hdc, m_Collider);
+					HBRUSH hBlack = (HBRUSH)GetStockObject(BLACK_BRUSH);
+					HBRUSH old = (HBRUSH)SelectObject(hdc, hBlack);
+					Ellipse(hdc, i * WIDTH, j * HEIGHT, (i + 1) * WIDTH, (j + 1) * HEIGHT);
+					SelectObject(hdc, old);
+				}
+
+				else if (g_map[i][j] == 3)
+				{
+					HPEN m_Collider = CreatePen(PS_SOLID, 2, RGB(0, 0, 255));
+					HPEN m_oldCollider = (HPEN)SelectObject(hdc, m_Collider);
+					HBRUSH hBlack = (HBRUSH)GetStockObject(BLACK_BRUSH);
+					HBRUSH old = (HBRUSH)SelectObject(hdc, hBlack);
+					Ellipse(hdc, i * WIDTH, j * HEIGHT, (i + 1) * WIDTH, (j + 1) * HEIGHT);
+					SelectObject(hdc, old);
+					DeleteObject(m_oldCollider);
+				}
+				else if (g_map[i][j] == 4)
+				{
+					HPEN m_Collider = CreatePen(PS_SOLID, 2, RGB(0, 255, 0));
+					HPEN m_oldCollider = (HPEN)SelectObject(hdc, m_Collider);
+					HBRUSH hBlack = (HBRUSH)GetStockObject(BLACK_BRUSH);
+					HBRUSH old = (HBRUSH)SelectObject(hdc, hBlack);
+					Ellipse(hdc, i * WIDTH, j * HEIGHT, (i + 1) * WIDTH, (j + 1) * HEIGHT);
+					SelectObject(hdc, old);
+					DeleteObject(m_oldCollider);
+				}
 			}
 		}
 		EndPaint(hWnd, &ps);
@@ -125,9 +253,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 				}
 
 				HANDLE hFile = CreateFile(OFN.lpstrFile, GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, 0);
-				for (int i = 0; i < 13; i++)
+				for (int i = 0; i < Width; i++)
 				{
-					for (int j = 0; j < 13; j++)
+					for (int j = 0; j < Height; j++)
 					{
 						DWORD writeB;
 						WriteFile(hFile, &g_map[i][j], sizeof(int), &writeB, NULL);
@@ -139,10 +267,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 			break;
 		case 101://load
 			{
-				HANDLE hFile = CreateFile("ds.txt", GENERIC_READ, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, 0);
-				for (int i = 0; i < 13; i++)
+				HANDLE hFile = CreateFile("Stage1.txt", GENERIC_READ, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, 0);
+				for (int i = 0; i < Width; i++)
 				{
-					for (int j = 0; j < 13; j++)
+					for (int j = 0; j < Height; j++)
 					{
 						DWORD readB;
 						ReadFile(hFile, &g_map[i][j], sizeof(int), &readB, NULL);
@@ -161,9 +289,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 			pt.x = LOWORD(lParam);
 			pt.y = HIWORD(lParam);
 
-			if ((pt.x < WIDTH * 13 && pt.x > 0) && (pt.y < HEIGHT * 13 && pt.y > 0))
+			if ((pt.x < WIDTH * Width && pt.x > 0) && (pt.y < HEIGHT * Height && pt.y > 0))
 			{
-				g_map[pt.y / HEIGHT][pt.x / WIDTH] = cur_select;
+				g_map[pt.x / WIDTH][pt.y / HEIGHT] = cur_select;
 				InvalidateRect(hWnd, NULL, false);
 			}
 		}

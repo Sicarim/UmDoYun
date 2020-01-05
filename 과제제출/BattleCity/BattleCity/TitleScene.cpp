@@ -2,32 +2,43 @@
 #include "GameManager.h"
 #include "ResourcesManager.h"
 #include "InputManager.h"
-#include "AIManager.h"
-#include "MapTool.h"
 #include "UIManager.h"
+#include "SceneManager.h"
+#include "MapTool.h"
 
 //»ý¼ºÀÚ
 TitleScene::TitleScene()
 {
-
+	
 }
 
 //ÃÊ±âÈ­(override)
 void TitleScene::Init(HWND hWnd)
 {
-	m_Command = NULL;
+	Select_x = 380;
+	Select_y = 330;
+	Select_Count = 3;
+
 	//°ËÁ¤»ö ¹è°æÈ­¸é ¸¸µé±â
 	m_BlackBG = DoEngine::ResourcesManager::get_Instance()->get_BackGround("BlackBG", 1024, 768);
 	//Å° µî·Ï
 	GameManager::get_Instance()->Key_Init();
-	//ÄÝ¶óÀÌ´õ ¹üÀ§ ±×¸®±â
-	GameManager::get_Instance()->All_Draw();
-	//¸Ê ¸¸µé±â
-	m_Map.Init(W_COUNT, H_COUNT);
-	//ÇÃ·¹ÀÌ¾î ¸¸µé±â
-	m_pPlayer.Init(4, 13);
-	//Àû ÃÊ±âÈ­ÇÏ±â
-	AIManager::get_Instance()->Init();
+	//±×¸² ±×¸®±â
+	tmp_bit = DoEngine::ResourcesManager::get_Instance()->get_Bitmap("RES\\tank_right_00.bmp");
+	//Á¦¸ñ µî·Ï
+	DoEngine::UIManager::get_Instance()->AddText("B   A   T   T   L   E", 100, 60, 120, 255, 255, 255, TRANSPARENT, "¸¼Àº °íµñ");
+	DoEngine::UIManager::get_Instance()->AddText("C I T Y", 700, 160, 80, 255, 255, 255, TRANSPARENT, "¸¼Àº °íµñ");
+	DoEngine::UIManager::get_Instance()->AddText("REMASTER", 720, 220, 40, 150, 75, 0, TRANSPARENT, "¸¼Àº °íµñ");
+
+	//½ºÅ×ÀÌÁö
+	DoEngine::UIManager::get_Instance()->AddText("1 S T A G E", 420, 320, 40, 255, 255, 255, TRANSPARENT, "¸¼Àº °íµñ");
+	DoEngine::UIManager::get_Instance()->AddText("2 S T A G E", 420, 380, 40, 255, 255, 255, TRANSPARENT, "¸¼Àº °íµñ");
+	//ºÒ·¯¿À±â
+	DoEngine::UIManager::get_Instance()->AddText("L O A D", 420, 440, 40, 255, 255, 255, TRANSPARENT, "¸¼Àº °íµñ");
+	//¾öÄà!
+	DoEngine::UIManager::get_Instance()->AddText("U M C O T", 380, 520, 60, 255, 127, 0, TRANSPARENT, "¸¼Àº °íµñ");
+	//¸¸µç ³¯Â¥
+	DoEngine::UIManager::get_Instance()->AddText("¨Ï  2019 2020 UMCO LTD ", 240, 660, 60, 255, 255, 255, TRANSPARENT, "¸¼Àº °íµñ");
 }
 
 //Å°ÀÔ·Â(override)
@@ -39,16 +50,46 @@ bool TitleScene::Input(float _fETime)
 		return true;
 	}
 
-	//Player
-	m_Command = m_Input.CommandInput();
-
-	if (m_Command)
+	if (DoEngine::InputManager::get_Instance()->isKeyUp(VK_UP))
 	{
-		m_Command->excute(m_pPlayer);
+		if (Select_Count < 3)
+		{
+			Select_y -= 60;
+			Select_Count++;
+		}
 	}
 
-	//Enemy
-	AIManager::get_Instance()->Input();
+	if (DoEngine::InputManager::get_Instance()->isKeyUp(VK_DOWN))
+	{
+		if (Select_Count > 1)
+		{
+			Select_y += 60;
+			Select_Count--;
+		}
+	}
+
+	if (DoEngine::InputManager::get_Instance()->isKeyUp(VK_RETURN))
+	{
+		//¸Ê ¸¸µé±â
+		DoEngine::MapTool::get_Instance()->Init(W_COUNT, H_COUNT, "RES\\block00.bmp", COL_SIZE + 0.1f, COL_SIZE + 0.1f, NO_WALL);
+
+		if (Select_Count == 3)
+		{
+			wsprintf(buf, "Map\\Stage1.txt");
+			DoEngine::MapTool::get_Instance()->Make_Stage(buf);
+		}
+		else if (Select_Count == 2)
+		{
+			wsprintf(buf, "Map\\Stage2.txt");
+			DoEngine::MapTool::get_Instance()->Make_Stage(buf);
+		}
+		else if (Select_Count == 1)
+		{
+
+		}
+		DoEngine::SceneManager::get_Instance()->LoadScene(SCENE_INDEX_GAME);
+	}
+
 
 	return false;
 }
@@ -56,38 +97,16 @@ bool TitleScene::Input(float _fETime)
 //UpdateÇÔ¼ö(override)
 void TitleScene::Update(float _fETime)
 {
-	//Enemy
-	AIManager::get_Instance()->Update(_fETime);
-	//Player
-	m_pPlayer.Update(_fETime);
-	//Map
-	m_Map.Update(_fETime); //¸ÊÀ» Áö¼ÓÀûÀ¸·Î Update
-
-	/*wsprintf(buf, "Grid x: %d", GameManager::get_Instance()->get_CurrentX());
-	DoEngine::UIManager::get_Instance()->AddText(buf, 0, 0, 50, 255, 255, 255, TRANSPARENT, "¸¼Àº °íµñ");
-
-	wsprintf(buf2, "Grid y: %d", GameManager::get_Instance()->get_CurrentY());
-	DoEngine::UIManager::get_Instance()->AddText(buf2, 0, 60, 50, 255, 255, 255, TRANSPARENT, "¸¼Àº °íµñ");
-
-	wsprintf(buf3, "Real x: %d", GameManager::get_Instance()->get_RealX());
-	DoEngine::UIManager::get_Instance()->AddText(buf3, 0, 120, 50, 255, 255, 255, TRANSPARENT, "¸¼Àº °íµñ");
-
-	wsprintf(buf4, "Real y: %d", GameManager::get_Instance()->get_RealY());
-	DoEngine::UIManager::get_Instance()->AddText(buf4, 0, 180, 50, 255, 255, 255, TRANSPARENT, "¸¼Àº °íµñ");*/
+	
 }
 
 //ºí·° °¹¼ö 24Ä­, 2Ä­ ±âÁØ 12ºí·°
 //Draw ÇÔ¼ö(override)
 void TitleScene::Draw(HDC hdc)
-{
+{	
 	m_BlackBG->Draw(0, 0);
-	//¹è°æÈ­¸é ±×¸®±â
-	m_Map.Draw();
-	//ÇÃ·¹ÀÌ¾î ±×¸®±â
-	m_pPlayer.Draw();
-	//Àû ±×¸®±â
-	AIManager::get_Instance()->Draw();
-	
+
+	tmp_bit->Draw(Select_x, Select_y);
 }
 
 //Release() ÇÔ¼ö(override)

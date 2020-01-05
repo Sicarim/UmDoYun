@@ -10,6 +10,8 @@
 class UnitFactory
 {
 private:
+	TCHAR buf[255];
+	int Count;
 	virtual void Create_Unit(string _name) = 0; //유닛 생성 생성은 private로
 protected:
 	DoEngine::Object* m_pUnit; //Unit 변수 선언

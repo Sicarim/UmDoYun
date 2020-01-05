@@ -156,6 +156,9 @@
     <ClCompile Include="NodeManager.cpp">
       <Filter>소스 파일\InputSystem\AStar</Filter>
     </ClCompile>
+    <ClCompile Include="TriggerCollider.cpp">
+      <Filter>소스 파일\Object\Collider</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h">
@@ -244,6 +247,9 @@
     </ClInclude>
     <ClInclude Include="Move.h">
       <Filter>헤더 파일\InputSystem\FSM\State</Filter>
+    </ClInclude>
+    <ClInclude Include="TriggerCollider.h">
+      <Filter>헤더 파일\Object\Collider</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

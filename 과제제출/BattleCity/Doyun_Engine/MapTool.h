@@ -29,6 +29,7 @@ namespace DoEngine
 
 		void Init(int _wSize, int _hSize, string _name, float _wSpace = 0.0f, float _hSpace = 0.0f, int _val = 0); //맵 초기화 후 만들기
 		void Default_MapDraw(int _wSpace = 0, int _hSpace = 0); //기본 격자 무늬 그리기
+		void Make_Stage(LPCTSTR _name); //스테이지 만들기
 
 		int get_MapInfo(int _x, int _y); //맵 특정 위치 검사
 		void set_MapInfo(int _x, int _y, int _val); //맵 특정 위치에 값 넣기

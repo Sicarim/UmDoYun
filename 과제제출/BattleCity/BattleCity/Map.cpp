@@ -17,75 +17,9 @@ void Map::Init(int _x, int _y)
 	m_wSize = _x;
 	m_hSize = _y;
 
-	//맵 만들기
-	DoEngine::MapTool::get_Instance()->Init(_x, _y, "RES\\block00.bmp", COL_SIZE + 0.1f, COL_SIZE + 0.1f, NO_WALL);
 	//맵 크기만큼 콜라이더를 씌운다.
 	m_MapColl.Init_Collider(m_sTag, W_SPACE, H_SPACE, DoEngine::MapTool::get_Instance()->get_wMapSize(), DoEngine::MapTool::get_Instance()->get_hMapSize());
 
-
-	//test용
-	for (int i = 2; i <= 5; i++)
-	{
-		DoEngine::MapTool::get_Instance()->set_MapInfo(1, i, BROKEN_WALL);
-	}
-	for (int i = 2; i <= 5; i++)
-	{
-		DoEngine::MapTool::get_Instance()->set_MapInfo(3, i, BROKEN_WALL);
-	}
-	for (int i = 2; i <= 5; i++)
-	{
-		DoEngine::MapTool::get_Instance()->set_MapInfo(9, i, BROKEN_WALL);
-	}
-	for (int i = 2; i <= 5; i++)
-	{
-		DoEngine::MapTool::get_Instance()->set_MapInfo(11, i, BROKEN_WALL);
-	}
-
-	for (int i = 9; i <= 12; i++)
-	{
-		DoEngine::MapTool::get_Instance()->set_MapInfo(1, i, BROKEN_WALL);
-	}
-	for (int i = 9; i <= 12; i++)
-	{
-		DoEngine::MapTool::get_Instance()->set_MapInfo(3, i, BROKEN_WALL);
-	}
-	for (int i = 9; i <= 12; i++)
-	{
-		DoEngine::MapTool::get_Instance()->set_MapInfo(9, i, BROKEN_WALL);
-	}
-	for (int i = 9; i <= 12; i++)
-	{
-		DoEngine::MapTool::get_Instance()->set_MapInfo(11, i, BROKEN_WALL);
-	}
-
-	DoEngine::MapTool::get_Instance()->set_MapInfo(0, 7, STILL_WALL);
-	DoEngine::MapTool::get_Instance()->set_MapInfo(12, 7, STILL_WALL);
-
-	DoEngine::MapTool::get_Instance()->set_MapInfo(1, 7, BROKEN_WALL);
-	DoEngine::MapTool::get_Instance()->set_MapInfo(11, 7, BROKEN_WALL);
-
-	DoEngine::MapTool::get_Instance()->set_MapInfo(5, 6, BROKEN_WALL);
-	DoEngine::MapTool::get_Instance()->set_MapInfo(7, 6, BROKEN_WALL);
-
-	DoEngine::MapTool::get_Instance()->set_MapInfo(6, 1, BROKEN_WALL);
-	DoEngine::MapTool::get_Instance()->set_MapInfo(6, 2, BROKEN_WALL);
-	DoEngine::MapTool::get_Instance()->set_MapInfo(6, 3, BROKEN_WALL);
-	DoEngine::MapTool::get_Instance()->set_MapInfo(5, 2, BROKEN_WALL);
-	DoEngine::MapTool::get_Instance()->set_MapInfo(7, 2, BROKEN_WALL);
-
-	DoEngine::MapTool::get_Instance()->set_MapInfo(6, 8, BROKEN_WALL);
-	DoEngine::MapTool::get_Instance()->set_MapInfo(6, 9, BROKEN_WALL);
-	DoEngine::MapTool::get_Instance()->set_MapInfo(6, 10, BROKEN_WALL);
-	DoEngine::MapTool::get_Instance()->set_MapInfo(5, 9, BROKEN_WALL);
-	DoEngine::MapTool::get_Instance()->set_MapInfo(7, 9, BROKEN_WALL);
-
-
-	DoEngine::MapTool::get_Instance()->set_MapInfo(5, 13, BROKEN_WALL);
-	DoEngine::MapTool::get_Instance()->set_MapInfo(6, 13, BROKEN_WALL);
-	DoEngine::MapTool::get_Instance()->set_MapInfo(7, 13, BROKEN_WALL);
-	DoEngine::MapTool::get_Instance()->set_MapInfo(5, 14, BROKEN_WALL);
-	DoEngine::MapTool::get_Instance()->set_MapInfo(7, 14, BROKEN_WALL);
-	
 	//블록 번호에 맞게 초기화
 	All_InitBlock();
 }
@@ -93,6 +27,7 @@ void Map::Init(int _x, int _y)
 //모든 블럭 초기화
 void Map::All_InitBlock()
 {
+	DoEngine::MapTool::get_Instance()->set_MapInfo(6, 14, EGLE_WALL);
 	Broken_Count = 0;
 	Water_Count = 0;
 	Bush_Count = 0;
@@ -127,11 +62,42 @@ void Map::All_InitBlock()
 				m_vStill.push_back(tmp_Still);
 				Still_Count++;
 			}
+			//물블록 만들기
+			if (DoEngine::MapTool::get_Instance()->get_MapInfo(i, j) == WATER_WALL)
+			{
+				wsprintf(buf, "WaterWall%d", Water_Count);
+				tmp_Water = new WaterWall;
+				tmp_Water->set_tag(buf);
+				tmp_Water->Init(i, j);
+				m_vWater.push_back(tmp_Water);
+				Water_Count++;
+			}
+
+			//부쉬 블록 만들기
+			if (DoEngine::MapTool::get_Instance()->get_MapInfo(i, j) == BUSH_WALL)
+			{
+				wsprintf(buf, "BushWall%d", Bush_Count);
+				tmp_Bush = new BushWall;
+				tmp_Bush->set_tag(buf);
+				tmp_Bush->Init(i, j);
+				m_vBush.push_back(tmp_Bush);
+				Bush_Count++;
+			}
+
+			//깃발 블럭 만들기
+			if (DoEngine::MapTool::get_Instance()->get_MapInfo(i, j) == EGLE_WALL)
+			{
+				m_Plag = new PlagWall;
+				m_Plag->set_tag("PlagWall");
+				m_Plag->Init(i, j);
+			}
 		}
 	}
 	DoEngine::NodeManager::get_Instance()->add_Neighbors();
 	GameManager::get_Instance()->set_BrokenCount(Broken_Count);
 	GameManager::get_Instance()->set_StillCount(Still_Count);
+	GameManager::get_Instance()->set_WaterCount(Water_Count);
+	GameManager::get_Instance()->set_WaterCount(Bush_Count);
 }
 
 //키입력(override)
@@ -147,6 +113,7 @@ void Map::Update(float _fETime)
 	{
 		m_vBroken[i]->Update(_fETime);
 	}
+	m_Plag->Update(_fETime);
 }
 
 //Draw 함수(override)
@@ -155,6 +122,7 @@ void Map::Draw()
 	//맵 격자무늬 그리기
 	DoEngine::MapTool::get_Instance()->Default_MapDraw(W_SPACE, H_SPACE);
 
+	//각종 블럭 그리기
 	for (int i = 0; i < m_vBroken.size(); i++)
 	{
 		m_vBroken[i]->Draw();
@@ -164,7 +132,18 @@ void Map::Draw()
 	{
 		m_vStill[i]->Draw();
 	}
+
+	for (int i = 0; i < m_vWater.size(); i++)
+	{
+		m_vWater[i]->Draw();
+	}
 	
+	for (int i = 0; i < m_vBush.size(); i++)
+	{
+		m_vBush[i]->Draw();
+	}
+	
+	m_Plag->Draw();
 
 	//전체 맵 범위 그리기
 	m_MapColl.Draw_Collider();

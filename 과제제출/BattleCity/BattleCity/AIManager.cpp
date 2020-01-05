@@ -40,12 +40,17 @@ void AIManager::Update(float _fETime)
 {
 	ReTime += _fETime;
 
-	if (ReTime > 3.0f)
+	if (GameManager::get_Instance()->get_EnemyCount() < 3)
 	{
-		ReTime = 0.0f;
-		if (Count < MAX_ENEMY)
+		if (ReTime > 3.0f)
 		{
-			Count++;
+			ReTime = 0.0f;
+			if (Count < MAX_ENEMY)
+			{
+				Count++;
+				GameManager::get_Instance()->set_HealthCount(Count);
+				GameManager::get_Instance()->set_EnemyCount(1);
+			}
 		}
 	}
 
@@ -76,7 +81,6 @@ void AIManager::Draw()
 		m_vEnemy[i]->Draw();
 	}
 }
-
 
 //Release() ÇÔ¼ö
 void AIManager::Release()

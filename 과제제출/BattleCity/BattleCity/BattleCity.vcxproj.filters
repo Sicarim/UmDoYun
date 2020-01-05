@@ -105,6 +105,9 @@
     <ClInclude Include="AIManager.h">
       <Filter>헤더 파일\Manager</Filter>
     </ClInclude>
+    <ClInclude Include="PlagWall.h">
+      <Filter>헤더 파일\Data\Wall</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -160,6 +163,9 @@
     </ClCompile>
     <ClCompile Include="AIManager.cpp">
       <Filter>소스 파일\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="PlagWall.cpp">
+      <Filter>소스 파일\Data\Wall</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

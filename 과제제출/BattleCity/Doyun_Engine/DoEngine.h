@@ -6,6 +6,7 @@
 #include "Singleton.h"
 #include "Object.h"
 #include "Collider.h"
+#include "TriggerCollider.h"
 #include "ObjectPool.h"
 #include "POINT.h"
 #include "Command.h"

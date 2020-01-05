@@ -2,31 +2,16 @@
 #include "GlobalDefine.h"
 #include "DoEngine.h"
 #include "defines.h"
-#include "Tank.h"
-#include "Player.h"
-#include "Map.h"
 
 class TitleScene : public DoEngine::Scene
 {
 private:
+	int Select_x;
+	int Select_y;
+	int Select_Count;
 	TCHAR buf[255];
-	TCHAR buf2[255];
-
-	TCHAR buf3[255];
-	TCHAR buf4[255];
-
-
-
 	DoEngine::BitMap* m_BlackBG; //아무것도 없는 검은 배경화면
-	//vector<DoEngine::Object*> m_vEnemy; //몬스터 저장
-	Player m_pPlayer; //플레이어 객체 선언
-
-	//플레이어를 움직일 커맨드 객체 선언
-	DoEngine::Command* m_Command;
-	InputHandler m_Input;
-
-	Map m_Map;
-
+	DoEngine::BitMap* tmp_bit;
 public:
 	TitleScene(); //생성자
 

@@ -1,6 +1,7 @@
 #include "GameManager.h"
 #include "SceneManager.h"
 #include "TitleScene.h"
+#include "GameScene.h"
 #include "InputManager.h"
 #include "ColliderManager.h"
 
@@ -13,7 +14,8 @@ GameManager::GameManager()
 //초기화
 void GameManager::Init()
 {
-
+	Health_Count = 0;
+	Enemy_Count = 0;
 }
 
 //씬 등록
@@ -22,7 +24,7 @@ void GameManager::Regist_Scene()
 	//TitleScene등록
 	DoEngine::SceneManager::get_Instance()->RegistScene(new TitleScene);
 	//GameScene등록
-	//DoEngine::SceneManager::get_Instance()->RegistScene(new GameScene);
+	DoEngine::SceneManager::get_Instance()->RegistScene(new GameScene);
 	//EndScene등록
 	//DoEngine::SceneManager::get_Instance()->RegistScene(new EndScene);
 }
@@ -46,6 +48,8 @@ void GameManager::Key_Init()
 	DoEngine::InputManager::get_Instance()->RegistKeyCode(VK_DOWN);
 	//게임 종료
 	DoEngine::InputManager::get_Instance()->RegistKeyCode(VK_ESCAPE);
+	//엔터키
+	DoEngine::InputManager::get_Instance()->RegistKeyCode(VK_RETURN);
 }
 
 //몬스터 만들기
@@ -142,6 +146,40 @@ int GameManager::get_StillCount()
 {
 	return Still_Count;
 }
+
+//적 갯수 저장
+void GameManager::set_HealthCount(int _num)
+{
+	Health_Count = _num;
+}
+
+//적 갯수 리턴
+int GameManager::get_HealthCount()
+{
+	return Health_Count;
+}
+
+//현재 맵에 있는 적의 갯수 저장
+void GameManager::set_EnemyCount(int _num)
+{
+	Enemy_Count += _num;
+}
+
+//현재 맵에 있는 적의 갯수 리턴
+int GameManager::get_EnemyCount()
+{
+	return Enemy_Count;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 void GameManager::set_CurrentX(int _x, int _rx)

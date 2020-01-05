@@ -47,6 +47,8 @@ namespace DoEngine
 		m_hMemDC = CreateCompatibleDC(hdc);
 		m_hBitMap = CreateCompatibleBitmap(hdc, _width, _height);
 
+		
+
 		m_hOldBitmap = (HBITMAP)SelectObject(m_hMemDC, m_hBitMap);
 
 		BITMAP bmp_info;

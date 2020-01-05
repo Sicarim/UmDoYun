@@ -6,6 +6,15 @@
 class WaterWall : public DoEngine::Object
 {
 private:
+	int m_wSize, m_hSize;
+	int m_posx, m_posy;
+	int HitSel;
+	bool BeforeHit;
+	string m_tag;
+	TCHAR buf[255];
+
+	DoEngine::BitMap* tmp_Block;
+	DoEngine::Collider m_Coll;
 public:
 	WaterWall(); //생성자
 
@@ -16,6 +25,6 @@ public:
 	void Draw(int _x, int _y); //Draw 함수(override)
 	void Release(); //Release() 함수(override)
 	void set_tag(string _tag); //태그 저장 
-	
+
 	~WaterWall(); //소멸자
 };

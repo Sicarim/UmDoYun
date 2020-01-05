@@ -4,6 +4,9 @@
 #include "defines.h"
 #include "StillWall.h"
 #include "BrokenWall.h"
+#include "WaterWall.h"
+#include "BushWall.h"
+#include "PlagWall.h"
 
 class Map : public DoEngine::Object
 {
@@ -17,8 +20,14 @@ private:
 	//벽만들기
 	StillWall* tmp_Still;
 	BrokenWall* tmp_Broken;
+	WaterWall* tmp_Water;
+	BushWall* tmp_Bush;
+	PlagWall* m_Plag;
+
 	vector<BrokenWall*> m_vBroken;
 	vector<StillWall*> m_vStill;
+	vector<WaterWall*> m_vWater;
+	vector<BushWall*> m_vBush;
 
 	DoEngine::Collider m_MapColl; //콜라이더
 	DoEngine::BitMap* m_pBack; //TitleScene 배경회면 등록

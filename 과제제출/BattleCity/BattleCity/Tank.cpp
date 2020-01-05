@@ -3,9 +3,7 @@
 #include "ColliderManager.h"
 #include "GameManager.h"
 #include "NodeManager.h"
-
-#include "UIManager.h"
-#include "TimeManager.h"
+#include "MapTool.h"
 
 //생성자
 Tank::Tank()
@@ -24,16 +22,20 @@ Tank::Tank()
 //초기화(override)
 void Tank::Init(int _x, int _y)
 {
-	int num = rand() % 100;
 	//임시 비트맵 선언
 	DoEngine::BitMap* tmp_bit = NULL;
+	Tank_Look = LOOK_DOWN;
 
 	//태크 지정
-	wsprintf(buf, "Tank%d", num);
-	m_sTag = buf;
+	//m_sTag = buf;
 	//시작 위치 초기화
 	birth_x = _x;
 	birth_y = _y;
+	Goal_x = rand() % 5 + 4;
+	Goal_y = 12;
+	SumTime = 0.0f;
+
+	
 	Current_x = birth_x;
 	Current_y = birth_y;
 	AICount = 1;
@@ -41,7 +43,11 @@ void Tank::Init(int _x, int _y)
 	
 	AIStart = false;
 	is_Destroy = false;
+	Fire = false;
 	curTime = 0.0f;
+
+	//탄알 만들기
+	m_BulletPool.Make_Pool(10);
 
 	m_vLeft.reserve(ENEMY_KIND);
 	m_vRight.reserve(ENEMY_KIND);	
@@ -75,7 +81,8 @@ void Tank::Init(int _x, int _y)
 	m_wSize = (m_vDown[1]->get_Width() * COL_SIZE);
 	m_hSize = (m_vDown[1]->get_Height() * COL_SIZE);
 	//가장 빠른길 탐색
-	Fast_Way = m_Astar.Serch_FastWay(birth_x, birth_y, 5, 12);
+	Fast_Way = m_Astar.Serch_FastWay(birth_x, birth_y, Goal_x, Goal_y);
+	Add_Coll();
 }
 
 //Update함수(override)
@@ -83,10 +90,17 @@ void Tank::Update(float _fETime)
 {
 	curTime = _fETime;
 
+	//총알 발사
+	if (Fire)
+	{
+		tmp_Bullet->Update(_fETime);
+	}
+
 	//탄알에 맞았다면...
 	if (m_Coll.isCollider("Bullet"))
 	{
 		is_Destroy = true;
+		GameManager::get_Instance()->set_EnemyCount(-1);
 	}
 
 	if (!is_Destroy)
@@ -154,8 +168,34 @@ bool Tank::Input(int _state)
 			}
 		}
 	}
-	
 
+	else if (_state == ATTACK)
+	{
+		if (!Fire)
+		{
+			tmp_Bullet = m_BulletPool.get_Data();
+			if (Tank_Look == LOOK_LEFT)
+			{
+				tmp_Bullet->Init(pos_x - 20, pos_y + 20);
+			}
+			else if (Tank_Look == LOOK_RIGHT)
+			{
+				tmp_Bullet->Init(pos_x + 50, pos_y + 20);
+			}
+			else if (Tank_Look == LOOK_UP)
+			{
+				tmp_Bullet->Init(pos_x + 20, pos_y - 15);
+			}
+			else if (Tank_Look == LOOK_DOWN)
+			{
+				tmp_Bullet->Init(pos_x + 20, pos_y + 40);
+			}
+			
+			tmp_Bullet->set_BulletDir(Tank_Look);
+			Fire = true;
+		}
+	}
+	
 	testx = m_vDown[1]->get_Width() * OBJECT_COL;
 	testy = m_vDown[1]->get_Height() * OBJECT_COL;
 
@@ -178,11 +218,27 @@ bool Tank::Input(int _state)
 
 //Draw 함수(override)
 void Tank::Draw()
-{	
+{
+	//총알 발사
+	if (Fire)
+	{
+		tmp_Bullet->Draw();
+		//탄알이 없어졌다면....
+		if (!tmp_Bullet->get_FireSave())
+		{
+			tmp_Bullet->Init(pos_x, pos_y);
+			m_BulletPool.Return_Data(tmp_Bullet);
+			//delete tmp_Bullet;
+			Fire = false;
+		}
+	}
+
+	//죽엇나?
 	if (is_Destroy)
 	{
 		m_Coll.DeleteCollider();
 	}
+	//살앗나?
 	else
 	{
 		//출발하는 방향에 따라 그리기
@@ -212,36 +268,12 @@ void Tank::Draw()
 			}
 		}
 
-		m_Coll.Init_Collider(m_sTag, pos_x, pos_y, m_vDown[1]->get_Width() * COL_SIZE, m_vDown[1]->get_Height() * COL_SIZE);
+		//콜라이더 범위 씌우기
+		m_Coll.Init_Collider(m_sTag, pos_x + 10, pos_y + 10, m_vDown[1]->get_Width() * (COL_SIZE - 0.7), m_vDown[1]->get_Height() * (COL_SIZE - 0.7));
 		m_Coll.Draw_Collider();
+		//Trigger콜라이더 범위 그리기
+		m_triColl.Init_Collider(m_sTag, pos_x, pos_y, m_vDown[1]->get_Width() * COL_SIZE, m_vDown[1]->get_Height() * COL_SIZE, 90, 90);
 	}
-	
-	//m_vDown[1]->Draw(pos_x, pos_y, COL_SIZE, COL_SIZE);
-
-	//if (pos_x == 0 && pos_y == 0)
-	//{
-	//	m_vDown[1]->Draw(W_SPACE + pos_x, H_SPACE + pos_y, COL_SIZE, COL_SIZE);
-	//	//Tank 범위 입력
-	//	//m_Coll.Init_Collider(m_sTag, pos_x, pos_y, m_vDown[1]->get_Width() * COL_SIZE, m_vDown[1]->get_Height() * COL_SIZE);
-	//}
-	//else if (pos_x == 0 && pos_y != 0)
-	//{
-	//	m_vDown[1]->Draw(W_SPACE + pos_x, H_SPACE + pos_y * m_hSize, COL_SIZE, COL_SIZE);
-	//	//Tank 범위 입력
-	//	//m_Coll.Init_Collider(m_sTag, pos_x, pos_y, m_vDown[1]->get_Width() * COL_SIZE, m_vDown[1]->get_Height() * COL_SIZE);
-	//}
-	//else if (pos_x != 0 && pos_y == 0)
-	//{
-	//	m_vDown[1]->Draw(W_SPACE + pos_x * m_wSize, H_SPACE + pos_y, COL_SIZE, COL_SIZE);
-	//	//Tank 범위 입력
-	//	//m_Coll.Init_Collider(m_sTag, pos_x, pos_y, m_vDown[1]->get_Width() * COL_SIZE, m_vDown[1]->get_Height() * COL_SIZE);
-	//}
-	//else
-	//{
-	//	m_vDown[1]->Draw(W_SPACE + pos_x * m_wSize, H_SPACE + pos_y * m_hSize, COL_SIZE, COL_SIZE);
-	//	//Tank 범위 입력
-	//	//m_Coll.Init_Collider(m_sTag, pos_x, pos_y, m_vDown[1]->get_Width() * COL_SIZE, m_vDown[1]->get_Height() * COL_SIZE);
-	//}
 }
 
 //Draw 함수(override)
@@ -254,8 +286,6 @@ void Tank::Draw(int _x, int _y)
 void Tank::Add_Coll()
 {
 	int tmp_Count = 0;
-	//적 등록
-	m_vColl.push_back("Enemy");
 
 	//부서지는 벽 등록
 	tmp_Count = GameManager::get_Instance()->get_BrokenCount();
@@ -272,6 +302,14 @@ void Tank::Add_Coll()
 		wsprintf(buf, "StiilWall%d", i);
 		m_vColl.push_back((string)buf);
 	}
+
+	//물 벽 등록
+	tmp_Count = GameManager::get_Instance()->get_WaterCount();
+	for (int i = 0; i < tmp_Count; i++)
+	{
+		wsprintf(buf, "WaterWall%d", i);
+		m_vColl.push_back((string)buf);
+	}
 }
 
 //가장 빠른 길을 리턴
@@ -283,38 +321,80 @@ vector<DoEngine::Node*> Tank::get_FastWay()
 //AI 시작
 void Tank::Start_AI()
 {
+	SumTime += curTime;
+
+	//탄알 발사
+	if (SumTime > 3.0f)
+	{
+		Input(ATTACK);
+		SumTime = 0.0f;
+	}
+
 	/*
-		행동 정의 새로하기 길찾기(AStar 문제 없음! 니잘못!)
+		행동 정의 새로하기 길찾기(AStar 문제 였음! 그래도 니잘못!)
 	*/
-	if (Fast_Way.size() == AICount)
+	if (m_triColl.Draw_Collider("Player"))
 	{
-		return;
+		int tmp_num;
+		tmp_num = m_triColl.get_HitDir();
+
+		if (tmp_num == LEFT)
+		{
+			Input(LEFT);
+		}
+		else if (tmp_num == DOWN)
+		{
+			Input(DOWN);
+		}
+		else if (tmp_num == UP)
+		{
+			Input(UP);
+		}
+		else if (tmp_num == RIGHT)
+		{
+			Input(RIGHT);
+		}
 	}
 
-	if (Current_x < Fast_Way[AICount]->get_NodeX() && (int)Current_y == Fast_Way[AICount]->get_NodeY())
+	else
 	{
-		Input(RIGHT);
+		if (Fast_Way.size() == AICount)
+		{
+			return;
+		}
+
+		if (Current_x < Fast_Way[AICount]->get_NodeX() && (int)Current_y == Fast_Way[AICount]->get_NodeY())
+		{
+			Input(RIGHT);
+		}
+
+		else if (Current_x > Fast_Way[AICount]->get_NodeX() && (int)Current_y == Fast_Way[AICount]->get_NodeY())
+		{
+			Input(LEFT);
+		}
+
+		else if (Current_y > Fast_Way[AICount]->get_NodeY() && (int)Current_x == Fast_Way[AICount]->get_NodeX())
+		{
+			Input(UP);
+		}
+
+		else if (Current_y < Fast_Way[AICount]->get_NodeY() && (int)Current_x == Fast_Way[AICount]->get_NodeX())
+		{
+			Input(DOWN);
+		}
+
+		else
+		{
+			AICount++;
+		}
 	}
 
-	else if (Current_x > Fast_Way[AICount]->get_NodeX() && (int)Current_y == Fast_Way[AICount]->get_NodeY())
-	{
-		Input(LEFT);
-	}
+	
+}
 
-	else if (Current_y > Fast_Way[AICount]->get_NodeY() && (int)Current_x == Fast_Way[AICount]->get_NodeX())
-	{
-		Input(UP);
-	}
-
-	else if (Current_y < Fast_Way[AICount]->get_NodeY() && (int)Current_x == Fast_Way[AICount]->get_NodeX())
-	{
-		Input(DOWN);
-	}
-
-	else 
-	{
-		AICount++;
-	}
+void Tank::set_Coll(string buf)
+{
+	m_vColl.push_back(buf);
 }
 
 //Release() 함수(override)

@@ -6,7 +6,15 @@
 class BushWall : public DoEngine::Object
 {
 private:
+	int m_wSize, m_hSize;
+	int m_posx, m_posy;
+	int HitSel;
+	bool BeforeHit;
 	string m_tag;
+	TCHAR buf[255];
+
+	DoEngine::BitMap* tmp_Block;
+	DoEngine::Collider m_Coll;
 public:
 	BushWall(); //»ý¼ºÀÚ
 

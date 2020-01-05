@@ -157,6 +157,7 @@
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="PlagWall.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="StillWall.h" />
     <ClInclude Include="Tank.h" />
@@ -177,6 +178,7 @@
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="PlagWall.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="StillWall.cpp" />
     <ClCompile Include="Tank.cpp" />

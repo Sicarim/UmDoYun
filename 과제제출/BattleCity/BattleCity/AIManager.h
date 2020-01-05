@@ -14,6 +14,7 @@ private:
 	vector<DoEngine::Node*> m_vFast_Way;
 	float ReTime;
 	int Count;
+	TCHAR buf[255];
 
 	//적을 움직을 커맨드 객체 선언
 	DoEngine::Command* tmp_Command;

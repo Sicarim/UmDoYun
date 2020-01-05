@@ -24,9 +24,23 @@ namespace DoEngine
 		m_hSpace = m_DefaultBlock->get_Height() * MAP_COL * _hSpace;
 		//초기 값
 		m_iVal = _val;
-
 		//2차원 벡터로 만든 맵 완성(m_iVal)로 초기화
 		m_MapPos.assign(m_iWidth, vector<int>(m_iHeight, m_iVal));
+	}
+
+	//스테이지 만들기
+	void MapTool::Make_Stage(LPCTSTR _name)
+	{
+		HANDLE hFile = CreateFile(_name, GENERIC_READ, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, 0);
+		for (int i = 0; i < 13; i++)
+		{
+			for (int j = 0; j < 15; j++)
+			{
+				DWORD readB;
+				ReadFile(hFile, &m_MapPos[i][j], sizeof(int), &readB, NULL);
+			}
+		}
+		CloseHandle(hFile);
 	}
 
 	//기본 격자 무늬 그리기(맵간격을 넣어야 한다)

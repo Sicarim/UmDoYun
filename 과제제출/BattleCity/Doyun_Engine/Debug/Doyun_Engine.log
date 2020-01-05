@@ -1,9 +1,6 @@
-﻿  Astar.cpp
-  NodeManager.cpp
-D:\Atence\visual\BattleCity\Doyun_Engine\NodeManager.cpp(26,21): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-D:\Atence\visual\BattleCity\Doyun_Engine\NodeManager.cpp(30,22): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-D:\Atence\visual\BattleCity\Doyun_Engine\NodeManager.cpp(61,21): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-  코드를 생성하고 있습니다...
-D:\Atence\visual\BattleCity\Doyun_Engine\NodeManager.cpp(73,21): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-D:\Atence\visual\BattleCity\Doyun_Engine\NodeManager.cpp(68): warning C4715: 'DoEngine::NodeManager::get_Node': 모든 제어 경로에서 값을 반환하지는 않습니다.
+﻿  BitMap.cpp
+D:\Atence\visual\BattleCity\Doyun_Engine\BitMap.cpp(66,32): warning C4244: '-=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\Atence\visual\BattleCity\Doyun_Engine\BitMap.cpp(67,32): warning C4244: '-=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\Atence\visual\BattleCity\Doyun_Engine\BitMap.cpp(81,102): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\Atence\visual\BattleCity\Doyun_Engine\BitMap.cpp(81,82): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   Doyun_Engine.vcxproj -> D:\Atence\visual\BattleCity\Debug\Doyun_Engine.lib

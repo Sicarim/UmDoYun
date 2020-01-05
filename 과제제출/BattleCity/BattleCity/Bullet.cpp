@@ -15,8 +15,8 @@ Bullet::Bullet()
 //초기화(override)
 void Bullet::Init(int _x, int _y)
 {
-	pos_x = _x + 25;
-	pos_y = _y + 25;
+	pos_x = _x;
+	pos_y = _y;
 	Fire_Time = 0.0f;
 	curTime = 0.0f;
 	is_Save = true;
@@ -48,8 +48,14 @@ void Bullet::Init(int _x, int _y)
 void Bullet::Add_Coll()
 {
 	int tmp_Count;
-
-	m_vColl.push_back("Enemy");
+	m_vColl.push_back("Player");
+	m_vColl.push_back("PlagWall");
+	//적 태그 등록
+	for (int i = 0; i < MAX_ENEMY; i++)
+	{
+		wsprintf(buf, "Tank%d", i);
+		m_vColl.push_back((string)buf);
+	}
 
 	//부서지는 벽 등록
 	tmp_Count = GameManager::get_Instance()->get_BrokenCount();

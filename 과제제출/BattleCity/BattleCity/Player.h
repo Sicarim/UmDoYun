@@ -15,6 +15,7 @@ private:
 	float fire_time;
 	int Player_Look;
 	int m_wSize, m_hSize;
+	bool is_Destroy;
 
 	vector<string> m_vColl;
 	TCHAR buf[255];

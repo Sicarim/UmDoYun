@@ -11,6 +11,8 @@ private:
 
 	vector<DoEngine::Object*> tmp_vEnemy; //적 vector
 	DoEngine::Object* tmp_Player; //Player Object
+	int Health_Count;
+	int Enemy_Count;
 
 
 
@@ -42,6 +44,11 @@ public:
 	int get_WaterCount(); //물 블록 리턴
 	int get_BushCount(); //부쉬 블럭 리턴
 	int get_StillCount(); //강철 블럭 리턴
+	void set_HealthCount(int _num); //적 갯수 저장
+	int get_HealthCount(); //적 갯수 리턴
+
+	void set_EnemyCount(int _num); //현재 맵에 있는 적의 갯수 저장
+	int get_EnemyCount(); //현재 맵에 있는 적의 갯수 리턴
 
 
 
