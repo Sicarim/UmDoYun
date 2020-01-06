@@ -12,9 +12,8 @@ void AIManager::Init()
 {
 	Count = 0;
 	ReTime = 0.0f;
-	m_vEnemy.clear();
-	m_vEnemy.reserve(2);
 	Enemy_behavior.reserve(5);
+	m_vEnemy.clear();
 	//적 만들기
 	m_vEnemy = GameManager::get_Instance()->Make_Enemy();
 
@@ -63,13 +62,6 @@ void AIManager::Update(float _fETime)
 //키입력
 bool AIManager::Input()
 {
-	//m_Command = Enemy_behavior[LOOK_DOWN];
-
-	/*if (m_Command)
-	{
-		m_Command->excute(*m_vEnemy[1]);
-	}*/
-
 	return false;
 }
 
@@ -85,7 +77,7 @@ void AIManager::Draw()
 //Release() 함수
 void AIManager::Release()
 {
-
+	m_vEnemy.clear();
 }
 
 //길찾기

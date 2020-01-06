@@ -60,9 +60,6 @@
     <ClInclude Include="GameScene.h">
       <Filter>헤더 파일\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="EndScene.h">
-      <Filter>헤더 파일\Scene</Filter>
-    </ClInclude>
     <ClInclude Include="GameManager.h">
       <Filter>헤더 파일\Manager</Filter>
     </ClInclude>
@@ -108,13 +105,19 @@
     <ClInclude Include="PlagWall.h">
       <Filter>헤더 파일\Data\Wall</Filter>
     </ClInclude>
+    <ClInclude Include="LoseEndScene.h">
+      <Filter>헤더 파일\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="StageScene.h">
+      <Filter>헤더 파일\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="WinScene.h">
+      <Filter>헤더 파일\Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="EndScene.cpp">
-      <Filter>소스 파일\Scene</Filter>
     </ClCompile>
     <ClCompile Include="GameScene.cpp">
       <Filter>소스 파일\Scene</Filter>
@@ -166,6 +169,15 @@
     </ClCompile>
     <ClCompile Include="PlagWall.cpp">
       <Filter>소스 파일\Data\Wall</Filter>
+    </ClCompile>
+    <ClCompile Include="LoseEndScene.cpp">
+      <Filter>소스 파일\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="StageScene.cpp">
+      <Filter>소스 파일\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="WinScene.cpp">
+      <Filter>소스 파일\Scene</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

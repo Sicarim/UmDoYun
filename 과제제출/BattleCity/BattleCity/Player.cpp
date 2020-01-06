@@ -71,10 +71,19 @@ void Player::Init(int _x, int _y)
 void Player::Add_Coll()
 {
 	int tmp_Count = 0;
-	//적 태그 등록
-	for (int i = 0; i < MAX_ENEMY; i++)
+	//적 태그 등록(Tank)
+	tmp_Count = GameManager::get_Instance()->get_Tank();
+	for (int i = 0; i < tmp_Count; i++)
 	{
 		wsprintf(buf, "Tank%d", i);
+		m_vColl.push_back((string)buf);
+	}
+
+	//적 태그 등록(UpTank)
+	tmp_Count = GameManager::get_Instance()->get_UpTank();
+	for (int i = 0; i < tmp_Count; i++)
+	{
+		wsprintf(buf, "UpTank%d", i);
 		m_vColl.push_back((string)buf);
 	}
 
@@ -171,19 +180,19 @@ bool Player::Input(int _state)
 
 			if (Player_Look == LOOK_LEFT)
 			{
-				tmp_Bullet->Init(pos_x - 20, pos_y + 20);
+				tmp_Bullet->Init(pos_x, pos_y + 20);
 			}
 			else if (Player_Look == LOOK_RIGHT)
 			{
-				tmp_Bullet->Init(pos_x + 50, pos_y + 20);
+				tmp_Bullet->Init(pos_x + 45, pos_y + 16);
 			}
 			else if (Player_Look == LOOK_UP)
 			{
-				tmp_Bullet->Init(pos_x + 20, pos_y - 15);
+				tmp_Bullet->Init(pos_x + 22, pos_y - 8);
 			}
 			else if (Player_Look == LOOK_DOWN)
 			{
-				tmp_Bullet->Init(pos_x + 20, pos_y + 40);
+				tmp_Bullet->Init(pos_x + 23, pos_y + 35);
 			}
 
 			tmp_Bullet->set_BulletDir(Player_Look);
@@ -205,6 +214,7 @@ void Player::Update(float _fETime)
 	if (m_Coll.isCollider("Bullet"))
 	{
 		is_Destroy = true;
+		GameManager::get_Instance()->set_PlayerDie(true);
 	}
 }
 
@@ -275,7 +285,13 @@ void Player::Draw(int _x, int _y)
 //Release() 함수(override)
 void Player::Release()
 {
-
+	//m_BulletPool.
+	m_vdirection.clear();
+	m_vLeft.clear();
+	m_vRight.clear();
+	m_vUp.clear();
+	m_vDown.clear();
+	m_vColl.clear();
 }
 
 //소멸자

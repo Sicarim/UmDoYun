@@ -6,10 +6,11 @@
 class TitleScene : public DoEngine::Scene
 {
 private:
+	TCHAR buf[255];
 	int Select_x;
 	int Select_y;
 	int Select_Count;
-	TCHAR buf[255];
+
 	DoEngine::BitMap* m_BlackBG; //아무것도 없는 검은 배경화면
 	DoEngine::BitMap* tmp_bit;
 public:

@@ -53,6 +53,12 @@ namespace DoEngine
 		return Draw_trigger;
 	}
 
+	//모든 콜라이더를 비운다
+	void ColliderManager::Clear_Collider()
+	{
+		m_mapCollider.clear();
+	}
+
 	//소멸자
 	ColliderManager::~ColliderManager()
 	{

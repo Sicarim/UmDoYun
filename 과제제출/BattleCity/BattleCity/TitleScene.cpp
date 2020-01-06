@@ -19,6 +19,8 @@ void TitleScene::Init(HWND hWnd)
 	Select_y = 330;
 	Select_Count = 3;
 
+	//게임 초기화
+	GameManager::get_Instance()->Init();
 	//검정색 배경화면 만들기
 	m_BlackBG = DoEngine::ResourcesManager::get_Instance()->get_BackGround("BlackBG", 1024, 768);
 	//키 등록
@@ -31,10 +33,7 @@ void TitleScene::Init(HWND hWnd)
 	DoEngine::UIManager::get_Instance()->AddText("REMASTER", 720, 220, 40, 150, 75, 0, TRANSPARENT, "맑은 고딕");
 
 	//스테이지
-	DoEngine::UIManager::get_Instance()->AddText("1 S T A G E", 420, 320, 40, 255, 255, 255, TRANSPARENT, "맑은 고딕");
-	DoEngine::UIManager::get_Instance()->AddText("2 S T A G E", 420, 380, 40, 255, 255, 255, TRANSPARENT, "맑은 고딕");
-	//불러오기
-	DoEngine::UIManager::get_Instance()->AddText("L O A D", 420, 440, 40, 255, 255, 255, TRANSPARENT, "맑은 고딕");
+	DoEngine::UIManager::get_Instance()->AddText("S T A R T", 420, 320, 40, 255, 255, 255, TRANSPARENT, "맑은 고딕");
 	//엄콧!
 	DoEngine::UIManager::get_Instance()->AddText("U M C O T", 380, 520, 60, 255, 127, 0, TRANSPARENT, "맑은 고딕");
 	//만든 날짜
@@ -75,19 +74,8 @@ bool TitleScene::Input(float _fETime)
 
 		if (Select_Count == 3)
 		{
-			wsprintf(buf, "Map\\Stage1.txt");
-			DoEngine::MapTool::get_Instance()->Make_Stage(buf);
+			DoEngine::SceneManager::get_Instance()->LoadScene(SCENE_INDEX_STAGE);
 		}
-		else if (Select_Count == 2)
-		{
-			wsprintf(buf, "Map\\Stage2.txt");
-			DoEngine::MapTool::get_Instance()->Make_Stage(buf);
-		}
-		else if (Select_Count == 1)
-		{
-
-		}
-		DoEngine::SceneManager::get_Instance()->LoadScene(SCENE_INDEX_GAME);
 	}
 
 
@@ -104,8 +92,10 @@ void TitleScene::Update(float _fETime)
 //Draw 함수(override)
 void TitleScene::Draw(HDC hdc)
 {	
+	//검정 배경화면을 그린다
 	m_BlackBG->Draw(0, 0);
 
+	//선택하는 탱크 BitMap을 그린다
 	tmp_bit->Draw(Select_x, Select_y);
 }
 

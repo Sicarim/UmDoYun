@@ -24,6 +24,7 @@ namespace DoEngine
 		void Release_Collider(string _tag); //콜라이더를 삭제한다
 		void set_DrawCollider(bool _trigger = true); //모든 콜라이더 범위를 그린다.
 		bool get_DrawCollider(); //모든 콜라이더 범위를 그린다.
+		void Clear_Collider(); //모든 콜라이더를 비운다
 
 		~ColliderManager(); //소멸자
 	};

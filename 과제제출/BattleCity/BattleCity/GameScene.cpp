@@ -5,6 +5,8 @@
 #include "AIManager.h"
 #include "MapTool.h"
 #include "UIManager.h"
+#include "SceneManager.h"
+#include "ColliderManager.h"
 
 //생성자
 GameScene::GameScene()
@@ -17,6 +19,10 @@ void GameScene::Init(HWND hWnd)
 {
 	//몬스터 갯수 초기화
 	Health_Count = MAX_ENEMY;
+	GameManager::get_Instance()->set_PlayerDie(false);
+	//게임 정지 유무
+	GameStop = false;
+	GameManager::get_Instance()->Game_Start();
 
 	tmp_Count = 0;
 	for (int i = 0; i < MAX_ENEMY; i++)
@@ -48,13 +54,14 @@ void GameScene::Init(HWND hWnd)
 	GameManager::get_Instance()->All_Draw();
 	//맵 만들기
 	m_Map.Init(W_COUNT, H_COUNT);
+	//적 초기화하기
+	AIManager::get_Instance()->Init();
 	//플레이어 만들기
 	m_pPlayer.Init(4, 13);
+
 	//몬스터 갯수
 	m_EnemyHealth = DoEngine::ResourcesManager::get_Instance()->get_Bitmap("RES\\enemy_icon.bmp");
 	m_tmpBlock = DoEngine::ResourcesManager::get_Instance()->get_Bitmap("RES\\block08.bmp");
-	//적 초기화하기
-	AIManager::get_Instance()->Init();
 }
 
 //키입력(override)
@@ -65,6 +72,12 @@ bool GameScene::Input(float _fETime)
 	{
 		return true;
 	}
+	//화면 넘어가기
+	if (GameStop && DoEngine::InputManager::get_Instance()->isKeyUp(VK_RETURN))
+	{
+		DoEngine::SceneManager::get_Instance()->LoadScene(SCENE_INDEX_TITLE);
+	}
+
 	//Player
 	m_Command = m_Input.CommandInput();
 
@@ -81,24 +94,21 @@ bool GameScene::Input(float _fETime)
 //Update함수(override)
 void GameScene::Update(float _fETime)
 {
-	//Enemy
-	AIManager::get_Instance()->Update(_fETime);
-	//Map
-	m_Map.Update(_fETime); //맵을 지속적으로 Update
-	//Player
-	m_pPlayer.Update(_fETime);
+	//게임이 진행중이라면
+	if (!GameStop)
+	{
+		//Map
+		m_Map.Update(_fETime); //맵을 지속적으로 Update
+		//Player
+		m_pPlayer.Update(_fETime);
+		//Enemy
+		AIManager::get_Instance()->Update(_fETime);
+	}
 
-	/*wsprintf(buf, "Grid x: %d", GameManager::get_Instance()->get_CurrentX());
-	DoEngine::UIManager::get_Instance()->AddText(buf, 0, 0, 50, 255, 255, 255, TRANSPARENT, "맑은 고딕");
-
-	wsprintf(buf2, "Grid y: %d", GameManager::get_Instance()->get_CurrentY());
-	DoEngine::UIManager::get_Instance()->AddText(buf2, 0, 60, 50, 255, 255, 255, TRANSPARENT, "맑은 고딕");
-
-	wsprintf(buf3, "Real x: %d", GameManager::get_Instance()->get_RealX());
-	DoEngine::UIManager::get_Instance()->AddText(buf3, 0, 120, 50, 255, 255, 255, TRANSPARENT, "맑은 고딕");
-
-	wsprintf(buf4, "Real y: %d", GameManager::get_Instance()->get_RealY());
-	DoEngine::UIManager::get_Instance()->AddText(buf4, 0, 180, 50, 255, 255, 255, TRANSPARENT, "맑은 고딕");*/
+	if (GameManager::get_Instance()->get_WinAndLose() == WIN)
+	{
+		DoEngine::SceneManager::get_Instance()->LoadScene(SCENE_INDEX_WIN);	
+	}
 }
 
 //블럭 갯수 24칸, 2칸 기준 12블럭
@@ -125,19 +135,30 @@ void GameScene::Draw(HDC hdc)
 	{
 		m_EnemyHealth->Draw(Health[i].posx, Health[i].posy, 1.5, 1.5);
 	}
-
 	//플레이어 그리기
 	m_pPlayer.Draw();
-	//맵 만들기
-	m_Map.Draw();
 	//적 그리기
 	AIManager::get_Instance()->Draw();
+	//맵 만들기
+	m_Map.Draw();
+
+	//You Die
+	if (GameManager::get_Instance()->get_WinAndLose() == LOSE || GameManager::get_Instance()->get_PlayerDie() == true)
+	{
+		GameStop = true;
+		DoEngine::UIManager::get_Instance()->AddText("G   A   M   E", 350, 160, 80, 255, 255, 255, TRANSPARENT, "맑은 고딕");
+		DoEngine::UIManager::get_Instance()->AddText("O V E R", 420, 230, 80, 255, 255, 255, TRANSPARENT, "맑은 고딕");
+		DoEngine::UIManager::get_Instance()->AddText("PRESS ENTER", 390, 330, 60, 255, 255, 255, TRANSPARENT, "맑은 고딕");
+	}
 }
 
 //Release() 함수(override)
 void GameScene::Release()
 {
-
+	m_pPlayer.Release();
+	m_Map.Release();
+	DoEngine::ColliderManager::get_Instance()->Clear_Collider();
+	AIManager::get_Instance()->Release();
 }
 
 //소멸자

@@ -117,7 +117,7 @@ void BrokenWall::Draw()
 		DoEngine::MapTool::get_Instance()->set_MapInfo(m_posx, m_posx, NO_WALL);
 	}
 
-	//m_Coll.Draw_Collider();
+	m_Coll.Draw_Collider();
 }
 
 //Draw 함수(override)
@@ -129,7 +129,7 @@ void BrokenWall::Draw(int _x, int _y)
 //Release() 함수(override)
 void BrokenWall::Release()
 {
-
+	m_vBlockBit.clear();
 }
 
 //태그 저장 

@@ -22,6 +22,7 @@ Tank::Tank()
 //초기화(override)
 void Tank::Init(int _x, int _y)
 {
+	beforHit = false;
 	//임시 비트맵 선언
 	DoEngine::BitMap* tmp_bit = NULL;
 	Tank_Look = LOOK_DOWN;
@@ -88,23 +89,28 @@ void Tank::Init(int _x, int _y)
 //Update함수(override)
 void Tank::Update(float _fETime)
 {
-	curTime = _fETime;
-
-	//총알 발사
-	if (Fire)
-	{
-		tmp_Bullet->Update(_fETime);
-	}
-
 	//탄알에 맞았다면...
 	if (m_Coll.isCollider("Bullet"))
 	{
-		is_Destroy = true;
-		GameManager::get_Instance()->set_EnemyCount(-1);
+		if (!beforHit)
+		{
+			m_Coll.DeleteCollider();
+			GameManager::get_Instance()->set_EnemyCount(-1);
+			GameManager::get_Instance()->add_Destroy();
+			beforHit = true;
+			is_Destroy = true;
+		}
 	}
 
 	if (!is_Destroy)
 	{
+		curTime = _fETime;
+
+		//총알 발사
+		if (Fire)
+		{
+			tmp_Bullet->Update(_fETime);
+		}
 		//AI시작
 		Start_AI();
 	}
@@ -219,28 +225,22 @@ bool Tank::Input(int _state)
 //Draw 함수(override)
 void Tank::Draw()
 {
-	//총알 발사
-	if (Fire)
-	{
-		tmp_Bullet->Draw();
-		//탄알이 없어졌다면....
-		if (!tmp_Bullet->get_FireSave())
-		{
-			tmp_Bullet->Init(pos_x, pos_y);
-			m_BulletPool.Return_Data(tmp_Bullet);
-			//delete tmp_Bullet;
-			Fire = false;
-		}
-	}
-
 	//죽엇나?
-	if (is_Destroy)
+	if (!is_Destroy)
 	{
-		m_Coll.DeleteCollider();
-	}
-	//살앗나?
-	else
-	{
+		//총알 발사
+		if (Fire)
+		{
+			tmp_Bullet->Draw();
+			//탄알이 없어졌다면....
+			if (!tmp_Bullet->get_FireSave())
+			{
+				tmp_Bullet->Init(pos_x, pos_y);
+				m_BulletPool.Return_Data(tmp_Bullet);
+				Fire = false;
+			}
+		}
+
 		//출발하는 방향에 따라 그리기
 		if (m_vdirection.empty())
 		{
@@ -270,6 +270,7 @@ void Tank::Draw()
 
 		//콜라이더 범위 씌우기
 		m_Coll.Init_Collider(m_sTag, pos_x + 10, pos_y + 10, m_vDown[1]->get_Width() * (COL_SIZE - 0.7), m_vDown[1]->get_Height() * (COL_SIZE - 0.7));
+
 		m_Coll.Draw_Collider();
 		//Trigger콜라이더 범위 그리기
 		m_triColl.Init_Collider(m_sTag, pos_x, pos_y, m_vDown[1]->get_Width() * COL_SIZE, m_vDown[1]->get_Height() * COL_SIZE, 90, 90);
@@ -333,7 +334,7 @@ void Tank::Start_AI()
 	/*
 		행동 정의 새로하기 길찾기(AStar 문제 였음! 그래도 니잘못!)
 	*/
-	if (m_triColl.Draw_Collider("Player"))
+	if (m_triColl.isCollider("Player"))
 	{
 		int tmp_num;
 		tmp_num = m_triColl.get_HitDir();
@@ -400,7 +401,13 @@ void Tank::set_Coll(string buf)
 //Release() 함수(override)
 void Tank::Release()
 {
-
+	m_vColl.clear();
+	m_vLeft.clear();
+	m_vRight.clear();
+	m_vUp.clear();
+	m_vDown.clear();
+	m_vdirection.clear();
+	Fast_Way.clear();
 }
 
 //소멸자

@@ -18,7 +18,7 @@ void Enemy::Create_Unit(string _name)
 	}
 	else if (_name == "UpTank")
 	{
-		//m_pUnit = new UpTank;
+		m_pUnit = new UpTank;
 	}
 }
 

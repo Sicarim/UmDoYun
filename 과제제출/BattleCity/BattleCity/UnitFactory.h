@@ -11,7 +11,8 @@ class UnitFactory
 {
 private:
 	TCHAR buf[255];
-	int Count;
+	int TankCount;
+	int UpTankCount;
 	virtual void Create_Unit(string _name) = 0; //유닛 생성 생성은 private로
 protected:
 	DoEngine::Object* m_pUnit; //Unit 변수 선언
@@ -19,6 +20,7 @@ public:
 	UnitFactory(); //생성자
 	
 	DoEngine::Object* Order_Unit(string _name, int _x, int _y); //입맛대로 만들기
+	void Release();
 	
 	~UnitFactory(); //소멸자
 };

@@ -15,15 +15,11 @@ struct Health_pos
 class GameScene : public DoEngine::Scene
 {
 private:
-	TCHAR buf[255];
-	TCHAR buf2[255];
-
-	TCHAR buf3[255];
-	TCHAR buf4[255];
-
 	Health_pos Health[MAX_ENEMY];
 	int Health_Count;
 	int tmp_Count;
+	bool GameStop; //게임 정지 유무
+	float curTime;
 
 	DoEngine::BitMap* m_tmpBlock; //몬스터 갯수
 	DoEngine::BitMap* m_EnemyHealth; //몬스터 갯수

@@ -151,11 +151,12 @@
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="BushWall.h" />
     <ClInclude Include="defines.h" />
-    <ClInclude Include="EndScene.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="StageScene.h" />
+    <ClInclude Include="LoseEndScene.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="PlagWall.h" />
     <ClInclude Include="Player.h" />
@@ -165,17 +166,19 @@
     <ClInclude Include="UnitFactory.h" />
     <ClInclude Include="UpTank.h" />
     <ClInclude Include="WaterWall.h" />
+    <ClInclude Include="WinScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AIManager.cpp" />
     <ClCompile Include="BrokenWall.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="BushWall.cpp" />
-    <ClCompile Include="EndScene.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="InputHandler.cpp" />
+    <ClCompile Include="StageScene.cpp" />
+    <ClCompile Include="LoseEndScene.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="PlagWall.cpp" />
@@ -186,6 +189,7 @@
     <ClCompile Include="UnitFactory.cpp" />
     <ClCompile Include="UpTank.cpp" />
     <ClCompile Include="WaterWall.cpp" />
+    <ClCompile Include="WinScene.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

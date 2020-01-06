@@ -19,11 +19,12 @@ private:
 	float Boom_Time; //폭발할 시간
 	
 	vector<string> m_vColl; //충돌 처리할 오브젝트들의 목록
-	DoEngine::Collider m_Coll;
+	vector<DoEngine::BitMap*> m_vDestroy; //폭팔 이미지
 	vector<DoEngine::BitMap*> m_vBulletBit;
+	DoEngine::Collider m_Coll;
 	DoEngine::BitMap* tmp_Bullet;
 	DoEngine::BitMap* m_BulletDir;
-	vector<DoEngine::BitMap*> m_vDestroy; //폭팔 이미지
+	
 public:
 	Bullet(); //생성자
 

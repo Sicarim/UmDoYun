@@ -23,6 +23,7 @@ private:
 	bool Fire, isRun;
 	float fire_time;
 	int Tank_Look;
+	bool beforHit;
 
 	bool AIStart;
 	int AICount;

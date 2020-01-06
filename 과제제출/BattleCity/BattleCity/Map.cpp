@@ -158,7 +158,14 @@ void Map::Draw(int _x, int _y)
 //Release() 함수(override)
 void Map::Release()
 {
-
+	for (int i = 0; i < m_vBroken.size(); i++)
+	{
+		m_vBroken[i]->Release();
+	}
+	m_vBroken.clear();
+	m_vStill.clear();
+	m_vWater.clear();
+	m_vBush.clear();
 }
 
 //소멸자

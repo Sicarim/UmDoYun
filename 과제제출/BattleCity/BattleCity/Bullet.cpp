@@ -50,10 +50,20 @@ void Bullet::Add_Coll()
 	int tmp_Count;
 	m_vColl.push_back("Player");
 	m_vColl.push_back("PlagWall");
+
 	//적 태그 등록
-	for (int i = 0; i < MAX_ENEMY; i++)
+	tmp_Count = GameManager::get_Instance()->get_Tank();
+	for (int i = 0; i < tmp_Count; i++)
 	{
 		wsprintf(buf, "Tank%d", i);
+		m_vColl.push_back((string)buf);
+	}
+
+	//적 태그 등록
+	tmp_Count = GameManager::get_Instance()->get_UpTank();
+	for (int i = 0; i < tmp_Count; i++)
+	{
+		wsprintf(buf, "UpTank%d", i);
 		m_vColl.push_back((string)buf);
 	}
 
@@ -156,14 +166,27 @@ void Bullet::Draw()
 
 		m_BulletDir->Draw(pos_x, pos_y, 2.0f, 2.0f);
 
-		if (m_BulletDir == m_vBulletBit[1] || m_BulletDir == m_vBulletBit[2])
+		//오른족
+		if (m_BulletDir == m_vBulletBit[0])
 		{
-			m_Coll.Init_Collider(m_sTag, pos_x, pos_y, m_BulletDir->get_Width() * COL_SIZE, m_BulletDir->get_Height() * COL_SIZE);
+			m_Coll.Init_Collider(m_sTag, pos_x + 7, pos_y + 2, m_BulletDir->get_Width(), m_BulletDir->get_Height());
 		}
-		else
+		//위쪽
+		else if (m_BulletDir == m_vBulletBit[1])
 		{
-			m_Coll.Init_Collider(m_sTag, pos_x, pos_y, m_BulletDir->get_Width() * COL_SIZE, m_BulletDir->get_Height() * COL_SIZE);
+			m_Coll.Init_Collider(m_sTag, pos_x + 2, pos_y, m_BulletDir->get_Width(), m_BulletDir->get_Height());
 		}
+		//아래쪽
+		else if (m_BulletDir == m_vBulletBit[2])
+		{
+			m_Coll.Init_Collider(m_sTag, pos_x + 2, pos_y + 10, m_BulletDir->get_Width(), m_BulletDir->get_Height());
+		}
+		//왼쪽
+		else if (m_BulletDir == m_vBulletBit[3])
+		{
+			m_Coll.Init_Collider(m_sTag, pos_x + 2, pos_y + 2, m_BulletDir->get_Width(), m_BulletDir->get_Height());
+		}
+		
 		m_Coll.Draw_Collider();
 	}
 }
@@ -177,7 +200,9 @@ void Bullet::Draw(int _x, int _y)
 //Release() 함수(override)
 void Bullet::Release()
 {
-
+	m_vColl.clear();
+	m_vDestroy.clear();
+	m_vBulletBit.clear();
 }
 
 //탄알 세이브 여부

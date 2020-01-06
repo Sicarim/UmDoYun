@@ -16,13 +16,6 @@ namespace DoEngine
 
 		vector<Node*> Fast_Way; //가장 빠른길을 저장
 
-
-
-
-
-
-		//list<Node*>::iterator Neighbor_iter;
-
 	public:
 		AStar(); //생성자
 

@@ -48,6 +48,7 @@ void PlagWall::Update(float _fETime)
 	if (m_Coll.isCollider("Bullet"))
 	{
 		isDestroy = true;
+		GameManager::get_Instance()->Game_Lose();
 	}
 }
 
@@ -75,7 +76,7 @@ void PlagWall::Draw(int _x, int _y)
 //Release() 함수(override)
 void PlagWall::Release()
 {
-
+	m_vEgle.clear();
 }
 
 //태그 저장 

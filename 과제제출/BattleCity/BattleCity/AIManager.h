@@ -10,15 +10,15 @@
 class AIManager : public Singleton<AIManager>
 {
 private:
-	vector<DoEngine::Object*> m_vEnemy; //몬스터 저장
-	vector<DoEngine::Node*> m_vFast_Way;
 	float ReTime;
 	int Count;
 	TCHAR buf[255];
 
+	vector<DoEngine::Object*> m_vEnemy; //몬스터 저장
+	vector<DoEngine::Command*> Enemy_behavior;
+
 	//적을 움직을 커맨드 객체 선언
 	DoEngine::Command* tmp_Command;
-	vector<DoEngine::Command*> Enemy_behavior;
 	DoEngine::Command* m_Command;
 	InputHandler m_Input;
 public:

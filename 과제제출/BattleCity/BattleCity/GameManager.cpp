@@ -2,8 +2,11 @@
 #include "SceneManager.h"
 #include "TitleScene.h"
 #include "GameScene.h"
+#include "LoseEndScene.h"
+#include "WinScene.h"
 #include "InputManager.h"
 #include "ColliderManager.h"
+#include "StageScene.h"
 
 //생성자
 GameManager::GameManager()
@@ -16,6 +19,12 @@ void GameManager::Init()
 {
 	Health_Count = 0;
 	Enemy_Count = 0;
+	WinAndLose = START;
+	UpTank_Count = 0;
+	Tank_Count = 0;
+	NextStage = 1;
+	Destroy_Count = 0;
+	PlayerDie = false;
 }
 
 //씬 등록
@@ -23,10 +32,12 @@ void GameManager::Regist_Scene()
 {
 	//TitleScene등록
 	DoEngine::SceneManager::get_Instance()->RegistScene(new TitleScene);
+	//StageScene등록
+	DoEngine::SceneManager::get_Instance()->RegistScene(new StageScene);
 	//GameScene등록
 	DoEngine::SceneManager::get_Instance()->RegistScene(new GameScene);
-	//EndScene등록
-	//DoEngine::SceneManager::get_Instance()->RegistScene(new EndScene);
+	//LoseEndScene등록
+	DoEngine::SceneManager::get_Instance()->RegistScene(new WinScene);
 }
 
 //키 등록
@@ -55,6 +66,9 @@ void GameManager::Key_Init()
 //몬스터 만들기
 vector<DoEngine::Object*> GameManager::Make_Enemy()
 {
+	tmp_vEnemy.clear();
+	UpTank_Count = 0;
+	Tank_Count = 0;
 	//임시 변수
 	int tmp_Num = 0;
 	int Random = 0;
@@ -65,14 +79,16 @@ vector<DoEngine::Object*> GameManager::Make_Enemy()
 		tmp_Num = rand() % 100;
 		Random = rand() % 3;
 
-		if (tmp_Num <= 100)
+		if (tmp_Num < 50)
 		{
 			tmp_Object = Enemy::get_Instance()->Order_Unit("Tank", Random * 6, 0);
+			Tank_Count++;
 		}
-		/*else if (tmp_Num > GENERATE_ENEMY && tmp_Num < GENERATE_ENEMY + 20)
+		else
 		{
-			tmp_Object = Enemy::get_Instance()->Order_Unit("UpTank");
-		}*/
+			tmp_Object = Enemy::get_Instance()->Order_Unit("UpTank", Random * 6, 0);
+			UpTank_Count++;
+		}
 		tmp_vEnemy.push_back(tmp_Object);
 	}
 
@@ -95,8 +111,8 @@ int GameManager::get_BulletDir()
 void GameManager::All_Draw()
 {
 	//그림을 끄려면 false, 아니면 True
-	//DoEngine::ColliderManager::get_Instance()->set_DrawCollider(false);
-	DoEngine::ColliderManager::get_Instance()->set_DrawCollider(true);
+	DoEngine::ColliderManager::get_Instance()->set_DrawCollider(false);
+	//DoEngine::ColliderManager::get_Instance()->set_DrawCollider(true);
 }
 
 //파괴되는 블록 갯수 삽입
@@ -171,48 +187,92 @@ int GameManager::get_EnemyCount()
 	return Enemy_Count;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-void GameManager::set_CurrentX(int _x, int _rx)
+//게임에서 승리
+void GameManager::Game_Win()
 {
-	test_x = _x;
-	Real_x = _rx;
+	WinAndLose = WIN;
 }
 
-void GameManager::set_CurrentY(int _y, int _ry)
+//게임에서 패배
+void GameManager::Game_Lose()
 {
-	test_y = _y;
-	Real_y = _ry;
+	WinAndLose = LOSE;
 }
 
-int GameManager::get_CurrentX()
+void GameManager::Game_Start()
 {
-	return test_x;
+	WinAndLose = START;
 }
 
-int GameManager::get_CurrentY()
+//게임 승패여부 리턴
+int GameManager::get_WinAndLose()
 {
-	return test_y;
+	return WinAndLose;
 }
 
-
-int GameManager::get_RealX()
+//Tank갯수 저장
+void GameManager::set_Tank(int _num)
 {
-	return Real_x;
+	Tank_Count = _num;
 }
+
+//Tank 갯수 리턴
+int GameManager::get_Tank()
+{
+	return Tank_Count;
+}
+
+//UpTank갯수 저장
+void GameManager::set_UpTank(int _num)
+{
+	UpTank_Count = _num;
+}
+
+//UpTank갯수 리턴
+int GameManager::get_UpTank()
+{
+	return UpTank_Count;
+}
+
+//씬 넘기기
+void GameManager::ScenePlus()
+{
+	NextStage++;
+}
+
+//다음 스테이지 리턴
+int GameManager::get_NextStage()
+{
+	return NextStage;
+}
+
+//부서진 적 갯수 저장
+void GameManager::add_Destroy()
+{
+	Destroy_Count++;
+
+	if (Destroy_Count == MAX_ENEMY)
+	{
+		WinAndLose = WIN;
+	}
+}
+
+//플레이어 죽음
+void GameManager::set_PlayerDie(bool _die)
+{
+	PlayerDie = _die;
+}
+
+//플레이어 죽음
+bool GameManager::get_PlayerDie()
+{
+	return PlayerDie;
+}
+
 
 int GameManager::get_RealY()
 {
-	return Real_y;
+	return Destroy_Count;
 }
 
 //소멸자

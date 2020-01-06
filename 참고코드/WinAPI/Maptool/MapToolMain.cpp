@@ -76,10 +76,79 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 	case WM_PAINT:
 		hdc = BeginPaint(hWnd, &ps);
 		
+		g_map[0][3] = 4;
+		g_map[0][4] = 4;
+		g_map[0][5] = 4;
+		g_map[1][3] = 4;
+		g_map[1][4] = 4;
+		g_map[1][5] = 4;
 
+		g_map[2][4] = 4;
+		g_map[2][5] = 4;
+		g_map[2][6] = 4;
+		g_map[3][4] = 4;
+		g_map[3][5] = 4;
+		g_map[3][6] = 4;
 
+		g_map[4][5] = 4;
+		g_map[4][6] = 4;
+		g_map[4][7] = 4;
+		g_map[5][5] = 4;
+		g_map[5][6] = 4;
+		g_map[5][7] = 4;
 
+		g_map[6][6] = 4;
+		g_map[6][7] = 4;
+		g_map[6][8] = 4;
+		g_map[7][6] = 4;
+		g_map[7][7] = 4;
+		g_map[7][8] = 4;
 
+		g_map[8][7] = 4;
+		g_map[8][8] = 4;
+		g_map[8][9] = 4;
+		g_map[9][7] = 4;
+		g_map[9][8] = 4;
+		g_map[9][9] = 4;
+
+		g_map[10][8] = 4;
+		g_map[10][9] = 4;
+		g_map[10][10] = 4;
+		g_map[11][8] = 4;
+		g_map[11][9] = 4;
+		g_map[11][10] = 4;
+
+		g_map[12][9] = 4;
+		g_map[12][10] = 4;
+		g_map[12][11] = 4;
+
+		/*g_map[3][5] = 4;
+		g_map[3][6] = 4;
+		g_map[4][6] = 4;
+		g_map[5][6] = 4;
+		g_map[6][6] = 4;
+		g_map[7][6] = 4;
+		g_map[8][6] = 4;
+		g_map[9][6] = 4;
+		g_map[9][5] = 4;
+
+		g_map[3][7] = 4;
+		g_map[4][7] = 4;
+		g_map[5][7] = 4;
+		g_map[6][7] = 4;
+		g_map[7][7] = 4;
+		g_map[8][7] = 4;
+		g_map[9][7] = 4;
+
+		g_map[3][9] = 4;
+		g_map[3][8] = 4;
+		g_map[4][8] = 4;
+		g_map[5][8] = 4;
+		g_map[6][8] = 4;
+		g_map[7][8] = 4;
+		g_map[8][8] = 4;
+		g_map[9][8] = 4;
+		g_map[9][9] = 4;*/
 
 
 
@@ -120,27 +189,55 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 		//	g_map[11][i] = 1;
 		//}
 
-		g_map[0][7] = 3;
-		g_map[1][7] = 3;
-		g_map[2][7] = 3;
-		g_map[3][7] = 3;
+		/*g_map[0][10] = 3;
+		g_map[1][10] = 3;
+		g_map[2][10] = 3;
+		g_map[3][10] = 3;
 
-		g_map[4][6] = 4;
-		g_map[3][6] = 4;
-		g_map[4][7] = 4;
-		g_map[3][8] = 4;
-		g_map[4][8] = 4;
+		g_map[5][10] = 3;
+		g_map[6][10] = 3;
+		g_map[7][10] = 3;
+		g_map[8][10] = 3;
+		g_map[9][10] = 3;
+		g_map[10][10] = 3;
+		g_map[12][10] = 3;
 
-		g_map[9][7] = 3;
-		g_map[10][7] = 3;
-		g_map[11][7] = 3;
-		g_map[12][7] = 3;
+		g_map[0][9] = 4;
+		g_map[0][11] = 4;
+		g_map[0][12] = 4;
+		g_map[1][11] = 4;
+		g_map[1][12] = 4;
+		g_map[2][12] = 4;
+
+		g_map[1][5] = 3;
+		g_map[2][5] = 3;
+		g_map[3][5] = 3;
+		g_map[4][5] = 3;
+		g_map[5][5] = 3;
+		g_map[6][5] = 3;
+		g_map[7][5] = 3;
+		g_map[9][5] = 3;
+		g_map[10][5] = 3;
+		g_map[11][5] = 3;
+		g_map[12][5] = 3;
+
+		g_map[0][4] = 4;
+		g_map[0][5] = 4;
+		g_map[0][6] = 4;
+		g_map[1][4] = 4;
+		g_map[1][6] = 4;
+
+		g_map[7][4] = 4;
+		g_map[8][4] = 4;
+		g_map[9][4] = 4;
+		g_map[8][5] = 4;
+		g_map[7][6] = 4;
 
 		g_map[8][6] = 4;
 		g_map[9][6] = 4;
 		g_map[8][7] = 4;
-		g_map[9][8] = 4;
-		g_map[8][8] = 4;
+		g_map[9][7] = 4;
+		g_map[10][7] = 4;*/
 
 		//g_map[1][7] = 1;
 		//g_map[11][7] = 1;
@@ -267,7 +364,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 			break;
 		case 101://load
 			{
-				HANDLE hFile = CreateFile("Stage1.txt", GENERIC_READ, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, 0);
+				HANDLE hFile = CreateFile("Stage5.txt", GENERIC_READ, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, 0);
 				for (int i = 0; i < Width; i++)
 				{
 					for (int j = 0; j < Height; j++)
