@@ -31,7 +31,7 @@ enum SELECT_WALL
 #define GENERATE_ENEMY 80
 //#define UNIT_SPEED 50.0f
 #define UNIT_SPEED 130.0f
-#define FIRE_SPEED 380
+#define FIRE_SPEED 500
 #define COL_SIZE 1.7f
 #define SAVE_TIME 0.5f
 #define TANK_SCORE 100

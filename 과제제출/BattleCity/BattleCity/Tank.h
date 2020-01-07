@@ -10,12 +10,12 @@ class Tank : public DoEngine::Object
 {
 private:
 	TCHAR buf[256];
+	TCHAR bulletNum[255];
 	int pos_x; //위치 선언(x)(시작 위치, 앞으로 움직이게 될 위치)
 	int pos_y; //위치 선언(y)(시작 위치, 앞으로 움직이게 될 위치)
 	int birth_x, birth_y; //생성 위치
 	int Goal_x, Goal_y; //골 위치
 	int Current_x, Current_y; //현재 위치
-	string m_Tag;
 
 	int m_wSize, m_hSize;
 	float curTime;

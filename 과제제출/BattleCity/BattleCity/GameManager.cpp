@@ -25,6 +25,7 @@ void GameManager::Init()
 	NextStage = 1;
 	Destroy_Count = 0;
 	PlayerDie = false;
+	Bullet_Count = 0;
 }
 
 //씬 등록
@@ -111,8 +112,56 @@ int GameManager::get_BulletDir()
 void GameManager::All_Draw()
 {
 	//그림을 끄려면 false, 아니면 True
-	DoEngine::ColliderManager::get_Instance()->set_DrawCollider(false);
-	//DoEngine::ColliderManager::get_Instance()->set_DrawCollider(true);
+	//DoEngine::ColliderManager::get_Instance()->set_DrawCollider(false);
+	DoEngine::ColliderManager::get_Instance()->set_DrawCollider(true);
+}
+
+//탄알에 번호를 매긴다.
+int GameManager::BulletCount()
+{
+	Bullet_Count++;
+	return Bullet_Count;
+}
+
+//스테이지가 재실행 될때 초기화한다
+void GameManager::Release()
+{
+	Health_Count = 0;
+	Enemy_Count = 0;
+	WinAndLose = START;
+	UpTank_Count = 0;
+	Tank_Count = 0;
+	Destroy_Count = 0;
+	PlayerDie = false;
+	Bullet_Count = 0;
+	m_vColl.clear();
+	Enemy::get_Instance()->Clear_Data();
+}
+
+//충돌할 콜라이더 등록
+void GameManager::add_WallCollider()
+{
+	m_vColl.push_back("PlagWall");
+
+	//부서지는 벽 등록
+	for (int i = 0; i < Broken_Count; i++)
+	{
+		wsprintf(buf, "BrokenWall%d", i);
+		m_vColl.push_back((string)buf);
+	}
+
+	//강철 벽 등록
+	for (int i = 0; i < Still_Count; i++)
+	{
+		wsprintf(buf, "StiilWall%d", i);
+		m_vColl.push_back((string)buf);
+	}
+}
+
+//콜라이더 모음 리턴
+vector<string> GameManager::get_m_vColl()
+{
+	return m_vColl;
 }
 
 //파괴되는 블록 갯수 삽입
@@ -139,28 +188,10 @@ void GameManager::set_StillCount(int _count)
 	Still_Count = _count;
 }
 
-//파괴되는 블록 리턴
-int GameManager::get_BrokenCount()
-{
-	return Broken_Count;
-}
-
 //물 블록 리턴
 int GameManager::get_WaterCount()
 {
 	return Water_Count;
-}
-
-//부쉬 블럭 리턴
-int GameManager::get_BushCount()
-{
-	return Bush_Count;
-}
-
-//강철 블럭 리턴
-int GameManager::get_StillCount()
-{
-	return Still_Count;
 }
 
 //적 갯수 저장
@@ -267,12 +298,6 @@ void GameManager::set_PlayerDie(bool _die)
 bool GameManager::get_PlayerDie()
 {
 	return PlayerDie;
-}
-
-
-int GameManager::get_RealY()
-{
-	return Destroy_Count;
 }
 
 //소멸자

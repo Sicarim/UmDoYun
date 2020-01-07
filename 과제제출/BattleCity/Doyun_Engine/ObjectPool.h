@@ -23,6 +23,7 @@ namespace DoEngine
 		void Make_Pool(int _size); //오브젝트 풀 만들기
 		T* get_Data(); //Data 리턴
 		void Return_Data(T* _data); //다 사용했다면 자료를 리턴
+		void Clear_Data(); //데이터 삭제
 
 		//소멸자
 		~ObjectPool()
@@ -68,5 +69,11 @@ namespace DoEngine
 	void ObjectPool<T>::Return_Data(T* _data)
 	{
 		m_Datas.push_back(_data);
+	}
+
+	template <typename T>
+	void ObjectPool<T>::Clear_Data()
+	{
+		m_Datas.clear();
 	}
 }

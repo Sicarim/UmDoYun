@@ -35,7 +35,7 @@ DoEngine::Object* UnitFactory::Order_Unit(string _name, int _x, int _y)
 	return m_pUnit;
 }
 
-void UnitFactory::Release()
+void UnitFactory::Clear_Data()
 {
 	TankCount = 0;
 	UpTankCount = 0;

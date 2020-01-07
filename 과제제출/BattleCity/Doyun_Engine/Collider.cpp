@@ -181,6 +181,20 @@ namespace DoEngine
 		isDelete = true;
 	}
 
+	//콜라이더 삭제하기
+	void Collider::DeleteCollider(string _tag)
+	{
+		DoEngine::ColliderManager::get_Instance()->Release_Collider(_tag);
+		isDelete = true;
+	}
+
+	//콜라이더 초기화
+	void Collider::Release_Collider()
+	{
+		isHitCheck = false;
+		isDelete = false;
+	}
+
 	//소멸자
 	Collider::~Collider()
 	{

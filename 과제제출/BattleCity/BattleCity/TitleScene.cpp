@@ -34,6 +34,9 @@ void TitleScene::Init(HWND hWnd)
 
 	//½ºÅ×ÀÌÁö
 	DoEngine::UIManager::get_Instance()->AddText("S T A R T", 420, 320, 40, 255, 255, 255, TRANSPARENT, "¸¼Àº °íµñ");
+
+	//½ºÅ×ÀÌÁö
+	DoEngine::UIManager::get_Instance()->AddText("Press Enter Key", 390, 460, 40, 255, 255, 255, TRANSPARENT, "¸¼Àº °íµñ");
 	//¾öÄà!
 	DoEngine::UIManager::get_Instance()->AddText("U M C O T", 380, 520, 60, 255, 127, 0, TRANSPARENT, "¸¼Àº °íµñ");
 	//¸¸µç ³¯Â¥

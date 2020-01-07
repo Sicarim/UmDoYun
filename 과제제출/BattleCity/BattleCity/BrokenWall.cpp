@@ -51,11 +51,16 @@ bool BrokenWall::Input(int _state)
 void BrokenWall::Update(float _fETime)
 {
 	BeforeHit = false;
-	//탄알에 맞았다면..
-	if (m_Coll.isCollider("Bullet"))
+
+	for (int i = 1; i < 22; i++)
 	{
-		HitBlock++;
-		BeforeHit = true;
+		wsprintf(EnemyBullet, "Bullet%d", i);
+		//탄알에 맞았다면..
+		if (m_Coll.isCollider(EnemyBullet))
+		{
+			HitBlock++;
+			BeforeHit = true;
+		}
 	}
 }
 

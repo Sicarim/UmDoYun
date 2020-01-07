@@ -22,13 +22,15 @@ Tank::Tank()
 //초기화(override)
 void Tank::Init(int _x, int _y)
 {
+	//탄알 태그 등록
+	wsprintf(bulletNum, "Bullet%d", GameManager::get_Instance()->BulletCount());
+
 	beforHit = false;
 	//임시 비트맵 선언
 	DoEngine::BitMap* tmp_bit = NULL;
 	Tank_Look = LOOK_DOWN;
 
 	//태크 지정
-	//m_sTag = buf;
 	//시작 위치 초기화
 	birth_x = _x;
 	birth_y = _y;
@@ -83,14 +85,29 @@ void Tank::Init(int _x, int _y)
 	m_hSize = (m_vDown[1]->get_Height() * COL_SIZE);
 	//가장 빠른길 탐색
 	Fast_Way = m_Astar.Serch_FastWay(birth_x, birth_y, Goal_x, Goal_y);
+	m_vColl = GameManager::get_Instance()->get_m_vColl();
 	Add_Coll();
+}
+
+//충돌시킬 종류들을 모아둔다
+void Tank::Add_Coll()
+{
+	int tmp_Count = 0;
+
+	//물 벽 등록
+	tmp_Count = GameManager::get_Instance()->get_WaterCount();
+	for (int i = 0; i < tmp_Count; i++)
+	{
+		wsprintf(buf, "WaterWall%d", i);
+		m_vColl.push_back((string)buf);
+	}
 }
 
 //Update함수(override)
 void Tank::Update(float _fETime)
 {
 	//탄알에 맞았다면...
-	if (m_Coll.isCollider("Bullet"))
+	if (m_Coll.isCollider("Bullet1"))
 	{
 		if (!beforHit)
 		{
@@ -99,6 +116,8 @@ void Tank::Update(float _fETime)
 			GameManager::get_Instance()->add_Destroy();
 			beforHit = true;
 			is_Destroy = true;
+			m_vColl.clear();
+			DoEngine::ColliderManager::get_Instance()->Release_Collider(bulletNum);
 		}
 	}
 
@@ -196,7 +215,7 @@ bool Tank::Input(int _state)
 			{
 				tmp_Bullet->Init(pos_x + 20, pos_y + 40);
 			}
-			
+			tmp_Bullet->set_Info(bulletNum);
 			tmp_Bullet->set_BulletDir(Tank_Look);
 			Fire = true;
 		}
@@ -215,9 +234,6 @@ bool Tank::Input(int _state)
 		Current_x = floor((pos_x - 40) / testx);
 		Current_y = floor((pos_y - 6) / testy);
 	}
-
-	GameManager::get_Instance()->set_CurrentX(Current_x, pos_x);
-	GameManager::get_Instance()->set_CurrentY(Current_y, pos_y);
 	
 	return false;
 }
@@ -269,7 +285,7 @@ void Tank::Draw()
 		}
 
 		//콜라이더 범위 씌우기
-		m_Coll.Init_Collider(m_sTag, pos_x + 10, pos_y + 10, m_vDown[1]->get_Width() * (COL_SIZE - 0.7), m_vDown[1]->get_Height() * (COL_SIZE - 0.7));
+		m_Coll.Init_Collider(m_sTag, pos_x + 5, pos_y + 5, m_vDown[1]->get_Width() * (COL_SIZE - 0.3), m_vDown[1]->get_Height() * (COL_SIZE - 0.3));
 
 		m_Coll.Draw_Collider();
 		//Trigger콜라이더 범위 그리기
@@ -281,36 +297,6 @@ void Tank::Draw()
 void Tank::Draw(int _x, int _y)
 {
 
-}
-
-//충돌시킬 종류들을 모아둔다
-void Tank::Add_Coll()
-{
-	int tmp_Count = 0;
-
-	//부서지는 벽 등록
-	tmp_Count = GameManager::get_Instance()->get_BrokenCount();
-	for (int i = 0; i < tmp_Count; i++)
-	{
-		wsprintf(buf, "BrokenWall%d", i);
-		m_vColl.push_back((string)buf);
-	}
-
-	//강철 벽 등록
-	tmp_Count = GameManager::get_Instance()->get_StillCount();
-	for (int i = 0; i < tmp_Count; i++)
-	{
-		wsprintf(buf, "StiilWall%d", i);
-		m_vColl.push_back((string)buf);
-	}
-
-	//물 벽 등록
-	tmp_Count = GameManager::get_Instance()->get_WaterCount();
-	for (int i = 0; i < tmp_Count; i++)
-	{
-		wsprintf(buf, "WaterWall%d", i);
-		m_vColl.push_back((string)buf);
-	}
 }
 
 //가장 빠른 길을 리턴
@@ -401,13 +387,13 @@ void Tank::set_Coll(string buf)
 //Release() 함수(override)
 void Tank::Release()
 {
-	m_vColl.clear();
 	m_vLeft.clear();
 	m_vRight.clear();
 	m_vUp.clear();
 	m_vDown.clear();
 	m_vdirection.clear();
 	Fast_Way.clear();
+	m_Coll.Release_Collider();
 }
 
 //소멸자

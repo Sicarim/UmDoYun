@@ -17,14 +17,12 @@ GameScene::GameScene()
 //초기화(override)
 void GameScene::Init(HWND hWnd)
 {
-	//몬스터 갯수 초기화
-	Health_Count = MAX_ENEMY;
+	Health_Count = MAX_ENEMY; //몬스터 갯수 초기화
 	GameManager::get_Instance()->set_PlayerDie(false);
-	//게임 정지 유무
-	GameStop = false;
+	GameStop = false; //게임 정지 유무
 	GameManager::get_Instance()->Game_Start();
-
 	tmp_Count = 0;
+	
 	for (int i = 0; i < MAX_ENEMY; i++)
 	{
 		if (i < 10)
@@ -47,18 +45,17 @@ void GameScene::Init(HWND hWnd)
 
 	m_Command = NULL;
 	//검정색 배경화면 만들기
-	m_BlackBG = DoEngine::ResourcesManager::get_Instance()->get_BackGround("BlackBG", 1024, 768);
-	//키 등록
-	GameManager::get_Instance()->Key_Init();
+	m_BlackBG = DoEngine::ResourcesManager::get_Instance()->get_BackGround("BlackBG", 1024, 768); 
+	GameManager::get_Instance()->Key_Init(); //키 등록
 	//콜라이더 범위 그리기
 	GameManager::get_Instance()->All_Draw();
 	//맵 만들기
 	m_Map.Init(W_COUNT, H_COUNT);
-	//적 초기화하기
-	AIManager::get_Instance()->Init();
 	//플레이어 만들기
 	m_pPlayer.Init(4, 13);
-
+	//적 초기화하기
+	AIManager::get_Instance()->Init();
+	
 	//몬스터 갯수
 	m_EnemyHealth = DoEngine::ResourcesManager::get_Instance()->get_Bitmap("RES\\enemy_icon.bmp");
 	m_tmpBlock = DoEngine::ResourcesManager::get_Instance()->get_Bitmap("RES\\block08.bmp");
@@ -157,8 +154,9 @@ void GameScene::Release()
 {
 	m_pPlayer.Release();
 	m_Map.Release();
-	DoEngine::ColliderManager::get_Instance()->Clear_Collider();
-	AIManager::get_Instance()->Release();
+	DoEngine::ColliderManager::get_Instance()->Clear_Collider(); //콜라이더 매니저 초기화
+	AIManager::get_Instance()->Release(); //AI매니저 초기화
+	GameManager::get_Instance()->Release(); //게임매니저 초기화
 }
 
 //소멸자

@@ -22,7 +22,6 @@ void Bullet::Init(int _x, int _y)
 	is_Save = true;
 	isDestroy = false;
 	Boom_Time = 0.0f;
-	m_sTag = "Bullet";
 
 	//탄알 리소스 받아오기
 	for (int i = 0; i < 4; i++)
@@ -41,6 +40,7 @@ void Bullet::Init(int _x, int _y)
 	}
 
 	m_BulletDir = m_vBulletBit[1];
+	m_vColl = GameManager::get_Instance()->get_m_vColl();
 	Add_Coll();
 }
 
@@ -48,7 +48,11 @@ void Bullet::Init(int _x, int _y)
 void Bullet::Add_Coll()
 {
 	int tmp_Count;
-	m_vColl.push_back("Player");
+	if (m_sTag != "Bullet1")
+	{
+		m_vColl.push_back("Player");
+	}
+	
 	m_vColl.push_back("PlagWall");
 
 	//적 태그 등록
@@ -64,22 +68,6 @@ void Bullet::Add_Coll()
 	for (int i = 0; i < tmp_Count; i++)
 	{
 		wsprintf(buf, "UpTank%d", i);
-		m_vColl.push_back((string)buf);
-	}
-
-	//부서지는 벽 등록
-	tmp_Count = GameManager::get_Instance()->get_BrokenCount();
-	for (int i = 0; i < tmp_Count; i++)
-	{
-		wsprintf(buf, "BrokenWall%d", i);
-		m_vColl.push_back((string)buf);
-	}
-
-	//강철 벽 등록
-	tmp_Count = GameManager::get_Instance()->get_StillCount();
-	for (int i = 0; i < tmp_Count; i++)
-	{
-		wsprintf(buf, "StiilWall%d", i);
 		m_vColl.push_back((string)buf);
 	}
 }

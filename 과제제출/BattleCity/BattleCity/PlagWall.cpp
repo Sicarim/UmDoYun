@@ -44,11 +44,15 @@ bool PlagWall::Input(int _state)
 //Update함수(override)
 void PlagWall::Update(float _fETime)
 {
-	//탄알에 맞았다면..
-	if (m_Coll.isCollider("Bullet"))
+	for (int i = 1; i < 22; i++)
 	{
-		isDestroy = true;
-		GameManager::get_Instance()->Game_Lose();
+		wsprintf(EnemyBullet, "Bullet%d", i);
+		//탄알에 맞았다면..
+		if (m_Coll.isCollider(EnemyBullet))
+		{
+			isDestroy = true;
+			GameManager::get_Instance()->Game_Lose();
+		}
 	}
 }
 

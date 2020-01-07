@@ -12,6 +12,7 @@ private:
 	bool isDestroy;
 	string m_tag;
 	TCHAR buf[255];
+	TCHAR EnemyBullet[255];
 
 	vector<DoEngine::BitMap*> m_vEgle;
 	DoEngine::Collider m_Coll;

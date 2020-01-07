@@ -20,7 +20,7 @@ public:
 	UnitFactory(); //생성자
 	
 	DoEngine::Object* Order_Unit(string _name, int _x, int _y); //입맛대로 만들기
-	void Release();
+	void Clear_Data();
 	
 	~UnitFactory(); //소멸자
 };

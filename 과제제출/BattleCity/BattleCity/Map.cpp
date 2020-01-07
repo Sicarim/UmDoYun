@@ -98,6 +98,7 @@ void Map::All_InitBlock()
 	GameManager::get_Instance()->set_StillCount(Still_Count);
 	GameManager::get_Instance()->set_WaterCount(Water_Count);
 	GameManager::get_Instance()->set_WaterCount(Bush_Count);
+	GameManager::get_Instance()->add_WallCollider(); //충돌 콜라이더 생성
 }
 
 //키입력(override)

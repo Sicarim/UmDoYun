@@ -14,6 +14,7 @@ private:
 	bool BeforeHit, isDestroy;
 	string m_tag;
 	TCHAR buf[255];
+	TCHAR EnemyBullet[255];
 
 	vector<DoEngine::BitMap*> m_vBlockBit; //부서지는 블록 등록
 	DoEngine::BitMap* tmp_Block;

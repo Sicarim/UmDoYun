@@ -19,8 +19,11 @@ private:
 
 	vector<string> m_vColl;
 	TCHAR buf[255];
+	TCHAR bulletNum[255];
+	TCHAR EnemyBullet[255];
 	DoEngine::Collider m_Coll; //콜라이더
 	DoEngine::ObjectPool<Bullet> m_BulletPool; //총알 오브젝트 풀 생성
+
 	Bullet* tmp_Bullet;
 
 	//장갑 비트맵 선언

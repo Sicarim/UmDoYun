@@ -7,15 +7,7 @@
 //생성자
 Player::Player()
 {
-	m_vLeft.clear();
-	m_vRight.clear();
-	m_vUp.clear();
-	m_vDown.clear();
-	m_vdirection.clear();
 
-	curTime = 0.0f;
-	pos_x = 0.0f;
-	pos_y = 0.0f;
 }
 
 //초기화(override)
@@ -29,6 +21,8 @@ void Player::Init(int _x, int _y)
 	DoEngine::BitMap* tmp_bit = NULL;
 	Fire = false;
 	is_Destroy = false;
+	//탄알 태그 등록
+	wsprintf(bulletNum, "Bullet%d", GameManager::get_Instance()->BulletCount());
 
 	m_vdirection.reserve(ENEMY_KIND);
 	m_vLeft.reserve(ENEMY_KIND);
@@ -64,6 +58,8 @@ void Player::Init(int _x, int _y)
 	pos_y = H_SPACE + _y * (m_vDown[1]->get_Height() * OBJECT_COL);
 	m_wSize = (m_vDown[1]->get_Width() * OBJECT_COL);
 	m_hSize = (m_vDown[1]->get_Height() * OBJECT_COL);
+	m_vColl = GameManager::get_Instance()->get_m_vColl();
+	//콜라이더 추가
 	Add_Coll();
 }
 
@@ -71,6 +67,14 @@ void Player::Init(int _x, int _y)
 void Player::Add_Coll()
 {
 	int tmp_Count = 0;
+
+	//탄알 등록
+	for (int i = 0; i < 21; i++)
+	{
+		wsprintf(buf, "Bullet%d", i);
+		m_vColl.push_back((string)buf);
+	}
+
 	//적 태그 등록(Tank)
 	tmp_Count = GameManager::get_Instance()->get_Tank();
 	for (int i = 0; i < tmp_Count; i++)
@@ -84,22 +88,6 @@ void Player::Add_Coll()
 	for (int i = 0; i < tmp_Count; i++)
 	{
 		wsprintf(buf, "UpTank%d", i);
-		m_vColl.push_back((string)buf);
-	}
-
-	//부서지는 벽 등록
-	tmp_Count = GameManager::get_Instance()->get_BrokenCount();
-	for (int i = 0; i < tmp_Count; i++)
-	{
-		wsprintf(buf, "BrokenWall%d", i);
-		m_vColl.push_back((string)buf);
-	}
-
-	//강철 벽 등록
-	tmp_Count = GameManager::get_Instance()->get_StillCount();
-	for (int i = 0; i < tmp_Count; i++)
-	{
-		wsprintf(buf, "StiilWall%d", i);
 		m_vColl.push_back((string)buf);
 	}
 
@@ -194,7 +182,7 @@ bool Player::Input(int _state)
 			{
 				tmp_Bullet->Init(pos_x + 23, pos_y + 35);
 			}
-
+			tmp_Bullet->set_Info(bulletNum);
 			tmp_Bullet->set_BulletDir(Player_Look);
 			Fire = true;
 		}
@@ -211,10 +199,17 @@ void Player::Update(float _fETime)
 		tmp_Bullet->Update(_fETime);
 	}
 	//탄알에 맞았다면...
-	if (m_Coll.isCollider("Bullet"))
+
+	for (int i = 2; i < 22; i++)
 	{
-		is_Destroy = true;
-		GameManager::get_Instance()->set_PlayerDie(true);
+		wsprintf(EnemyBullet, "Bullet%d", i);
+
+		if (m_Coll.isCollider(EnemyBullet))
+		{
+			is_Destroy = true;
+			GameManager::get_Instance()->set_PlayerDie(true);
+			return;
+		}
 	}
 }
 
@@ -238,7 +233,6 @@ void Player::Draw()
 			{
 				tmp_Bullet->Init(pos_x, pos_y);
 				m_BulletPool.Return_Data(tmp_Bullet);
-				//delete tmp_Bullet;
 				Fire = false;
 			}
 		}
@@ -270,10 +264,9 @@ void Player::Draw()
 		}
 
 		//콜라이더 범위 그리기
-		m_Coll.Init_Collider(m_sTag, pos_x + 10, pos_y + 10, m_vDown[1]->get_Width() * (COL_SIZE - 0.6), m_vDown[1]->get_Height() * (COL_SIZE - 0.6));
+		m_Coll.Init_Collider(m_sTag, pos_x + 5, pos_y + 5, m_vDown[1]->get_Width() * (COL_SIZE - 0.3), m_vDown[1]->get_Height() * (COL_SIZE - 0.3));
 		m_Coll.Draw_Collider();
 	}
-	
 }
 
 //Draw 함수(override)
@@ -292,6 +285,13 @@ void Player::Release()
 	m_vUp.clear();
 	m_vDown.clear();
 	m_vColl.clear();
+	m_Coll.Release_Collider();
+	m_BulletPool.Clear_Data();
+
+	curTime = 0.0f;
+	pos_x = 0.0f;
+	pos_y = 0.0f;
+	is_Destroy = false;
 }
 
 //소멸자

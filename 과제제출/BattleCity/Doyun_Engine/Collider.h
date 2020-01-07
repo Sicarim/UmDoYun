@@ -38,6 +38,8 @@ namespace DoEngine
 		bool isCollider(string _tag, int _state); //콜라이더에 충돌 여부 그리기(밖에서 무언가 부딛칠때)(overloading)
 		bool isCollider(vector<string> _tags, int _state); //콜라이더에 충돌 여부 그리기(밖에서 무언가 부딛칠때)(overloading)
 		void DeleteCollider(); //콜라이더 삭제하기
+		void DeleteCollider(string _tag); //콜라이더 삭제하기
+		void Release_Collider(); //콜라이더 초기화
 
 		bool isInCollider(string _tag); //콜라이더에 충돌 여부 그리기(안에서 나가지 못하게 할때)
 
