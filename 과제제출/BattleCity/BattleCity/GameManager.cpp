@@ -112,8 +112,8 @@ int GameManager::get_BulletDir()
 void GameManager::All_Draw()
 {
 	//그림을 끄려면 false, 아니면 True
-	//DoEngine::ColliderManager::get_Instance()->set_DrawCollider(false);
-	DoEngine::ColliderManager::get_Instance()->set_DrawCollider(true);
+	DoEngine::ColliderManager::get_Instance()->set_DrawCollider(false);
+	//DoEngine::ColliderManager::get_Instance()->set_DrawCollider(true);
 }
 
 //탄알에 번호를 매긴다.
