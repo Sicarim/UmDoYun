@@ -1,0 +1,8 @@
+﻿  BitMap.cpp
+D:\Atence\visual\EveryGame\Doyun_Engine\BitMap.cpp(61,32): warning C4244: '-=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\Atence\visual\EveryGame\Doyun_Engine\BitMap.cpp(62,32): warning C4244: '-=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\Atence\visual\EveryGame\Doyun_Engine\BitMap.cpp(76,102): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\Atence\visual\EveryGame\Doyun_Engine\BitMap.cpp(76,82): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\Atence\visual\EveryGame\Doyun_Engine\BitMap.cpp(97,98): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\Atence\visual\EveryGame\Doyun_Engine\BitMap.cpp(97,78): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Doyun_Engine.vcxproj -> D:\Atence\visual\EveryGame\Debug\Doyun_Engine.lib

@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="소스 파일\Manager">
+      <UniqueIdentifier>{da9b1386-8902-48eb-a0e2-e72e911b7b13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Manager">
+      <UniqueIdentifier>{45bf1651-c384-462b-92c0-879648693c70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Scene">
+      <UniqueIdentifier>{e6f50d23-1a91-4d2e-866f-77aef7bd6d64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Scene">
+      <UniqueIdentifier>{3ce6b9cf-033a-47dc-b84a-bef997d8c38a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Game">
+      <UniqueIdentifier>{636836f6-812b-4aac-ade4-77e63d72ee2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Game">
+      <UniqueIdentifier>{a3d4219d-86bc-4dfc-86ae-b4457da10413}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Game\CardGame">
+      <UniqueIdentifier>{012f01c7-1b77-4a3d-aa9f-910bcf2771b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Game\FlightGame">
+      <UniqueIdentifier>{9c3ae7ed-37d9-42a3-ac44-1c602cf21131}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Game\CardGame">
+      <UniqueIdentifier>{f4b02116-6631-4ae9-a57b-c16a6a893f58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Game\FlightGame">
+      <UniqueIdentifier>{19e1984c-2c33-447c-8a8f-6fe9c75c2fc5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScene.cpp">
+      <Filter>소스 파일\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectScene.cpp">
+      <Filter>소스 파일\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="FlightScene.cpp">
+      <Filter>소스 파일\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CardScene.cpp">
+      <Filter>소스 파일\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CardGame.cpp">
+      <Filter>소스 파일\Game\CardGame</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>소스 파일\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="BlueCard.cpp">
+      <Filter>소스 파일\Game\CardGame</Filter>
+    </ClCompile>
+    <ClCompile Include="RedCard.cpp">
+      <Filter>소스 파일\Game\CardGame</Filter>
+    </ClCompile>
+    <ClCompile Include="GreenCard.cpp">
+      <Filter>소스 파일\Game\CardGame</Filter>
+    </ClCompile>
+    <ClCompile Include="YellowCard.cpp">
+      <Filter>소스 파일\Game\CardGame</Filter>
+    </ClCompile>
+    <ClCompile Include="InputHandler.cpp">
+      <Filter>소스 파일\Game</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="defines.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>헤더 파일\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleScene.h">
+      <Filter>헤더 파일\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="FlightScene.h">
+      <Filter>헤더 파일\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="CardScene.h">
+      <Filter>헤더 파일\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectScene.h">
+      <Filter>헤더 파일\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="CardGame.h">
+      <Filter>헤더 파일\Game\CardGame</Filter>
+    </ClInclude>
+    <ClInclude Include="RedCard.h">
+      <Filter>헤더 파일\Game\CardGame</Filter>
+    </ClInclude>
+    <ClInclude Include="GreenCard.h">
+      <Filter>헤더 파일\Game\CardGame</Filter>
+    </ClInclude>
+    <ClInclude Include="YellowCard.h">
+      <Filter>헤더 파일\Game\CardGame</Filter>
+    </ClInclude>
+    <ClInclude Include="BlueCard.h">
+      <Filter>헤더 파일\Game\CardGame</Filter>
+    </ClInclude>
+    <ClInclude Include="InputHandler.h">
+      <Filter>헤더 파일\Game</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
