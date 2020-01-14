@@ -147,31 +147,49 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BlueCard.cpp" />
+    <ClCompile Include="BlueStar.cpp" />
+    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="BulletPool.cpp" />
     <ClCompile Include="CardGame.cpp" />
     <ClCompile Include="CardScene.cpp" />
+    <ClCompile Include="Flight.cpp" />
+    <ClCompile Include="FlightGame.cpp" />
+    <ClCompile Include="FlightInput.cpp" />
     <ClCompile Include="FlightScene.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GreenCard.cpp" />
+    <ClCompile Include="GreenStar.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RedCard.cpp" />
     <ClCompile Include="SelectScene.cpp" />
+    <ClCompile Include="StarPool.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="YellowCard.cpp" />
+    <ClCompile Include="YellowStar.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BlueCard.h" />
+    <ClInclude Include="BlueStar.h" />
+    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="BulletPool.h" />
     <ClInclude Include="CardGame.h" />
     <ClInclude Include="CardScene.h" />
     <ClInclude Include="defines.h" />
+    <ClInclude Include="Flight.h" />
+    <ClInclude Include="FlightGame.h" />
+    <ClInclude Include="FlightInput.h" />
     <ClInclude Include="FlightScene.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GreenCard.h" />
+    <ClInclude Include="GreenStar.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="RedCard.h" />
     <ClInclude Include="SelectScene.h" />
+    <ClInclude Include="StarPool.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="YellowCard.h" />
+    <ClInclude Include="YellowStar.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

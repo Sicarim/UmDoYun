@@ -72,6 +72,7 @@ void CardScene::Release()
 	curTime = 0.0f;
 	m_Game.Release();
 	isEnd = false;
+	MoveTimeOver = 0;
 }
 
 //¼Ò¸êÀÚ

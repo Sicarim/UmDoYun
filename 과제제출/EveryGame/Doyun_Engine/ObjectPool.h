@@ -14,7 +14,7 @@ namespace DoEngine
 	class ObjectPool
 	{
 	private:
-		list<T*> m_Datas; //Object Pool를 사용하기 위한 Data선언
+		list<Object*> m_Datas; //Object Pool를 사용하기 위한 Data선언
 
 	public:
 		//Defalut생성자
@@ -38,7 +38,7 @@ namespace DoEngine
 	{
 		for (int i = 0; i < _size; i++)
 		{
-			T* tmp_data = new T;
+			Object* tmp_data = new T;
 			m_Datas.push_back(tmp_data);
 		}
 	}

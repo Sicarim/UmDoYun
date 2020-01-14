@@ -7,6 +7,7 @@
 #include "CardScene.h"
 #include "UIManager.h"
 #include "ResourcesManager.h"
+#include "ColliderManager.h"
 
 //생성자
 GameManager::GameManager()
@@ -51,20 +52,9 @@ void GameManager::Init()
 	Load_BackBit = DoEngine::ResourcesManager::get_Instance()->get_Bitmap("RES\\LoadingBack.bmp");
 	//로딩아이콘 비트
 	Load_Bit = DoEngine::ResourcesManager::get_Instance()->get_Bitmap("RES\\Loading.bmp");
-}
 
-//카드게임 초기화
-void GameManager::CardGame_Init()
-{
-	Card_Count = 0;
-	Bonus_Score = 0;
-	AnswerCount = 0;
-}
-
-//비행기 게임 초기화
-void GameManager::FlightGame_Init()
-{
-
+	//콜라이더 범위 켜고 끄기
+	All_Draw();
 }
 
 //Scene등록
@@ -142,27 +132,13 @@ void GameManager::Release()
 	UltraAlpa = 0;
 	FeverTime = 0.0f;
 	FeverCount = 0;
+	isGameOver = false;
 	isUltr = false;
 	isFever = false;
-	isGameOver = false;
 	FeverPuple_Count = 0.0f;
 	FeverRed_Count = 0.0f;
 	FeverYellow_Count = 0.0f;
 	curTime = 1.0f;
-}
-
-//카드게임 삭제 함수
-void GameManager::CardGame_Release()
-{
-	Card_Count = 0;
-	Bonus_Score = 0;
-	AnswerCount = 0;
-}
-
-//비행기 삭제 함수
-void GameManager::FlightGame_Release()
-{
-
 }
 
 //Fever 이펙트 그리기
@@ -219,8 +195,30 @@ bool GameManager::get_GameOver()
 	return isGameOver;
 }
 
+//Fever여부 리턴
+bool GameManager::get_isFever()
+{
+	return isFever;
+}
+
 
 ///////////////////////카드 게임/////////////
+
+//카드게임 초기화
+void GameManager::CardGame_Init()
+{
+	Card_Count = 0;
+	Bonus_Score = 0;
+	AnswerCount = 0;
+}
+
+//카드게임 삭제 함수
+void GameManager::CardGame_Release()
+{
+	Card_Count = 0;
+	Bonus_Score = 0;
+	AnswerCount = 0;
+}
 
 //점수 삽입
 void GameManager::set_Score(int _score)
@@ -336,11 +334,53 @@ void GameManager::Down_FeverBar()
 	}
 }
 
+///////////////////////비행기 게임////////////////
+
+//비행기 게임 초기화
+void GameManager::FlightGame_Init()
+{
+	FlightDestroy = false;
+	AnswerCount = 0;
+}
+
+//비행기 삭제 함수
+void GameManager::FlightGame_Release()
+{
+	FlightDestroy = false;
+	AnswerCount = 0;
+}
+
+//비행기 파괴
+void GameManager::set_Destroy(bool _isDestroy)
+{
+	FlightDestroy = _isDestroy;
+	if (FlightDestroy)
+	{
+		if (isFever == true)
+		{
+			FeverCount = 0;
+			AnswerCount = 0;
+			isUltr = false;
+			isFever = false;
+			FeverPuple_Count = 0.0f;
+			FeverRed_Count = 0.0f;
+			FeverYellow_Count = 0.0f;
+		}
+	}
+}
+
+//비행기 파괴 여부리턴
+bool GameManager::get_Destroy()
+{
+	return FlightDestroy;
+}
 
 //모든 콜라이더 그리기
 void GameManager::All_Draw()
 {
-
+	//그림을 끄려면 false, 아니면 True
+	DoEngine::ColliderManager::get_Instance()->set_DrawCollider(false);
+	//DoEngine::ColliderManager::get_Instance()->set_DrawCollider(true);
 }
 
 //소멸자

@@ -10,10 +10,10 @@ private:
 	int MoveTimeOver;
 	float curTime;
 	bool isEnd;
+
+	CardGame m_Game;
 	DoEngine::BitMap* Card_Bit; //카드 비트맵
 	DoEngine::BitMap* TimeOver_Bit; //타임 오버 비트맵
-	CardGame m_Game;
-
 public:
 	CardScene(); //생성자
 

@@ -9,6 +9,12 @@
 #define FEVER_Y 55
 #define TIMEBAR_X 20
 #define TIMEBAR_Y 620
+
+#define BIRTH_UP 90
+#define BIRTH_DOWN 590
+#define BIRTH_LEFT 0
+#define BIRTH_RIGHT 410
+
 enum FEVER_SELECT
 {
 	FEVER_PUPLE,
@@ -58,6 +64,18 @@ enum CARD_STATE
 	ANSWER,
 	FAIL
 };
+
+
+//Fligt
+#define FLIGHT_X 175 //카드 초기화 위치(x)
+#define FLIGHT_Y 295 //카드 초기화 위치(y)
+#define FLIGHT_SPEED 400;
+#define BULLET_SPEED 60;
+#define STAR_SPEED 80;
+#define FSTAR_SPEED 60;
+#define BLUE_SCORE 1400
+#define GREEN_SCORE 1400
+#define YELLOW_SCORE 100
 
 //click_key
 enum STATE

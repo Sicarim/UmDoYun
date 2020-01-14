@@ -2,11 +2,18 @@
 #include "GlobalDefine.h"
 #include "DoEngine.h"
 #include "defines.h"
+#include "FlightGame.h"
 
 class FlightScene : public DoEngine::Scene
 {
 private:
+	int MoveTimeOver;
+	float curTime;
+	bool isEnd;
+
+	FlightGame m_Game;
 	DoEngine::BitMap* Flight_Bit; //비행기 비트맵
+	DoEngine::BitMap* TimeOver_Bit; //타임 오버 비트맵
 public:
 	FlightScene(); //생성자
 
