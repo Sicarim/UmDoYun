@@ -24,6 +24,7 @@ void CardScene::Init(HWND hWnd)
 //키입력(overrride)
 bool CardScene::Input(float _fETime)
 {
+	//ESC를 누르면 종료
 	if (DoEngine::InputManager::get_Instance()->isKeyUp(VK_ESCAPE))
 	{
 		return true;
@@ -39,6 +40,7 @@ bool CardScene::Input(float _fETime)
 void CardScene::Update(float _fETime)
 {
 	m_Game.Update(_fETime);
+	//만약 GameOver라면 일정시간이 지난 후 선택화면으로 돌아간다.
 	if (GameManager::get_Instance()->get_GameOver())
 	{
 		isEnd = true;
@@ -56,6 +58,7 @@ void CardScene::Draw(HDC hdc)
 	Card_Bit->Draw(0, 0);
 	m_Game.Draw();
 
+	//게임이 끝나면 TimeOver객체를 그린다.
 	if (isEnd)
 	{
 		if (MoveTimeOver <= 300)

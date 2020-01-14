@@ -3,6 +3,9 @@
 #include "DoEngine.h"
 #include "defines.h"
 
+/*
+	TitleSceneµî·Ï
+*/
 class TitleScene : public DoEngine::Scene
 {
 private:

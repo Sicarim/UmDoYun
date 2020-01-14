@@ -18,11 +18,13 @@ void TitleScene::Init(HWND hWnd)
 //키입력(overrride)
 bool TitleScene::Input(float _fETime)
 {
+	//ESC를 누르면 종료
 	if (DoEngine::InputManager::get_Instance()->isKeyUp(VK_ESCAPE))
 	{
 		return true;
 	}
 
+	//Enter키를 누르면 선택화면으로 넘어간다
 	if (DoEngine::InputManager::get_Instance()->isKeyUp(VK_RETURN))
 	{
 		DoEngine::SceneManager::get_Instance()->LoadScene(SCENE_INDEX_SELECT);

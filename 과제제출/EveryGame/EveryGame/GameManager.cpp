@@ -147,6 +147,7 @@ void GameManager::ManagerUI_Draw()
 	//FeverEffect
 	if (isFever)
 	{
+		//Fever상태라면 Fever이펙트를 깜빡 거린다.
 		FeverAlpa++;
 
 		if (FeverAlpa > 3 && FeverAlpa <= 10)
@@ -164,6 +165,7 @@ void GameManager::ManagerUI_Draw()
 	m_vFeverBar[FEVER_RED]->Draw(FEVER_X, FEVER_Y, FeverRed_Count);
 	m_vFeverBar[FEVER_YELLOW]->Draw(FEVER_X, FEVER_Y, FeverYellow_Count);
 
+	//Fever가 Ultr상태라면 RedBar와 YellowBar를 반복한다.
 	if (isUltr)
 	{
 		UltraAlpa++;
@@ -184,6 +186,7 @@ void GameManager::ManagerUI_Draw()
 //Fever 이펙트 그리기
 void GameManager::Loading_Draw()
 {
+	//로딩화면을 그린다.
 	Load_BackBit->AlphaDraw(0, 0, 150);
 	Load_Bit->Draw(130, 230);
 	DoEngine::UIManager::get_Instance()->AddText("Loading...", 150, 370, 40, 255, 255, 255, TRANSPARENT, "맑은 고딕");
@@ -223,6 +226,7 @@ void GameManager::CardGame_Release()
 //점수 삽입
 void GameManager::set_Score(int _score)
 {
+	//Fever상태라면 점수를 두배로 증가한다.
 	if (isFever)
 	{
 		TotalScore += _score * 2;
@@ -257,6 +261,9 @@ void GameManager::add_FeverCount()
 	FeverCount++;
 	AnswerCount++;
 
+	/*
+		FeverCount가 10씩 증가할때 마다 이미지를 바꾼다.
+	*/
 	if (AnswerCount <= 10)
 	{
 		FeverPuple_Count = FeverCount * 0.1;
@@ -279,6 +286,7 @@ void GameManager::add_FeverCount()
 		FeverCount = 0;
 	}
 
+	//FeverCount가 30이상이면 울트라 상태로 바꾼다.
 	if (AnswerCount > 30)
 	{
 		isUltr = true;

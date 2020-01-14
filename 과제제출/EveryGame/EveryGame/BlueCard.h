@@ -2,16 +2,19 @@
 #include "DoEngine.h"
 #include "defines.h"
 
+/*
+	카드 게임에 사용할 BlueCard
+*/
 class BlueCard : public DoEngine::Object
 {
 private:
 	DoEngine::BitMap* m_BlueCard; //퍼런 카드
 	int pos_x, pos_y;
 	int size_x, size_y;
-	int isAnswer;
-	float curTime;
+	int isAnswer; //정답 클릭 여부
+	float curTime; //현재 시간
 	bool isBefore;
-	int vibe;
+	int vibe; //진동횟수
 
 	bool isBonus;
 	DoEngine::BitMap* m_Bonus;

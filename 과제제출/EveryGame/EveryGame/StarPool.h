@@ -5,6 +5,11 @@
 #include "GreenStar.h"
 #include "YellowStar.h"
 
+/*
+	FlightGame에서 사용하는 StarPool(ObjectPool)
+	별의 생성, 삭제를 반복하므로 미리 갯수를 정해놓고, 필요하면 꺼내고, 파괴되면 다시 되돌리는 objectPool을 사용
+*/
+
 class StarPool
 {
 private:

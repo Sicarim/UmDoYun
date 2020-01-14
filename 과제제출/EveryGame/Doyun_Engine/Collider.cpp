@@ -14,6 +14,7 @@ namespace DoEngine
 	//콜라이더 범위 지정 (태그, 좌표 = Left, Top, Right, Bottom)
 	void Collider::Init_Collider(string _tag, int _left, int _top, int _right, int _bottom)
 	{
+		//태그와 Top, Left, Right, Bottom을 지정
 		m_Tag = _tag;
 		m_left = _left;
 		m_top = _top;
@@ -52,14 +53,17 @@ namespace DoEngine
 	//콜라이더에 충돌 여부 그리기(밖에서 무언가 부딛칠때)
 	bool Collider::isCollider(string _tag)
 	{
+		//해당 Tag를 ColliderManager에서 찾은 후, 임시Rect에 담는다.
 		RECT tmp_rc = DoEngine::ColliderManager::get_Instance()->Search_Collider(_tag);
 
+		//충돌 여부를 리턴
 		return m_Rect.isOutCollision(tmp_rc);
 	}
 
 	//콜라이더에 충돌 여부 그리기(밖에서 무언가 부딛칠때)(overloading)
 	bool Collider::isCollider(vector<string> _tags)
 	{
+		//Collider Vector에서 해당 태그를 찾은 후, 충돌여부를 리턴
 		RECT tmp_rc;
 
 		for (int i = 0; i < _tags.size(); i++)

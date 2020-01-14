@@ -4,6 +4,9 @@
 #include "defines.h"
 #include "FlightGame.h"
 
+/*
+	비행기 게임 등록
+*/
 class FlightScene : public DoEngine::Scene
 {
 private:

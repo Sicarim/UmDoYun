@@ -9,6 +9,9 @@ namespace DoEngine
 
 	}
 
+	/*
+		그릴 글자, 글자를 그릴 위치, 글자 크기, 글자 색, 글꼴 모양을 지정
+	*/
 	void Text::Init(LPCTSTR _str, int _x, int _y, int _fsize, int _r, int _g, int _b, DWORD _drawOption, LPCTSTR _font)
 	{
 		m_dwDrawOption = _drawOption;

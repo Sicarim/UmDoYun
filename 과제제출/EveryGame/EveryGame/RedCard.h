@@ -2,6 +2,9 @@
 #include "DoEngine.h"
 #include "defines.h"
 
+/*
+	CardGame에서 사용할 RedCard
+*/
 class RedCard : public DoEngine::Object
 {
 private:

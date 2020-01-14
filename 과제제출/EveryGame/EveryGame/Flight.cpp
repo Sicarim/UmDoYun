@@ -25,17 +25,18 @@ void Flight::Init(int _x, int _y)
 	size_x = Flight_Bit->get_Width();
 	size_y = Flight_Bit->get_Height();
 
+	//충돌할 Bullet의 태그를 등록한다.
 	for (int i = 0; i < 100; i++)
 	{
 		wsprintf(buf, "Bullet%d", i);
 		m_vColl.push_back(buf);
 	}
-	
 }
 
 //키입력(override)
 bool Flight::Input(int _state)
 {
+	//FlightGame의 입력에 따라 움직임인다.
 	if (!isDestroy)
 	{
 		if (_state == LEFT)
@@ -83,6 +84,9 @@ void Flight::Update(float _fETime)
 	{
 		isDestroy = true;
 	}
+	/*
+	파괴되지 않았다면, 지속적으로 태그를 등록(갱신)한다.
+	*/
 	else
 	{
 		m_Coll.Init_Collider(m_Tag, pos_x + 25, pos_y + 20, size_x - 50, size_y - 40);
@@ -92,12 +96,16 @@ void Flight::Update(float _fETime)
 //Draw 함수(overloding)(override)
 void Flight::Draw()
 {
+	//파괴되지 않았다면 FlightBit를 그린다.
 	if (!isDestroy)
 	{
 		GameManager::get_Instance()->set_Destroy(isDestroy);
 		Flight_Bit->Draw(pos_x, pos_y);
 		m_Coll.Draw_Collider();
 	}
+	/*
+		파괴되었다면 Flight를 그리지 않고 시간에 맞춰 폭팔 이미지를 그린다.
+	*/
 	else
 	{
 		GameManager::get_Instance()->set_Destroy(isDestroy);

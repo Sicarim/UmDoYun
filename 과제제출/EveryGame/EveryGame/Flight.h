@@ -2,6 +2,10 @@
 #include "DoEngine.h"
 #include "defines.h"
 
+/*
+	FlightGame에서 사용하는 비행기
+*/
+
 class Flight : public DoEngine::Object
 {
 private:

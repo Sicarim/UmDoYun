@@ -62,22 +62,27 @@ void BulletPool::Update(float _fETime)
 
 	if (curTime > 0.5f)
 	{
+		//일정 시간이 지나면 get_Data를 실행
 		get_Data();
 		curTime = 0.0f;
 	}
 	
+	//BulletPool이 NULL이 아니면 StarPool의 객체를 순차적으로 Update한다
 	if (m_vBulletPool.size() != 0)
 	{
 		for (int i = 0; i < m_vBulletPool.size(); i++)
 		{
 			m_vBulletPool[i]->Update(_fETime);
+			//만약 파괴된다면
 			if (!m_vBulletPool[i]->Input())
 			{
+				//ReturnData를 실행
 				Return_Data(i);
 			}
 		}
 	}
 
+	//비행기가 파괴되면 현재 화면에 나와있는 모든 탄알을 삭제한다.
 	if (GameManager::get_Instance()->get_Destroy())
 	{
 		for (int i = 0; i < m_vBulletPool.size(); i++)
@@ -92,8 +97,10 @@ void BulletPool::Update(float _fETime)
 //그리기
 void BulletPool::Draw()
 {
+	//BulletPool의 사이즈가 0이 아니라면
 	if (m_vBulletPool.size() != 0)
 	{
+		//순차적으로 BulletPool의 객체를 그린다.
 		for (int i = 0; i < m_vBulletPool.size(); i++)
 		{
 			m_vBulletPool[i]->Draw();
@@ -120,18 +127,22 @@ void BulletPool::Release()
 //데이터 꺼내기
 void BulletPool::get_Data()
 {
+	//100개의 Star를 넣어논 StandPool에서 맨앞의 객체를 임시객체에 담는다
 	Bullet* tmp_Data = m_vStandPool.front();
+	//꺼낸 후, StandPool의 첫 객체를 삭제한다.
 	m_vStandPool.pop_front();
+	//정말로 사용될 Pool(BulletPool)에 넣는다.
 	m_vBulletPool.push_back(tmp_Data);
 }
 
 //데이터 다시 집어넣기
 void BulletPool::Return_Data(int _num)
 {
+	//파괴될 Bullet을 임시 객체에 담는다.
 	Bullet* tmp_Data = m_vBulletPool[_num];
+	//StandPool에 다시 넣는다.
 	m_vStandPool.push_back(tmp_Data);
-	//부숴지는 이펙트 발생하고 삭제
-
+	//해당 Bullet을 삭제한다.
 	m_vBulletPool.erase(m_vBulletPool.begin() + _num);
 }
 

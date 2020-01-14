@@ -4,6 +4,9 @@
 #include "defines.h"
 #include "CardGame.h"
 
+/*
+	CardGame µî·Ï
+*/
 class CardScene : public DoEngine::Scene
 {
 private:

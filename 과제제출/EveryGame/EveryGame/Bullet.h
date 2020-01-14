@@ -2,6 +2,10 @@
 #include "DoEngine.h"
 #include "defines.h"
 
+/*
+	FlightGame에서 사용하는 탄알
+*/
+
 class Bullet : public DoEngine::Object
 {
 private:

@@ -21,6 +21,7 @@ void Bullet::Init(int _x, int _y)
 	isDestroy = false;
 	Birth_dir = rand() % 2;
 
+	//탄알의 방향을 정한다.
 	if (Birth_dir == 0)
 	{
 		Birth_Add = 1;
@@ -34,6 +35,7 @@ void Bullet::Init(int _x, int _y)
 //키입력(override)
 bool Bullet::Input(int _state)
 {
+	//만약 파괴된다면 false를 리턴한다
 	if (isDestroy)
 	{
 		return false;
@@ -45,6 +47,7 @@ void Bullet::Update(float _fETime)
 {
 	curTime = _fETime;
 
+	//생성위치에 따라 움직임을 정의
 	if (BirthCount == 0)
 	{
 		//위

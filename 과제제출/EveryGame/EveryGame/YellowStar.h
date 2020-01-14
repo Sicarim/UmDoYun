@@ -2,6 +2,9 @@
 #include "DoEngine.h"
 #include "defines.h"
 
+/*
+	FlightGame에서 사용하는 YellowStar
+*/
 class YellowStar : public DoEngine::Object
 {
 private:

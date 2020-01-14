@@ -3,6 +3,9 @@
 #include "GlobalDefine.h"
 #include "defines.h"
 
+/*
+	GameManager등록, Game에 관여하는 모든 변수 및 함수를 등록
+*/
 class GameManager : public Singleton<GameManager>
 {
 private:
@@ -19,18 +22,18 @@ private:
 	bool isUltr, isFever, isGameOver;
 	
 
-	DoEngine::BitMap* Fever_Bit;
-	DoEngine::BitMap* Time_Bar;
-	DoEngine::BitMap* m_vFeverBar[3];
-	DoEngine::BitMap* tmp_Bonus;
-	vector<DoEngine::BitMap*> m_vBonus;
+	DoEngine::BitMap* Fever_Bit; //FeverEffect 등록
+	DoEngine::BitMap* Time_Bar; //Time Bar등록
+	DoEngine::BitMap* m_vFeverBar[3]; //FeverVar등록
+	DoEngine::BitMap* tmp_Bonus; //Bonus Bit를 담을 임시 객체
+	vector<DoEngine::BitMap*> m_vBonus; //보너스 점수 등록(vector)
 	DoEngine::BitMap* Load_BackBit; //로딩 Back비트맵
 	DoEngine::BitMap* Load_Bit; //로딩 비트맵
 
 	//CardGame
-	int Card_Count;
-	int AnswerCount;
-	int Bonus_Score;
+	int Card_Count; //카드 카운트 등록
+	int AnswerCount; //정답이면 정답 카운트 등록
+	int Bonus_Score; //보너스 점수
 
 	//FlightGame
 	bool FlightDestroy;

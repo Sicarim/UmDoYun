@@ -2,6 +2,9 @@
 #include "DoEngine.h"
 #include "defines.h"
 
+/*
+	FlightGame에서 사용하는 GreenStar
+*/
 class GreenStar : public DoEngine::Object
 {
 private:

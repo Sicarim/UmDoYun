@@ -34,6 +34,7 @@ void SelectScene::Init(HWND hWnd)
 //키입력(overrride)
 bool SelectScene::Input(float _fETime)
 {
+	//ESC를 누르면 종료
 	if (DoEngine::InputManager::get_Instance()->isKeyUp(VK_ESCAPE))
 	{
 		return true;
@@ -46,10 +47,12 @@ bool SelectScene::Input(float _fETime)
 
 		if (curTime > 0.1f)
 		{
+			//CardGame을 클릭하면 CardGameScene으로 이동한다.
 			if (isCard)
 			{
 				DoEngine::SceneManager::get_Instance()->LoadScene(SCENE_INDEX_CARD);
 			}
+			//CardGame을 클릭하면 FlightGameScene으로 이동한다.
 			if (isFlight)
 			{
 				DoEngine::SceneManager::get_Instance()->LoadScene(SCENE_INDEX_FLIGHT);
@@ -90,6 +93,7 @@ void SelectScene::Release()
 //카드게임
 bool SelectScene::OnCardClick()
 {
+	//카드 게임을 클릭하면 isCard를 참으로 바꾼다.
 	isClick = true;
 	isCard = true;
 
@@ -99,6 +103,7 @@ bool SelectScene::OnCardClick()
 //비행기 게임
 bool SelectScene::OnFlightClick()
 {
+	//카드 게임을 클릭하면 isFlight를 참으로 바꾼다.
 	isClick = true;
 	isFlight = true;
 

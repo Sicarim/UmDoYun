@@ -18,9 +18,9 @@ void YellowStar::Init(int _x, int _y)
 	size_y = YellowStar_Bit->get_Height();
 	curTime = 0.0f;
 	isDestroy = false;
-	Fever = 0;
 	Random = rand() % 10 + 1;
 
+	//움직일 방향을 랜덤으로 지정
 	if (Random % 2 == 0)
 	{
 		Birth_dir = 1;
@@ -38,6 +38,10 @@ bool YellowStar::Input(int _state)
 	{
 		return false;
 	}
+	/*
+		Fever상태가 아닐 시 느리게 이동하며,
+		Fever상태라면 좀 더 빠르게 이동한다.
+	*/
 	else
 	{
 		if (!GameManager::get_Instance()->get_isFever())
@@ -59,6 +63,10 @@ void YellowStar::Update(float _fETime)
 	m_Coll.Init_Collider(m_tag, pos_x, pos_y, size_x, size_y);
 	curTime = _fETime;
 
+	/*
+		Flight라는 이름을 가진 Collider에 충돌하면 파괴된다.
+		파괴되면서 점수와 Fever카운트를 증가시킨다
+	*/
 	if (m_Coll.isCollider("Flight"))
 	{
 		isDestroy = true;
@@ -66,10 +74,7 @@ void YellowStar::Update(float _fETime)
 		GameManager::get_Instance()->add_FeverCount();
 	}
 
-	if (isDestroy)
-	{
-		Fever += curTime * 250;
-	}
+	//벽에 닿으면 파괴
 	if (m_Coll.get_Collider("BackGround").top > pos_y || m_Coll.get_Collider("BackGround").bottom < pos_y + size_y || m_Coll.get_Collider("BackGround").left > pos_x)
 	{
 		isDestroy = true;
@@ -79,6 +84,7 @@ void YellowStar::Update(float _fETime)
 //Draw 함수(overloding)(override)
 void YellowStar::Draw()
 {
+	//파괴되지 않는다면 그림과 콜라이더를 그린다.
 	if (!isDestroy)
 	{
 		YellowStar_Bit->Draw(pos_x, pos_y);

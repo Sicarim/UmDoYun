@@ -60,10 +60,12 @@ void StarPool::Update(float _fETime)
 	{
 		if (curTime > 0.8f)
 		{
+			//일정 시간이 지나면 get_Data를 실행
 			get_Data();
 			curTime = 0.0f;
 		}
 	}
+	//BulletPool이 NULL이 아니면 StarPool의 객체를 순차적으로 Update한다
 	else
 	{
 		if (curTime > 0.2f)
@@ -79,8 +81,10 @@ void StarPool::Update(float _fETime)
 		for (int i = 0; i < m_vStarPool.size(); i++)
 		{
 			m_vStarPool[i]->Update(_fETime);
+			//만약 파괴된다면
 			if (!m_vStarPool[i]->Input())
 			{
+				//ReturnData를 실행
 				Return_Data(i);
 			}
 		}
@@ -90,8 +94,10 @@ void StarPool::Update(float _fETime)
 //그리기
 void StarPool::Draw()
 {
+	//BulletPool의 사이즈가 0이 아니라면
 	if (m_vStarPool.size() != 0)
 	{
+		//순차적으로 BulletPool의 객체를 그린다.
 		for (int i = 0; i < m_vStarPool.size(); i++)
 		{
 			m_vStarPool[i]->Draw();
@@ -118,17 +124,22 @@ void StarPool::Release()
 //데이터 꺼내기
 void StarPool::get_Data()
 {
+	//100개의 Star를 넣어논 StandPool에서 맨앞의 객체를 임시객체에 담는다
 	DoEngine::Object* tmp_Data = m_vStandPool.front();
+	//꺼낸 후, StandPool의 첫 객체를 삭제한다.
 	m_vStandPool.pop_front();
+	//정말로 사용될 Pool(StarPool)에 넣는다.
 	m_vStarPool.push_back(tmp_Data);
 }	
 
 //데이터 다시 집어넣기
 void StarPool::Return_Data(int _num)
 {
+	//파괴될 Bullet을 임시 객체에 담는다.
 	DoEngine::Object* tmp_Data = m_vStarPool[_num];
+	//StandPool에 다시 넣는다.
 	m_vStandPool.push_back(tmp_Data);
-	//부숴지는 이펙트 발생하고 삭제
+	//해당 Star을 삭제한다.
 	m_vStarPool.erase(m_vStarPool.begin() + _num);
 }
 

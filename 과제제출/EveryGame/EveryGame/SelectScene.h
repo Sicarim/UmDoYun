@@ -3,6 +3,9 @@
 #include "DoEngine.h"
 #include "defines.h"
 
+/*
+	GameSelect 화면 등록
+*/
 class SelectScene : public DoEngine::Scene
 {
 private:

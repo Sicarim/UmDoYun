@@ -15,6 +15,7 @@
 #define BIRTH_LEFT 0
 #define BIRTH_RIGHT 410
 
+//FeverBar색 등록
 enum FEVER_SELECT
 {
 	FEVER_PUPLE,
@@ -22,6 +23,7 @@ enum FEVER_SELECT
 	FEVER_YELLOW
 };
 
+//카드 보너스 등록
 enum BONUS_SCORE
 {
 	BONUS_YELLOW,

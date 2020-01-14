@@ -8,6 +8,9 @@
 #include "InputHandler.h"
 #include "Text.h"
 
+/*
+	CardGame이 돌아가는 Class
+*/
 class CardGame
 {
 private:

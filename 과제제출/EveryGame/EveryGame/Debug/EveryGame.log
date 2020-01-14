@@ -1,46 +1,12 @@
-﻿  BlueStar.cpp
-D:\Atence\visual\EveryGame\EveryGame\BlueStar.cpp(15,10): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Atence\visual\EveryGame\EveryGame\BlueStar.cpp(16,10): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Atence\visual\EveryGame\EveryGame\BlueStar.cpp(45,37): warning C4244: '+=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Atence\visual\EveryGame\EveryGame\BlueStar.cpp(50,37): warning C4244: '+=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Atence\visual\EveryGame\EveryGame\BlueStar.cpp(59,37): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Atence\visual\EveryGame\EveryGame\BlueStar.cpp(59,30): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Atence\visual\EveryGame\EveryGame\BlueStar.cpp(71,25): warning C4244: '+=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Atence\visual\EveryGame\EveryGame\BlueStar.cpp(85,29): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+﻿  CardScene.cpp
   FlightGame.cpp
   FlightScene.cpp
   GameManager.cpp
-D:\Atence\visual\EveryGame\EveryGame\BlueStar.cpp(85,22): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 D:\Atence\visual\EveryGame\EveryGame\GameManager.cpp(262,33): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 D:\Atence\visual\EveryGame\EveryGame\GameManager.cpp(266,31): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 D:\Atence\visual\EveryGame\EveryGame\GameManager.cpp(270,34): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  GreenStar.cpp
-D:\Atence\visual\EveryGame\EveryGame\GameManager.cpp(333,26): warning C4305: '-=': 'double'에서 'float'(으)로 잘립니다.
-D:\Atence\visual\EveryGame\EveryGame\GreenStar.cpp(15,10): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Atence\visual\EveryGame\EveryGame\GreenStar.cpp(16,10): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Atence\visual\EveryGame\EveryGame\GreenStar.cpp(46,37): warning C4244: '+=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Atence\visual\EveryGame\EveryGame\GreenStar.cpp(51,37): warning C4244: '+=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Atence\visual\EveryGame\EveryGame\GreenStar.cpp(59,37): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Atence\visual\EveryGame\EveryGame\GreenStar.cpp(59,30): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Atence\visual\EveryGame\EveryGame\GreenStar.cpp(71,25): warning C4244: '+=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Atence\visual\EveryGame\EveryGame\GreenStar.cpp(84,30): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  StarPool.cpp
-D:\Atence\visual\EveryGame\EveryGame\GreenStar.cpp(84,23): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Atence\visual\EveryGame\EveryGame\StarPool.cpp(79,21): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-D:\Atence\visual\EveryGame\EveryGame\StarPool.cpp(95,21): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-  YellowStar.cpp
-D:\Atence\visual\EveryGame\EveryGame\StarPool.cpp(110,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-D:\Atence\visual\EveryGame\EveryGame\YellowStar.cpp(15,10): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Atence\visual\EveryGame\EveryGame\YellowStar.cpp(16,10): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Atence\visual\EveryGame\EveryGame\YellowStar.cpp(46,37): warning C4244: '+=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Atence\visual\EveryGame\EveryGame\YellowStar.cpp(51,37): warning C4244: '+=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Atence\visual\EveryGame\EveryGame\YellowStar.cpp(59,37): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Atence\visual\EveryGame\EveryGame\YellowStar.cpp(59,30): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Atence\visual\EveryGame\EveryGame\YellowStar.cpp(71,25): warning C4244: '+=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Atence\visual\EveryGame\EveryGame\YellowStar.cpp(84,31): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  SelectScene.cpp
+  TitleScene.cpp
   코드를 생성하고 있습니다...
-D:\Atence\visual\EveryGame\EveryGame\YellowStar.cpp(84,24): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Atence\visual\EveryGame\EveryGame\YellowStar.cpp(54): warning C4715: 'YellowStar::Input': 모든 제어 경로에서 값을 반환하지는 않습니다.
-D:\Atence\visual\EveryGame\EveryGame\GreenStar.cpp(54): warning C4715: 'GreenStar::Input': 모든 제어 경로에서 값을 반환하지는 않습니다.
-D:\Atence\visual\EveryGame\EveryGame\BlueStar.cpp(54): warning C4715: 'BlueStar::Input': 모든 제어 경로에서 값을 반환하지는 않습니다.
+D:\Atence\visual\EveryGame\EveryGame\GameManager.cpp(333,26): warning C4305: '-=': 'double'에서 'float'(으)로 잘립니다.
   EveryGame.vcxproj -> D:\Atence\visual\EveryGame\Debug\EveryGame.exe

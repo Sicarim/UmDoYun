@@ -12,11 +12,12 @@ FlightGame::FlightGame()
 //게임 초기화
 void FlightGame::Init()
 {
+	//GameManager에서 초기화를 실행
 	GameManager::get_Instance()->Init();
 	GameManager::get_Instance()->FlightGame_Init();
 	curTime = 0.0f;
+	//비행기와 StarPool, BulletPool을 초기화
 	m_Flight.Init(FLIGHT_X, FLIGHT_Y);
-	m_Bullet.Init(FLIGHT_X + 49, FLIGHT_Y + 40);
 	m_BackGroundColl.Init_Collider("BackGround", 0, 90, 410, 520);
 	m_BulletPool.Init();
 	m_StarPool.Init();

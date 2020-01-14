@@ -13,7 +13,7 @@ FlightInput::FlightInput()
 //명령을 실행할 메서드들
 DoEngine::Command* FlightInput::CommandInput()
 {
-	//왼쪽
+	//왼쪽방향키를 누르면  LeftCommand를 생성하여 리턴한다
 	if (DoEngine::InputManager::get_Instance()->isKeyPress(VK_LEFT))
 	{
 		if (key_Left == NULL)
@@ -22,7 +22,7 @@ DoEngine::Command* FlightInput::CommandInput()
 		}
 		return key_Left;
 	}
-	//오른쪽
+	//오른쪽방향키를 누르면  RightCommand를 생성하여 리턴한다
 	if (DoEngine::InputManager::get_Instance()->isKeyPress(VK_RIGHT))
 	{
 		if (key_Right == NULL)
@@ -31,7 +31,7 @@ DoEngine::Command* FlightInput::CommandInput()
 		}
 		return key_Right;
 	}
-	//위쪽
+	//위쪽방향키를 누르면  UpCommand를 생성하여 리턴한다
 	if (DoEngine::InputManager::get_Instance()->isKeyPress(VK_UP))
 	{
 		if (key_Up == NULL)
@@ -40,7 +40,7 @@ DoEngine::Command* FlightInput::CommandInput()
 		}
 		return key_Up;
 	}
-	//아래쪽
+	//아래쪽방향키를 누르면  DownCommand를 생성하여 리턴한다
 	if (DoEngine::InputManager::get_Instance()->isKeyPress(VK_DOWN))
 	{
 		if (key_Down == NULL)
@@ -49,7 +49,7 @@ DoEngine::Command* FlightInput::CommandInput()
 		}
 		return key_Down;
 	}
-
+	//만약 입력이 없다면 NULL을 리턴한다.
 	return NULL;
 }
 

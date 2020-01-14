@@ -126,6 +126,7 @@ namespace DoEngine
 			_node = _node->get_Parent();
 			Fast_Way.push_back(_node); //가장 빠른 길을 목록에 담는다
 		}
+		//가장 빠를길을 역전시킨다.
 		reverse(Fast_Way.begin(), Fast_Way.end());
 	}
 

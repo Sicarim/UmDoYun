@@ -11,6 +11,9 @@
 #include "StarPool.h"
 #include "BulletPool.h"
 
+/*
+	FlightGame
+*/
 class FlightGame
 {
 private:

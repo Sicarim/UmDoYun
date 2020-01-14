@@ -2,6 +2,9 @@
 #include "DoEngine.h"
 #include "defines.h"
 
+/*
+	CardGame에서 사용할 YellowCard
+*/
 class YellowCard : public DoEngine::Object
 {
 private:
