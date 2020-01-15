@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일\GraphicsSystem">
+      <UniqueIdentifier>{aa76c8f2-c9bb-4f51-8440-c37b3d1137f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\GraphicsSystem">
+      <UniqueIdentifier>{5179058f-92fa-483b-af05-f200232ae90a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\InputSystem">
+      <UniqueIdentifier>{dacb283b-c393-4a0b-8496-8aaf29666a2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Object">
+      <UniqueIdentifier>{95372f15-2c89-4871-b0be-ea18260c4c8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Collider">
+      <UniqueIdentifier>{ade1ee6c-a830-4e3c-a19b-b664195beac6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\WindowSystem">
+      <UniqueIdentifier>{396f0f53-a893-4eda-93cb-f551caf6d0bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\InputSystem">
+      <UniqueIdentifier>{7be0ec87-17e7-447f-8439-ec5ea74cde26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Collider">
+      <UniqueIdentifier>{b4e454f6-d673-44fd-924b-8e22790a9aa3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\WindowSystem">
+      <UniqueIdentifier>{2e715f3d-9dd3-4baf-8f1e-385f0bc9bf99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Object">
+      <UniqueIdentifier>{7a23d6dd-acd3-4955-8d8b-adc0a2f15761}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\GraphicsSystem\Resource">
+      <UniqueIdentifier>{de35515c-b20b-4e6b-a3e4-6abab2278a39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\GraphicsSystem\Scene">
+      <UniqueIdentifier>{158f0039-97b6-4611-9679-3971e838a133}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\GraphicsSystem\UI">
+      <UniqueIdentifier>{4fa0d9fa-3b11-4b86-9b29-8706a069d34e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\InputSystem\command">
+      <UniqueIdentifier>{4f32ccfd-ae4c-4bff-8c77-f21ad10738e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\InputSystem\Astar">
+      <UniqueIdentifier>{73c04a81-458c-4ec6-b238-ca92ef240629}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\InputSystem\FSM">
+      <UniqueIdentifier>{06c8a672-a4e1-466f-8120-8ce85ca57a2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\GraphicsSystem\Resource">
+      <UniqueIdentifier>{70424c35-8f1c-45ce-ba0d-3b94b1e9633f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\GraphicsSystem\Scene">
+      <UniqueIdentifier>{5174f8ee-401d-4a7f-85bd-b26b8ce4966b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\GraphicsSystem\UI">
+      <UniqueIdentifier>{9c5c8c0e-e16a-4b72-97b4-35d9dbc850e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\InputSystem\Astar">
+      <UniqueIdentifier>{5e1a6a35-0afc-473b-9809-ba5bace86d62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\InputSystem\command">
+      <UniqueIdentifier>{1bf37bba-947f-48e0-ac89-58f739ff9843}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\InputSystem\FSM">
+      <UniqueIdentifier>{dea33396-110f-4aa3-8f69-2a1a0930a5e4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="TimeManager.cpp">
+      <Filter>소스 파일\WindowSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>소스 파일\InputSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>소스 파일\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectPool.cpp">
+      <Filter>소스 파일\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>소스 파일\GraphicsSystem\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Label.cpp">
+      <Filter>소스 파일\GraphicsSystem\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>소스 파일\GraphicsSystem\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>소스 파일\GraphicsSystem\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>소스 파일\GraphicsSystem\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="BitMap.cpp">
+      <Filter>소스 파일\GraphicsSystem\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourcesManager.cpp">
+      <Filter>소스 파일\GraphicsSystem\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Node.cpp">
+      <Filter>소스 파일\InputSystem\Astar</Filter>
+    </ClCompile>
+    <ClCompile Include="NodeManager.cpp">
+      <Filter>소스 파일\InputSystem\Astar</Filter>
+    </ClCompile>
+    <ClCompile Include="Astar.cpp">
+      <Filter>소스 파일\InputSystem\Astar</Filter>
+    </ClCompile>
+    <ClCompile Include="Collider.cpp">
+      <Filter>소스 파일\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="ColliderManager.cpp">
+      <Filter>소스 파일\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="UIObject.cpp">
+      <Filter>소스 파일\GraphicsSystem\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UIManager.cpp">
+      <Filter>소스 파일\GraphicsSystem\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="POINT.cpp">
+      <Filter>소스 파일\InputSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineMain.cpp">
+      <Filter>소스 파일\WindowSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="MapTool.cpp">
+      <Filter>소스 파일\GraphicsSystem\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="TriggerCollider.cpp">
+      <Filter>소스 파일\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="Command.cpp">
+      <Filter>소스 파일\InputSystem\command</Filter>
+    </ClCompile>
+    <ClCompile Include="Action.cpp">
+      <Filter>소스 파일\InputSystem\command</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TimeManager.h">
+      <Filter>헤더 파일\WindowSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>헤더 파일\WindowSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="DoEngine.h">
+      <Filter>헤더 파일\WindowSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineMain.h">
+      <Filter>헤더 파일\WindowSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalDefine.h">
+      <Filter>헤더 파일\WindowSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="BitMap.h">
+      <Filter>헤더 파일\GraphicsSystem\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourcesManager.h">
+      <Filter>헤더 파일\GraphicsSystem\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>헤더 파일\GraphicsSystem\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>헤더 파일\InputSystem\Astar</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider.h">
+      <Filter>헤더 파일\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="ColliderManager.h">
+      <Filter>헤더 파일\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="TriggerCollider.h">
+      <Filter>헤더 파일\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="UIManager.h">
+      <Filter>헤더 파일\GraphicsSystem\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UIObject.h">
+      <Filter>헤더 파일\GraphicsSystem\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>헤더 파일\GraphicsSystem\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="MapTool.h">
+      <Filter>헤더 파일\GraphicsSystem\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Label.h">
+      <Filter>헤더 파일\GraphicsSystem\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Command.h">
+      <Filter>헤더 파일\InputSystem\command</Filter>
+    </ClInclude>
+    <ClInclude Include="Astar.h">
+      <Filter>헤더 파일\InputSystem\Astar</Filter>
+    </ClInclude>
+    <ClInclude Include="NodeManager.h">
+      <Filter>헤더 파일\InputSystem\Astar</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>헤더 파일\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectPool.h">
+      <Filter>헤더 파일\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="POINT.h">
+      <Filter>헤더 파일\InputSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>헤더 파일\InputSystem\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="Action.h">
+      <Filter>헤더 파일\InputSystem\command</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>헤더 파일\InputSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>헤더 파일\GraphicsSystem\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>헤더 파일\GraphicsSystem\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Stading.h">
+      <Filter>헤더 파일\InputSystem\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="Move.h">
+      <Filter>헤더 파일\InputSystem\FSM</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

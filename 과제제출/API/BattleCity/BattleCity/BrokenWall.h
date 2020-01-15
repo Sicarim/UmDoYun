@@ -1,0 +1,34 @@
+#pragma once
+#include "DoEngine.h"
+#include "GlobalDefine.h"
+#include "defines.h"
+
+class BrokenWall : public DoEngine::Object
+{
+private:
+	int m_wSize, m_hSize;
+	int m_posx, m_posy;
+	int HitSel;
+	int HitBlock;
+	int Broken_wall;
+	bool BeforeHit, isDestroy;
+	string m_tag;
+	TCHAR buf[255];
+	TCHAR EnemyBullet[255];
+
+	vector<DoEngine::BitMap*> m_vBlockBit; //부서지는 블록 등록
+	DoEngine::BitMap* tmp_Block;
+	DoEngine::Collider m_Coll;
+public:
+	BrokenWall(); //생성자
+
+	void Init(int _x = 0, int _y = 0); //초기화(override)
+	bool Input(int _state); //키입력(override)
+	void Update(float _fETime); //Update함수(override)
+	void Draw(); //Draw 함수(override)
+	void Draw(int _x, int _y); //Draw 함수(override)
+	void Release(); //Release() 함수(override)
+	void set_tag(string _tag); //태그 저장 
+
+	~BrokenWall(); //소멸자
+};

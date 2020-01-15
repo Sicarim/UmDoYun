@@ -1,0 +1,64 @@
+﻿  BitMap.cpp
+D:\Atence\visual\Mine\Doyun's_Engine\BitMap.cpp(27,133): error C2664: 'HANDLE LoadImageW(HINSTANCE,LPCWSTR,UINT,int,int,UINT)': 인수 2을(를) 'const _Elem *'에서 'LPCWSTR'(으)로 변환할 수 없습니다.
+D:\Atence\visual\Mine\Doyun's_Engine\BitMap.cpp(27,133): error C2664:         with
+D:\Atence\visual\Mine\Doyun's_Engine\BitMap.cpp(27,133): error C2664:         [
+D:\Atence\visual\Mine\Doyun's_Engine\BitMap.cpp(27,133): error C2664:             _Elem=char
+D:\Atence\visual\Mine\Doyun's_Engine\BitMap.cpp(27,133): error C2664:         ]
+D:\Atence\visual\Mine\Doyun's_Engine\BitMap.cpp(27,55): message : 가리킨 형식이 관련이 없습니다. 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 함수 스타일 캐스트가 필요합니다.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\winuser.h(10815,1): message : 'LoadImageW' 선언을 참조하십시오.
+D:\Atence\visual\Mine\Doyun's_Engine\BitMap.cpp(32,62): error C2664: 'int MessageBoxW(HWND,LPCWSTR,LPCWSTR,UINT)': 인수 2을(를) 'const _Elem *'에서 'LPCWSTR'(으)로 변환할 수 없습니다.
+D:\Atence\visual\Mine\Doyun's_Engine\BitMap.cpp(32,62): error C2664:         with
+D:\Atence\visual\Mine\Doyun's_Engine\BitMap.cpp(32,62): error C2664:         [
+D:\Atence\visual\Mine\Doyun's_Engine\BitMap.cpp(32,62): error C2664:             _Elem=char
+D:\Atence\visual\Mine\Doyun's_Engine\BitMap.cpp(32,62): error C2664:         ]
+D:\Atence\visual\Mine\Doyun's_Engine\BitMap.cpp(32,36): message : 가리킨 형식이 관련이 없습니다. 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 함수 스타일 캐스트가 필요합니다.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\winuser.h(9153,1): message : 'MessageBoxW' 선언을 참조하십시오.
+D:\Atence\visual\Mine\Doyun's_Engine\BitMap.cpp(47,32): warning C4244: '-=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Button.cpp
+  EngineMain.cpp
+D:\Atence\visual\Mine\Doyun's_Engine\BitMap.cpp(48,32): warning C4244: '-=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\Atence\visual\Mine\Doyun's_Engine\EngineMain.cpp(35,46): error C2440: '=': 'const _Elem *'에서 'LPCWSTR'(으)로 변환할 수 없습니다.
+D:\Atence\visual\Mine\Doyun's_Engine\EngineMain.cpp(35,46): error C2440:         with
+D:\Atence\visual\Mine\Doyun's_Engine\EngineMain.cpp(35,46): error C2440:         [
+D:\Atence\visual\Mine\Doyun's_Engine\EngineMain.cpp(35,46): error C2440:             _Elem=char
+D:\Atence\visual\Mine\Doyun's_Engine\EngineMain.cpp(35,46): error C2440:         ]
+D:\Atence\visual\Mine\Doyun's_Engine\EngineMain.cpp(35,44): message : 가리킨 형식이 관련이 없습니다. 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 함수 스타일 캐스트가 필요합니다.
+D:\Atence\visual\Mine\Doyun's_Engine\EngineMain.cpp(40,1): error C2664: 'HWND CreateWindowExW(DWORD,LPCWSTR,LPCWSTR,DWORD,int,int,int,int,HWND,HMENU,HINSTANCE,LPVOID)': 인수 2을(를) 'const _Elem *'에서 'LPCWSTR'(으)로 변환할 수 없습니다.
+D:\Atence\visual\Mine\Doyun's_Engine\EngineMain.cpp(40,1): error C2664:         with
+D:\Atence\visual\Mine\Doyun's_Engine\EngineMain.cpp(40,1): error C2664:         [
+D:\Atence\visual\Mine\Doyun's_Engine\EngineMain.cpp(40,1): error C2664:             _Elem=char
+D:\Atence\visual\Mine\Doyun's_Engine\EngineMain.cpp(40,1): error C2664:         ]
+D:\Atence\visual\Mine\Doyun's_Engine\EngineMain.cpp(40,1): message : 가리킨 형식이 관련이 없습니다. 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 함수 스타일 캐스트가 필요합니다.
+  InputManager.cpp
+  Label.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\winuser.h(4436,1): message : 'CreateWindowExW' 선언을 참조하십시오.
+D:\Atence\visual\Mine\Doyun's_Engine\Label.cpp(16,106): error C2664: 'BOOL GetTextExtentPoint32W(HDC,LPCWSTR,int,LPSIZE)': 인수 2을(를) 'const _Elem *'에서 'LPCWSTR'(으)로 변환할 수 없습니다.
+D:\Atence\visual\Mine\Doyun's_Engine\Label.cpp(16,106): error C2664:         with
+D:\Atence\visual\Mine\Doyun's_Engine\Label.cpp(16,106): error C2664:         [
+D:\Atence\visual\Mine\Doyun's_Engine\Label.cpp(16,106): error C2664:             _Elem=char
+D:\Atence\visual\Mine\Doyun's_Engine\Label.cpp(16,106): error C2664:         ]
+D:\Atence\visual\Mine\Doyun's_Engine\Label.cpp(16,82): message : 가리킨 형식이 관련이 없습니다. 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 함수 스타일 캐스트가 필요합니다.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\wingdi.h(4219,1): message : 'GetTextExtentPoint32W' 선언을 참조하십시오.
+D:\Atence\visual\Mine\Doyun's_Engine\Label.cpp(26,3): error C2664: 'int DrawTextW(HDC,LPCWSTR,int,LPRECT,UINT)': 인수 2을(를) 'const _Elem *'에서 'LPCWSTR'(으)로 변환할 수 없습니다.
+D:\Atence\visual\Mine\Doyun's_Engine\Label.cpp(26,3): error C2664:         with
+D:\Atence\visual\Mine\Doyun's_Engine\Label.cpp(26,3): error C2664:         [
+D:\Atence\visual\Mine\Doyun's_Engine\Label.cpp(26,3): error C2664:             _Elem=char
+D:\Atence\visual\Mine\Doyun's_Engine\Label.cpp(26,3): error C2664:         ]
+D:\Atence\visual\Mine\Doyun's_Engine\Label.cpp(26,76): message : 가리킨 형식이 관련이 없습니다. 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 함수 스타일 캐스트가 필요합니다.
+  POINT.cpp
+  ResourcesManager.cpp
+  Scene.cpp
+  SceneManager.cpp
+  Text.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\winuser.h(8175,1): message : 'DrawTextW' 선언을 참조하십시오.
+D:\Atence\visual\Mine\Doyun's_Engine\Text.cpp(35,106): error C2664: 'size_t strlen(const char *)': 인수 1을(를) 'LPCTSTR'에서 'const char *'(으)로 변환할 수 없습니다.
+D:\Atence\visual\Mine\Doyun's_Engine\Text.cpp(35,96): message : 가리킨 형식이 관련이 없습니다. 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 함수 스타일 캐스트가 필요합니다.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(219,16): message : 'strlen' 선언을 참조하십시오.
+D:\Atence\visual\Mine\Doyun's_Engine\Text.cpp(35,107): error C2660: 'TextOutW': 함수는 4개의 인수를 사용하지 않습니다.
+  TimeManager.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\wingdi.h(5101,25): message : 'TextOutW' 선언을 참조하십시오.
+  UIManager.cpp
+D:\Atence\visual\Mine\Doyun's_Engine\TimeManager.cpp(31,35): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  UIObject.cpp
+  코드를 생성하고 있습니다...
+D:\Atence\visual\Mine\Doyun's_Engine\UIManager.cpp(45,25): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.

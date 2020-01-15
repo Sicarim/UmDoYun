@@ -1,7 +1,0 @@
-﻿  CardGame.cpp
-  winMain.cpp
-D:\Atence\visual\BItmap_Card\BItmap_Card\BitMapManager.h(31,16): warning C4244: 'return': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Atence\visual\BItmap_Card\BItmap_Card\BitMapManager.h(31,16): warning C4244: 'return': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  코드를 생성하고 있습니다...
-D:\Atence\visual\BItmap_Card\BItmap_Card\winMain.cpp(51,11): warning C4101: 'MemDC' :참조되지 않은 지역 변수입니다.
-  BItmap_Card.vcxproj -> D:\Atence\visual\BItmap_Card\Debug\BItmap_Card.exe

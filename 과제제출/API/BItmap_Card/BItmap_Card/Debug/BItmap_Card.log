@@ -1,0 +1,6 @@
+﻿  Card.cpp
+D:\Atence\visual\BItmap_Card\BItmap_Card\Card.cpp(36,16): warning C4244: '=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\Atence\visual\BItmap_Card\BItmap_Card\Card.cpp(37,16): warning C4244: '=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\Atence\visual\BItmap_Card\BItmap_Card\Card.cpp(49,39): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\Atence\visual\BItmap_Card\BItmap_Card\Card.cpp(49,27): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  BItmap_Card.vcxproj -> D:\Atence\visual\BItmap_Card\Debug\BItmap_Card.exe

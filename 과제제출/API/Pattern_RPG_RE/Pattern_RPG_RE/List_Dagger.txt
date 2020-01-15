@@ -1,0 +1,4 @@
+Dagger 포이즌대거 5 20
+Dagger 실버나이트 10 40
+Dagger 디엔드 30 120
+Dagger 흑미쌍검 50 200

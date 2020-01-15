@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일\Manager">
+      <UniqueIdentifier>{4cd27e8b-966a-40db-bd4f-8d150d1537bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Manager">
+      <UniqueIdentifier>{1db5b23a-2764-4efd-b9ff-e13b696f2028}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Scene">
+      <UniqueIdentifier>{171f0dcb-4ca5-470f-84b4-1f564a5002c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Scene">
+      <UniqueIdentifier>{257e7ceb-ce0a-4df7-ae49-c713984efe81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Data">
+      <UniqueIdentifier>{45f105f7-0704-461b-b3d8-2f25548c8c8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Data">
+      <UniqueIdentifier>{38f787c3-28e7-4588-a5d7-2af4fbf74a6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Factory">
+      <UniqueIdentifier>{ef4a46f6-c56d-44cb-bf9f-d5f050cc1d42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Factory">
+      <UniqueIdentifier>{f3a54795-0b09-407c-b8f8-f87639ae98b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Factory\Data">
+      <UniqueIdentifier>{5c9e4755-594d-4eb6-97d9-9543b49b0a18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Factory\Data">
+      <UniqueIdentifier>{cb64c99f-1cd7-4cf5-bd36-f6d82db4b435}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Data\Wall">
+      <UniqueIdentifier>{774c0397-a80e-4343-9097-53b6ba937011}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Data\Wall">
+      <UniqueIdentifier>{072a1015-633e-4557-a5fd-e58cc1bc9e14}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="defines.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleScene.h">
+      <Filter>헤더 파일\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScene.h">
+      <Filter>헤더 파일\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>헤더 파일\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="UnitFactory.h">
+      <Filter>헤더 파일\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>헤더 파일\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="Tank.h">
+      <Filter>헤더 파일\Factory\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="UpTank.h">
+      <Filter>헤더 파일\Factory\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>헤더 파일\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="InputHandler.h">
+      <Filter>헤더 파일\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>헤더 파일\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>헤더 파일\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="BrokenWall.h">
+      <Filter>헤더 파일\Data\Wall</Filter>
+    </ClInclude>
+    <ClInclude Include="BushWall.h">
+      <Filter>헤더 파일\Data\Wall</Filter>
+    </ClInclude>
+    <ClInclude Include="StillWall.h">
+      <Filter>헤더 파일\Data\Wall</Filter>
+    </ClInclude>
+    <ClInclude Include="WaterWall.h">
+      <Filter>헤더 파일\Data\Wall</Filter>
+    </ClInclude>
+    <ClInclude Include="AIManager.h">
+      <Filter>헤더 파일\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="PlagWall.h">
+      <Filter>헤더 파일\Data\Wall</Filter>
+    </ClInclude>
+    <ClInclude Include="LoseEndScene.h">
+      <Filter>헤더 파일\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="StageScene.h">
+      <Filter>헤더 파일\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="WinScene.h">
+      <Filter>헤더 파일\Scene</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="GameScene.cpp">
+      <Filter>소스 파일\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScene.cpp">
+      <Filter>소스 파일\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>소스 파일\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="UnitFactory.cpp">
+      <Filter>소스 파일\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>소스 파일\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="Tank.cpp">
+      <Filter>소스 파일\Factory\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="UpTank.cpp">
+      <Filter>소스 파일\Factory\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>소스 파일\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="InputHandler.cpp">
+      <Filter>소스 파일\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>소스 파일\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>소스 파일\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="StillWall.cpp">
+      <Filter>소스 파일\Data\Wall</Filter>
+    </ClCompile>
+    <ClCompile Include="BrokenWall.cpp">
+      <Filter>소스 파일\Data\Wall</Filter>
+    </ClCompile>
+    <ClCompile Include="BushWall.cpp">
+      <Filter>소스 파일\Data\Wall</Filter>
+    </ClCompile>
+    <ClCompile Include="WaterWall.cpp">
+      <Filter>소스 파일\Data\Wall</Filter>
+    </ClCompile>
+    <ClCompile Include="AIManager.cpp">
+      <Filter>소스 파일\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="PlagWall.cpp">
+      <Filter>소스 파일\Data\Wall</Filter>
+    </ClCompile>
+    <ClCompile Include="LoseEndScene.cpp">
+      <Filter>소스 파일\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="StageScene.cpp">
+      <Filter>소스 파일\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="WinScene.cpp">
+      <Filter>소스 파일\Scene</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

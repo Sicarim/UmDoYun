@@ -1,6 +1,0 @@
-﻿  Animal.cpp
-  BitMap.cpp
-  winMain.cpp
-c:\users\a01\desktop\bitmap\bitmap\bitmap\winmain.cpp(79): warning C4101: 'MemDC' :참조되지 않은 지역 변수입니다.
-  코드를 생성하고 있습니다...
-  BitMap.vcxproj -> C:\Users\A01\Desktop\BitMap\BitMap\x64\Debug\BitMap.exe

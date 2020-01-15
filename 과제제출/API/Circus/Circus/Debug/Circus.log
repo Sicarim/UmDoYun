@@ -1,0 +1,7 @@
+﻿  Character.cpp
+  GameManager.cpp
+D:\Atence\visual\Circus\Circus\GameManager.cpp(70,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+D:\Atence\visual\Circus\Circus\GameManager.cpp(83,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  코드를 생성하고 있습니다...
+D:\Atence\visual\Circus\Circus\GameManager.cpp(94,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  Circus.vcxproj -> D:\Atence\visual\Circus\Debug\Circus.exe

@@ -3,7 +3,7 @@
  * D3D 디바이스를 생성하고, 이를 사용해서 화면을 지우는 방법에 대해서 공부하게 된다.
  *=========================================================================*/
 
-// Direct3D9을 사용하기 위한 헤더
+ // Direct3D9을 사용하기 위한 헤더
 #include <d3d9.h>
 #include <d3dx9.h>
 
@@ -136,4 +136,3 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, INT)
 	UnregisterClass("D3D Init", wc.hInstance);
 	return 0;
 }
-

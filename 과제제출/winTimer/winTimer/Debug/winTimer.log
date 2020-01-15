@@ -1,2 +1,0 @@
-﻿  winTimer.cpp
-LINK : fatal error LNK1104: 'GLUT32.LIB' 파일을 열 수 없습니다.

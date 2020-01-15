@@ -1,0 +1,9 @@
+﻿  GameManager.cpp
+  Interface.cpp
+  main.cpp
+  MapDraw.cpp
+D:\Atence\visual\Mine_Serch\Project1\MapDraw.h(16,17): warning C4838:  'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+D:\Atence\visual\Mine_Serch\Project1\MapDraw.h(16,20): warning C4838:  'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+  코드를 생성하고 있습니다...
+D:\Atence\visual\Mine_Serch\Project1\MapDraw.cpp(29,8): warning C4018:  '>': signed 또는 unsigned가 일치하지 않습니다.
+LINK : fatal error LNK1104: 'GLUT32.LIB' 파일을 열 수 없습니다.

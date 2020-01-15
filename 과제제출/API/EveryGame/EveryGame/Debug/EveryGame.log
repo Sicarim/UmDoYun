@@ -1,0 +1,12 @@
+﻿  CardScene.cpp
+  FlightGame.cpp
+  FlightScene.cpp
+  GameManager.cpp
+D:\Atence\visual\EveryGame\EveryGame\GameManager.cpp(262,33): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\Atence\visual\EveryGame\EveryGame\GameManager.cpp(266,31): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\Atence\visual\EveryGame\EveryGame\GameManager.cpp(270,34): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  SelectScene.cpp
+  TitleScene.cpp
+  코드를 생성하고 있습니다...
+D:\Atence\visual\EveryGame\EveryGame\GameManager.cpp(333,26): warning C4305: '-=': 'double'에서 'float'(으)로 잘립니다.
+  EveryGame.vcxproj -> D:\Atence\visual\EveryGame\Debug\EveryGame.exe
