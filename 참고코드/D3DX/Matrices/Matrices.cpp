@@ -198,11 +198,11 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, INT)
 {
 	WNDCLASSEX wc = { sizeof(WNDCLASSEX), CS_CLASSDC, MsgProc, 0L, 0L,
 		GetModuleHandle(NULL), NULL, NULL, NULL, NULL,
-		L"D3D Matrices", NULL };
+		"D3D Matrices", NULL };
 
 	RegisterClassEx(&wc);
 
-	HWND hWnd = CreateWindow(L"D3D Matrices", L"D3D Matrices", WS_OVERLAPPEDWINDOW, 100, 100, 1024, 768,
+	HWND hWnd = CreateWindow("D3D Matrices", "D3D Matrices", WS_OVERLAPPEDWINDOW, 100, 100, 1024, 768,
 		GetDesktopWindow(), NULL, NULL, wc.hInstance, NULL);
 
 	if (SUCCEEDED(InitD3D(hWnd)))
@@ -228,7 +228,7 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, INT)
 		}
 	}
 
-	UnregisterClass(L"D3D Matrices", wc.hInstance);
+	UnregisterClass("D3D Matrices", wc.hInstance);
 	return 0;
 }
 

@@ -1,0 +1,5 @@
+﻿  Animation.cpp
+D:\Atence\git\UmDoYun\참고코드\D3DX\Animation\Animation.cpp(217,14): warning C4101: 'z' :참조되지 않은 지역 변수입니다.
+D:\Atence\git\UmDoYun\참고코드\D3DX\Animation\Animation.cpp(217,11): warning C4101: 'y' :참조되지 않은 지역 변수입니다.
+D:\Atence\git\UmDoYun\참고코드\D3DX\Animation\Animation.cpp(217,8): warning C4101: 'x' :참조되지 않은 지역 변수입니다.
+  Animation.vcxproj -> D:\Atence\git\UmDoYun\참고코드\D3DX\Animation\Debug\Animation.exe

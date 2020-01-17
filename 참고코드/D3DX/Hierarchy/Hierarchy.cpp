@@ -288,11 +288,11 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, INT)
 {
 	WNDCLASSEX wc = {sizeof(WNDCLASSEX), CS_CLASSDC, MsgProc,
 		0L, 0L, GetModuleHandle(NULL), NULL, NULL, NULL, NULL,
-		L"D3D Hierarchy", NULL};
+		"D3D Hierarchy", NULL};
 
 	RegisterClassEx(&wc);
 
-	HWND hWnd = CreateWindow(L"D3D Hierarchy", L"D3D Hierarchy", WS_OVERLAPPEDWINDOW,
+	HWND hWnd = CreateWindow("D3D Hierarchy", "D3D Hierarchy", WS_OVERLAPPEDWINDOW,
 							100, 100, 500, 500, GetDesktopWindow(), NULL, wc.hInstance, NULL);
 
 	if (SUCCEEDED(InitD3D(hWnd)))
@@ -322,6 +322,6 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, INT)
 		}
 	}
 
-	UnregisterClass(L"D3D Hierarchy", wc.hInstance);
+	UnregisterClass("D3D Hierarchy", wc.hInstance);
 	return 0;
 }

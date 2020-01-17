@@ -268,12 +268,12 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, INT)
 	//윈도우 클래스 등록
 	WNDCLASSEX wc = { sizeof(WNDCLASSEX), CS_CLASSDC, MsgProc, 0L, 0L,
 		GetModuleHandle(NULL), NULL, NULL, NULL, NULL,
-		L"D3D IndexBuffer", NULL };
+		"D3D IndexBuffer", NULL };
 
 	//winclass 레지스터에 등록
 	RegisterClassEx(&wc);
 
-	HWND hWnd = CreateWindow(L"D3D IndexBuffer", L"D3D IndexBuffer", WS_OVERLAPPEDWINDOW, 100, 100, 1024, 768,
+	HWND hWnd = CreateWindow("D3D IndexBuffer", "D3D IndexBuffer", WS_OVERLAPPEDWINDOW, 100, 100, 1024, 768,
 		GetDesktopWindow(), NULL, NULL, wc.hInstance, NULL);
 
 	if (SUCCEEDED(InitD3D(hWnd)))
@@ -303,7 +303,7 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, INT)
 	}
 
 	//등록된 레지스트 winclass 릴리즈.
-	UnregisterClass(L"D3D IndexBuffer", wc.hInstance);
+	UnregisterClass("D3D IndexBuffer", wc.hInstance);
 	return 0;
 }
 

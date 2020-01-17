@@ -339,11 +339,11 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, INT)
 {
 	WNDCLASSEX wc = { sizeof(WNDCLASSEX), CS_CLASSDC, MsgProc,
 		0L, 0L, GetModuleHandle(NULL), NULL, NULL, NULL, NULL,
-		L"D3D Animation", NULL };
+		"D3D Animation", NULL };
 
 	RegisterClassEx(&wc);
 
-	HWND hWnd = CreateWindow(L"D3D Animation", L"D3D Animation", WS_OVERLAPPEDWINDOW,
+	HWND hWnd = CreateWindow("D3D Animation", "D3D Animation", WS_OVERLAPPEDWINDOW,
 		100, 100, 500, 500, GetDesktopWindow(), NULL, wc.hInstance, NULL);
 
 	if (SUCCEEDED(InitD3D(hWnd)))
@@ -373,6 +373,6 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, INT)
 		}
 	}
 
-	UnregisterClass(L"D3D Animation", wc.hInstance);
+	UnregisterClass("D3D Animation", wc.hInstance);
 	return 0;
 }
