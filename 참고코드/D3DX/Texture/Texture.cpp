@@ -17,7 +17,7 @@
 
 LPDIRECT3D9				g_pD3D			= NULL;
 LPDIRECT3DDEVICE9		g_pd3dDevice	= NULL;
-LPDIRECT3DVERTEXBUFFER9	g_pVB			= NULL;
+LPDIRECT3DVERTEXBUFFER9	g_pVB			= NULL; // Vertex정보
 LPDIRECT3DTEXTURE9		g_pTexture		= NULL; // 텍스처 인터페이스 선언
 
 struct CUSTOMVERTEX
@@ -70,18 +70,17 @@ HRESULT InitD3D(HWND hWnd)
 HRESULT InitGeometry()
 {
 	//D3DX 계열 함수를 사용하여 파일로부터 텍스처 생성
-	if (FAILED(D3DXCreateTextureFromFile(g_pd3dDevice, L"nayeon.jpg", &g_pTexture)))
+	if (FAILED(D3DXCreateTextureFromFile(g_pd3dDevice, "nayeon.jpg", &g_pTexture)))
 	{	//현재 폴더에 파일이 없으면 상위 폴더 검색
-		if (FAILED(D3DXCreateTextureFromFile(g_pd3dDevice, L"..\\nayeon.jpg", &g_pTexture)))
+		if (FAILED(D3DXCreateTextureFromFile(g_pd3dDevice, "..\\nayeon.jpg", &g_pTexture)))
 		{
-			MessageBox(NULL, L"Could not find nayeon.jpg", L"Texture.exe", MB_OK);
+			MessageBox(NULL, "Could not find nayeon.jpg", "Texture.exe", MB_OK);
 
 			return E_FAIL;
 		}
 	}
 
-	if (FAILED(g_pd3dDevice->CreateVertexBuffer(50 * 2 * sizeof(CUSTOMVERTEX), 0, 
-							D3DFVF_CUSTOMVERTEX, D3DPOOL_DEFAULT, &g_pVB, NULL)))
+	if (FAILED(g_pd3dDevice->CreateVertexBuffer(50 * 2 * sizeof(CUSTOMVERTEX), 0, D3DFVF_CUSTOMVERTEX, D3DPOOL_DEFAULT, &g_pVB, NULL)))
 	{
 		return E_FAIL;
 	}
@@ -93,6 +92,7 @@ HRESULT InitGeometry()
 		return E_FAIL;
 	}
 	
+	//원통 그리기
 	for (DWORD i = 0; i < 50; i++)
 	{
 		FLOAT theta = (2 * D3DX_PI * i) / (50 - 1);
@@ -147,6 +147,7 @@ void Cleanup()
  *=========================================================================*/
 void SetupMatrices()
 {
+	//월드
 	D3DXMATRIXA16 matWorld;
 	D3DXMatrixIdentity(&matWorld);
 	D3DXMatrixRotationX(&matWorld, timeGetTime() / 1000.0f);
@@ -156,11 +157,13 @@ void SetupMatrices()
 	D3DXVECTOR3 vLookatPt(0.0f, 0.0f, 0.0f);
 	D3DXVECTOR3 vUpVec(0.0f, 1.0f, 0.0f);
 
+	//뷰
 	D3DXMATRIXA16 matView;
 	D3DXMatrixLookAtLH(&matView, &vEyePt, &vLookatPt, &vUpVec);
 
 	g_pd3dDevice->SetTransform(D3DTS_VIEW, &matView);
 
+	//프로젝션
 	D3DXMATRIXA16 matProj;
 	D3DXMatrixPerspectiveFovLH(&matProj, D3DX_PI / 4, 1.0f, 1.0f, 100.0f);
 	g_pd3dDevice->SetTransform(D3DTS_PROJECTION, &matProj);
@@ -211,7 +214,6 @@ void Render()
 		//카메라 좌표계 변환
 		g_pd3dDevice->SetTextureStageState(0, D3DTSS_TEXCOORDINDEX, D3DTSS_TCI_CAMERASPACEPOSITION);
 #endif
-
 		g_pd3dDevice->SetStreamSource(0, g_pVB, 0, sizeof(CUSTOMVERTEX));
 		g_pd3dDevice->SetFVF(D3DFVF_CUSTOMVERTEX);
 		g_pd3dDevice->DrawPrimitive(D3DPT_TRIANGLESTRIP, 0, 2 * 50 - 2);
@@ -248,12 +250,12 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, INT)
 	//윈도우 클래스 등록
 	WNDCLASSEX wc = { sizeof(WNDCLASSEX), CS_CLASSDC, MsgProc, 0L, 0L,
 		GetModuleHandle(NULL), NULL, NULL, NULL, NULL,
-		L"D3D Texture", NULL };
+		"D3D Texture", NULL };
 
 	//winclass 레지스터에 등록
 	RegisterClassEx(&wc);
 
-	HWND hWnd = CreateWindow(L"D3D Texture", L"D3D Texture", WS_OVERLAPPEDWINDOW, 100, 100, 1024, 768,
+	HWND hWnd = CreateWindow("D3D Texture", "D3D Texture", WS_OVERLAPPEDWINDOW, 100, 100, 1024, 768,
 		GetDesktopWindow(), NULL, NULL, wc.hInstance, NULL);
 
 	if (SUCCEEDED(InitD3D(hWnd)))
@@ -280,6 +282,6 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, INT)
 	}
 
 	//등록된 레지스트 winclass 릴리즈.
-	UnregisterClass(L"D3D Texture", wc.hInstance);
+	UnregisterClass("D3D Texture", wc.hInstance);
 	return 0;
 }

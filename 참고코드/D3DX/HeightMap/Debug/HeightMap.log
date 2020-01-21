@@ -1,0 +1,20 @@
+﻿  HeightMap.cpp
+D:\Atence\git\UmDoYun\참고코드\D3DX\HeightMap\HeightMap.cpp(187,25): warning C4244: '=': 'unsigned long'에서 'WORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\Atence\git\UmDoYun\참고코드\D3DX\HeightMap\HeightMap.cpp(188,29): warning C4244: '=': 'unsigned long'에서 'WORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\Atence\git\UmDoYun\참고코드\D3DX\HeightMap\HeightMap.cpp(189,31): warning C4244: '=': 'unsigned long'에서 'WORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\Atence\git\UmDoYun\참고코드\D3DX\HeightMap\HeightMap.cpp(193,31): warning C4244: '=': 'unsigned long'에서 'WORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\Atence\git\UmDoYun\참고코드\D3DX\HeightMap\HeightMap.cpp(194,29): warning C4244: '=': 'unsigned long'에서 'WORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  ZFLog.cpp
+D:\Atence\git\UmDoYun\참고코드\D3DX\HeightMap\HeightMap.cpp(195,35): warning C4244: '=': 'unsigned long'에서 'WORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\Atence\git\UmDoYun\참고코드\D3DX\HeightMap\ZFLog.cpp(10,1): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(133): message : 'strcpy' 선언을 참조하십시오.
+D:\Atence\git\UmDoYun\참고코드\D3DX\HeightMap\ZFLog.cpp(64,1): warning C4996: '_strdate': This function or variable may be unsafe. Consider using _strdate_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\time.h(290): message : '_strdate' 선언을 참조하십시오.
+D:\Atence\git\UmDoYun\참고코드\D3DX\HeightMap\ZFLog.cpp(65,1): warning C4996: '_strtime': This function or variable may be unsafe. Consider using _strtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\time.h(306): message : '_strtime' 선언을 참조하십시오.
+D:\Atence\git\UmDoYun\참고코드\D3DX\HeightMap\ZFLog.cpp(66,1): warning C4996: 'vsprintf': This function or variable may be unsafe. Consider using vsprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1469): message : 'vsprintf' 선언을 참조하십시오.
+D:\Atence\git\UmDoYun\참고코드\D3DX\HeightMap\ZFLog.cpp(78,1): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  코드를 생성하고 있습니다...
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message : 'fopen' 선언을 참조하십시오.
+  HeightMap.vcxproj -> D:\Atence\git\UmDoYun\참고코드\D3DX\HeightMap\Debug\HeightMap.exe

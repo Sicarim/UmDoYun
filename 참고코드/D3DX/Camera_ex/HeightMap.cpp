@@ -130,9 +130,7 @@ HRESULT InitVB()
 	g_cxHeight = ddsd.Width;				// 텍스처의 가로크기
 	g_czHeight = ddsd.Height;				// 텍스처의 세로크기
 	g_pLog->Log( "Texture Size:[%d,%d]", g_cxHeight, g_czHeight );
-	if( FAILED( g_pd3dDevice->CreateVertexBuffer( ddsd.Width*ddsd.Height*sizeof(CUSTOMVERTEX),
-                                                  0, D3DFVF_CUSTOMVERTEX,
-                                                  D3DPOOL_DEFAULT, &g_pVB, NULL ) ) )
+	if( FAILED( g_pd3dDevice->CreateVertexBuffer( ddsd.Width*ddsd.Height*sizeof(CUSTOMVERTEX), 0, D3DFVF_CUSTOMVERTEX, D3DPOOL_DEFAULT, &g_pVB, NULL ) ) )
     {
         return E_FAIL;
     }

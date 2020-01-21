@@ -107,7 +107,7 @@ void SetupMatrices()
 
 	D3DXMatrixIdentity(&matWorld);
 
-	D3DXMatrixRotationX(&matWorld, timeGetTime() / 500.0f); 
+	//D3DXMatrixRotationX(&matWorld, timeGetTime() / 500.0f); 
 
 	g_pd3dDevice->SetTransform(D3DTS_WORLD, &matWorld); // 생성한 회전 행렬을 월드 행렬로 디바이스에 설정한다.
 
@@ -202,7 +202,7 @@ void Render()
 		return;
 
 	// 후면 버퍼를 파란색(0, 0, 255)으로 지운다.
-	g_pd3dDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(0, 0, 255), 1.0f, 0);
+	g_pd3dDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(0, 0, 0), 1.0f, 0);
 
 	SetupLights();
 
@@ -250,15 +250,12 @@ LRESULT WINAPI MsgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, INT)
 {
 	//윈도우 클래스 등록
-	WNDCLASSEX wc = { sizeof(WNDCLASSEX), CS_CLASSDC, MsgProc, 0L, 0L,
-		GetModuleHandle(NULL), NULL, NULL, NULL, NULL,
-		L"D3D Light", NULL };
+	WNDCLASSEX wc = { sizeof(WNDCLASSEX), CS_CLASSDC, MsgProc, 0L, 0L, GetModuleHandle(NULL), NULL, NULL, NULL, NULL, "D3D Light", NULL };
 
 	//winclass 레지스터에 등록
 	RegisterClassEx(&wc);
 
-	HWND hWnd = CreateWindow(L"D3D Light", L"D3D Light", WS_OVERLAPPEDWINDOW, 100, 100, 1024, 768,
-		GetDesktopWindow(), NULL, NULL, wc.hInstance, NULL);
+	HWND hWnd = CreateWindow("D3D Light", "D3D Light", WS_OVERLAPPEDWINDOW, 100, 100, 1024, 768, GetDesktopWindow(), NULL, NULL, wc.hInstance, NULL);
 
 	if (SUCCEEDED(InitD3D(hWnd)))
 	{
@@ -284,7 +281,7 @@ INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, INT)
 	}
 
 	//등록된 레지스트 winclass 릴리즈.
-	UnregisterClass(L"D3D Light", wc.hInstance);
+	UnregisterClass("D3D Light", wc.hInstance);
 	return 0;
 }
 
