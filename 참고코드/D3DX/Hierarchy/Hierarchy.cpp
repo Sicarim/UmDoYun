@@ -187,6 +187,7 @@ void Animate()
 {
 	//부모의 메시는 원점에 있으므로 TM은 단위 행렬
 	D3DXMatrixIdentity(&g_matTMParent);
+	//D3DXMatrixRotationAxis(&g_matRChild, nomalVec, Angle);
 
 	//부모 메시의 Y축 회전 행렬
 	D3DXMatrixRotationY(&g_matRParent, GetTickCount() / 500.0f);
@@ -254,7 +255,7 @@ void Render()
 
 		//자식의 변환을 만든다 - 자신의 회전 * 자신의 기본 변환 * 부모의 회전 * 부모의 기본변환
 		matWorld = g_matRChild * g_matTMChild * g_matRParent * g_matTMParent;
-		//matWorld = g_matRChild * g_matTMChild * matWorld;
+		//matWorld = g_matRChild * g_matTMChild * matWorld;//(부모의 회전 * 부모의 기본변환)
 
 		//적용된 변환을 기반으로 자식 객체를 그린다.
 		DrawMesh(&matWorld);
