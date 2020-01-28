@@ -1,0 +1,8 @@
+﻿  main.cpp
+D:\Atence\visual\D3DX\D3DX_Animaion\D3DX_Animaion\main.cpp(252,22): warning C4305: '+=': 'double'에서 'float'(으)로 잘립니다.
+D:\Atence\visual\D3DX\D3DX_Animaion\D3DX_Animaion\main.cpp(253,21): warning C4305: '+=': 'double'에서 'float'(으)로 잘립니다.
+D:\Atence\visual\D3DX\D3DX_Animaion\D3DX_Animaion\main.cpp(254,13): warning C4305: '+=': 'double'에서 'float'(으)로 잘립니다.
+D:\Atence\visual\D3DX\D3DX_Animaion\D3DX_Animaion\main.cpp(229,14): warning C4101: 'z' :참조되지 않은 지역 변수입니다.
+D:\Atence\visual\D3DX\D3DX_Animaion\D3DX_Animaion\main.cpp(229,11): warning C4101: 'y' :참조되지 않은 지역 변수입니다.
+D:\Atence\visual\D3DX\D3DX_Animaion\D3DX_Animaion\main.cpp(229,8): warning C4101: 'x' :참조되지 않은 지역 변수입니다.
+  D3DX_Animaion.vcxproj -> D:\Atence\visual\D3DX\D3DX_Animaion\Debug\D3DX_Animaion.exe
