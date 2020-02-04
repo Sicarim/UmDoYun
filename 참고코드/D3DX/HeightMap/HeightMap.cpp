@@ -87,12 +87,7 @@ HRESULT InitTexture()
 {
 	// 높이맵 텍스처
 	// D3DFMT_X8R8G8B8와 D3DPOOL_MANAGED를 주기위해서 이 함수를 사용했다.
-	if (FAILED(D3DXCreateTextureFromFileEx(g_pd3dDevice, BMP_HEIGHTMAP,
-		D3DX_DEFAULT, D3DX_DEFAULT,
-		D3DX_DEFAULT, 0,
-		D3DFMT_X8R8G8B8, D3DPOOL_MANAGED,
-		D3DX_DEFAULT, D3DX_DEFAULT, 0,
-		NULL, NULL, &g_pTexHeight)))
+	if (FAILED(D3DXCreateTextureFromFileEx(g_pd3dDevice, BMP_HEIGHTMAP, D3DX_DEFAULT, D3DX_DEFAULT, D3DX_DEFAULT, 0, D3DFMT_X8R8G8B8, D3DPOOL_MANAGED, D3DX_DEFAULT, D3DX_DEFAULT, 0, NULL, NULL, &g_pTexHeight)))
 	{
 		return E_FAIL;
 	}
@@ -110,17 +105,17 @@ HRESULT InitTexture()
  */
 HRESULT InitVB()
 {
+	//가져올 텍스쳐의 사이즈
 	D3DSURFACE_DESC		ddsd;
 	D3DLOCKED_RECT		d3drc;
 
+	//텍스처(사진의 정보)
 	g_pTexHeight->GetLevelDesc(0, &ddsd);	// 텍스처의 정보
 	g_cxHeight = ddsd.Width;				// 텍스처의 가로크기
 	g_czHeight = ddsd.Height;				// 텍스처의 세로크기
 
 	g_pLog->Log("Texture Size:[%d,%d]", g_cxHeight, g_czHeight);
-	if (FAILED(g_pd3dDevice->CreateVertexBuffer(ddsd.Width*ddsd.Height * sizeof(CUSTOMVERTEX),
-		0, D3DFVF_CUSTOMVERTEX,
-		D3DPOOL_DEFAULT, &g_pVB, NULL)))
+	if (FAILED(g_pd3dDevice->CreateVertexBuffer(ddsd.Width*ddsd.Height * sizeof(CUSTOMVERTEX), 0, D3DFVF_CUSTOMVERTEX, D3DPOOL_DEFAULT, &g_pVB, NULL)))
 	{
 		return E_FAIL;
 	}
@@ -141,6 +136,11 @@ HRESULT InitVB()
 	{
 		for (DWORD x = 0; x < g_cxHeight; x++)
 		{
+			/*
+			p는 3D좌표, x좌표에 사진의 x좌표를 매핑, 정가운데에 올 수 있도록....
+			p의 Z좌표에 사진의 z좌표를 매핑, 정가운데에 올 수 있도록....
+			y좌표는 그림의 높낮이를 표현
+			*/
 			v.p.x = (float)x - g_cxHeight / 2.0f;		// 정점의 x좌표(메시를 원점에 정렬)
 			v.p.z = -((float)z - g_czHeight / 2.0f);	// 정점의 z좌표(메시를 원점에 정렬), z축이 모니터안쪽이므로 -를 곱한다.
 			v.p.y = ((float)(*((LPDWORD)d3drc.pBits + x + z * (d3drc.Pitch / 4)) & 0x000000ff)) / 10.0f;	// DWORD이므로 pitch/4
@@ -167,8 +167,7 @@ HRESULT InitVB()
  */
 HRESULT InitIB()
 {
-	if (FAILED(g_pd3dDevice->CreateIndexBuffer((g_cxHeight - 1)*(g_czHeight - 1) * 2 * sizeof(MYINDEX), 
-									0, D3DFMT_INDEX16, D3DPOOL_DEFAULT, &g_pIB, NULL)))
+	if (FAILED(g_pd3dDevice->CreateIndexBuffer((g_cxHeight - 1)*(g_czHeight - 1) * 2 * sizeof(MYINDEX), 0, D3DFMT_INDEX16, D3DPOOL_DEFAULT, &g_pIB, NULL)))
 	{
 		return E_FAIL;
 	}
@@ -263,9 +262,8 @@ VOID SetupLights()
 	light.Diffuse.g = 1.0f;
 	light.Diffuse.b = 0.0f;
 	vecDir = D3DXVECTOR3(1, 1, 1);					
-	vecDir = D3DXVECTOR3(cosf(GetTickCount() / 350.0f),	
-		1.0f,
-		sinf(GetTickCount() / 350.0f));
+	vecDir = D3DXVECTOR3(cosf(GetTickCount() / 350.0f),	1.0f, sinf(GetTickCount() / 350.0f));
+	D3DXVec3Normalize((D3DXVECTOR3*)&light.Direction, &vecDir);	
 	D3DXVec3Normalize((D3DXVECTOR3*)&light.Direction, &vecDir);	
 	light.Range = 1000.0f;									
 	g_pd3dDevice->SetLight(0, &light);							
@@ -306,7 +304,7 @@ VOID Animate()
 	DWORD d = GetTickCount() % ((int)((D3DX_PI * 2) * 1000));
 	// Y축 회전행렬
 	D3DXMatrixRotationY(&g_matAni, d / 1000.0f);
-	//	D3DXMatrixIdentity( &g_matAni );
+	//D3DXMatrixIdentity(&g_matAni);
 
 	// 카메라 행렬설정
 	SetupCamera();
@@ -314,7 +312,7 @@ VOID Animate()
 
 	if (d < t)
 		flag = !flag;
-	g_pd3dDevice->SetRenderState(D3DRS_FILLMODE, flag ? D3DFILL_WIREFRAME : D3DFILL_SOLID);
+	//g_pd3dDevice->SetRenderState(D3DRS_FILLMODE, flag ? D3DFILL_WIREFRAME : D3DFILL_SOLID);
 	t = d;
 
 	LogFPS();
@@ -390,8 +388,6 @@ VOID Render()
 	// 후면버퍼를 보이는 화면으로!
 	g_pd3dDevice->Present(NULL, NULL, NULL, NULL);
 }
-
-
 
 
 /**-----------------------------------------------------------------------------
