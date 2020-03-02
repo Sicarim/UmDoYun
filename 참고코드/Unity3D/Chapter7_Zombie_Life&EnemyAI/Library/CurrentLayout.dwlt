@@ -124,7 +124,7 @@ MonoBehaviour:
   m_MinSize: {x: 277, y: 194}
   m_MaxSize: {x: 4002, y: 8044}
   vertical: 1
-  controlID: 148
+  controlID: 125
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 494}
   m_MaxSize: {x: 10004, y: 14044}
   vertical: 1
-  controlID: 91
+  controlID: 68
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -227,7 +227,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 494}
   m_MaxSize: {x: 18008, y: 14044}
   vertical: 0
-  controlID: 147
+  controlID: 124
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -590,14 +590,14 @@ MonoBehaviour:
   m_StartGridSize: 16
   m_LastFolders: []
   m_LastFoldersGridSize: 16
-  m_LastProjectPath: D:\Aducation\Unity3D\Chapter7_Zombie_Life&EnemyAI
+  m_LastProjectPath: "D:\\Atence\\git\\UmDoYun\\\uCC38\uACE0\uCF54\uB4DC\\Unity3D\\Chapter7_Zombie_Life&EnemyAI"
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 183e0000
     m_LastClickedID: 15896
-    m_ExpandedIDs: 000000001a2d000014300000
+    m_ExpandedIDs: 000000005a2b0000542e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -625,7 +625,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 76}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff000000001a2d000014300000
+    m_ExpandedIDs: ffffffff000000005a2b0000542e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -745,9 +745,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: a8330000ba330000e833000090330000
-      m_LastClickedID: 13200
-      m_ExpandedIDs: 6cfbffff823300009033000096330000c2330000e8330000
+      m_SelectedIDs: a2260000
+      m_LastClickedID: 0
+      m_ExpandedIDs: 8efbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -844,7 +844,7 @@ MonoBehaviour:
   m_Size:
     m_Target: 1.165453
     speed: 2
-    m_Value: 0.86545295
+    m_Value: 1.165453
   m_Ortho:
     m_Target: 0
     speed: 2

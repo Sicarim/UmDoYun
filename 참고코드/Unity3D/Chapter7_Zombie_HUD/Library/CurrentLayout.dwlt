@@ -73,7 +73,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 444}
   m_MaxSize: {x: 4002, y: 8044}
   vertical: 1
-  controlID: 118
+  controlID: 107
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_MinSize: {x: 277, y: 194}
   m_MaxSize: {x: 4002, y: 8044}
   vertical: 1
-  controlID: 142
+  controlID: 101
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 494}
   m_MaxSize: {x: 10004, y: 14044}
   vertical: 1
-  controlID: 71
+  controlID: 35
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -195,8 +195,8 @@ MonoBehaviour:
     y: 0
     width: 346
     height: 471
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 204, y: 222}
+  m_MaxSize: {x: 4004, y: 4022}
   m_ActualView: {fileID: 21}
   m_Panes:
   - {fileID: 21}
@@ -227,7 +227,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 494}
   m_MaxSize: {x: 18008, y: 14044}
   vertical: 0
-  controlID: 141
+  controlID: 34
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -475,10 +475,10 @@ MonoBehaviour:
       e32: 0
       e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: 8eebe7519312a5c4eaeed6cd5ebb0411,
+  m_AnimatorController: {fileID: 9100000, guid: dc7f0d1308d0bd1499a8fee0eea23f08,
     type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: 1107841657443903064, guid: 8eebe7519312a5c4eaeed6cd5ebb0411,
+  - m_Target: {fileID: 1107156279010911476, guid: dc7f0d1308d0bd1499a8fee0eea23f08,
       type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
@@ -520,7 +520,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -2522
+  m_LastSelectedObjectID: 14270
 --- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -585,19 +585,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Resources/Audios
+    - Packages/com.unity.postprocessing/PostProcessing/Textures
   m_ViewMode: 0
   m_StartGridSize: 16
   m_LastFolders: []
   m_LastFoldersGridSize: 16
-  m_LastProjectPath: D:\Aducation\Unity3D\Chapter7_Zombie_HUD
+  m_LastProjectPath: "D:\\Atence\\git\\UmDoYun\\\uCC38\uACE0\uCF54\uB4DC\\Unity3D\\Chapter7_Zombie_HUD"
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 183e0000
     m_LastClickedID: 15896
-    m_ExpandedIDs: 00000000322f0000c83000006a310000
+    m_ExpandedIDs: 00000000983300002c35000066360000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -625,7 +625,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff00000000322f0000c830000002320000
+    m_ExpandedIDs: ffffffff0000000098330000b83400002c350000aa350000ce3500002836000066360000f0360000ffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -745,9 +745,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: ca330000
-      m_LastClickedID: 13258
-      m_ExpandedIDs: 8efbffff
+      m_SelectedIDs: c6370000
+      m_LastClickedID: 14278
+      m_ExpandedIDs: c2faffffc4faffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -842,9 +842,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
   m_Size:
-    m_Target: 10
+    m_Target: 22
     speed: 2
-    m_Value: 10
+    m_Value: 2.286307
   m_Ortho:
     m_Target: 0
     speed: 2
