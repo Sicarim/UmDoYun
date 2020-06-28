@@ -1,0 +1,56 @@
+#include<stdio.h>
+#include<Windows.h>
+
+void Draw(int Map[][10])
+{
+	for(int y = 0; y < 10; y++)
+	{
+		for(int x = 0; x < 10; x++)
+		{
+			if(Map[y][x] == 1)
+				printf("¡Ù");
+			else
+				printf("  ");
+		}
+		printf("\n");
+	}
+}
+
+void Update(int Map[][10])
+{
+	for(int y = 0; y < 10; y++)
+	{
+		for(int x = 0; x < 10; x++)
+		{
+			if(Map[y][x] == 1)
+			{
+				Map[y][x] = 0;
+				if(x - 1 < 0)
+					Map[y][9] = 1;
+				else
+					Map[y][x - 1] = 1;
+			}
+		}
+	}
+}
+
+
+void main()
+{
+	int Map[10][10] = { 0 };
+	for(int y = 0; y < 10; y++)
+	{
+		for(int x = 0; x < 10; x++)
+		{
+			if(x == 9)
+				Map[y][x] = 1;
+		}
+	}
+	while(1)
+	{
+		Draw(Map);
+		Sleep(500);
+		system("cls");
+		Update(Map);
+	}
+}

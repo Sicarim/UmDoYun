@@ -1,8 +1,0 @@
-﻿  HeightMap.cpp
-D:\Atence\git\UmDoYun\참고코드\D3DX\HeightMap\HeightMap.cpp(186,25): warning C4244: '=': 'unsigned long'에서 'WORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Atence\git\UmDoYun\참고코드\D3DX\HeightMap\HeightMap.cpp(187,29): warning C4244: '=': 'unsigned long'에서 'WORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Atence\git\UmDoYun\참고코드\D3DX\HeightMap\HeightMap.cpp(188,31): warning C4244: '=': 'unsigned long'에서 'WORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Atence\git\UmDoYun\참고코드\D3DX\HeightMap\HeightMap.cpp(192,31): warning C4244: '=': 'unsigned long'에서 'WORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Atence\git\UmDoYun\참고코드\D3DX\HeightMap\HeightMap.cpp(193,29): warning C4244: '=': 'unsigned long'에서 'WORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\Atence\git\UmDoYun\참고코드\D3DX\HeightMap\HeightMap.cpp(194,35): warning C4244: '=': 'unsigned long'에서 'WORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  HeightMap.vcxproj -> D:\Atence\git\UmDoYun\참고코드\D3DX\HeightMap\Debug\HeightMap.exe

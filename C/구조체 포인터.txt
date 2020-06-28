@@ -1,0 +1,77 @@
+#include <stdio.h>
+#define MAX 5
+
+struct People
+{
+	char name[10];
+	int age;
+	float height;
+};
+
+void Sort(People* p)
+{
+	int tmpAge;
+	int tmpHeight;
+
+	People tmp;
+
+	for (int i = 0; i < MAX; i++)
+	{
+		for (int j = i + 1; j < MAX + 1; j++)
+		{
+			/*if (p[i].age < p[j].age)
+			{
+				tmpAge = p[i].age;
+				p[i].age = p[j].age;
+				p[j].age = tmpAge;
+			}
+			else if(p[i].age == p[j].age && p[i].height < p[j].height){
+				tmpHeight = p[i].height;
+				p[i].height = p[j].height;
+				p[j].height = tmpHeight;
+			}*/
+			if (p[i].age < p[j].age || (p[i].age == p[j].age && p[i].height < p[j].height))
+			{
+				tmp = p[i];
+				p[i] = p[j];
+				p[j] = tmp;
+			}
+		}
+	}
+}
+
+
+void show(People p)
+{
+	printf("이름: %s \n", p.name);
+	printf("나이: %d \n", p.age);
+	printf("키: %.2f \n", p.height);
+	printf("================ \n");
+}
+
+int main()
+{
+	People pList[5];
+
+	for(int i = 0; i < MAX; i++){
+		printf("========%d======== \n", i + 1);
+		printf("이름 입력: ");
+		scanf_s("%s", pList[i].name);
+		printf("나이 입력: ");
+		scanf_s("%d", &pList[i].age);
+		printf("키 입력: ");
+		scanf_s("%f", &pList[i].height);
+	}
+
+	Sort(pList);
+
+	printf("정렬후 \n\n\n\n");
+
+	for(int i = 0; i < MAX; i++){
+		printf("========%d======== \n", i + 1);
+		show(pList[i]);
+	}
+
+
+	return 0;
+}

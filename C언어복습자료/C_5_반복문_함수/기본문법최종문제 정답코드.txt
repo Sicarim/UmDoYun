@@ -1,0 +1,185 @@
+#include<stdio.h>
+#include<Windows.h>
+
+#define TRUE 1
+#define FALSE 0
+#define WORKHEALTH 30
+#define HOSPITALCOUNT 3
+#define PCHEALTH 10
+#define WORKMONEY 10000
+#define PCOMONEY 1000
+#define RECOVERYHEALTH 50
+void main()
+{
+	char Name[20];
+	int Hour = 0, Day = 1, Money = 0, Health = 100;
+	int Hospital = 0;
+	int Select;
+	int PcRoomState = TRUE;
+	int Rank = 100;
+	int LifeState = TRUE;
+	printf("회원 이름 입력 : ");
+	scanf("%s", Name);
+	while (LifeState)
+	{
+		PcRoomState = TRUE;
+		system("cls");
+		printf("====%s님의 생활====(%d째날)\n", Name, Day);
+		printf("1.일하기\n");
+		printf("2.휴식\n");
+		printf("3.피시방 이동\n");
+		printf("4.정보보기\n");
+		printf("5.종료\n");
+		printf("입력 : ");
+		scanf("%d", &Select);
+		switch (Select)
+		{
+		case 1:
+			if (Hospital != 0)
+			{
+				printf("병원에 있어 일을 할 수 없습니다.(CountDown : %d)\n", Hospital);
+				break;
+			}
+			if (Health - WORKHEALTH < 0)
+				printf("체력이 없습니다.\n");
+			else
+			{
+				printf("체력이 감소하였습니다(-%d)\n", WORKHEALTH);
+				Health -= WORKHEALTH;
+				if (Health < 0)
+					Health = 0;
+				printf("수당을 획득하였습니다.(+%d원)\n", WORKMONEY);
+				Money += WORKMONEY;
+			}
+			break;
+		case 2:
+			if (Hospital != 0)
+			{
+				Hospital--;
+				printf("병원에서 하루가 지났습니다.(CountDown : %d)\n", Hospital);
+				Day++;
+			}
+			else
+			{
+				printf("하루가 지났습니다(+Day)\n");
+				Day++;
+				if (Health == 0)
+				{
+					printf("체력이 0인상태로 하루가 끝나 병원으로 이동하여 %d일동안 일과 게임을 할 수 없습니다.\n", HOSPITALCOUNT);
+					Hospital = HOSPITALCOUNT;
+				}
+			}
+			printf("건강이 회복되었습니다(+%d)\n", RECOVERYHEALTH);
+			Health += RECOVERYHEALTH;
+			break;
+		case 3:
+			if (Hospital != 0)
+			{
+				printf("병원에 있어 방문이 불가능 합니다.\n");
+				break;
+			}
+			while (PcRoomState)
+			{
+				system("cls");
+				printf("=====팡팡 PC 방(%s회원님)====\n", Name);
+				printf("1.시간 등록\n");
+				printf("2.사용자 정보\n");
+				printf("3.시간 사용하기\n");
+				printf("4.PC방 나가기\n");
+				printf("입력 : ");
+				scanf("%d", &Select);
+				switch (Select)
+				{
+				case 1:
+					while (1)
+					{
+						system("cls");
+						printf("보유금액 : %d원\t보유시간 : %d시간\n", Money, Hour);
+						printf("등록할 시간을 입력하시오(시간당 %d원,그냥 나가기 : 0) : ", PCOMONEY);
+						scanf("%d", &Select);
+						if (Select <= 0)
+							break;
+						else
+						{
+							if (Money - (Select * PCOMONEY) < 0)
+								printf("보유 금액이 부족합니다. 다시 입력해 주세요\n");
+							else
+							{
+								printf("%d시간이 등록되었습니다.\n", Select);
+								Money -= Select * PCOMONEY;
+								printf("남은 금액 : %d원\n", Money);
+								Hour += Select;
+								printf("보유시간 : %d", Hour);
+								break;
+							}
+						}
+						system("pause");
+					}
+					system("pause");
+					break;
+				case 2:
+					printf("=====%s님의 회원정보=====\n", Name);
+					printf("보유 금액 : %d원\t보유 시간 : %d시간\n", Money, Hour);
+					printf("랭킹 : %d등\n", Rank);
+					system("pause");
+					break;
+				case 3:
+					while (1)
+					{
+						system("cls");
+						printf("=====%s님의 회원정보=====\n", Name);
+						printf("보유 금액 : %d원\t보유 시간 : %d시간\n", Money, Hour);
+						printf("랭킹 : %d등\n", Rank);
+						printf("사용할 시간을 입력하시오(최대 사용가능시간 : %d , 시간당 %d원(나가기 : 0)) : ", Health / 10, PCOMONEY);
+						scanf("%d", &Select);
+						if (Select <= 0)
+							break;
+						else if (Hour - Select < 0)
+							printf("시간이 부족합니다. 다시입력하여 주세요\n");
+						else if (Health - Select * PCHEALTH < 0)
+							printf("건강이 부족합니다 다시입력하여 주세요\n");
+						else
+						{
+							Hour -= Select;
+							printf("%d시간 Play 하였습니다.\n", Select);
+							printf("%d만큼의 건강이 감소하였습니다(시간당 %d)\n", Select * PCHEALTH, PCHEALTH);
+							Health -= Select * PCHEALTH;
+							if (Health < 0)
+								Health = 0;
+							int OldRank = Rank;
+							Rank -= Select;
+							if (Rank < 1)
+								Rank = 1;
+							printf("Ranking이 %d만큼 증가 하였습니다.(%d -> %d)\n", Select, OldRank, Rank);
+							if (Rank == 1)
+							{
+								printf("%d일 만에 1등이 되었습니다.(종료)\n", Day);
+								PcRoomState = FALSE;
+								LifeState = FALSE;
+							}
+							break;
+						}
+						system("pause");
+					}
+					system("pause");
+					break;
+				case 4:
+					PcRoomState = FALSE;
+					break;
+				}
+			}
+			break;
+		case 4:
+			printf("=======%s님의 정보=======\n", Name);
+			printf("This Day : %d째날\n", Day);
+			printf("보유 금액 : %d원\t건강 : %d\n", Money, Health);
+			printf("Ranking : %d\n", Rank);
+			printf("==========================\n");
+			break;
+		case 5:
+			printf("안녕히 가십시오.\n");
+			return;
+		}
+		system("pause");
+	}
+}

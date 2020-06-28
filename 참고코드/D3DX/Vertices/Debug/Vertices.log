@@ -1,3 +1,0 @@
-﻿  Vertices.cpp
-D:\Atence\git\UmDoYun\참고코드\D3DX\Vertices\Vertices.cpp(186,1): warning C4002: 함수 같은 매크로 호출 'CreateWindowA'에 대해 인수가 너무 많습니다.
-  Vertices.vcxproj -> D:\Atence\git\UmDoYun\참고코드\D3DX\Vertices\Debug\Vertices.exe

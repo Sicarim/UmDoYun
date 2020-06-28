@@ -1,0 +1,154 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+#include<Windows.h>
+#include<conio.h>
+#define NULL 0
+#define WALL 1
+#define CHARACTER 2
+#define STAR 3
+#define X 1
+#define Y 0
+#define WIDTH 10
+#define HEIGHT 20
+#define LEFT 'a'
+#define RIGHT 'd'
+
+void Init(int Map[][WIDTH],int character[])
+{
+	srand(time(NULL));
+	for (int y = 0; y < HEIGHT; y++)
+	{
+		for (int x = 0; x < WIDTH; x++)
+		{
+			if (x == 0 || x == WIDTH - 1)
+				Map[y][x] = WALL;
+			else
+				Map[y][x] = NULL;
+		}
+	}
+
+	character[X] = WIDTH/2;
+	character[Y] = HEIGHT -1;
+	Map[character[Y]][character[X]] = CHARACTER;
+}
+void MapDraw(int Map[][WIDTH],int Score)
+{
+	system("cls");
+	for (int y = 0; y < HEIGHT; y++)
+	{
+		for (int x = 0; x < WIDTH; x++)
+		{
+			if (Map[y][x] == CHARACTER)
+				printf("옷");
+			else if (Map[y][x] == STAR)
+				printf("☆");
+			else if (Map[y][x] == WALL)
+				printf("│");
+			else
+				printf("  ");
+		}
+		printf("\n");
+	}
+	printf("Score = %d", Score);
+}
+
+void Input(int Map[][WIDTH],int character[])
+{
+	char ch = getch();
+	Map[character[Y]][character[X]] = NULL;
+	switch (ch)
+	{
+	case LEFT:
+		if (Map[character[Y]][character[X] - 1] != WALL)
+			character[X]--;
+		break;
+	case RIGHT:
+		if (Map[character[Y]][character[X] + 1] != WALL)
+			character[X]++;
+		break;
+	}
+	Map[character[Y]][character[X]] = CHARACTER;
+}
+
+int CheckScore(int Score,int Map[][WIDTH])
+{
+	for (int x = 0; x < WIDTH ;x++)
+	{
+		if (Map[HEIGHT - 1][x] == STAR)
+			Score++;
+	}
+	return Score;
+}
+
+int Update(int Map[][WIDTH])
+{
+	if (rand() % 3 == 0)
+	{
+		int x = (rand() % 8) + 1;
+		Map[0][x] = STAR;
+	}
+	for (int y = HEIGHT - 1; y >= 0; y--)
+	{
+		for (int x = 0; x < WIDTH; x++)
+		{
+			if (Map[y][x] == STAR)
+			{
+				Map[y][x] = NULL;
+				if (Map[y + 1][x] == CHARACTER)
+					return 1;
+				else if (y + 1 < HEIGHT)
+					Map[y + 1][x] = STAR;
+			}
+		}
+	}
+	return 0;
+}
+
+
+void Menu()
+{
+	printf("=====별똥별 피하기===\n");
+	printf("     1.게임 시작\n");
+	printf("     2.종료\n");
+}
+
+void GamePlay(int Map[][WIDTH],int character[])
+{
+	int Score = 0;
+	int GameOver = 0;
+	while (!GameOver)
+	{
+		MapDraw(Map,Score);
+		if (kbhit())
+			Input(Map,character);
+		GameOver = Update(Map);
+		Score = CheckScore(Score,Map);
+		Sleep(33);
+	}
+	printf("게임 종료\n");
+	system("pause");
+}
+
+void main()
+{
+	int Map[HEIGHT][WIDTH];
+	int character[2];
+	int Select;
+	while (1)
+	{
+		system("cls");
+		Init(Map,character);
+		Menu();
+		scanf("%d", &Select);
+		switch (Select)
+		{
+		case 1:
+			GamePlay(Map,character);
+			break;
+		case 2:
+			return;
+		}
+
+	}
+}

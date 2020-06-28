@@ -1,0 +1,67 @@
+#include<stdio.h>
+#define SIZE 10
+
+void main()
+{
+	int Arr[SIZE] = { 10,17,3,9,37,10,8,9,13,21 };
+	printf("1번문제\n");
+	for (int i = 0; i < SIZE; i++)
+		printf("%d,", Arr[i]);
+	printf("\b \n\n");
+	///////////////////////////////////////////////////
+	int Invert_Arr[SIZE];
+	printf("2번문제\n");
+	for (int i = 0, j = 9; i < SIZE; i++, j--)
+		Invert_Arr[i] = Arr[j];
+	printf("Invert_Arr : ");
+	for (int i = 0; i < SIZE; i++)
+		printf("%d,", Invert_Arr[i]);
+	printf("\b \n");
+	printf("Arr : ");
+	for (int i = 0; i < SIZE; i++)
+		printf("%d,", Arr[i]);
+	printf("\b \n\n");
+	///////////////////////////////////////////////////
+	int oddSum = 0, evenSum = 0;
+	printf("3번문제\n");
+	printf("홀수 번째 원소 : ");
+	for (int i = 1; i < SIZE; i += 2)
+	{
+		printf("%d,", Arr[i]);
+		oddSum += Arr[i];
+	}
+	printf("\b \n홀수 번째 총합 : %d\n", oddSum);
+	printf("짝수 번째 원소 : ");
+	for (int i = 0; i < SIZE; i += 2)
+	{
+		printf("%d,", Arr[i]);
+		evenSum += Arr[i];
+	}
+	printf("\b \n짝수 번째 총합 : %d\n\n", evenSum);
+	/////////////////////////////////////////////
+	int Index;
+	int Sort_Arr[SIZE] = { 0 };
+	printf("4번문제\n");
+	for (int i = 0; i < SIZE; i++)
+	{
+		Index = 0;
+		for (int j = 0; j < SIZE; j++)
+		{
+			if (Arr[i] < Arr[j])
+				Index++;
+		}
+		while (Sort_Arr[Index] == Arr[i])
+			Index++;
+		Sort_Arr[Index] = Arr[i];
+	}
+
+	printf("Arr :");
+	for (int i = 0; i < SIZE; i++)
+		printf("%d,", Arr[i]);
+	printf("\b \n");
+
+	printf("Sort_Arr :");
+	for (int i = 0; i < SIZE; i++)
+		printf("%d,", Sort_Arr[i]);
+	printf("\b \n");
+}
