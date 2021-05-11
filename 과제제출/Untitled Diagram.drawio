@@ -1,1 +1,238 @@
-<mxfile host="app.diagrams.net" modified="2021-05-10T16:30:20.952Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36" version="14.6.11" etag="7JQKSKUWyWPihx-F8XY_" type="github"><diagram id="dNaRXOxqhh2w3QCHLOOn">UzV2zq1wL0osyPDNT0nNUTV2VTV2LsrPL4GwciucU3NyVI0MMlNUjV1UjYwMgFjVyA2HrCFY1qAgsSg1rwSLBiADYTaQg2Y1AA==</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2021-05-11T07:43:04.150Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36" etag="TqfLJonub3GMdIj8OJ0R" version="14.6.10" type="github">
+  <diagram id="dNaRXOxqhh2w3QCHLOOn" name="Page-1">
+    <mxGraphModel dx="1896" dy="599" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-2" value="Client1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="100" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-5" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="dsYMFT-xjzUW1HsPP5ht-2">
+          <mxGeometry x="45" y="60" width="10" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-3" value="Client2" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="260" y="40" width="100" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-19" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="dsYMFT-xjzUW1HsPP5ht-3">
+          <mxGeometry x="45" y="240" width="10" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-4" value="Dedicate&lt;br&gt;Server" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="420" y="40" width="100" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-6" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="1">
+          <mxGeometry x="90" y="130" width="10" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-7" value="UPROPERTY(Replicate) 변수 등록" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;entryX=1;entryY=0;" edge="1" target="dsYMFT-xjzUW1HsPP5ht-6" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="95" y="120" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="120" y="120" />
+              <mxPoint x="120" y="130" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-8" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="1">
+          <mxGeometry x="90" y="160" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-9" value="AddPressCount()" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;entryX=1;entryY=0;" edge="1" parent="1" target="dsYMFT-xjzUW1HsPP5ht-8">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="95" y="150" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="120" y="150" />
+              <mxPoint x="120" y="160" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-10" value="NetDriver" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="-120" y="40" width="100" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-11" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="1">
+          <mxGeometry x="90" y="240" width="10" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-12" value="GetLifetimeReplicatedProps()" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;" edge="1" parent="1" target="dsYMFT-xjzUW1HsPP5ht-5" source="dsYMFT-xjzUW1HsPP5ht-10">
+          <mxGeometry x="-1" y="-10" relative="1" as="geometry">
+            <mxPoint x="95" y="210" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint y="242" />
+              <mxPoint y="242" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-16" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="1">
+          <mxGeometry x="465" y="250" width="10" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-18" value="Update" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" target="dsYMFT-xjzUW1HsPP5ht-4">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="100" y="254.66" as="sourcePoint" />
+            <mxPoint x="180" y="254.66" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="370" y="255" />
+              <mxPoint x="370" y="255" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-20" value="Replicate" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="465" y="279.66" as="sourcePoint" />
+            <mxPoint x="320" y="280" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="360" y="280" />
+              <mxPoint x="360" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-21" value="Replicate" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="460" y="310" as="sourcePoint" />
+            <mxPoint x="100" y="310" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="200" y="310" />
+              <mxPoint x="200" y="310" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-22" value="Dedicated&lt;br&gt;Server" style="html=1;" vertex="1" parent="1">
+          <mxGeometry x="650" y="70" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-23" value="Client1" style="html=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="170" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-24" value="Client2" style="html=1;" vertex="1" parent="1">
+          <mxGeometry x="650" y="170" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-25" value="Client3" style="html=1;" vertex="1" parent="1">
+          <mxGeometry x="780" y="170" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-32" value="" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="dsYMFT-xjzUW1HsPP5ht-22" target="dsYMFT-xjzUW1HsPP5ht-24">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="940" y="170" as="sourcePoint" />
+            <mxPoint x="1020" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-33" value="" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="dsYMFT-xjzUW1HsPP5ht-22" target="dsYMFT-xjzUW1HsPP5ht-25">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="715" y="130" as="sourcePoint" />
+            <mxPoint x="715" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-34" value="" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="dsYMFT-xjzUW1HsPP5ht-22" target="dsYMFT-xjzUW1HsPP5ht-23">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="715" y="130" as="sourcePoint" />
+            <mxPoint x="845" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-35" value="Client1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="440" width="100" height="350" as="geometry" />
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-40" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="dsYMFT-xjzUW1HsPP5ht-35">
+          <mxGeometry x="45" y="70" width="10" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-41" value="RPC 함수 선언" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;entryX=1;entryY=0;" edge="1" parent="dsYMFT-xjzUW1HsPP5ht-35" target="dsYMFT-xjzUW1HsPP5ht-40">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="50" y="60" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="75" y="60" />
+              <mxPoint x="75" y="70" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-44" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="dsYMFT-xjzUW1HsPP5ht-35">
+          <mxGeometry x="45" y="90" width="10" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-70" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="dsYMFT-xjzUW1HsPP5ht-35">
+          <mxGeometry x="50" y="270" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-71" value="PrintPressCount()" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;entryX=1;entryY=0;" edge="1" target="dsYMFT-xjzUW1HsPP5ht-70" parent="dsYMFT-xjzUW1HsPP5ht-35">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="55" y="250" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="85" y="250" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-38" value="FObject&lt;br&gt;Replicator" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="239" y="440" width="100" height="350" as="geometry" />
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-65" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="dsYMFT-xjzUW1HsPP5ht-38">
+          <mxGeometry x="45" y="190" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-39" value="Dedicate&lt;br&gt;Server" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="365" y="440" width="100" height="350" as="geometry" />
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-61" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="dsYMFT-xjzUW1HsPP5ht-39">
+          <mxGeometry x="45" y="100" width="10" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-63" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="dsYMFT-xjzUW1HsPP5ht-39">
+          <mxGeometry x="50" y="135" width="10" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-64" value="TickDispatch()" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;entryX=1;entryY=0;" edge="1" target="dsYMFT-xjzUW1HsPP5ht-63" parent="dsYMFT-xjzUW1HsPP5ht-39">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="55" y="115" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="85" y="115" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-66" value="ReceivedRPC()" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;" edge="1" parent="dsYMFT-xjzUW1HsPP5ht-39">
+          <mxGeometry x="0.6792" y="-10" relative="1" as="geometry">
+            <mxPoint x="50" y="195" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="-71" y="195" />
+            </Array>
+            <mxPoint x="-71" y="195" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-45" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="1">
+          <mxGeometry x="90" y="560" width="10" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-46" value="AddPressCount()" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;entryX=1;entryY=0;" edge="1" target="dsYMFT-xjzUW1HsPP5ht-45" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="95" y="540" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="125" y="540" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-47" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="1">
+          <mxGeometry x="100" y="590" width="10" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-48" value="RPCPressCount()" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;entryX=1;entryY=0;exitX=0.959;exitY=0.145;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" target="dsYMFT-xjzUW1HsPP5ht-47" parent="1" source="dsYMFT-xjzUW1HsPP5ht-45">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="105" y="570" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="100" y="570" />
+              <mxPoint x="135" y="570" />
+              <mxPoint x="135" y="590" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-62" value="" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;entryX=-0.255;entryY=0.53;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="dsYMFT-xjzUW1HsPP5ht-63">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="110" y="605" as="sourcePoint" />
+            <mxPoint x="360" y="605" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-67" value="return" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;edgeStyle=orthogonalEdgeStyle;exitX=1.369;exitY=0.879;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.466;entryY=0.422;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="dsYMFT-xjzUW1HsPP5ht-65">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="379" y="665" as="sourcePoint" />
+            <mxPoint x="414.65999999999985" y="665.1800000000001" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-68" value="RPCPressCount_Validate()" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;entryX=1.238;entryY=0.472;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="dsYMFT-xjzUW1HsPP5ht-44">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="280" y="644" as="sourcePoint" />
+            <mxPoint x="150" y="650" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dsYMFT-xjzUW1HsPP5ht-69" value="&lt;div&gt;RPCPressCount_Implementation()&lt;/div&gt;" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;entryX=0.962;entryY=0.562;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="dsYMFT-xjzUW1HsPP5ht-44">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="280" y="663" as="sourcePoint" />
+            <mxPoint x="140" y="663" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
